@@ -1,0 +1,1140 @@
+Archive member included to satisfy reference by file (symbol)
+
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                              (call_start_cpu)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o) (bootloader_utility_load_partition_table)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o) (bootloader_init)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o) (bootloader_mmap)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o) (esp_image_load)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o) (esp_partition_table_basic_verify)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o) (bootloader_common_ota_select_valid)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o) (g_rom_flashchip)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o) (spi_flash_get_id_raw)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o) (esp_log_early_timestamp)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o) (ets_vprintf)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o) (crc32_le)
+C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o) (esp_fast_boot_get_info)
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+                              C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o) (phy_reg_default)
+
+Allocating common symbols
+Common symbol       size              file
+
+esp_image_spi_freq_t
+                    0x4               C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .xt.lit        0x00000000       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .xt.prop       0x00000000       0xe4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ COMMON         0x00000000        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .literal.bootloader_utility_fast_boot_image
+                0x00000000        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .text.bootloader_utility_fast_boot_image
+                0x00000000       0x27 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .xt.lit        0x00000000       0x40 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .xt.prop       0x00000000      0x510 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .xt.lit        0x00000000       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .xt.prop       0x00000000      0x228 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .literal.bootloader_flash_write
+                0x00000000       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .literal.bootloader_flash_erase_sector
+                0x00000000        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .rodata.bootloader_flash_write.str1.4
+                0x00000000       0xa7 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .text.bootloader_flash_write
+                0x00000000       0x9d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .text.bootloader_flash_erase_sector
+                0x00000000       0x15 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .xt.lit        0x00000000       0x50 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .xt.prop       0x00000000      0x444 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .literal.esp_image_verify_bootloader
+                0x00000000        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .text.esp_image_verify_bootloader
+                0x00000000       0x41 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .xt.lit        0x00000000       0x40 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .xt.prop       0x00000000      0x3e4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .xt.lit        0x00000000        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .xt.prop       0x00000000       0xcc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .literal.bootloader_common_check_long_hold_gpio
+                0x00000000       0x58 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .text.bootloader_common_check_long_hold_gpio
+                0x00000000      0x230 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .xt.lit        0x00000000       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .xt.prop       0x00000000      0x420 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .literal.spi_flash_program
+                0x00000000       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.__spi_flash_write
+                0x00000000        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.__spi_flash_read
+                0x00000000       0x10 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_write_status
+                0x00000000        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_check_wr_protect
+                0x00000000       0x58 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_erase_sector
+                0x00000000       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_read
+                0x00000000       0x24 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_write
+                0x00000000       0x3c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_erase_range
+                0x00000000       0x10 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_cache2phys
+                0x00000000       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_get_chip_size
+                0x00000000        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_program
+                0x00000000       0xd8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.__spi_flash_write
+                0x00000000       0x23 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.__spi_flash_read
+                0x00000000       0x31 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_write_status
+                0x00000000       0x2a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_check_wr_protect
+                0x00000000      0x195 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_erase_sector
+                0x00000000       0x56 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_read
+                0x00000000      0x109 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_write
+                0x00000000      0x176 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_erase_range
+                0x00000000       0x67 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_cache2phys
+                0x00000000       0x4e C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.spi_flash_get_chip_size
+                0x00000000        0x7 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .xt.lit        0x00000000       0xd0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .xt.prop       0x00000000      0xb34 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .literal.spi_flash_write_status_raw
+                0x00000000       0x1c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .literal.spi_flash_erase_sector_raw
+                0x00000000       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .literal.spi_flash_write_raw
+                0x00000000        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .literal.spi_flash_read_raw
+                0x00000000        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .text.spi_flash_write_status_raw
+                0x00000000       0x5c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .text.spi_flash_erase_sector_raw
+                0x00000000       0x50 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .text.spi_flash_write_raw
+                0x00000000       0x43 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .text.spi_flash_read_raw
+                0x00000000       0x43 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .xt.lit        0x00000000       0x58 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .xt.prop       0x00000000      0x348 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .xt.lit        0x00000000       0x10 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .xt.prop       0x00000000       0xcc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .xt.lit        0x00000000       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .xt.prop       0x00000000       0xe4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .literal.crc16_le
+                0x00000000        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .literal.esp_crc8
+                0x00000000        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .text.crc16_le
+                0x00000000       0x3b C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .text.esp_crc8
+                0x00000000       0x21 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .rodata.crc8_le_table
+                0x00000000      0x100 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .rodata.crc16_le_table
+                0x00000000      0x200 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .xt.lit        0x00000000       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .xt.prop       0x00000000       0xfc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .literal.esp_fast_boot_disable
+                0x00000000        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .literal.esp_fast_boot_get_info
+                0x00000000       0x2c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .literal.esp_fast_boot_print_info
+                0x00000000       0x2c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .text.esp_fast_boot_disable
+                0x00000000       0x11 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .rodata.esp_fast_boot_get_info.str1.4
+                0x00000000       0x24 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .text.esp_fast_boot_get_info
+                0x00000000       0x86 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .rodata.esp_fast_boot_print_info.str1.4
+                0x00000000       0x59 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .text.esp_fast_boot_print_info
+                0x00000000       0x4d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_frame   0x00000000       0x68 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_info    0x00000000      0xbcf C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_abbrev  0x00000000      0x251 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_loc     0x00000000       0xb0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_aranges
+                0x00000000       0x30 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_ranges  0x00000000       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_line    0x00000000      0x4d3 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .debug_str     0x00000000      0x717 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .comment       0x00000000       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .xt.lit        0x00000000       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .xt.prop       0x00000000       0xc0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .literal.phy_reg_default
+                0x00000000        0x0 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+ .text          0x00000000        0x0 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+ .data          0x00000000        0x0 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+ .bss           0x00000000        0x0 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+ .xt.lit        0x00000000        0x8 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+ .xt.prop       0x00000000       0x48 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+dport0_seg       0x3ff00000         0x00000010
+dram_seg         0x3ffe8000         0x00017c00
+iram_seg         0x40100000         0x00008000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+START GROUP
+LOAD C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a
+LOAD C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a
+LOAD C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a
+LOAD C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a
+LOAD C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a
+LOAD C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a
+LOAD C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libgcc.a
+LOAD c:/msys32/opt/xtensa-lx106-elf/bin/../lib/gcc/xtensa-lx106-elf/8.4.0/../../../../xtensa-lx106-elf/lib\libstdc++.a
+LOAD c:/msys32/opt/xtensa-lx106-elf/bin/../lib/gcc/xtensa-lx106-elf/8.4.0\libgcov.a
+END GROUP
+
+.text           0x40100000     0x1d75
+                0x40100000                _stext = .
+                0x40100000                _text_start = ABSOLUTE (.)
+                0x40100000                . = ALIGN (0x10)
+ *(.entry.text)
+ *(.init.literal)
+ *(.init)
+ *(.literal .text .literal.* .text.* .stub .gnu.warning .gnu.linkonce.literal.* .gnu.linkonce.t.*.literal .gnu.linkonce.t.*)
+ .literal.selected_boot_partition
+                0x40100000        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                  0x4 (size before relaxing)
+ .literal.select_image
+                0x40100000        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                 0x1c (size before relaxing)
+ .literal.call_start_cpu
+                0x4010000c        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                  0xc (size before relaxing)
+ .literal.bootloader_utility_start_image
+                0x4010000c        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                  0x4 (size before relaxing)
+ .literal.log_invalid_app_partition
+                0x4010000c       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x20 (size before relaxing)
+ .literal.try_load_partition
+                0x40100020        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x10 (size before relaxing)
+ .literal.bootloader_utility_load_partition_table
+                0x40100024       0x4c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x74 (size before relaxing)
+ .literal.bootloader_utility_get_selected_boot_partition
+                0x40100070       0x1c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x5c (size before relaxing)
+ .literal.bootloader_utility_load_boot_image
+                0x4010008c        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x40 (size before relaxing)
+ .literal.bootloader_utility_load_image
+                0x40100098        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                  0x4 (size before relaxing)
+ .literal.print_flash_info
+                0x40100098       0x48 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0x54 (size before relaxing)
+ .literal.update_flash_config
+                0x401000e0        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                  0x8 (size before relaxing)
+ .literal.bootloader_main
+                0x401000e4       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0x3c (size before relaxing)
+ .literal.bootloader_init
+                0x401000f8        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0x10 (size before relaxing)
+ .literal.bootloader_flash_read_no_decrypt
+                0x40100100        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .literal.bootloader_mmap
+                0x40100104       0x30 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x3c (size before relaxing)
+ .literal.bootloader_munmap
+                0x40100134        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                  0x8 (size before relaxing)
+ .literal.bootloader_flash_read
+                0x40100134        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x20 (size before relaxing)
+ .literal.bootloader_read_flash_id
+                0x40100140        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x10 (size before relaxing)
+ .literal.bootloader_execute_flash_command
+                0x4010014c        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x14 (size before relaxing)
+ .literal.bootloader_flash_read_sfdp
+                0x40100150        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x14 (size before relaxing)
+ .literal.bootloader_flash_xmc_startup
+                0x40100154        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x40 (size before relaxing)
+ .literal.should_map
+                0x40100160        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .literal.should_load
+                0x40100168        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                  0x4 (size before relaxing)
+ .literal.verify_image_header
+                0x40100168       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x20 (size before relaxing)
+ .literal.process_segment_data
+                0x4010017c        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x14 (size before relaxing)
+ .literal.verify_checksum
+                0x40100184        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x1c (size before relaxing)
+ .literal.process_segment
+                0x4010018c       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x40 (size before relaxing)
+ .literal.esp_image_load
+                0x401001a4       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x44 (size before relaxing)
+ .literal.esp_partition_table_basic_verify
+                0x401001b8       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+                                 0x2c (size before relaxing)
+ .literal.bootloader_common_ota_select_crc
+                0x401001d0        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+                                  0x4 (size before relaxing)
+ .literal.bootloader_common_ota_select_valid
+                0x401001d0        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+                                  0x4 (size before relaxing)
+ .literal.spi_user_cmd
+                0x401001d0        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0xc (size before relaxing)
+ .literal.special_flash_read_status
+                0x401001d4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x4 (size before relaxing)
+ .literal.flash_gd25q32c_read_status
+                0x401001d4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x4 (size before relaxing)
+ .literal.special_flash_write_status
+                0x401001d4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x8 (size before relaxing)
+ .literal.spi_flash_enable_qio_bit6
+                0x401001d4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x4 (size before relaxing)
+ .literal.flash_gd25q32c_write_status
+                0x401001d4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x4 (size before relaxing)
+ .literal.flash_gd25q32c_enable_QIO_mode
+                0x401001d4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0xc (size before relaxing)
+ .literal.en25q16x_read_sfdp
+                0x401001d4        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x8 (size before relaxing)
+ .literal.spi_flash_get_id
+                0x401001d8        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0xc (size before relaxing)
+ .literal.spi_flash_read_status
+                0x401001d8        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0xc (size before relaxing)
+ .literal.spi_flash_issi_enable_QIO_mode
+                0x401001d8        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0xc (size before relaxing)
+ .literal.special_flash_set_mode
+                0x401001d8        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                  0x8 (size before relaxing)
+ .literal.en25q16x_write_volatile_status
+                0x401001d8        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x14 (size before relaxing)
+ .literal.user_spi_flash_dio_to_qio_pre_init
+                0x401001d8       0x10 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x38 (size before relaxing)
+ .literal.esp_spi_flash_init
+                0x401001e8       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x28 (size before relaxing)
+ .literal.Cache_Read_Disable_2
+                0x40100208        0xc C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                 0x10 (size before relaxing)
+ .literal.Cache_Read_Enable_2
+                0x40100214        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                  0xc (size before relaxing)
+ .literal.spi_flash_get_id_raw
+                0x40100218       0x10 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                 0x14 (size before relaxing)
+ .literal.spi_flash_read_status_raw
+                0x40100228        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                  0xc (size before relaxing)
+ .literal.spi_flash_enable_qmode_raw
+                0x4010022c        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                 0x10 (size before relaxing)
+ .literal.spi_user_cmd_raw
+                0x40100230       0x64 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                 0x84 (size before relaxing)
+ .literal.spi_flash_switch_to_qio_raw
+                0x40100294        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                  0xc (size before relaxing)
+ .literal.uart_putc
+                0x4010029c        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .literal.ets_putc
+                0x401002a4        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                                  0x8 (size before relaxing)
+ .literal.ets_vprintf
+                0x401002a4        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .literal.crc32_le
+                0x401002ac        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .iram1.0.literal
+                0x401002b0        0x8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .iram1.1.literal
+                0x401002b8       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                                 0x30 (size before relaxing)
+ .iram1.0.literal
+                0x401002d0        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                                  0x8 (size before relaxing)
+ .text.selected_boot_partition
+                0x401002d0        0xf C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                 0x13 (size before relaxing)
+ *fill*         0x401002df        0x1 
+ .text.select_image
+                0x401002e0       0x68 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                 0x70 (size before relaxing)
+ .text.call_start_cpu
+                0x40100348       0x2a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                 0x32 (size before relaxing)
+                0x40100348                call_start_cpu
+ *fill*         0x40100372        0x2 
+ .text.bootloader_utility_start_image
+                0x40100374       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x24 (size before relaxing)
+ .text.log_invalid_app_partition
+                0x40100394       0x4b C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x53 (size before relaxing)
+ *fill*         0x401003df        0x1 
+ .text.try_load_partition
+                0x401003e0       0x3d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x41 (size before relaxing)
+ *fill*         0x4010041d        0x3 
+ .text.bootloader_utility_load_partition_table
+                0x40100420      0x170 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                0x184 (size before relaxing)
+                0x40100420                bootloader_utility_load_partition_table
+ .text.bootloader_utility_get_selected_boot_partition
+                0x40100590      0x13c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                0x14c (size before relaxing)
+                0x40100590                bootloader_utility_get_selected_boot_partition
+ .text.bootloader_utility_load_boot_image
+                0x401006cc       0xd6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0xfa (size before relaxing)
+                0x401006cc                bootloader_utility_load_boot_image
+ *fill*         0x401007a2        0x2 
+ .text.bootloader_utility_load_image
+                0x401007a4       0x19 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                0x401007a4                bootloader_utility_load_image
+ *fill*         0x401007bd        0x3 
+ .text.print_flash_info
+                0x401007c0       0xc7 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0xcb (size before relaxing)
+ *fill*         0x40100887        0x1 
+ .text.update_flash_config
+                0x40100888       0x21 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ *fill*         0x401008a9        0x3 
+ .text.bootloader_main
+                0x401008ac       0x81 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0x95 (size before relaxing)
+ *fill*         0x4010092d        0x3 
+ .text.bootloader_init
+                0x40100930       0x25 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0x29 (size before relaxing)
+                0x40100930                bootloader_init
+ *fill*         0x40100955        0x3 
+ .text.bootloader_flash_read_no_decrypt
+                0x40100958       0x15 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x4010096d        0x3 
+ .text.bootloader_mmap
+                0x40100970       0xa6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                0x40100970                bootloader_mmap
+ *fill*         0x40100a16        0x2 
+ .text.bootloader_munmap
+                0x40100a18       0x23 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                0x40100a18                bootloader_munmap
+ *fill*         0x40100a3b        0x1 
+ .text.bootloader_flash_read
+                0x40100a3c       0x62 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x65 (size before relaxing)
+                0x40100a3c                bootloader_flash_read
+ *fill*         0x40100a9e        0x2 
+ .text.bootloader_read_flash_id
+                0x40100aa0       0x2d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                0x40100aa0                bootloader_read_flash_id
+ *fill*         0x40100acd        0x3 
+ .text.bootloader_execute_flash_command
+                0x40100ad0       0x4d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x51 (size before relaxing)
+                0x40100ad0                bootloader_execute_flash_command
+ *fill*         0x40100b1d        0x3 
+ .text.bootloader_flash_read_sfdp
+                0x40100b20       0x51 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0x55 (size before relaxing)
+                0x40100b20                bootloader_flash_read_sfdp
+ *fill*         0x40100b71        0x3 
+ .text.bootloader_flash_xmc_startup
+                0x40100b74       0x99 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                 0xbd (size before relaxing)
+                0x40100b74                bootloader_flash_xmc_startup
+ *fill*         0x40100c0d        0x3 
+ .text.should_map
+                0x40100c10       0x15 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x40100c25        0x3 
+ .text.should_load
+                0x40100c28       0x19 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x1d (size before relaxing)
+ *fill*         0x40100c41        0x3 
+ .text.verify_image_header
+                0x40100c44       0x7d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x85 (size before relaxing)
+ *fill*         0x40100cc1        0x3 
+ .text.process_segment_data
+                0x40100cc4       0x89 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x91 (size before relaxing)
+ *fill*         0x40100d4d        0x3 
+ .text.verify_checksum
+                0x40100d50       0x9c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0xa0 (size before relaxing)
+ .text.process_segment
+                0x40100dec      0x10b C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                0x117 (size before relaxing)
+ *fill*         0x40100ef7        0x1 
+ .text.esp_image_load
+                0x40100ef8      0x18d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                0x1a5 (size before relaxing)
+                0x40100ef8                esp_image_load
+ *fill*         0x40101085        0x3 
+ .text.esp_partition_table_basic_verify
+                0x40101088       0xd7 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+                0x40101088                esp_partition_table_basic_verify
+ *fill*         0x4010115f        0x1 
+ .text.bootloader_common_ota_select_crc
+                0x40101160       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+                0x40101160                bootloader_common_ota_select_crc
+ .text.bootloader_common_ota_select_valid
+                0x40101178       0x2c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+                0x40101178                bootloader_common_ota_select_valid
+ .text.spi_user_cmd
+                0x401011a4       0x4d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                0x401011a4                spi_user_cmd
+ *fill*         0x401011f1        0x3 
+ .text.special_flash_read_status
+                0x401011f4       0x39 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x3d (size before relaxing)
+                0x401011f4                special_flash_read_status
+ *fill*         0x4010122d        0x3 
+ .text.flash_gd25q32c_read_status
+                0x40101230       0x33 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ *fill*         0x40101263        0x1 
+ .text.special_flash_write_status
+                0x40101264       0x5c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x60 (size before relaxing)
+                0x40101264                special_flash_write_status
+ .text.spi_flash_enable_qio_bit6
+                0x401012c0       0x17 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x1b (size before relaxing)
+ *fill*         0x401012d7        0x1 
+ .text.flash_gd25q32c_write_status
+                0x401012d8       0x30 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .text.flash_gd25q32c_enable_QIO_mode
+                0x40101308       0x3e C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x46 (size before relaxing)
+ *fill*         0x40101346        0x2 
+ .text.en25q16x_read_sfdp
+                0x40101348       0x43 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                0x40101348                en25q16x_read_sfdp
+ *fill*         0x4010138b        0x1 
+ .text.spi_flash_get_id
+                0x4010138c       0x26 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                0x4010138c                spi_flash_get_id
+ *fill*         0x401013b2        0x2 
+ .text.spi_flash_read_status
+                0x401013b4       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                0x401013b4                spi_flash_read_status
+ .text.spi_flash_issi_enable_QIO_mode
+                0x401013dc       0x43 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x4b (size before relaxing)
+ *fill*         0x4010141f        0x1 
+ .text.special_flash_set_mode
+                0x40101420       0x41 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x45 (size before relaxing)
+                0x40101420                special_flash_set_mode
+ *fill*         0x40101461        0x3 
+ .text.en25q16x_write_volatile_status
+                0x40101464       0x4f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0x5b (size before relaxing)
+                0x40101464                en25q16x_write_volatile_status
+ *fill*         0x401014b3        0x1 
+ .text.user_spi_flash_dio_to_qio_pre_init
+                0x401014b4       0xa3 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0xb2 (size before relaxing)
+                0x401014b4                user_spi_flash_dio_to_qio_pre_init
+ *fill*         0x40101557        0x1 
+ .text.esp_spi_flash_init
+                0x40101558       0xb9 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                 0xc1 (size before relaxing)
+                0x40101558                esp_spi_flash_init
+ *fill*         0x40101611        0x3 
+ .text.Cache_Read_Disable_2
+                0x40101614       0x34 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                0x40101614                Cache_Read_Disable_2
+ .text.Cache_Read_Enable_2
+                0x40101648       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                0x40101648                Cache_Read_Enable_2
+                0x40101648                Cache_Read_Enable_New
+ .text.spi_flash_get_id_raw
+                0x40101670       0x41 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                0x40101670                spi_flash_get_id_raw
+ *fill*         0x401016b1        0x3 
+ .text.spi_flash_read_status_raw
+                0x401016b4       0x2f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                 0x33 (size before relaxing)
+                0x401016b4                spi_flash_read_status_raw
+ *fill*         0x401016e3        0x1 
+ .text.spi_flash_enable_qmode_raw
+                0x401016e4       0x33 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                 0x37 (size before relaxing)
+                0x401016e4                spi_flash_enable_qmode_raw
+ *fill*         0x40101717        0x1 
+ .text.spi_user_cmd_raw
+                0x40101718      0x3d1 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                0x40101718                spi_user_cmd_raw
+ *fill*         0x40101ae9        0x3 
+ .text.spi_flash_switch_to_qio_raw
+                0x40101aec       0x25 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                0x40101aec                spi_flash_switch_to_qio_raw
+ *fill*         0x40101b11        0x3 
+ .text.uart_putc
+                0x40101b14       0x1b C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ *fill*         0x40101b2f        0x1 
+ .text.ets_putc
+                0x40101b30       0x27 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                0x40101b30                ets_putc
+ *fill*         0x40101b57        0x1 
+ .text.ets_vprintf
+                0x40101b58       0x1f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                0x40101b58                ets_vprintf
+ *fill*         0x40101b77        0x1 
+ .text.crc32_le
+                0x40101b78       0x31 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+                0x40101b78                crc32_le
+ *fill*         0x40101ba9        0x3 
+ .text.phy_reg_default
+                0x40101bac       0x36 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+                0x40101bbc                phy_reg_default
+ *fill*         0x40101be2        0x0 
+ *fill*         0x40101be2        0x2 
+ .text.index_to_partition
+                0x40101be4       0x4d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x0 
+ *fill*         0x40101c31        0x3 
+ .text.is_xmc_chip_strict
+                0x40101c34       0x58 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ *fill*         0x40101c8c        0x0 
+ .text.verify_segment_header
+                0x40101c8c        0x4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *fill*         0x40101c90        0x0 
+ *(.iram1 .iram1.*)
+ .iram1.0       0x40101c90       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                0x40101c90                esp_log_early_timestamp
+ .iram1.1       0x40101ca8       0x96 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                                 0xa1 (size before relaxing)
+                0x40101ca8                esp_early_log_write
+ *fill*         0x40101d3e        0x2 
+ .iram1.0       0x40101d40       0x35 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                                 0x39 (size before relaxing)
+                0x40101d40                ets_printf
+ *fill*         0x40101d75        0x0 
+ *fill*         0x40101d75        0x0 
+ *(.fini.literal)
+ *(.fini)
+ *(.gnu.version)
+                0x40101d75                _text_end = ABSOLUTE (.)
+                0x40101d75                _etext = .
+
+.bss            0x3ffe8000      0x408
+                0x3ffe8000                . = ALIGN (0x8)
+                0x3ffe8000                _bss_start = ABSOLUTE (.)
+ *(.dynsbss)
+ *(.sbss)
+ *(.sbss.*)
+ *(.gnu.linkonce.sb.*)
+ *(.scommon)
+ *(.sbss2)
+ *(.sbss2.*)
+ *(.gnu.linkonce.sb2.*)
+ *(.dynbss)
+ *(.bss)
+ *(.bss.*)
+ .bss.mapped    0x3ffe8000        0x1 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe8001        0x3 
+ .bss.pbuf$3628
+                0x3ffe8004      0x400 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .bss.FlashIsOnGoing
+                0x3ffe8404        0x1 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                0x3ffe8404                FlashIsOnGoing
+ *(.gnu.linkonce.b.*)
+ *(COMMON)
+                0x3ffe8408                . = ALIGN (0x8)
+ *fill*         0x3ffe8405        0x3 
+                0x3ffe8408                _bss_end = ABSOLUTE (.)
+
+.data           0x3ffe8408       0x18
+                0x3ffe8408                _data_start = ABSOLUTE (.)
+ *(.data)
+ *(.data.*)
+ .data.g_rom_flashchip
+                0x3ffe8408       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                0x3ffe8408                g_rom_flashchip
+ *(.gnu.linkonce.d.*)
+ *(.data1)
+ *(.sdata)
+ *(.sdata.*)
+ *(.gnu.linkonce.s.*)
+ *(.sdata2)
+ *(.sdata2.*)
+ *(.gnu.linkonce.s2.*)
+ *(.jcr)
+                0x3ffe8420                _data_end = ABSOLUTE (.)
+
+.rodata         0x3ffe8420      0xd94
+                0x3ffe8420                _rodata_start = ABSOLUTE (.)
+ *(.rodata)
+ *(.rodata.*)
+ .rodata.select_image.str1.4
+                0x3ffe8420       0x21 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ *fill*         0x3ffe8441        0x3 
+ .rodata.log_invalid_app_partition.str1.4
+                0x3ffe8444       0x68 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                 0x70 (size before relaxing)
+ .rodata.try_load_partition.str1.4
+                0x3ffe84ac       0x29 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ *fill*         0x3ffe84d5        0x3 
+ .rodata.bootloader_utility_load_partition_table.str1.4
+                0x3ffe84d8      0x137 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ *fill*         0x3ffe860f        0x1 
+ .rodata.bootloader_utility_get_selected_boot_partition.str1.4
+                0x3ffe8610       0xef C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ *fill*         0x3ffe86ff        0x1 
+ .rodata.bootloader_utility_load_boot_image.str1.4
+                0x3ffe8700       0x9a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ *fill*         0x3ffe879a        0x2 
+ .rodata.print_flash_info.str1.4
+                0x3ffe879c       0x88 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                 0x94 (size before relaxing)
+ .rodata.print_flash_info
+                0x3ffe8824       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .rodata.bootloader_main.str1.4
+                0x3ffe884c       0xa6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ *fill*         0x3ffe88f2        0x2 
+ .rodata.bootloader_mmap.str1.4
+                0x3ffe88f4       0x57 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe894b        0x1 
+ .rodata.bootloader_flash_read.str1.4
+                0x3ffe894c       0x9f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe89eb        0x1 
+ .rodata.bootloader_execute_flash_command.str1.4
+                0x3ffe89ec       0x19 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe8a05        0x3 
+ .rodata.bootloader_flash_read_sfdp.str1.4
+                0x3ffe8a08       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .rodata.bootloader_flash_xmc_startup.str1.4
+                0x3ffe8a1c       0x2f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe8a4b        0x1 
+ .rodata.verify_image_header.str1.4
+                0x3ffe8a4c       0x82 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8ace        0x2 
+ .rodata.process_segment_data.str1.4
+                0x3ffe8ad0       0x27 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8af7        0x1 
+ .rodata.verify_checksum.str1.4
+                0x3ffe8af8       0x57 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8b4f        0x1 
+ .rodata.process_segment.str1.4
+                0x3ffe8b50       0x8f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                 0x93 (size before relaxing)
+ *fill*         0x3ffe8bdf        0x1 
+ .rodata.esp_image_load.str1.4
+                0x3ffe8be0       0xaf C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8c8f        0x1 
+ .rodata.esp_partition_table_basic_verify.str1.4
+                0x3ffe8c90       0xb4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .rodata.esp_spi_flash_init.str1.4
+                0x3ffe8d44       0x29 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ *fill*         0x3ffe8d6d        0x3 
+ .rodata.str1.4
+                0x3ffe8d70       0x24 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                                 0x22 (size before relaxing)
+ .rodata.s_log_prefix
+                0x3ffe8d94        0x6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ *fill*         0x3ffe8d9a        0x2 
+ .rodata.s_log_color
+                0x3ffe8d9c       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .rodata.crc32_le_table
+                0x3ffe8db4      0x400 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ *(.gnu.linkonce.r.*)
+ *(.rodata1)
+                0x3ffe91b4                __XT_EXCEPTION_TABLE_ = ABSOLUTE (.)
+ *(.xt_except_table)
+ *(.gcc_except_table)
+ *(.gnu.linkonce.e.*)
+ *(.gnu.version_r)
+ *(.eh_frame)
+                0x3ffe91b4                . = ((. + 0x3) & 0xfffffffc)
+                0x3ffe91b4                __init_array_start = ABSOLUTE (.)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+                0x3ffe91b4                __init_array_end = ABSOLUTE (.)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+                0x3ffe91b4                __XT_EXCEPTION_DESCS_ = ABSOLUTE (.)
+ *(.xt_except_desc)
+ *(.gnu.linkonce.h.*)
+                0x3ffe91b4                __XT_EXCEPTION_DESCS_END__ = ABSOLUTE (.)
+ *(.xt_except_desc_end)
+ *(.dynamic)
+ *(.gnu.version_d)
+                0x3ffe91b4                _rodata_end = ABSOLUTE (.)
+                0x3ffe91b4                _lit4_start = ABSOLUTE (.)
+ *(*.lit4)
+ *(.lit4.*)
+ *(.gnu.linkonce.lit4.*)
+                0x3ffe91b4                _lit4_end = ABSOLUTE (.)
+                0x3ffe91b4                . = ALIGN (0x4)
+                0x3ffe91b4                _heap_start = ABSOLUTE (.)
+                0x60001100                PROVIDE (rtc_sys_info = 0x60001100)
+                0x400040c0                PROVIDE (SPI_sector_erase = 0x400040c0)
+                0x40004174                PROVIDE (SPI_page_program = 0x40004174)
+                0x400042ac                PROVIDE (SPI_read_data = 0x400042ac)
+                0x400043c8                PROVIDE (SPI_read_status = 0x400043c8)
+                0x40004400                PROVIDE (SPI_write_status = 0x40004400)
+                0x4000443c                PROVIDE (SPI_write_enable = 0x4000443c)
+                0x4000448c                PROVIDE (Wait_SPI_Idle = 0x4000448c)
+                0x400044c0                PROVIDE (Enable_QMode = 0x400044c0)
+                [!provide]                PROVIDE (Disable_QMode = 0x40004508)
+                0x40004678                PROVIDE (Cache_Read_Enable = 0x40004678)
+                0x400047f0                PROVIDE (Cache_Read_Disable = 0x400047f0)
+                [!provide]                PROVIDE (lldesc_build_chain = 0x40004f40)
+                [!provide]                PROVIDE (lldesc_num2link = 0x40005050)
+                [!provide]                PROVIDE (lldesc_set_owner = 0x4000507c)
+                0x4000c538                __adddf3 = 0x4000c538
+                0x4000c180                __addsf3 = 0x4000c180
+                0x4000cb94                __divdf3 = 0x4000cb94
+                0x4000ce60                __divdi3 = 0x4000ce60
+                0x4000dc88                __divsi3 = 0x4000dc88
+                0x4000cdfc                __extendsfdf2 = 0x4000cdfc
+                0x4000ccb8                __fixdfsi = 0x4000ccb8
+                0x4000cd00                __fixunsdfsi = 0x4000cd00
+                0x4000c4c4                __fixunssfsi = 0x4000c4c4
+                0x4000e2f0                __floatsidf = 0x4000e2f0
+                0x4000e2ac                __floatsisf = 0x4000e2ac
+                0x4000e2e8                __floatunsidf = 0x4000e2e8
+                0x4000e2a4                __floatunsisf = 0x4000e2a4
+                0x4000c8f0                __muldf3 = 0x4000c8f0
+                0x40000650                __muldi3 = 0x40000650
+                0x4000c3dc                __mulsf3 = 0x4000c3dc
+                0x4000c688                __subdf3 = 0x4000c688
+                0x4000c268                __subsf3 = 0x4000c268
+                0x4000cd5c                __truncdfsf2 = 0x4000cd5c
+                0x4000d310                __udivdi3 = 0x4000d310
+                0x4000e21c                __udivsi3 = 0x4000e21c
+                0x4000d770                __umoddi3 = 0x4000d770
+                0x4000e268                __umodsi3 = 0x4000e268
+                0x4000dcf0                __umulsidi3 = 0x4000dcf0
+                0x4000de84                bzero = 0x4000de84
+                0x4000dea8                memcmp = 0x4000dea8
+                0x4000df48                memcpy = 0x4000df48
+                0x4000e04c                memmove = 0x4000e04c
+                0x4000e190                memset = 0x4000e190
+                0x4000bdc8                strcmp = 0x4000bdc8
+                0x4000bec8                strcpy = 0x4000bec8
+                0x4000bf4c                strlen = 0x4000bf4c
+                0x4000bfa8                strncmp = 0x4000bfa8
+                0x4000c0a0                strncpy = 0x4000c0a0
+                0x4000e1e0                strstr = 0x4000e1e0
+                0x40004cf0                PROVIDE (gpio_input_get = 0x40004cf0)
+                [!provide]                PROVIDE (gpio_pin_wakeup_disable = 0x40004ed4)
+                [!provide]                PROVIDE (gpio_pin_wakeup_enable = 0x40004e90)
+                0x40001f00                PROVIDE (ets_io_vprintf = 0x40001f00)
+                [!provide]                PROVIDE (uart_rx_one_char = 0x40003b8c)
+                [!provide]                PROVIDE (rom_i2c_readReg = 0x40007268)
+                [!provide]                PROVIDE (rom_i2c_readReg_Mask = 0x4000729c)
+                [!provide]                PROVIDE (rom_i2c_writeReg = 0x400072d8)
+                [!provide]                PROVIDE (rom_i2c_writeReg_Mask = 0x4000730c)
+                [!provide]                PROVIDE (rom_software_reboot = 0x40000080)
+                [!provide]                PROVIDE (ets_memcpy = 0x400018b4)
+                0x40004b1c                PROVIDE (SPIRead = 0x40004b1c)
+                0x40004a4c                PROVIDE (SPIWrite = 0x40004a4c)
+                0x40004a00                PROVIDE (SPIEraseSector = 0x40004a00)
+                [!provide]                PROVIDE (gpio_input_get = 0x40004cf0)
+                [!provide]                PROVIDE (xthal_get_ccount = 0x4000dd38)
+                [!provide]                PROVIDE (uart_div_modify = 0x400039d8)
+                [!provide]                PROVIDE (ets_io_vprintf = 0x40001f00)
+                0x40002ecc                PROVIDE (ets_rom_delay_us = 0x40002ecc)
+OUTPUT(C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader.elf elf32-xtensa-le)
+
+.debug_frame    0x00000000      0xb74
+ .debug_frame   0x00000000       0x74 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_frame   0x00000074      0x140 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_frame   0x000001b4       0x94 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_frame   0x00000248      0x170 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_frame   0x000003b8      0x13c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_frame   0x000004f4       0x38 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_frame   0x0000052c       0x74 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_frame   0x000005a0      0x350 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_frame   0x000008f0      0x16c C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_frame   0x00000a5c       0x58 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_frame   0x00000ab4       0x80 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_frame   0x00000b34       0x40 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_info     0x00000000     0xccc0
+ .debug_info    0x00000000      0xdde C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_info    0x00000dde     0x178d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_info    0x0000256b      0xe51 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_info    0x000033bc     0x13ab C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_info    0x00004767     0x16ca C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_info    0x00005e31      0xca5 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_info    0x00006ad6     0x12b3 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_info    0x00007d89     0x1e3a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_info    0x00009bc3     0x1096 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_info    0x0000ac59     0x12ba C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_info    0x0000bf13      0xb66 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_info    0x0000ca79      0x247 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_abbrev   0x00000000     0x221b
+ .debug_abbrev  0x00000000      0x2ee C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_abbrev  0x000002ee      0x355 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_abbrev  0x00000643      0x2f2 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_abbrev  0x00000935      0x308 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_abbrev  0x00000c3d      0x316 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_abbrev  0x00000f53      0x271 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_abbrev  0x000011c4      0x2c7 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_abbrev  0x0000148b      0x45b C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_abbrev  0x000018e6      0x29f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_abbrev  0x00001b85      0x315 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_abbrev  0x00001e9a      0x2a2 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_abbrev  0x0000213c       0xdf C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_loc      0x00000000     0x3adc
+ .debug_loc     0x00000000       0x9b C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_loc     0x0000009b      0x717 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_loc     0x000007b2       0xde C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_loc     0x00000890      0x836 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_loc     0x000010c6      0xb53 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_loc     0x00001c19      0x11a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_loc     0x00001d33      0x18f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_loc     0x00001ec2     0x11ff C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_loc     0x000030c1      0x663 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_loc     0x00003724      0x119 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_loc     0x0000383d       0xe9 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_loc     0x00003926      0x1b6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_aranges  0x00000000      0x3d0
+ .debug_aranges
+                0x00000000       0x30 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_aranges
+                0x00000030       0x60 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_aranges
+                0x00000090       0x38 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_aranges
+                0x000000c8       0x70 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_aranges
+                0x00000138       0x60 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_aranges
+                0x00000198       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_aranges
+                0x000001b8       0x30 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_aranges
+                0x000001e8       0xe8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_aranges
+                0x000002d0       0x70 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_aranges
+                0x00000340       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_aranges
+                0x00000368       0x38 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_aranges
+                0x000003a0       0x30 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_ranges   0x00000000      0x340
+ .debug_ranges  0x00000000       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_ranges  0x00000020       0x50 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_ranges  0x00000070       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_ranges  0x00000098       0x60 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_ranges  0x000000f8       0x68 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_ranges  0x00000160       0x10 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_ranges  0x00000170       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_ranges  0x00000190       0xf0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_ranges  0x00000280       0x60 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_ranges  0x000002e0       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_ranges  0x000002f8       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_ranges  0x00000320       0x20 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_line     0x00000000     0x83da
+ .debug_line    0x00000000      0x592 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .debug_line    0x00000592     0x1330 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .debug_line    0x000018c2      0x7e8 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .debug_line    0x000020aa      0xeb5 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .debug_line    0x00002f5f     0x11e7 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .debug_line    0x00004146      0x5d2 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .debug_line    0x00004718      0x5bb C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .debug_line    0x00004cd3     0x1f66 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .debug_line    0x00006c39      0xb83 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .debug_line    0x000077bc      0x507 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .debug_line    0x00007cc3      0x3c0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .debug_line    0x00008083      0x357 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+
+.debug_str      0x00000000     0x26e5
+ .debug_str     0x00000000      0x85a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                0x92f (size before relaxing)
+ .debug_str     0x0000085a      0x338 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+                                0xbbe (size before relaxing)
+ .debug_str     0x00000b92      0x33a C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+                                0xa4d (size before relaxing)
+ .debug_str     0x00000ecc      0x29d C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                                0x9e2 (size before relaxing)
+ .debug_str     0x00001169      0x1d1 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                                0xbac (size before relaxing)
+ .debug_str     0x0000133a       0x89 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+                                0x7da (size before relaxing)
+ .debug_str     0x000013c3      0xac1 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+                               0x10ec (size before relaxing)
+ .debug_str     0x00001e84      0x4bd C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+                                0xd44 (size before relaxing)
+ .debug_str     0x00002341      0x131 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+                                0x8d9 (size before relaxing)
+ .debug_str     0x00002472      0x130 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                               0x1055 (size before relaxing)
+ .debug_str     0x000025a2       0xbb C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+                                0x6ba (size before relaxing)
+ .debug_str     0x0000265d       0x88 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+                                0x1e2 (size before relaxing)
+
+.comment        0x00000000       0x6b
+ .comment       0x00000000       0x31 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+                                 0x32 (size before relaxing)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .comment       0x00000031       0x32 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .comment       0x00000031       0x3a C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
+                                 0x3b (size before relaxing)
+
+.xtensa.info    0x00000000       0x38
+ .xtensa.info   0x00000000       0x38 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/main\libmain.a(bootloader_start.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_utility.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_common.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash_raw.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(ets_printf.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(esp_fast_boot.o)
+ .xtensa.info   0x00000038        0x0 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/lib\libcore.a(phy.o)
