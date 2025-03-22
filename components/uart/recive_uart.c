@@ -1,7 +1,9 @@
 #include "recive_uart.h"
 
-volatile bool start_bit_detected = false; // Flag for interrupt
+volatile bool start_bit_detected = 0; // Flag for interrupt
 // Define UART structure
+bool stop_bit = 0 ;
+int errors = 0 ;
 
 void my_uart_init(uart_t *uart) {
     uart_config_t uart_config = {
@@ -22,7 +24,7 @@ void my_uart_init(uart_t *uart) {
 static IRAM_ATTR void uart_rx_isr_handler(void *arg) {
 	if(gpio_get_level(RX_PIN) == 0)
 	{
-	start_bit_detected = true;
+	start_bit_detected = 1;
 	}
 }
 
@@ -30,7 +32,6 @@ static IRAM_ATTR void uart_rx_isr_handler(void *arg) {
 uint8_t uart_bitbang_receive_byte() {
     uint8_t byte = 0;
 
-    // Wait for start bit (low)
     if (start_bit_detected) {
         gpio_isr_handler_remove(RX_PIN);  // Disable interrupt while receiving
 
@@ -40,6 +41,8 @@ uint8_t uart_bitbang_receive_byte() {
             ets_delay_us(BIT_TIME_US);  // Wait for each bit
             byte |= (gpio_get_level(RX_PIN) << i);  // Read bit and store in byte
         }
+			ets_delay_us(BIT_TIME_US);  // Wait for each bit
+			stop_bit = gpio_get_level(RX_PIN) ;
     }
 
     return byte;
@@ -51,25 +54,26 @@ void uart_bitbang_receive_task(void *param) {
     int index = 0;  // Index to track where to store the next byte
 
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(1));  // Yield to other tasks
+    	uint8_t byte = uart_bitbang_receive_byte();
 
-        // Receive one byte using bit-banging
-        uint8_t byte = uart_bitbang_receive_byte();
 
-        if ((index < BUFFER_SIZE) && start_bit_detected) {
+    	if(!stop_bit)
+    	{
+    	 index = 0 ;
+    	}
+
+        if ((index < BUFFER_SIZE) && start_bit_detected ) {
             received_data[index++] = byte;
-            start_bit_detected = false;  // Reset flag after receiving a byte
-		    gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);  // Re-enable interrupt for next byte// Store received byte in buffer
+            start_bit_detected = 0;  // Reset flag after receiving a byte
+		    gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);
         }
 
-        // If a full message is received (indicated by null-terminator)
         if (index >= BUFFER_SIZE) {
             received_data[index] = '\0';  // Null-terminate the string
             printf("%s", received_data);
-            // Reset index for next message
             index = 0;
+            vTaskDelay(1);
         }
-
     }
 }
 
@@ -89,6 +93,8 @@ void start_reciving_task()
 		gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);
 
 	    xTaskCreate(uart_bitbang_receive_task, "uart_rx_task", 4096, NULL, 1, NULL);
+
+
 }
 
 

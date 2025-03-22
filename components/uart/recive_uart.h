@@ -35,5 +35,8 @@ void uart_bitbang_receive_task(void *param);
 void start_reciving_task();
 
 extern volatile bool start_bit_detected ;
+extern bool stop_bit ;
+extern int error ;
+extern uint8_t received_data[BUFFER_SIZE];
 
 #endif  // RECIVE_UART_H
