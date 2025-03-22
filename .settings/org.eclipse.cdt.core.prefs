@@ -12,6 +12,6 @@ environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/IDF_PA
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/IDF_PATH/value=C\:/msys32/home/hatta/esp/ESP8266_RTOS_SDK
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/PATH/delimiter=;
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/PATH/operation=replace
-environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/PATH/value=C\:\\msys32\\usr\\bin;C\:\\msys32\\mingw32\\bin;C\:\\msys32\\opt\\xtensa-lx106-elf\\bin;C\:\\msys32\\home\\hatta\\esp\\ESP8266_RTOS_SDK\\components\\esp8266\\include\\driver
+environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/PATH/value=C\:\\msys32\\usr\\bin;C\:\\msys32\\mingw32\\bin;C\:\\msys32\\opt\\xtensa-lx106-elf\\bin;C\:\\msys32\\home\\hatta\\esp\\ESP8266_RTOS_SDK\\components\\esp8266\\include\\driver;C\:\\msys32\\mingw32\\bin;C\:\\msys32\\opt\\xtensa-lx106-elf\\bin;
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/append=true
 environment/project/cdt.managedbuild.toolchain.gnu.cygwin.base.2046752041/appendContributed=true

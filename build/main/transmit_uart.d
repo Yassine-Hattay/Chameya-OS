@@ -1,5 +1,5 @@
-hello_world_main.o: \
- C:/msys32/home/hatta/esp/hello_world1/main/hello_world_main.c \
+transmit_uart.o: \
+ C:/msys32/home/hatta/esp/hello_world1/main/transmit_uart.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/hatta/esp/hello_world1/build/include/sdkconfig.h \
@@ -111,4 +111,4 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h:
-/home/hatta/esp/hello_world1/main/./hello_world_main.c:
+/home/hatta/esp/hello_world1/main/./transmit_uart.c:

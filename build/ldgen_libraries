@@ -37,6 +37,8 @@ C:/msys32/home/hatta/esp/hello_world1/build/app_update/libapp_update.a
  C:/msys32/home/hatta/esp/hello_world1/build/spiffs/libspiffs.a
  C:/msys32/home/hatta/esp/hello_world1/build/tcp_transport/libtcp_transport.a
  C:/msys32/home/hatta/esp/hello_world1/build/tcpip_adapter/libtcpip_adapter.a
+ C:/msys32/home/hatta/esp/hello_world1/build/test/libtest.a
+ C:/msys32/home/hatta/esp/hello_world1/build/uart/libuart.a
  C:/msys32/home/hatta/esp/hello_world1/build/vfs/libvfs.a
  C:/msys32/home/hatta/esp/hello_world1/build/wear_levelling/libwear_levelling.a
  C:/msys32/home/hatta/esp/hello_world1/build/wifi_provisioning/libwifi_provisioning.a
