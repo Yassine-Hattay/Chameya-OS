@@ -3,7 +3,6 @@
 volatile bool start_bit_detected = 0; // Flag for interrupt
 // Define UART structure
 bool stop_bit = 0 ;
-int errors = 0 ;
 
 void my_uart_init(uart_t *uart) {
     uart_config_t uart_config = {
@@ -28,52 +27,48 @@ static IRAM_ATTR void uart_rx_isr_handler(void *arg) {
 	}
 }
 
-// Function to read a single byte using bit-banging
-uint8_t uart_bitbang_receive_byte() {
-    uint8_t byte = 0;
-
-    if (start_bit_detected) {
-        gpio_isr_handler_remove(RX_PIN);  // Disable interrupt while receiving
-
-        ets_delay_us(BIT_TIME_US / 2);  // Move to center of first data bit
-
-        for (int i = 0; i < 8; i++) {
-            ets_delay_us(BIT_TIME_US);  // Wait for each bit
-            byte |= (gpio_get_level(RX_PIN) << i);  // Read bit and store in byte
-        }
-			ets_delay_us(BIT_TIME_US);  // Wait for each bit
-			stop_bit = gpio_get_level(RX_PIN) ;
-    }
-
-    return byte;
-}
-
 // Function to receive a string and store it in a buffer using bit-banging
 void uart_bitbang_receive_task(void *param) {
-    uint8_t received_data[BUFFER_SIZE];  // Buffer to store received data
-    int index = 0;  // Index to track where to store the next byte
-
+    uint8_t received_data[BUFFER_SIZE];
+    int index = 0;
     while (1) {
-    	uint8_t byte = uart_bitbang_receive_byte();
 
+		if (start_bit_detected) {
+			uint8_t byte = 0;
 
-    	if(!stop_bit)
-    	{
-    	 index = 0 ;
-    	}
+			gpio_isr_handler_remove(RX_PIN);  // Disable interrupt while receiving
 
-        if ((index < BUFFER_SIZE) && start_bit_detected ) {
-            received_data[index++] = byte;
-            start_bit_detected = 0;  // Reset flag after receiving a byte
-		    gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);
-        }
+			ets_delay_us(BIT_TIME_US / 2);  // Move to center of first data bit
 
-        if (index >= BUFFER_SIZE) {
-            received_data[index] = '\0';  // Null-terminate the string
-            printf("%s", received_data);
-            index = 0;
-            vTaskDelay(1);
-        }
+			for (int i = 0; i < 8; i++) {
+				ets_delay_us(BIT_TIME_US);  // Wait for each bit
+				byte |= (gpio_get_level(RX_PIN) << i);  // Read bit and store in byte
+			}
+			ets_delay_us(BIT_TIME_US);  // Wait for each bit
+			stop_bit = gpio_get_level(RX_PIN) ;
+
+			if (!stop_bit)
+			{
+				ets_delay_us(BIT_TIME_US * 1.1 );
+			}
+			else
+			{
+				if(index < BUFFER_SIZE)
+			{
+				received_data[index++] = byte;
+			}
+			else{
+				printf("%s", received_data);
+				index = 0;
+				taskYIELD();
+			}
+				stop_bit = 0 ;
+
+			}
+			start_bit_detected = 0;
+			gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);
+		}
+
     }
 }
 

@@ -15,7 +15,7 @@
 #define RX_PIN GPIO_NUM_3  // GPIO3 (RX) for UART reception
 #define BAUD_RATE 9600
 #define BIT_TIME_US (1000000 / BAUD_RATE) // Time per bit in microseconds
-#define BUFFER_SIZE 18
+#define BUFFER_SIZE 128
 
 #define GPIO_INPUT 0
 #define GPIO_OUTPUT 1
@@ -36,7 +36,6 @@ void start_reciving_task();
 
 extern volatile bool start_bit_detected ;
 extern bool stop_bit ;
-extern int error ;
 extern uint8_t received_data[BUFFER_SIZE];
 
 #endif  // RECIVE_UART_H
