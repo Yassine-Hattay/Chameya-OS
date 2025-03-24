@@ -1,4 +1,4 @@
-20:48:39 **** Incremental Build of configuration Default for project uart ****
+21:08:47 **** Incremental Build of configuration Default for project uart ****
 make all 
 including /home/hatta/esp/ESP8266_RTOS_SDK/components/app_update/Makefile.projbuild...
 including /home/hatta/esp/ESP8266_RTOS_SDK/components/bootloader/Makefile.projbuild...
@@ -46,7 +46,7 @@ Target 'component-esp8266-build' responsible for '/home/hatta/esp/hello_world1/b
 make[1]: Leaving directory '/home/hatta/esp/ESP8266_RTOS_SDK/components/bootloader/subproject'
 /usr/bin/make -C /home/hatta/esp/hello_world1/build/app_update -f /home/hatta/esp/ESP8266_RTOS_SDK/make/component_wrapper.mk COMPONENT_MAKEFILE=/home/hatta/esp/ESP8266_RTOS_SDK/components/app_update/component.mk COMPONENT_NAME=app_update build
 make[1]: Entering directory '/home/hatta/esp/hello_world1/build/app_update'
-App "hello-world" version: 47cb665-dirty
+App "hello-world" version: 2aa3afa-dirty
 make[1]: Nothing to be done for 'build'.
 make[1]: Leaving directory '/home/hatta/esp/hello_world1/build/app_update'
 Target 'component-app_update-build' responsible for '/home/hatta/esp/hello_world1/build/app_update/libapp_update.a'
@@ -282,5 +282,5 @@ esptool.py v2.4.0
 To flash all build output, run 'make flash' or:
 python /home/hatta/esp/ESP8266_RTOS_SDK/components/esptool_py/esptool/esptool.py --chip esp8266 --port COM3 --baud 115200 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size 2MB 0x0 /home/hatta/esp/hello_world1/build/bootloader/bootloader.bin 0x10000 /home/hatta/esp/hello_world1/build/hello-world.bin 0x8000 /home/hatta/esp/hello_world1/build/partitions_singleapp.bin
 
-20:48:49 Build Finished. 0 errors, 0 warnings. (took 10s.506ms)
+21:08:57 Build Finished. 0 errors, 0 warnings. (took 10s.411ms)
 

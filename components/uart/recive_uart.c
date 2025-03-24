@@ -22,7 +22,7 @@ void my_uart_init(uart_t *uart) {
 
 // ISR to detect the start of the UART reception (start bit)
 static IRAM_ATTR void uart_rx_isr_handler(void *arg) {
-		start_bit_detected = 1;
+	start_bit_detected = 1;
 }
 
 // Function to receive a string and store it in a buffer using bit-banging
@@ -36,13 +36,13 @@ void uart_bitbang_receive_task(void *param) {
 
 			gpio_isr_handler_remove(RX_PIN); // Disable interrupt while receiving
 
-			ets_delay_us(BIT_TIME_US / 2);  // Move to center of first data bit
+			ets_delay_us(BIT_TIME_US / 2); // Move to center of first data bit
 
 			for (int i = 0; i < 8; i++) {
-				ets_delay_us(BIT_TIME_US);  // Wait for each bit
+				ets_delay_us(BIT_TIME_US );  // Wait for each bit
 				byte |= (gpio_get_level(RX_PIN) << i); // Read bit and store in byte
 			}
-			ets_delay_us(BIT_TIME_US);  // Wait for each bit
+			ets_delay_us(BIT_TIME_US );  // Wait for each bit
 			stop_bit = gpio_get_level(RX_PIN);
 
 			if (!stop_bit) {
@@ -52,7 +52,7 @@ void uart_bitbang_receive_task(void *param) {
 				if (index < BUFFER_SIZE) {
 					received_data[index++] = byte;
 				} else {
-					printf("%s", received_data);
+					printf("new : %s \n", received_data);
 					index = 0;
 					esp_task_wdt_reset();
 				}
@@ -63,7 +63,7 @@ void uart_bitbang_receive_task(void *param) {
 			gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);
 		}
 
-		}
+	}
 }
 
 void start_reciving_task() {
@@ -76,7 +76,8 @@ void start_reciving_task() {
 	gpio_install_isr_service(0);
 	gpio_isr_handler_add(RX_PIN, uart_rx_isr_handler, NULL);
 
-	xTaskCreate(uart_bitbang_receive_task, "uart_rx_task", 4096, NULL, configMAX_PRIORITIES - 1 , NULL);
+	xTaskCreate(uart_bitbang_receive_task, "uart_rx_task", 4096, NULL,
+	configMAX_PRIORITIES - 1, NULL);
 
 }
 
