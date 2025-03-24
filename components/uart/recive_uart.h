@@ -12,7 +12,7 @@
 #include "esp8266/pin_mux_register.h"
 
 #define SERIAL_MONITOR_BAUD_RATE 115200
-#define RX_PIN GPIO_NUM_3  // GPIO3 (RX) for UART reception
+#define RX_PIN GPIO_NUM_12  // GPIO3 (RX) for UART reception
 #define BAUD_RATE 9600
 #define BIT_TIME_US (1000000 / BAUD_RATE) // Time per bit in microseconds
 #define BUFFER_SIZE 128

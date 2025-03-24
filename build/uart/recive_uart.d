@@ -41,7 +41,9 @@ recive_uart.o: \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h
 
 C:/msys32/home/hatta/esp/hello_world1/components/uart/recive_uart.h:
 
@@ -126,4 +128,8 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h:
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h:
 /home/hatta/esp/hello_world1/components/uart/./recive_uart.c:
