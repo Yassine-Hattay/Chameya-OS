@@ -92,12 +92,40 @@ uint8_t spi_bit_bang_mode_2(uint8_t data_to_send) {
 	// Return received data
 	return received;
 }
+
+
+// Full-duplex SPI: Send and receive at the same time
+uint8_t spi_bit_bang_mode_3(uint8_t data_to_send) {
+	uint8_t received = 0;
+	gpio_set_level(SCK, 1);
+	// Pull CS low to start communication
+	gpio_set_level(SS, 0);
+	ets_delay_us(10);
+
+	for (int i = 7; i >= 0; i--) {
+		// Set MOSI
+		gpio_set_level(MOSI, (data_to_send >> i) & 1);
+		gpio_set_level(SCK, 0);
+		ets_delay_us(10);
+		gpio_set_level(SCK, 1);
+		ets_delay_us(10);
+		received |= (gpio_get_level(MISO) << i);
+
+	}
+
+	// Pull CS high to end communication
+	gpio_set_level(SS, 1);
+
+	// Return received data
+	return received;
+}
+
 void spi_task(void *pvParameter) {
 	uint8_t data_to_send = 0xAA;  // Example data
 	uint8_t received_data = 0;
 
 	while (1) {
-		received_data = spi_bit_bang_mode_2(data_to_send);
+		received_data = spi_bit_bang_mode_3(data_to_send);
 		printf("Received: 0x%02X\n", received_data);
 
 		vTaskDelay(pdMS_TO_TICKS(1000));
