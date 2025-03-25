@@ -8,53 +8,6 @@
 #define SCK  14
 #define SS   15
 
-void spi_bit_bang_send(uint8_t data) {
-	// Pull CS low to start communication
-	gpio_set_level(SS, 0);
-	ets_delay_us(10);
-
-	for (int i = 7; i >= 0; i--) {
-		// Set MOSI
-		gpio_set_level(MOSI, (data >> i) & 1);
-
-		// Clock high
-		gpio_set_level(SCK, 1);
-		ets_delay_us(10);
-
-		// Clock low
-		gpio_set_level(SCK, 0);
-		ets_delay_us(10);
-	}
-
-	// Pull CS high to end communication
-	gpio_set_level(SS, 1);
-}
-
-uint8_t spi_bit_bang_receive() {
-	uint8_t received = 0;
-
-	// Pull CS low to start communication
-	gpio_set_level(SS, 0);
-	ets_delay_us(10);
-
-	for (int i = 7; i >= 0; i--) {
-		// Clock high
-		gpio_set_level(SCK, 1);
-		ets_delay_us(10);
-
-		// Read MISO
-		received |= (gpio_get_level(MISO) << i);
-
-		// Clock low
-		gpio_set_level(SCK, 0);
-		ets_delay_us(10);
-	}
-
-	// Pull CS high to end communication
-	gpio_set_level(SS, 1);
-
-	return received;
-}
 
 // Full-duplex SPI: Send and receive at the same time
 uint8_t spi_bit_bang_mode_0(uint8_t data_to_send) {
