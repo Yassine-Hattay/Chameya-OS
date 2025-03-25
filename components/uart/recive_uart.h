@@ -21,12 +21,12 @@
 #define GPIO_OUTPUT 1
 
 typedef struct {
-    int uart_nr;    // UART number (e.g., UART0, UART1)
-    int rx_pin;     // RX pin number (ignored for UART1)
-    int tx_pin;     // TX pin number
-    int tx_enabled; // Flag indicating if TX is enabled
-    int rx_enabled; // Flag indicating if RX is enabled
-    int baud_rate;  // Baud rate
+	int uart_nr;    // UART number (e.g., UART0, UART1)
+	int rx_pin;     // RX pin number (ignored for UART1)
+	int tx_pin;     // TX pin number
+	int tx_enabled; // Flag indicating if TX is enabled
+	int rx_enabled; // Flag indicating if RX is enabled
+	int baud_rate;  // Baud rate
 } uart_t;
 
 void my_uart_init(uart_t *uart);
@@ -34,8 +34,8 @@ uint8_t uart_bitbang_receive_byte();
 void uart_bitbang_receive_task(void *param);
 void start_reciving_task();
 
-extern volatile bool start_bit_detected ;
-extern bool stop_bit ;
+extern volatile bool start_bit_detected;
+extern bool stop_bit;
 extern uint8_t received_data[BUFFER_SIZE];
 
 #endif  // RECIVE_UART_H

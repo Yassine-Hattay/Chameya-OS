@@ -39,10 +39,10 @@ void uart_bitbang_receive_task(void *param) {
 			ets_delay_us(BIT_TIME_US / 2); // Move to center of first data bit
 
 			for (int i = 0; i < 8; i++) {
-				ets_delay_us(BIT_TIME_US );  // Wait for each bit
+				ets_delay_us(BIT_TIME_US);  // Wait for each bit
 				byte |= (gpio_get_level(RX_PIN) << i); // Read bit and store in byte
 			}
-			ets_delay_us(BIT_TIME_US );  // Wait for each bit
+			ets_delay_us(BIT_TIME_US);  // Wait for each bit
 			stop_bit = gpio_get_level(RX_PIN);
 
 			if (!stop_bit) {
