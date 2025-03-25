@@ -1,0 +1,4 @@
+config/Unity/cdt.launchMode=run
+config/Unity/cdt.toolChain.id=gcc-x86_64-C\:/Users/hatta/Desktop/presonal-projects/drivers and firmaware/clang+llvm-19.1.0-x86_64-pc-windows-msvc/clang+llvm-19.1.0-x86_64-pc-windows-msvc/bin/clang.exe
+config/Unity/cdt.toolChain.type=org.eclipse.cdt.build.clang
+eclipse.preferences.version=1
