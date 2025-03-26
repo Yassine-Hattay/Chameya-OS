@@ -9,7 +9,7 @@
 #define COMPONENTS_SPI_SPI_H_
 
 
-void user_init(void) ;
+void spi_slave_init(void) ;
 
 
 #endif /* COMPONENTS_SPI_SPI_H_ */

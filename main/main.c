@@ -6,5 +6,5 @@ void app_main() {
     uart_t uart0 = {0, 3, 1, 1, 0, 115200};
     my_uart_init(&uart0);
 
-    user_init();
+    spi_slave_init();
 }
