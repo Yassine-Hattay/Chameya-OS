@@ -8,6 +8,8 @@
 #ifndef COMPONENTS_I2C_I2C_H_
 #define COMPONENTS_I2C_I2C_H_
 
+#define BUFFER_SIZE 128
+
 void I2C_init();
 
 #endif /* COMPONENTS_I2C_I2C_H_ */

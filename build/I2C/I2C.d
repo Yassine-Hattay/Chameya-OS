@@ -34,7 +34,8 @@ I2C.o: C:/msys32/home/hatta/esp/hello_world1/components/I2C/I2C.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/gpio.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin_mux_register.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h \
+ C:/msys32/home/hatta/esp/hello_world1/components/I2C/I2C.h
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -107,4 +108,6 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h:
+
+C:/msys32/home/hatta/esp/hello_world1/components/I2C/I2C.h:
 /home/hatta/esp/hello_world1/components/I2C/./I2C.c:
