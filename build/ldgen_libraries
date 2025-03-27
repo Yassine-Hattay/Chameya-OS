@@ -1,4 +1,5 @@
-C:/msys32/home/hatta/esp/hello_world1/build/SPI/libSPI.a
+C:/msys32/home/hatta/esp/hello_world1/build/I2C/libI2C.a
+ C:/msys32/home/hatta/esp/hello_world1/build/SPI/libSPI.a
  C:/msys32/home/hatta/esp/hello_world1/build/app_update/libapp_update.a
  C:/msys32/home/hatta/esp/hello_world1/build/bootloader_support/libbootloader_support.a
  C:/msys32/home/hatta/esp/hello_world1/build/coap/libcoap.a

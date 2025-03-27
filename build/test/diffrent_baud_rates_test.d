@@ -2,7 +2,6 @@ diffrent_baud_rates_test.o: \
  C:/msys32/home/hatta/esp/hello_world1/components/test/diffrent_baud_rates_test.c \
  C:/msys32/home/hatta/esp/hello_world1/components/test/unity.h \
  C:/msys32/home/hatta/esp/hello_world1/components/test/unity_internals.h \
- c:\msys32\home\hatta\esp\hello_world1\components\uart\recive_uart.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/hatta/esp/hello_world1/build/include/sdkconfig.h \
@@ -33,23 +32,11 @@ diffrent_baud_rates_test.o: \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_common/include/esp_err.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/heap/port/esp8266/include/esp_heap_config.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/task.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/private/list.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_system.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/gpio.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin_mux_register.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/private/list.h
 
 C:/msys32/home/hatta/esp/hello_world1/components/test/unity.h:
 
 C:/msys32/home/hatta/esp/hello_world1/components/test/unity_internals.h:
-
-c:\msys32\home\hatta\esp\hello_world1\components\uart\recive_uart.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -112,24 +99,4 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/heap/port/esp8266/include/e
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/task.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/private/list.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_system.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/gpio.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin_mux_register.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h:
-
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
 /home/hatta/esp/hello_world1/components/test/./diffrent_baud_rates_test.c:
