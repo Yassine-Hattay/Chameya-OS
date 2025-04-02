@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/. -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/../components/UART -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/../../ESP8266_RTOS_SDK/components/esp_common/include
+C_INCLUDES = -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/. -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/./SPI -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/../components/UART -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/../components/SPI -I/mnt/c/msys32/home/hatta/esp/hello_world1/test/../../ESP8266_RTOS_SDK/components/esp_common/include
 
 C_FLAGS = 
 

@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/msys32/home/hatta/esp/hello_world1/test/UART_tests.c" "CMakeFiles/unit_tests.exe.dir/UART_tests.c.o" "gcc" "CMakeFiles/unit_tests.exe.dir/UART_tests.c.o.d"
+  "/mnt/c/msys32/home/hatta/esp/hello_world1/test/SPI/SPI_test.c" "CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o" "gcc" "CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o.d"
   "/mnt/c/msys32/home/hatta/esp/hello_world1/test/main_test.c" "CMakeFiles/unit_tests.exe.dir/main_test.c.o" "gcc" "CMakeFiles/unit_tests.exe.dir/main_test.c.o.d"
-  "/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c" "CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o" "gcc" "CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o.d"
+  "/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c" "CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o" "gcc" "CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o.d"
   "/mnt/c/msys32/home/hatta/esp/hello_world1/test/unity.c" "CMakeFiles/unit_tests.exe.dir/unity.c.o" "gcc" "CMakeFiles/unit_tests.exe.dir/unity.c.o.d"
   )
 

@@ -1,4 +1,4 @@
-spi.o: C:/msys32/home/hatta/esp/hello_world1/components/SPI/spi.c \
+SPI.o: C:/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/hatta/esp/hello_world1/build/include/sdkconfig.h \
@@ -110,4 +110,4 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpi
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h:
-/home/hatta/esp/hello_world1/components/SPI/./spi.c:
+/home/hatta/esp/hello_world1/components/SPI/./SPI.c:

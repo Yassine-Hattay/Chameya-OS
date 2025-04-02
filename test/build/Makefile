@@ -129,29 +129,29 @@ unit_tests.exe/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/build
 .PHONY : unit_tests.exe/fast
 
-UART_tests.o: UART_tests.c.o
-.PHONY : UART_tests.o
+SPI/SPI_test.o: SPI/SPI_test.c.o
+.PHONY : SPI/SPI_test.o
 
 # target to build an object file
-UART_tests.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/UART_tests.c.o
-.PHONY : UART_tests.c.o
+SPI/SPI_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o
+.PHONY : SPI/SPI_test.c.o
 
-UART_tests.i: UART_tests.c.i
-.PHONY : UART_tests.i
+SPI/SPI_test.i: SPI/SPI_test.c.i
+.PHONY : SPI/SPI_test.i
 
 # target to preprocess a source file
-UART_tests.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/UART_tests.c.i
-.PHONY : UART_tests.c.i
+SPI/SPI_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.i
+.PHONY : SPI/SPI_test.c.i
 
-UART_tests.s: UART_tests.c.s
-.PHONY : UART_tests.s
+SPI/SPI_test.s: SPI/SPI_test.c.s
+.PHONY : SPI/SPI_test.s
 
 # target to generate assembly for a file
-UART_tests.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/UART_tests.c.s
-.PHONY : UART_tests.c.s
+SPI/SPI_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.s
+.PHONY : SPI/SPI_test.c.s
 
 main_test.o: main_test.c.o
 .PHONY : main_test.o
@@ -177,29 +177,29 @@ main_test.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/main_test.c.s
 .PHONY : main_test.c.s
 
-mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.o: mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o
-.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.o
+mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.o: mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o
+.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.o
 
 # target to build an object file
-mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o
-.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o
+mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o
+.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o
 
-mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.i: mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i
-.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.i
+mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.i: mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i
+.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.i
 
 # target to preprocess a source file
-mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i
-.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i
+mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i
+.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i
 
-mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.s: mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s
-.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.s
+mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.s: mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s
+.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.s
 
 # target to generate assembly for a file
-mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s
-.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s
+mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/unit_tests.exe.dir/build.make CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s
+.PHONY : mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s
 
 unity.o: unity.c.o
 .PHONY : unity.o
@@ -234,15 +234,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... unit_tests.exe"
-	@echo "... UART_tests.o"
-	@echo "... UART_tests.i"
-	@echo "... UART_tests.s"
+	@echo "... SPI/SPI_test.o"
+	@echo "... SPI/SPI_test.i"
+	@echo "... SPI/SPI_test.s"
 	@echo "... main_test.o"
 	@echo "... main_test.i"
 	@echo "... main_test.s"
-	@echo "... mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.o"
-	@echo "... mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.i"
-	@echo "... mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.s"
+	@echo "... mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.o"
+	@echo "... mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.i"
+	@echo "... mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.s"
 	@echo "... unity.o"
 	@echo "... unity.i"
 	@echo "... unity.s"

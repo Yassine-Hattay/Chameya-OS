@@ -3,17 +3,19 @@ project(unit_tests)
 
 # Include directories for headers
 include_directories(
-    "."  
+	"."
+    "./SPI"  
     "../components/UART"
+    "../components/SPI"
     "../../ESP8266_RTOS_SDK/components/esp_common/include"
 )
 
 # Source files
 set(SOURCE_FILES
     "./main_test.c"
-    "./UART_tests.c"
+    "./SPI/SPI_test.c"  
+    "../components/SPI/SPI.c"
     "./unity.c" 
-    "../components/UART/recive_uart.c"
 )
 
 # Create the executable

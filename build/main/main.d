@@ -43,7 +43,8 @@ main.o: C:/msys32/home/hatta/esp/hello_world1/main/main.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h \
- c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h
+ c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\spi\spi.h
 
 c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h:
 
@@ -134,4 +135,6 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/q
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h:
 
 c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\spi\spi.h:
 /home/hatta/esp/hello_world1/main/./main.c:

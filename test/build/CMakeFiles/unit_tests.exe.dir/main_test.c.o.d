@@ -51,6 +51,8 @@ CMakeFiles/unit_tests.exe.dir/main_test.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /mnt/c/msys32/home/hatta/esp/hello_world1/test/UART_tests.h \
+ /mnt/c/msys32/home/hatta/esp/hello_world1/test/./SPI/SPI_test.h \
  /mnt/c/msys32/home/hatta/esp/hello_world1/test/../../ESP8266_RTOS_SDK/components/esp_common/include/esp_err.h \
- /usr/include/assert.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h
+ /usr/include/assert.h \
+ /mnt/c/msys32/home/hatta/esp/hello_world1/test/./unity.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h

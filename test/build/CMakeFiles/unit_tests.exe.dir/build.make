@@ -83,24 +83,38 @@ CMakeFiles/unit_tests.exe.dir/main_test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unit_tests.exe.dir/main_test.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/msys32/home/hatta/esp/hello_world1/test/main_test.c -o CMakeFiles/unit_tests.exe.dir/main_test.c.s
 
-CMakeFiles/unit_tests.exe.dir/UART_tests.c.o: CMakeFiles/unit_tests.exe.dir/flags.make
-CMakeFiles/unit_tests.exe.dir/UART_tests.c.o: /mnt/c/msys32/home/hatta/esp/hello_world1/test/UART_tests.c
-CMakeFiles/unit_tests.exe.dir/UART_tests.c.o: CMakeFiles/unit_tests.exe.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/unit_tests.exe.dir/UART_tests.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unit_tests.exe.dir/UART_tests.c.o -MF CMakeFiles/unit_tests.exe.dir/UART_tests.c.o.d -o CMakeFiles/unit_tests.exe.dir/UART_tests.c.o -c /mnt/c/msys32/home/hatta/esp/hello_world1/test/UART_tests.c
+CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o: CMakeFiles/unit_tests.exe.dir/flags.make
+CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o: /mnt/c/msys32/home/hatta/esp/hello_world1/test/SPI/SPI_test.c
+CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o: CMakeFiles/unit_tests.exe.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o -MF CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o.d -o CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o -c /mnt/c/msys32/home/hatta/esp/hello_world1/test/SPI/SPI_test.c
 
-CMakeFiles/unit_tests.exe.dir/UART_tests.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unit_tests.exe.dir/UART_tests.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/msys32/home/hatta/esp/hello_world1/test/UART_tests.c > CMakeFiles/unit_tests.exe.dir/UART_tests.c.i
+CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/msys32/home/hatta/esp/hello_world1/test/SPI/SPI_test.c > CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.i
 
-CMakeFiles/unit_tests.exe.dir/UART_tests.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unit_tests.exe.dir/UART_tests.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/msys32/home/hatta/esp/hello_world1/test/UART_tests.c -o CMakeFiles/unit_tests.exe.dir/UART_tests.c.s
+CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/msys32/home/hatta/esp/hello_world1/test/SPI/SPI_test.c -o CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.s
+
+CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o: CMakeFiles/unit_tests.exe.dir/flags.make
+CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o: /mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c
+CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o: CMakeFiles/unit_tests.exe.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o -MF CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o.d -o CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o -c /mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c
+
+CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c > CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.i
+
+CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c -o CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.s
 
 CMakeFiles/unit_tests.exe.dir/unity.c.o: CMakeFiles/unit_tests.exe.dir/flags.make
 CMakeFiles/unit_tests.exe.dir/unity.c.o: /mnt/c/msys32/home/hatta/esp/hello_world1/test/unity.c
 CMakeFiles/unit_tests.exe.dir/unity.c.o: CMakeFiles/unit_tests.exe.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/unit_tests.exe.dir/unity.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/unit_tests.exe.dir/unity.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unit_tests.exe.dir/unity.c.o -MF CMakeFiles/unit_tests.exe.dir/unity.c.o.d -o CMakeFiles/unit_tests.exe.dir/unity.c.o -c /mnt/c/msys32/home/hatta/esp/hello_world1/test/unity.c
 
 CMakeFiles/unit_tests.exe.dir/unity.c.i: cmake_force
@@ -111,34 +125,20 @@ CMakeFiles/unit_tests.exe.dir/unity.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unit_tests.exe.dir/unity.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/msys32/home/hatta/esp/hello_world1/test/unity.c -o CMakeFiles/unit_tests.exe.dir/unity.c.s
 
-CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o: CMakeFiles/unit_tests.exe.dir/flags.make
-CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o: /mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c
-CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o: CMakeFiles/unit_tests.exe.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o -MF CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o.d -o CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o -c /mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c
-
-CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c > CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.i
-
-CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c -o CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.s
-
 # Object files for target unit_tests.exe
 unit_tests_exe_OBJECTS = \
 "CMakeFiles/unit_tests.exe.dir/main_test.c.o" \
-"CMakeFiles/unit_tests.exe.dir/UART_tests.c.o" \
-"CMakeFiles/unit_tests.exe.dir/unity.c.o" \
-"CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o"
+"CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o" \
+"CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o" \
+"CMakeFiles/unit_tests.exe.dir/unity.c.o"
 
 # External object files for target unit_tests.exe
 unit_tests_exe_EXTERNAL_OBJECTS =
 
 unit_tests.exe: CMakeFiles/unit_tests.exe.dir/main_test.c.o
-unit_tests.exe: CMakeFiles/unit_tests.exe.dir/UART_tests.c.o
+unit_tests.exe: CMakeFiles/unit_tests.exe.dir/SPI/SPI_test.c.o
+unit_tests.exe: CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c.o
 unit_tests.exe: CMakeFiles/unit_tests.exe.dir/unity.c.o
-unit_tests.exe: CMakeFiles/unit_tests.exe.dir/mnt/c/msys32/home/hatta/esp/hello_world1/components/UART/recive_uart.c.o
 unit_tests.exe: CMakeFiles/unit_tests.exe.dir/build.make
 unit_tests.exe: CMakeFiles/unit_tests.exe.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable unit_tests.exe"

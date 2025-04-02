@@ -1,13 +1,4 @@
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "driver/gpio.h"
-#include "esp_timer.h"
-#include "esp_task_wdt.h"
-
-#define MOSI 13
-#define MISO 12
-#define SCK  14
-#define SS   15
+#include "SPI.h"
 
 volatile bool SS_level = 1;
 
@@ -29,9 +20,7 @@ uint8_t spi_master_bit_bang_mode_0(uint8_t data_to_send) {
 
 		received |= (gpio_get_level(MISO) << i);
 		gpio_set_level(SCK, 0);
-
 	}
-
 	// Pull CS high to end communication
 	gpio_set_level(SS, 1);
 
@@ -57,10 +46,8 @@ uint8_t spi_master_bit_bang_mode_1(uint8_t data_to_send) {
 		received |= (gpio_get_level(MISO) << i);
 
 	}
-
 	// Pull CS high to end communication
 	gpio_set_level(SS, 1);
-
 	// Return received data
 	return received;
 }
@@ -83,10 +70,8 @@ uint8_t spi_master_bit_bang_mode_2(uint8_t data_to_send) {
 		gpio_set_level(SCK, 1);
 
 	}
-
 	// Pull CS high to end communication
 	gpio_set_level(SS, 1);
-
 	// Return received data
 	return received;
 }
@@ -107,9 +92,7 @@ uint8_t spi_master_bit_bang_mode_3(uint8_t data_to_send) {
 		gpio_set_level(SCK, 1);
 		ets_delay_us(10);
 		received |= (gpio_get_level(MISO) << i);
-
 	}
-
 	// Pull CS high to end communication
 	gpio_set_level(SS, 1);
 
@@ -142,13 +125,9 @@ void spi_master_init(void) {
 			GPIO_MODE_INPUT, .pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
 			GPIO_PULLDOWN_DISABLE, .intr_type = GPIO_INTR_DISABLE };
 	gpio_config(&io_conf_slave);
-	// Default pin states
 
 	gpio_set_level(MOSI, 0);
 	gpio_set_level(SS, 1);
-
-	//xTaskCreate(spi_task, "spi_task", 1024, NULL, 1, NULL);
-	xTaskCreate(spi_master_task, "spi_master_task", 1024, NULL, 1, NULL);
 
 }
 
@@ -170,7 +149,7 @@ void spi_slave_bit_bang_mode_2(uint8_t response_data) {
 
 		}
 		printf("Received: 0x%02X | Sent: 0x%02X\n", received_data,
-						response_data);
+				response_data);
 		SS_level = 1;
 	}
 }
@@ -189,7 +168,7 @@ void spi_slave_bit_bang_mode_3(uint8_t response_data) {
 
 		}
 		printf("Received: 0x%02X | Sent: 0x%02X\n", received_data,
-						response_data);
+				response_data);
 		SS_level = 1;
 	}
 }
@@ -208,7 +187,7 @@ void spi_slave_bit_bang_mode_1(uint8_t response_data) {
 
 		}
 		printf("Received: 0x%02X | Sent: 0x%02X\n", received_data,
-						response_data);
+				response_data);
 		SS_level = 1;
 	}
 }
@@ -227,7 +206,7 @@ void spi_slave_bit_bang_mode_0(uint8_t response_data) {
 
 		}
 		printf("Received: 0x%02X | Sent: 0x%02X\n", received_data,
-						response_data);
+				response_data);
 		SS_level = 1;
 	}
 }
@@ -258,8 +237,8 @@ void spi_slave_init(void) {
 			};
 	gpio_config(&io_conf_SS);
 
-	gpio_config_t io_conf_SCK_MOSI = { .pin_bit_mask = (1ULL << SCK) | (1ULL
-			<< MOSI), .mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
+	gpio_config_t io_conf_SCK_MOSI = { .pin_bit_mask = (1ULL << SCK)
+			| (1ULL << MOSI), .mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
 			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
 					GPIO_PULLDOWN_DISABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
 			};

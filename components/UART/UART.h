@@ -2,7 +2,7 @@
 #define RECIVE_UART_H
 
 
-#include "my_config.h"
+#include "../../test/my_config.h"
 
 #if TEST_ON_PC == 0
 #include "stdio.h"
@@ -18,9 +18,13 @@
 
 #define SERIAL_MONITOR_BAUD_RATE 115200
 #define RX_PIN GPIO_NUM_12  // GPIO3 (RX) for UART reception
-#define BAUD_RATE 9600
-#define BIT_TIME_US (1000000 / BAUD_RATE) // Time per bit in microseconds
+#define BAUD_RATE_RX 9600
+#define BIT_TIME_US_RX (1000000 / BAUD_RATE_RX) // Time per bit in microseconds
 #define BUFFER_SIZE 128
+
+#define TX_PIN GPIO_NUM_2  // GPIO2 (D4) for UART1 TX
+#define BAUD_RATE_TX 115200
+#define BIT_TIME_US_TX (1000000 / BAUD_RATE_TX) // Time per bit in microseconds
 
 #define GPIO_INPUT 0
 #define GPIO_OUTPUT 1
