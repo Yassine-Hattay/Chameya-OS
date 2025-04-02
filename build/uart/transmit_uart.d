@@ -1,5 +1,7 @@
 transmit_uart.o: \
- C:/msys32/home/hatta/esp/hello_world1/components/uart/transmit_uart.c \
+ C:/msys32/home/hatta/esp/hello_world1/components/UART/transmit_uart.c \
+ C:/msys32/home/hatta/esp/hello_world1/components/UART/UART.h \
+ c:\msys32\home\hatta\esp\hello_world1\test\my_config.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/hatta/esp/hello_world1/build/include/sdkconfig.h \
@@ -36,7 +38,16 @@ transmit_uart.o: \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/gpio.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin_mux_register.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h
+
+C:/msys32/home/hatta/esp/hello_world1/components/UART/UART.h:
+
+c:\msys32\home\hatta\esp\hello_world1\test\my_config.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -111,4 +122,14 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/pin
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/eagle_soc.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp8266/gpio_register.h:
-/home/hatta/esp/hello_world1/components/uart/./transmit_uart.c:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h:
+/home/hatta/esp/hello_world1/components/UART/./transmit_uart.c:

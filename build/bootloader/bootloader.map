@@ -790,7 +790,7 @@ END GROUP
  *(.jcr)
                 0x3ffe8420                _data_end = ABSOLUTE (.)
 
-.rodata         0x3ffe8420      0xd94
+.rodata         0x3ffe8420      0xd8c
                 0x3ffe8420                _rodata_start = ABSOLUTE (.)
  *(.rodata)
  *(.rodata.*)
@@ -818,87 +818,87 @@ END GROUP
  .rodata.print_flash_info
                 0x3ffe8824       0x28 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
  .rodata.bootloader_main.str1.4
-                0x3ffe884c       0xa6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
- *fill*         0x3ffe88f2        0x2 
+                0x3ffe884c       0x9e C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_init.o)
+ *fill*         0x3ffe88ea        0x2 
  .rodata.bootloader_mmap.str1.4
-                0x3ffe88f4       0x57 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
- *fill*         0x3ffe894b        0x1 
+                0x3ffe88ec       0x57 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe8943        0x1 
  .rodata.bootloader_flash_read.str1.4
-                0x3ffe894c       0x9f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
- *fill*         0x3ffe89eb        0x1 
+                0x3ffe8944       0x9f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe89e3        0x1 
  .rodata.bootloader_execute_flash_command.str1.4
-                0x3ffe89ec       0x19 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
- *fill*         0x3ffe8a05        0x3 
+                0x3ffe89e4       0x19 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe89fd        0x3 
  .rodata.bootloader_flash_read_sfdp.str1.4
-                0x3ffe8a08       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+                0x3ffe8a00       0x14 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
  .rodata.bootloader_flash_xmc_startup.str1.4
-                0x3ffe8a1c       0x2f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
- *fill*         0x3ffe8a4b        0x1 
+                0x3ffe8a14       0x2f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(bootloader_flash.o)
+ *fill*         0x3ffe8a43        0x1 
  .rodata.verify_image_header.str1.4
-                0x3ffe8a4c       0x82 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
- *fill*         0x3ffe8ace        0x2 
+                0x3ffe8a44       0x82 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8ac6        0x2 
  .rodata.process_segment_data.str1.4
-                0x3ffe8ad0       0x27 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
- *fill*         0x3ffe8af7        0x1 
+                0x3ffe8ac8       0x27 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8aef        0x1 
  .rodata.verify_checksum.str1.4
-                0x3ffe8af8       0x57 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
- *fill*         0x3ffe8b4f        0x1 
+                0x3ffe8af0       0x57 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8b47        0x1 
  .rodata.process_segment.str1.4
-                0x3ffe8b50       0x8f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+                0x3ffe8b48       0x8f C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
                                  0x93 (size before relaxing)
- *fill*         0x3ffe8bdf        0x1 
+ *fill*         0x3ffe8bd7        0x1 
  .rodata.esp_image_load.str1.4
-                0x3ffe8be0       0xaf C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
- *fill*         0x3ffe8c8f        0x1 
+                0x3ffe8bd8       0xaf C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(esp_image_format.o)
+ *fill*         0x3ffe8c87        0x1 
  .rodata.esp_partition_table_basic_verify.str1.4
-                0x3ffe8c90       0xb4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
+                0x3ffe8c88       0xb4 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/bootloader_support\libbootloader_support.a(flash_partitions.o)
  .rodata.esp_spi_flash_init.str1.4
-                0x3ffe8d44       0x29 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
- *fill*         0x3ffe8d6d        0x3 
+                0x3ffe8d3c       0x29 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/spi_flash\libspi_flash.a(spi_flash.o)
+ *fill*         0x3ffe8d65        0x3 
  .rodata.str1.4
-                0x3ffe8d70       0x24 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                0x3ffe8d68       0x24 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
                                  0x22 (size before relaxing)
  .rodata.s_log_prefix
-                0x3ffe8d94        0x6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
- *fill*         0x3ffe8d9a        0x2 
+                0x3ffe8d8c        0x6 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+ *fill*         0x3ffe8d92        0x2 
  .rodata.s_log_color
-                0x3ffe8d9c       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
+                0x3ffe8d94       0x18 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/log\liblog.a(log.o)
  .rodata.crc32_le_table
-                0x3ffe8db4      0x400 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
+                0x3ffe8dac      0x400 C:/msys32/home/hatta/esp/hello_world1/build/bootloader/esp8266\libesp8266.a(crc.o)
  *(.gnu.linkonce.r.*)
  *(.rodata1)
-                0x3ffe91b4                __XT_EXCEPTION_TABLE_ = ABSOLUTE (.)
+                0x3ffe91ac                __XT_EXCEPTION_TABLE_ = ABSOLUTE (.)
  *(.xt_except_table)
  *(.gcc_except_table)
  *(.gnu.linkonce.e.*)
  *(.gnu.version_r)
  *(.eh_frame)
-                0x3ffe91b4                . = ((. + 0x3) & 0xfffffffc)
-                0x3ffe91b4                __init_array_start = ABSOLUTE (.)
+                0x3ffe91ac                . = ((. + 0x3) & 0xfffffffc)
+                0x3ffe91ac                __init_array_start = ABSOLUTE (.)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x3ffe91b4                __init_array_end = ABSOLUTE (.)
+                0x3ffe91ac                __init_array_end = ABSOLUTE (.)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x3ffe91b4                __XT_EXCEPTION_DESCS_ = ABSOLUTE (.)
+                0x3ffe91ac                __XT_EXCEPTION_DESCS_ = ABSOLUTE (.)
  *(.xt_except_desc)
  *(.gnu.linkonce.h.*)
-                0x3ffe91b4                __XT_EXCEPTION_DESCS_END__ = ABSOLUTE (.)
+                0x3ffe91ac                __XT_EXCEPTION_DESCS_END__ = ABSOLUTE (.)
  *(.xt_except_desc_end)
  *(.dynamic)
  *(.gnu.version_d)
-                0x3ffe91b4                _rodata_end = ABSOLUTE (.)
-                0x3ffe91b4                _lit4_start = ABSOLUTE (.)
+                0x3ffe91ac                _rodata_end = ABSOLUTE (.)
+                0x3ffe91ac                _lit4_start = ABSOLUTE (.)
  *(*.lit4)
  *(.lit4.*)
  *(.gnu.linkonce.lit4.*)
-                0x3ffe91b4                _lit4_end = ABSOLUTE (.)
-                0x3ffe91b4                . = ALIGN (0x4)
-                0x3ffe91b4                _heap_start = ABSOLUTE (.)
+                0x3ffe91ac                _lit4_end = ABSOLUTE (.)
+                0x3ffe91ac                . = ALIGN (0x4)
+                0x3ffe91ac                _heap_start = ABSOLUTE (.)
                 0x60001100                PROVIDE (rtc_sys_info = 0x60001100)
                 0x400040c0                PROVIDE (SPI_sector_erase = 0x400040c0)
                 0x40004174                PROVIDE (SPI_page_program = 0x40004174)

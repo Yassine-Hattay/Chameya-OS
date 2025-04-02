@@ -1,0 +1,3 @@
+/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles/unit_tests.exe.dir
+/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles/edit_cache.dir
+/mnt/c/msys32/home/hatta/esp/hello_world1/test/build/CMakeFiles/rebuild_cache.dir

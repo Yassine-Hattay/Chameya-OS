@@ -10,6 +10,7 @@
 
 #define BUFFER_SIZE 128
 
-void I2C_init();
+void I2C_init_master();
+void I2C_init_salve();
 
 #endif /* COMPONENTS_I2C_I2C_H_ */

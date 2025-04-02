@@ -1,6 +1,6 @@
 main.o: C:/msys32/home/hatta/esp/hello_world1/main/main.c \
- c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h \
- c:\msys32\home\hatta\esp\hello_world1\components\uart\recive_uart.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h \
+ c:\msys32\home\hatta\esp\hello_world1\test\my_config.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h \
  C:/msys32/home/hatta/esp/hello_world1/build/include/sdkconfig.h \
@@ -41,11 +41,13 @@ main.o: C:/msys32/home/hatta/esp/hello_world1/main/main.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h
 
-c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h:
+c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\uart\recive_uart.h:
+c:\msys32\home\hatta\esp\hello_world1\test\my_config.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/FreeRTOS.h:
 
@@ -128,4 +130,8 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h:
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h:
 /home/hatta/esp/hello_world1/main/./main.c:
