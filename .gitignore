@@ -1,1 +1,4 @@
 /Default/
+.metadata/.plugins/org.eclipse.cdt.ui/uart.build.log
+*.log
+/.metadata

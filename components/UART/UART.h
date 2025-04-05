@@ -2,7 +2,7 @@
 #define RECIVE_UART_H
 
 
-#include "../../test/my_config.h"
+#include "../my_config/my_config.h"
 
 #if TEST_ON_PC == 0
 #include "stdio.h"

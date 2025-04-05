@@ -8,7 +8,7 @@
 #ifndef COMPONENTS_SPI_SPI_H_
 #define COMPONENTS_SPI_SPI_H_
 
-#include "my_config.h"
+#include "../my_config/my_config.h"
 
 #if TEST_ON_PC == 0
 #include "freertos/FreeRTOS.h"
@@ -22,7 +22,10 @@
 #define SCK  14
 #define SS   15
 
+
 void spi_slave_init(void) ;
+void spi_master_init(void);
+uint8_t spi_master_bit_bang_mode_0(uint8_t data_to_send);
 
 #else
 #include "SPI_test.h"

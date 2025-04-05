@@ -13,6 +13,7 @@ uint8_t spi_master_bit_bang_mode_0(uint8_t data_to_send) {
 	for (int i = 7; i >= 0; i--) {
 		// Set MOSI
 		gpio_set_level(MOSI, (data_to_send >> i) & 1);
+
 		ets_delay_us(10);
 
 		gpio_set_level(SCK, 1);
@@ -21,8 +22,6 @@ uint8_t spi_master_bit_bang_mode_0(uint8_t data_to_send) {
 		received |= (gpio_get_level(MISO) << i);
 		gpio_set_level(SCK, 0);
 	}
-	// Pull CS high to end communication
-	gpio_set_level(SS, 1);
 
 	// Return received data
 	return received;

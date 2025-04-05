@@ -55,19 +55,16 @@ void TestSPI_master_recive(void) {
 	spi_master_init();
 
 	uint8_t data_to_send = 0x00; // 10101010 in binary
-	// Call the SPI function
 	simlulated_data = 0x66;
 
 	uint8_t received_data = spi_master_bit_bang_mode_2(data_to_send);
-
-	i = 8 ;
-
+	i = 8;
 	TEST_ASSERT_EQUAL_UINT8(0x66, received_data); // Since MISO=0x55, we should get that back
 
 	simlulated_data = 0x77;
 
 	received_data = spi_master_bit_bang_mode_2(data_to_send);
-	i = 8 ;
+	i = 8;
 
 	TEST_ASSERT_EQUAL_UINT8(0x77, received_data); // Since MISO=0x55, we should get that back
 
