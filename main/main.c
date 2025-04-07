@@ -3,37 +3,60 @@
 
 #include "esp_system.h"
 
-void transform_array(const uint8_t *input, uint8_t *output, int input_size,
-		int font_size) {
-	size_t output_idx = 0;
-	for (size_t i = 0; i < input_size; i++) {
+void printf_ILI9488(const char *message, uint16_t x, uint16_t y,
+		uint8_t font_size) {
+	uint16_t width;
+	uint16_t height;
 
-		if (input[i] == 0x00) {
-			output[output_idx++] = 0x00;
-			output[output_idx++] = 0x00;
-		} else if (input[i] == 0xFF) {
-			output[output_idx++] = 0xFF;
-			output[output_idx++] = 0xFF;
-		} else if (input[i] == 0xF8) {
-			output[output_idx++] = 0xFF;
-			output[output_idx++] = 0x00;
-		} else if (input[i] == 0x07) {
-			output[output_idx++] = 0x00;
-			output[output_idx++] = 0xFF;
-		}
+	switch (font_size) {
+	case 0:
+		width = 6;
+		height = 7;
+		break;
+	case 1:
+		width = 12;
+		height = 14;
+		break;
+	case 2:
+		width = 24;
+		height = 28;
+		break;
+	case 3:
+		width = 48;
+		height = 56;
+		break;
+	case 4: // same values for 3 and 4
+		width = 96;
+		height = 112;
+		break;
 
-		if ((i + 1) % (3 * font_size) == 0) {
-			int j = 0;
+	case 5: // same values for 3 and 4
+		width = 192;
+		height = 224;
+		break;
+	default:
+		printf("error select a font size between 0 and 5 ! \n");
+		return;
 
-			for (int index = output_idx - (3 * 2 * font_size);
-					index <= output_idx - 1; index++) {
-				output[output_idx + j] = output[index];
-				j = j + 1;
+	}
+
+	while (*message) {
+		if (*message == 'a') {
+			letter_font_0_size = sizeof(A_font_0);
+
+			set_resolution_pos(x + somthing, y, width, height);
+
+			send_command(0x2C);
+
+			for (uint64_t i = 0; i < letter_font_0_size; i++) {
+				send_ILI9488_data(A_font_0[i]);
 			}
-			output_idx = output_idx + 6 * font_size;
+
+			message++;
 		}
 
 	}
+
 }
 
 void app_main() {
@@ -42,13 +65,15 @@ void app_main() {
 
 	my_uart_init(&uart0);
 
-	size_t max_output_size = dataSize * 4;
+	size_t max_output_size = letter_font_0_size * 4;
 
 	size_t max_output_size1 = max_output_size * 4;
 
 	size_t max_output_size2 = max_output_size1 * 4;
 
 	size_t max_output_size3 = max_output_size2 * 4;
+
+	size_t max_output_size4 = max_output_size3 * 4;
 
 	// Allocate output buffer
 	uint8_t *output = (uint8_t*) malloc(max_output_size);
@@ -71,7 +96,12 @@ void app_main() {
 		printf("Memory allocation failed.\n");
 	}
 
-	transform_array(A_font_0, output, dataSize, 1);
+	uint8_t *output4 = (uint8_t*) malloc(max_output_size4);
+	if (!output3) {
+		printf("Memory allocation failed.\n");
+	}
+
+	transform_array(devide_font_0, output, letter_font_0_size, 1);
 
 	transform_array(output, output1, max_output_size, 2);
 	free(output);
@@ -83,30 +113,18 @@ void app_main() {
 
 	free(output2);
 
+	transform_array(output3, output4, max_output_size3, 16);
+
+	free(output3);
+
+	printf_ILI9488();
+
 	init_display();
 
-	set_orientation(5);
-
-	set_resolution_pos(240, 110, 96, 112);
-
-	printf("writing to frame memory ! \n");
+	set_orientation(1);
 
 	send_command(0x3A); // interface pixel format
 	send_ILI9488_data(0x01);
-
-	send_command(0x2C);
-
-	for (uint64_t i = 0; i < max_output_size3; i++) {
-		send_ILI9488_data(output3[i]);
-	}
-
-	for (uint64_t i = 0; i < max_output_size2; i++) {
-		printf("%02X ", output2[i]);
-		if ((i + 1) % 6 == 0) {
-			printf("\n");
-		}
-
-	}
 
 }
 
