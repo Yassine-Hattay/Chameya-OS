@@ -89,6 +89,8 @@ void init_display() {
 	send_command(0x13); //  Normal Display Mode ON
 	send_command(0x29); // Display ON
 
+	send_command(0x3A);  // set pixel format
+	send_ILI9488_data(0x06);
 }
 
 uint8_t* recieve_data(int r) {
@@ -117,6 +119,67 @@ uint8_t* recieve_data(int r) {
 	return received;
 }
 
+void set_resolution_pos(uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+	uint16_t x_end = x + width - 1;
+	uint16_t y_end = y + height - 1;
 
+	// Split into high and low bytes
+	uint8_t x_start_high = (x >> 8) & 0xFF;
+	uint8_t x_start_low = x & 0xFF;
+	uint8_t x_end_high = (x_end >> 8) & 0xFF;
+	uint8_t x_end_low = x_end & 0xFF;
 
+	uint8_t y_start_high = (y >> 8) & 0xFF;
+	uint8_t y_start_low = y & 0xFF;
+	uint8_t y_end_high = (y_end >> 8) & 0xFF;
+	uint8_t y_end_low = y_end & 0xFF;
 
+	printf("Setting column and page address!\n");
+
+	send_command(0x2A); // Column Address Set
+	send_ILI9488_data(x_start_high);
+	send_ILI9488_data(x_start_low);
+	send_ILI9488_data(x_end_high);
+	send_ILI9488_data(x_end_low);
+
+	send_command(0x2B); // Page Address Set
+	send_ILI9488_data(y_start_high);
+	send_ILI9488_data(y_start_low);
+	send_ILI9488_data(y_end_high);
+	send_ILI9488_data(y_end_low);
+
+}
+
+void set_orientation(uint8_t orientation) {
+
+	send_command(0x36); // Memory Access Control
+
+	if (orientation == 0) {
+		send_ILI9488_data(0x08);
+	} else if (orientation == 1) {
+		send_ILI9488_data(0x28);
+	} else if (orientation == 2) {
+		send_ILI9488_data(0x48);
+
+	} else if (orientation == 3) {
+		send_ILI9488_data(0x68);
+
+	}
+	if (orientation == 4) {
+		send_ILI9488_data(0x88);
+	} else if (orientation == 5) {
+		send_ILI9488_data(0xA8);
+	} else if (orientation == 6) {
+		send_ILI9488_data(0xC8);
+
+	} else if (orientation == 7) {
+		send_ILI9488_data(0xE8);
+
+	} else {
+		printf("Error : orientation must be between [0,3] ");
+	}
+
+}
+
+void mirror_image() {
+}

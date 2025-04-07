@@ -1,0 +1,8 @@
+# Automatically generated build file. Do not edit.
+COMPONENT_INCLUDES += $(PROJECT_PATH)/components/UART/include
+COMPONENT_LDFLAGS += -L$(BUILD_DIR_BASE)/UART -lUART
+COMPONENT_LINKER_DEPS += 
+COMPONENT_SUBMODULES += 
+COMPONENT_LIBRARIES += UART
+COMPONENT_LDFRAGMENTS += 
+component-UART-build: 

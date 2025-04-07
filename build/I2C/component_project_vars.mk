@@ -1,0 +1,8 @@
+# Automatically generated build file. Do not edit.
+COMPONENT_INCLUDES += $(PROJECT_PATH)/components/I2C/include
+COMPONENT_LDFLAGS += -L$(BUILD_DIR_BASE)/I2C -lI2C
+COMPONENT_LINKER_DEPS += 
+COMPONENT_SUBMODULES += 
+COMPONENT_LIBRARIES += I2C
+COMPONENT_LDFRAGMENTS += 
+component-I2C-build: 
