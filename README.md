@@ -1,5 +1,1 @@
-# Hello World Example
-
-Starts a FreeRTOS task to print "Hello World"
-
-See the README.md file in the upper level 'examples' directory for more information about examples.
+![96-966740_a-cube-rubiks-cube-pixel-art](https://github.com/user-attachments/assets/35777d38-e119-4f63-a79d-88e59c970b10)
