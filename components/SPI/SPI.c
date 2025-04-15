@@ -126,7 +126,7 @@ void spi_master_init(void) {
 	gpio_config(&io_conf_slave);
 
 	gpio_set_level(MOSI, 0);
-	gpio_set_level(SS, 1);
+	gpio_set_level(SS,1);
 
 }
 
