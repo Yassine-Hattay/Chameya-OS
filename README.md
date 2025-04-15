@@ -1,1 +1,1 @@
-![96-966740_a-cube-rubiks-cube-pixel-art](https://github.com/user-attachments/assets/35777d38-e119-4f63-a79d-88e59c970b10)
+![f_upscayl_1x_realesrgan-x4plus-anime_upscayl_1x_realesrgan-x4plus-anime](https://github.com/user-attachments/assets/dcd16785-2772-44ac-ba26-c33354891ec2)
