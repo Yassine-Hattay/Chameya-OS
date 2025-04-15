@@ -1,5 +1,1 @@
-# Hello World Example
-
-Starts a FreeRTOS task to print "Hello World"
-
-See the README.md file in the upper level 'examples' directory for more information about examples.
+![f_upscayl_1x_realesrgan-x4plus-anime_upscayl_1x_realesrgan-x4plus-anime](https://github.com/user-attachments/assets/dcd16785-2772-44ac-ba26-c33354891ec2)
