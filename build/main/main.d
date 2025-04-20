@@ -49,6 +49,8 @@ main.o: C:/msys32/home/hatta/esp/hello_world1/main/main.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h \
  c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h \
  c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h \
  c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h \
  c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h \
  c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h \
@@ -153,6 +155,10 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h
 c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h:
 
 c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h:
 
 c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h:
 

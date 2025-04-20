@@ -177,9 +177,6 @@ static IRAM_ATTR void SDA_falling_isr_handler(void *arg) {
 	SDA_falling = 1;
 }
 
-static IRAM_ATTR void SDA_rising_isr_handler(void *arg) {
-	SDA_rising = 1;
-}
 
 bool start_condition_detected() {
 	while (gpio_get_level(I2C_SCL)) {

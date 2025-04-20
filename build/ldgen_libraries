@@ -32,6 +32,7 @@ C:/msys32/home/hatta/esp/hello_world1/build/I2C/libI2C.a
  C:/msys32/home/hatta/esp/hello_world1/build/mdns/libmdns.a
  C:/msys32/home/hatta/esp/hello_world1/build/mqtt/libmqtt.a
  C:/msys32/home/hatta/esp/hello_world1/build/my_config/libmy_config.a
+ C:/msys32/home/hatta/esp/hello_world1/build/my_spiffs/libmy_spiffs.a
  C:/msys32/home/hatta/esp/hello_world1/build/newlib/libnewlib.a
  C:/msys32/home/hatta/esp/hello_world1/build/nvs_flash/libnvs_flash.a
  C:/msys32/home/hatta/esp/hello_world1/build/openssl/libopenssl.a

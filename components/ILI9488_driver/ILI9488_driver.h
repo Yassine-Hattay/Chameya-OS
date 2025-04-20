@@ -103,6 +103,7 @@ extern const uint8_t $_font_0[] ICACHE_RODATA_ATTR;
 extern const uint8_t percent_font_0[] ICACHE_RODATA_ATTR;
 extern const uint8_t comma_font_0[] ICACHE_RODATA_ATTR;
 extern const uint8_t point_font_0[] ICACHE_RODATA_ATTR;
+extern const uint8_t two_points_font_0[] ICACHE_RODATA_ATTR;
 extern const uint8_t exclamation_font_0[] ICACHE_RODATA_ATTR;
 extern const uint8_t question_mark_font_0[] ICACHE_RODATA_ATTR;
 extern const uint8_t open_braket_font_0[] ICACHE_RODATA_ATTR;
@@ -128,7 +129,7 @@ extern char *background_color;
 
 extern CoordHistory history_char[];
 extern CoordHistory history[];
-extern Key keyboard[31];
+extern Key keyboard[];
 
 void init_display();
 void send_ILI9488_data(uint8_t data);
@@ -152,6 +153,8 @@ uint8_t* apply_font_size(const uint8_t *font_data,
 void print_ILI9488(char *message, uint16_t x, uint16_t y, uint8_t font_size);
 
 void FillScreenBlue();
+void FillScreenblack();
+
 uint8_t recive();
 void hardware_reset();
 void send_data(uint8_t data_to_send);
@@ -160,10 +163,13 @@ void print_char_ILI9488(char c, uint16_t *x, uint16_t *y, uint8_t font_size);
 void clean_last_char();
 void print_history(void);
 void main_menu_task(void *pvParameters);
-void draw_apps_icons();
 void draw_keyborad(char c);
 void IRAM_ATTR PIRQ_isr_handler(void *arg);
-
-
+void draw_main_menu_icons();
+void draw_main_menu_icons();
+void make_button(char *name, uint16_t width, uint16_t height, uint16_t x,
+		uint16_t y);
+void bootApp_noteBook();
+void make_X_button();
 
 #endif

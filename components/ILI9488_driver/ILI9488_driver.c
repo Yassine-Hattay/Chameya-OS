@@ -7,9 +7,11 @@
 
 #include "ILI9488_driver.h"
 
+char *background_color;
+
 uint8_t received[];
 
-Key keyboard[31];
+Key keyboard[32];
 
 CoordHistory history[MAX_COORDS];
 
@@ -17,7 +19,7 @@ uint8_t coord_index = 1;
 
 CoordHistory history_char[MAX_COORDS_CHAR];
 
-uint8_t coord_index_char = 0;
+uint8_t coord_index_char = 1;
 
 uint8_t recive() {
 	uint8_t received = 0;
@@ -468,6 +470,21 @@ void print_to_screen(const uint8_t a_font_0[], uint16_t width, uint16_t height,
 		for (uint64_t i = output_size; i < output_size + 2; i++) {
 			output_data[i] = 0x00;
 		}
+	} else if (strcmp(background_color, "green") == 0) {
+		for (uint64_t i = 0; i < output_size; i++) {
+			if (output_data[i] == 0x00) {
+				output_data[i] = 0x12;
+			} else if (output_data[i] == 0x07) {
+				output_data[i] = 0x17;
+			} else if (output_data[i] == 0xF8) {
+				output_data[i] = 0xFA;
+			}
+
+		}
+
+		for (uint64_t i = output_size; i < output_size + 2; i++) {
+			output_data[i] = 0x12;
+		}
 	}
 
 	send_command(0x2C);
@@ -641,6 +658,9 @@ void print_ILI9488(char *message, uint16_t x, uint16_t y, uint8_t font_size) {
 					width * 0.1);
 		} else if (*message == '.') {
 			print_to_screen(point_font_0, width, height, &x, &y, font_size,
+					width * 0.1);
+		} else if (*message == ':') {
+			print_to_screen(two_points_font_0, width, height, &x, &y, font_size,
 					width * 0.1);
 		} else if (*message == '!') {
 			print_to_screen(exclamation_font_0, width, height, &x, &y,
@@ -933,6 +953,9 @@ void print_char_ILI9488(char c, uint16_t *x, uint16_t *y, uint8_t font_size) {
 	} else if (c == '.') {
 		print_to_screen_char(point_font_0, width, height, x, y, font_size,
 				width * 0.1);
+	} else if (c == ':') {
+		print_to_screen(two_points_font_0, width, height, x, y, font_size,
+				width * 0.1);
 	} else if (c == '!') {
 		print_to_screen_char(exclamation_font_0, width, height, x, y, font_size,
 				width * 0.1);
@@ -1060,6 +1083,21 @@ void FillScreenBlue() {
 
 }
 
+void FillScreenblack() {
+
+	set_resolution_pos(0, 0, 480, 320, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x01);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < 480 * 320; i++) {
+		send_ILI9488_data(0x00);
+	}
+
+}
+
 void clean_screen() {
 
 	while (coord_index > 0) {
@@ -1104,7 +1142,7 @@ void clean_screen() {
 		for (uint64_t i = 0;
 				i < history[coord_index].width * history[coord_index].height;
 				i++) {
-			send_ILI9488_data(0x09);
+			send_ILI9488_data(0x00);
 		}
 		coord_index--;
 	}
@@ -1159,14 +1197,14 @@ void clean_last_char() {
 				i
 						< history_char[coord_index_char].width
 								* history_char[coord_index_char].height; i++) {
-			send_ILI9488_data(0x09);
+			send_ILI9488_data(0x00);
 		}
-		return;
 	}
 }
 
-
 void draw_keyborad(char c) {
+
+	gpio_set_level(SS_display, 0);
 
 	background_color = "black";
 
@@ -1342,11 +1380,28 @@ void draw_keyborad(char c) {
 
 	background_color = "red";
 	print_ILI9488("X", 456, 0, 2);
+
+	j++;
+
+	keyboard[21 + j].x = 0;
+	keyboard[21 + j].y = 0;
+	keyboard[21 + j].width = 30;
+	keyboard[21 + j].height = 40;
+	keyboard[21 + j].label = "OK";
+
+	background_color = "green";
+	print_ILI9488("O", 0, 0, 2);
+
 	background_color = "black";
+
+	gpio_set_level(SS_display, 1);
 
 }
 
-void draw_apps_icons() {
+void draw_main_menu_icons() {
+
+	gpio_set_level(SS_display, 0);
+
 	set_resolution_pos(10, 10, 67, 76, 0);
 
 	send_command(0x3A); // interface pixel format
@@ -1359,6 +1414,101 @@ void draw_apps_icons() {
 	}
 
 	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
 }
 
+void make_X_button() {
+	background_color = "red";
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = 456;
+	history_char[coord_index_char].y = 0;
+	history_char[coord_index_char].width = 24;
+	history_char[coord_index_char].height = 29;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+	background_color = "black";
+
+	send_command(0x00);
+	gpio_set_level(SS_display, 1);
+}
+
+void make_button(char *name, uint16_t width, uint16_t height, uint16_t x,
+		uint16_t y) {
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, name);
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	set_resolution_pos(x, y, width, height, 0);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < width * height / 2; i++) {
+		send_ILI9488_data(0x00);
+	}
+
+	print_ILI9488(name, x + 15, y + 15, 2);
+
+	int len = strlen(name);
+
+	coord_index = coord_index - len + 1;
+
+	coord_index_char++;
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
+
+void bootApp_noteBook() {
+
+	uint16_t width = 24;
+	uint16_t height = 29;
+	uint16_t x = 456;
+	uint16_t y = 0;
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+
+	background_color = "black";
+
+	width = 180;
+	height = 70;
+	x = 135;
+
+	make_button("New file", width, height, x, 30);
+
+	width = 220;
+
+	make_button("Read files", width, height, x, 120);
+
+	make_button("Edit files", width, height, x, 210);
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
 

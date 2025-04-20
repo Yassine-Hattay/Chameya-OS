@@ -5,60 +5,46 @@
 
 #include "esp_system.h"
 
-char *background_color;
-
-
-
-
 void app_main() {
 
-	esp_set_cpu_freq(ESP_CPU_FREQ_160M);  // Set CPU speed to 160 MHz
 	uart_t uart0 = { 0, 3, 1, 1, 0, 115200 }; // UART0 (TX: GPIO1, RX: GPIO3) @ 115200 baud
 
 	my_uart_init(&uart0);
+
+	esp_set_cpu_freq(ESP_CPU_FREQ_160M);  // Set CPU speed to 160 MHz
+
+	// format_spiffs();
 
 	init_display();
 
 	set_orientation(1);
 
-	FillScreenBlue();
+	//FillScreenBlue();
+	FillScreenblack();
 
 	set_resolution_pos(130, 125, 69, 39, 0);
 
-	send_command(0x3A); // interface pixel format
-	send_ILI9488_data(0x06);
-
-	send_command(0x2C);
-
-	for (uint64_t i = 0; i < size_var; i++) {
-		send_ILI9488_data(chameya[i]);
-	}
+	//send_command(0x3A); // interface pixel format
+	//send_ILI9488_data(0x06);
+	//
+	//send_command(0x2C);
+	//
+	//for (uint64_t i = 0; i < size_var; i++) {
+	//	send_ILI9488_data(chameya[i]);
+	//}
 
 	send_command(0x00);
 
-	background_color = "blue";
+	background_color = "black";
 	print_ILI9488("-OS", 205, 125, 2);
 
 	send_command(0x00);
 
-	vTaskDelay(3500);
+	vTaskDelay(100);
 
 	clean_screen();
 
-	set_resolution_pos(10, 10, 67, 76, 0);
-
-	send_command(0x3A); // interface pixel format
-	send_ILI9488_data(0x06);
-
-	send_command(0x2C);
-
-	for (uint64_t i = 0; i < size_var1; i++) {
-		send_ILI9488_data(notebook[i]);
-	}
-
-	send_command(0x00);
-
-	strncpy(history[coord_index - 1].app_name, "notebook",
+	strncpy(history[coord_index].app_name, "notebook",
 	APP_NAME_MAX_LEN);
 
 	gpio_set_level(SS_display, 1);

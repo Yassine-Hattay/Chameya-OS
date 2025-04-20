@@ -29,8 +29,8 @@ MEMORY
   /* IRAM for cpu. The length is due to the cache mode which is able to be set half or full mode. */
   iram0_0_seg (RX) : org = 0x40100000, len = 0xC000
   /* Even though the segment name is iram, it is actually mapped to flash and mapped constant data */
-  iram0_2_seg (RX) : org = 0x40200010 + (0x10000 & (0x100000 - 1)),
-                                     len = 0xf0000 - 0x10
+  iram0_2_seg (RX) : org = 0x40200010 + (0x11000 & (0x100000 - 1)),
+                                     len = 0x100000 - 0x10
   /*
     (0x18 offset above is a convenience for the app binary image generation. The .bin file which is flashed
     to the chip has a 0x10 byte file header. Setting this offset makes it simple to meet the flash cache.)
