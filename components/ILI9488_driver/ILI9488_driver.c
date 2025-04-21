@@ -498,6 +498,300 @@ void print_to_screen(const uint8_t a_font_0[], uint16_t width, uint16_t height,
 	free(output_data);
 }
 
+
+void inner_apply_correction(const uint8_t a_font_0[], uint16_t width, uint16_t height,
+		uint16_t *x, uint16_t *y, uint8_t font_size, int16_t correction_value) {
+
+
+	if ((*x) + width > 480) {
+		(*x) = 0;
+		(*y) = (*y) + height;
+	}
+
+	(*x) = (*x) + width - correction_value;
+
+}
+
+
+void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
+		uint8_t font_size) {
+
+	uint16_t width;
+	uint16_t height;
+
+	switch (font_size) {
+	case 0:
+		width = 6;
+		height = 7;
+		break;
+	case 1:
+		width = 12;
+		height = 15;
+		break;
+	case 2:
+		width = 24;
+		height = 29;
+		break;
+	case 3:
+		width = 48;
+		height = 57;
+		break;
+	case 4: // same values for 3 and 4
+		width = 96;
+		height = 113;
+		break;
+	case 5: // same values for 3 and 4
+		width = 192;
+		height = 225;
+		break;
+	default:
+		printf("error select a font size must be between 0 and 5 ! \n");
+		return;
+
+	}
+
+	while (*message) {
+
+		if (*message == ' ') {
+			{
+				*x += width; // Move the x position forward by the width of a character
+			}
+		} else if (*message == 'a') {
+			inner_apply_correction(a_font_0, width, height, x, y, font_size,
+					width * 0.2);
+		} else if (*message == 'b') {
+			inner_apply_correction(b_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'c') {
+			inner_apply_correction(c_font_0, width, height, x, y, font_size,
+					width * 0.2);
+		} else if (*message == 'd') {
+			inner_apply_correction(d_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'e') {
+			inner_apply_correction(e_font_0, width, height, x, y, font_size,
+					width * 0.18);
+		} else if (*message == 'f') {
+			inner_apply_correction(f_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'g') {
+			inner_apply_correction(g_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'h') {
+			inner_apply_correction(h_font_0, width, height, x, y, font_size,
+					width * 0.2);
+		} else if (*message == 'i') {
+			inner_apply_correction(i_font_0, width, height, x, y, font_size,
+					width * 0.6);
+		} else if (*message == 'j') {
+			inner_apply_correction(j_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'k') {
+			inner_apply_correction(k_font_0, width, height, x, y, font_size,
+					width * 0.2);
+		} else if (*message == 'l') {
+			inner_apply_correction(l_font_0, width, height, x, y, font_size,
+					width * 0.6);
+		} else if (*message == 'm') {
+			inner_apply_correction(m_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'n') {
+			inner_apply_correction(n_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'o') {
+			inner_apply_correction(o_font_0, width, height, x, y, font_size,
+					width * 0.2);
+		} else if (*message == 'p') {
+			inner_apply_correction(p_font_0, width, height, x, y, font_size,
+					width * 0.2);
+		} else if (*message == 'q') {
+			inner_apply_correction(q_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'r') {
+			inner_apply_correction(r_font_0, width, height, x, y, font_size,
+					width * 0.25);
+		} else if (*message == 's') {
+			inner_apply_correction(s_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 't') {
+			inner_apply_correction(t_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'u') {
+			inner_apply_correction(u_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'v') {
+			inner_apply_correction(v_font_0, width, height, x, y, font_size,
+					width * 0.25);
+		} else if (*message == 'w') {
+			inner_apply_correction(w_font_0, width, height, x, y, font_size, 0);
+		} else if (*message == 'x') {
+			inner_apply_correction(x_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'y') {
+			inner_apply_correction(y_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'z') {
+			inner_apply_correction(z_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '0') {
+			inner_apply_correction(N0_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '1') {
+			inner_apply_correction(N1_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '2') {
+			inner_apply_correction(N2_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '3') {
+			inner_apply_correction(N3_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '4') {
+			inner_apply_correction(N4_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '5') {
+			inner_apply_correction(N5_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '6') {
+			inner_apply_correction(N6_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '7') {
+			inner_apply_correction(N7_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '8') {
+			inner_apply_correction(N8_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '9') {
+			inner_apply_correction(N9_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '$') {
+			inner_apply_correction($_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '%') {
+			inner_apply_correction(percent_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == ',') {
+			inner_apply_correction(comma_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '.') {
+			inner_apply_correction(point_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == ':') {
+			inner_apply_correction(two_points_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '!') {
+			inner_apply_correction(exclamation_font_0, width, height, x, y,
+					font_size, width * 0.1);
+		} else if (*message == '?') {
+			inner_apply_correction(question_mark_font_0, width, height, x, y,
+					font_size, width * 0.1);
+		} else if (*message == '(') {
+			inner_apply_correction(open_braket_font_0, width, height, x, y,
+					font_size, width * 0.1);
+		} else if (*message == ')') {
+			inner_apply_correction(close_braket_font_0, width, height, x, y,
+					font_size, width * 0.1);
+		} else if (*message == '-') {
+			inner_apply_correction(minus_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '+') {
+			inner_apply_correction(plus_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '*') {
+			inner_apply_correction(times_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '/') {
+			inner_apply_correction(devide_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'A') {
+			inner_apply_correction(A_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'B') {
+			inner_apply_correction(B_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'C') {
+			inner_apply_correction(C_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'D') {
+			inner_apply_correction(D_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'E') {
+			inner_apply_correction(E_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'F') {
+			inner_apply_correction(F_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'G') {
+			inner_apply_correction(G_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'H') {
+			inner_apply_correction(H_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'I') {
+			inner_apply_correction(I_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'J') {
+			inner_apply_correction(J_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'K') {
+			inner_apply_correction(K_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'L') {
+			inner_apply_correction(L_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'M') {
+			inner_apply_correction(M_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'N') {
+			inner_apply_correction(N_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'O') {
+			inner_apply_correction(O_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'P') {
+			inner_apply_correction(P_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'Q') {
+			inner_apply_correction(Q_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'R') {
+			inner_apply_correction(R_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'S') {
+			inner_apply_correction(S_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'T') {
+			inner_apply_correction(T_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'U') {
+			inner_apply_correction(U_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'V') {
+			inner_apply_correction(V_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'W') {
+			inner_apply_correction(W_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'X') {
+			inner_apply_correction(X_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'Y') {
+			inner_apply_correction(Y_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == 'Z') {
+			inner_apply_correction(Z_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '_') {
+			inner_apply_correction(__font_0, width, height, x, y, font_size,
+					width * 0.1);
+		} else if (*message == '~') {
+			inner_apply_correction(shift_font_0, width, height, x, y, font_size,
+					width * 0.1);
+		}
+
+		message++;
+	}
+}
+
 void print_ILI9488(char *message, uint16_t x, uint16_t y, uint8_t font_size) {
 
 	uint16_t width;

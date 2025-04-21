@@ -171,5 +171,7 @@ void make_button(char *name, uint16_t width, uint16_t height, uint16_t x,
 		uint16_t y);
 void bootApp_noteBook();
 void make_X_button();
+void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
+		uint8_t font_size);
 
 #endif

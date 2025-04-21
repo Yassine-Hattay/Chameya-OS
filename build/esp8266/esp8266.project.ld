@@ -1,6 +1,6 @@
 /* Automatically generated file; DO NOT EDIT */
 /* Espressif IoT Development Framework Linker Script */
-/* Generated from: C:\msys32\home\hatta\esp\ESP8266_RTOS_SDK\components\esp8266\ld\esp8266.project.ld.in */
+/* Generated from: C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/ld/esp8266.project.ld.in */
 
 /*  Default entry point:  */
 ENTRY(call_start_cpu);

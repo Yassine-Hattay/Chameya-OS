@@ -37,6 +37,24 @@ void append_to_file(const char *full_path, const char *data) {
 
 }
 
+void overwrite_file(const char *full_path, const char *data) {
+    mount_spiffs();
+
+    // Open the file for writing (overwrite mode)
+    FILE *f = fopen(full_path, "w");
+    if (f == NULL) {
+        printf("Failed to open file '%s' for writing\n", full_path);
+        return;
+    }
+
+    // Write data to the file
+    fprintf(f, "%s", data);
+    fclose(f);
+
+    unmount_spiffs();
+}
+
+
 void print_file_contents(const char *full_path) {
 
 	mount_spiffs();

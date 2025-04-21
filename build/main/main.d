@@ -167,4 +167,3 @@ c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h
 c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h:
 
 c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h:
-/home/hatta/esp/hello_world1/main/./main.c:

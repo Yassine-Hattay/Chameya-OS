@@ -5,6 +5,13 @@
 
 #include "esp_system.h"
 
+void memory_monitor_task(void *pvParameters) {
+    while (1) {
+        printf("Free heap: %d bytes\n", xPortGetFreeHeapSize());
+        vTaskDelay(5000);  // Every 5 seconds
+    }
+}
+
 void app_main() {
 
 	uart_t uart0 = { 0, 3, 1, 1, 0, 115200 }; // UART0 (TX: GPIO1, RX: GPIO3) @ 115200 baud
@@ -57,6 +64,9 @@ void app_main() {
 
 	xTaskCreate(main_menu_task, "main_menu_task", 2048, NULL, 5,
 			&main_menu_Handle);
+
+	xTaskCreate(memory_monitor_task, "mem_monitor", 256, NULL, 1, NULL);
+
 
 }
 

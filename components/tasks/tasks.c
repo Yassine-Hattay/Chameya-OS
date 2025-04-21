@@ -70,7 +70,7 @@ void keyboard_task(void *pvParameters) {
 
 	TaskParams *data = (TaskParams*) pvParameters;
 
-	uint16_t x1 = 0;
+	uint16_t x1 = data->x;
 	uint16_t y1 = data->y;
 	char *previous_task = data->previous_task;
 	char *current_task = data->current_task;
@@ -130,8 +130,6 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 
 					delete_file(full_path_l);
 
-					print_file_contents("/spiffs/notebook/filenames.txt");
-
 					gpio_set_level(SS_display, 0);
 
 					clean_screen();
@@ -168,7 +166,6 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
 						"Edit") == 0) {
 
-					char full_path_l[50];
 
 					gpio_set_level(SS_display, 0);
 
@@ -178,33 +175,45 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 						clean_last_char();
 					}
 
-					snprintf(full_path_l, sizeof(full_path_l),
+					snprintf(full_path, sizeof(full_path),
 							"/spiffs/notebook/%s\n", filename);
 
 					print_ILI9488(filename, 100, 0, 2);
 
-					char *contents_local = read_file_contents(full_path_l);
+					char *contents_local = read_file_contents(full_path);
 
-					print_ILI9488(contents_local, 0, 35, 2);
+					uint16_t x1 = 0, y1 = 35;
 
-					free(contents_local);  // Don't forget to free the memory!
+					keyboard_buffer_i = 0;
+					coord_index_char = 1 ;
 
-					send_command(0x00);
+					while (*contents_local) {
+						char c = *contents_local;
+
+						background_color = "black";
+						print_char_ILI9488(c, &x1, &y1, 2);
+						keyboard_buffer[keyboard_buffer_i++] = c;
+
+						send_command(0x00);
+						contents_local++;
+					}
+
 
 					gpio_set_level(SS_display, 1);
 
 					TaskParams params; // static = stays in memory = no need to malloc
-					params.y = 35;
+					params.x = x1;
+					params.y = y1;
+
+
 					strcpy(params.previous_task,
 							"notebook_editFilesPage2_task");
+					strcpy(params.current_task, "keyboard_to_edit");
 
-					size_t content_length = strlen(contents_local);
-
-					coord_index_char = 1 + content_length;
 
 					paragraph_number = 2;
 
-					xTaskCreate(keyboard_task, "keyboard_task", 2048,
+					xTaskCreate(keyboard_task, "keyboard_task_to_edit", 2048,
 							(void*) &params, 5, &other_task_handel);
 
 					vTaskDelete(NULL);
@@ -659,6 +668,7 @@ void note_book_app_page1(void *pvParameters) {
 					print_ILI9488("New file name", 100, 5, 2);
 
 					TaskParams params; // static = stays in memory = no need to malloc
+					params.x = 0;
 					params.y = 35;
 					strcpy(params.previous_task, "note_book_app_page1");
 					strcpy(params.current_task, "keyboard_New_file");

@@ -23,5 +23,6 @@ void unmount_spiffs();
 void format_spiffs();
 char* read_file_contents(const char *full_path);
 void delete_file(const char *full_path);
+void overwrite_file(const char *full_path, const char *data);
 
 #endif /* COMPONENTS_MY_SPIFFS_MY_SPIFFS_H_ */

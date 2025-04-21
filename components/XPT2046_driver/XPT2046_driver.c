@@ -17,7 +17,7 @@ uint8_t received[10];  // Global or large enough buffer
 char full_path[160];  // Make sure this is large enough
 
 volatile bool PIRQ_bool = 0;
-bool pressed = false;
+bool pressed = 0;
 uint8_t paragraph_number;
 
 uint16_t* recieve_touch_data(int r) {
@@ -154,6 +154,11 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 					xTaskCreate(main_menu_task, "main_menu_task", 2048, NULL, 5,
 							&main_menu_Handle);
+				} else if (strcmp(current_task, "keyboard_to_edit") == 0) {
+					xTaskCreate(notebook_editFilesPage1_task,
+							"notebook_editFilesPage1_task", 2048, NULL, 5,
+							&other_task_handel);
+
 				} else {
 					xTaskCreate(note_book_app_page1, "note_book_app_page1",
 							2048, NULL, 5, &other_task_handel);
@@ -238,11 +243,35 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 				if (strcmp(previous_task, "keyboard_New_file") == 0) {
 					char temp[keyboard_buffer_i];
-					strncpy(temp, keyboard_buffer, keyboard_buffer_i );
-					temp[keyboard_buffer_i] = '\0';  // Null-terminate the string
-
+					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
+					temp[keyboard_buffer_i] = '\0'; // Null-terminate the string
 
 					append_to_file(full_path, temp);
+
+					while (coord_index_char > 0) {
+						clean_last_char();
+					}
+
+					*x1 = 0;
+					*y1 = 35;
+
+					keyboard_buffer_i = 0;
+					paragraph_number++;
+					char text[14];
+					sprintf(text, "Paragraph %d", paragraph_number);
+					print_ILI9488(text, 20, 144, 2);
+
+					break;
+				}
+
+				if (strcmp(current_task, "keyboard_to_edit") == 0) {
+
+					printf("editing lol \n");
+					char temp[keyboard_buffer_i];
+					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
+					temp[keyboard_buffer_i] = '\0'; // Null-terminate the string
+
+					overwrite_file(full_path, temp);
 
 					while (coord_index_char > 0) {
 						clean_last_char();

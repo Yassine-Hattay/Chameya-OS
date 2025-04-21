@@ -22,5 +22,6 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 		char *case_type, char *previous_task, char *current_task);
 
 extern uint8_t paragraph_number;
+extern char full_path[160];
 
 #endif

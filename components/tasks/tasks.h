@@ -13,7 +13,8 @@
 #include <math.h>
 
 typedef struct {
-	int y;
+	uint16_t x;
+	uint16_t y;
 	char previous_task[32];
 	char current_task[32];
 } TaskParams;
