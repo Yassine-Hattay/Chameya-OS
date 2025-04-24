@@ -353,7 +353,7 @@ void print_to_screen_char(const uint8_t a_font_0[], uint16_t width,
 		uint16_t height, uint16_t *x, uint16_t *y, uint8_t font_size,
 		int16_t correction_value) {
 
-	uint8_t *output_data;
+	uint8_t *output_data = NULL;  // Initialize to NULL
 	size_t output_size;
 
 	if ((*x) + width > 480 || ((*y) == 0 && ((*x) + width > 456))) {
@@ -361,6 +361,7 @@ void print_to_screen_char(const uint8_t a_font_0[], uint16_t width,
 		(*y) = (*y) + height;
 	}
 	if ((*y) + height > 174) {
+		free(output_data);
 		return;
 	}
 
@@ -498,10 +499,9 @@ void print_to_screen(const uint8_t a_font_0[], uint16_t width, uint16_t height,
 	free(output_data);
 }
 
-
-void inner_apply_correction(const uint8_t a_font_0[], uint16_t width, uint16_t height,
-		uint16_t *x, uint16_t *y, uint8_t font_size, int16_t correction_value) {
-
+void inner_apply_correction(const uint8_t a_font_0[], uint16_t width,
+		uint16_t height, uint16_t *x, uint16_t *y, uint8_t font_size,
+		int16_t correction_value) {
 
 	if ((*x) + width > 480) {
 		(*x) = 0;
@@ -511,7 +511,6 @@ void inner_apply_correction(const uint8_t a_font_0[], uint16_t width, uint16_t h
 	(*x) = (*x) + width - correction_value;
 
 }
-
 
 void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
 		uint8_t font_size) {
@@ -667,8 +666,8 @@ void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
 			inner_apply_correction($_font_0, width, height, x, y, font_size,
 					width * 0.1);
 		} else if (*message == '%') {
-			inner_apply_correction(percent_font_0, width, height, x, y, font_size,
-					width * 0.1);
+			inner_apply_correction(percent_font_0, width, height, x, y,
+					font_size, width * 0.1);
 		} else if (*message == ',') {
 			inner_apply_correction(comma_font_0, width, height, x, y, font_size,
 					width * 0.1);
@@ -676,8 +675,8 @@ void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
 			inner_apply_correction(point_font_0, width, height, x, y, font_size,
 					width * 0.1);
 		} else if (*message == ':') {
-			inner_apply_correction(two_points_font_0, width, height, x, y, font_size,
-					width * 0.1);
+			inner_apply_correction(two_points_font_0, width, height, x, y,
+					font_size, width * 0.1);
 		} else if (*message == '!') {
 			inner_apply_correction(exclamation_font_0, width, height, x, y,
 					font_size, width * 0.1);
@@ -700,8 +699,8 @@ void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
 			inner_apply_correction(times_font_0, width, height, x, y, font_size,
 					width * 0.1);
 		} else if (*message == '/') {
-			inner_apply_correction(devide_font_0, width, height, x, y, font_size,
-					width * 0.1);
+			inner_apply_correction(devide_font_0, width, height, x, y,
+					font_size, width * 0.1);
 		} else if (*message == 'A') {
 			inner_apply_correction(A_font_0, width, height, x, y, font_size,
 					width * 0.1);
@@ -1506,6 +1505,7 @@ void draw_keyborad(char c) {
 	char *qwerty_row2;
 	char *qwerty_row3;
 	char *shift = "~";
+
 	if (c == 'l') {
 		qwerty_row1 = "qwertyuiop";
 		qwerty_row2 = "asdfghjkl";
@@ -1532,6 +1532,12 @@ void draw_keyborad(char c) {
 		keyboard[j].y = 175;
 		keyboard[j].width = 37;
 		keyboard[j].height = 45;
+
+		if (keyboard[j].label != NULL) {
+			free(keyboard[j].label);
+			keyboard[j].label = NULL;
+		}
+
 		keyboard[j].label = malloc(2 * sizeof(char)); // Allocate space for the character and null terminator
 		keyboard[j].label[0] = qwerty_row1[j]; // Assign the character from qwerty_row1
 		keyboard[j].label[1] = '\0';
@@ -1575,6 +1581,12 @@ void draw_keyborad(char c) {
 		keyboard[11 + j].y = 225;
 		keyboard[11 + j].width = 37;
 		keyboard[11 + j].height = 45;
+
+		if (keyboard[11 + j].label != NULL) {
+			free(keyboard[11 + j].label);
+			keyboard[11 + j].label = NULL;
+		}
+
 		keyboard[11 + j].label = malloc(2 * sizeof(char)); // Allocate space for the character and null terminator
 		keyboard[11 + j].label[0] = qwerty_row2[j]; // Assign the character from qwerty_row1
 		keyboard[11 + j].label[1] = '\0';
@@ -1617,6 +1629,12 @@ void draw_keyborad(char c) {
 		keyboard[21 + j].y = 274;
 		keyboard[21 + j].width = 37;
 		keyboard[21 + j].height = 45;
+
+		if (keyboard[21 + j].label != NULL) {
+			free(keyboard[21 + j].label);
+			keyboard[21 + j].label = NULL;
+		}
+
 		keyboard[21 + j].label = malloc(2 * sizeof(char)); // Allocate space for the character and null terminator
 		keyboard[21 + j].label[0] = qwerty_row3[j]; // Assign the character from qwerty_row1
 		keyboard[21 + j].label[1] = '\0';

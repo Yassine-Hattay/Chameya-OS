@@ -12,12 +12,7 @@
 #include "../XPT2046_driver/XPT2046_driver.h"
 #include <math.h>
 
-typedef struct {
-	uint16_t x;
-	uint16_t y;
-	char previous_task[32];
-	char current_task[32];
-} TaskParams;
+
 
 
 extern TaskHandle_t main_menu_Handle;

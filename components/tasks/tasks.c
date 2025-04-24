@@ -61,8 +61,6 @@ bool calculate_x_y(uint16_t *x, uint16_t *y) { // Wait indefinitely for ISR to n
 	float y_float = pow((255 - first8_msb1), scaling_factor) * cell_size1;
 	*y = (uint16_t) roundf(y_float);
 
-	printf("Mapped Coordinates: x = %u, y = %u\n", *x, *y);
-
 	return 1;
 }
 
@@ -86,8 +84,8 @@ void keyboard_task(void *pvParameters) {
 			continue;
 		}
 
-		check_key_press(x, y, &x1, &y1, &case_type, previous_task,
-				current_task);
+		check_key_press(x, y, &x1, &y1, &case_type, previous_task, current_task,
+				data);
 		send_command(0x00);
 		gpio_set_level(SS_display, 1);
 	}
@@ -140,9 +138,12 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 
 					gpio_set_level(SS_display, 1);
 
+					free(filename);
+
 					xTaskCreate(notebook_editFilesPage1_task,
 							"notebook_editFilesPage1_task", 2048,
 							NULL, 5, &other_task_handel);
+
 					vTaskDelete(NULL);
 
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
@@ -158,14 +159,16 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 
 					gpio_set_level(SS_display, 1);
 
+					free(filename);
+
 					xTaskCreate(notebook_editFilesPage1_task,
 							"notebook_editFilesPage1_task", 2048,
 							NULL, 5, &other_task_handel);
+
 					vTaskDelete(NULL);
 
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
 						"Edit") == 0) {
-
 
 					gpio_set_level(SS_display, 0);
 
@@ -181,11 +184,12 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 					print_ILI9488(filename, 100, 0, 2);
 
 					char *contents_local = read_file_contents(full_path);
+					char *original_ptr = contents_local; // Save original pointer
 
 					uint16_t x1 = 0, y1 = 35;
 
 					keyboard_buffer_i = 0;
-					coord_index_char = 1 ;
+					coord_index_char = 1;
 
 					while (*contents_local) {
 						char c = *contents_local;
@@ -198,23 +202,24 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 						contents_local++;
 					}
 
-
 					gpio_set_level(SS_display, 1);
 
-					TaskParams params; // static = stays in memory = no need to malloc
-					params.x = x1;
-					params.y = y1;
+					TaskParams *params = malloc(sizeof(TaskParams));
+					params->x = x1;
+					params->y = y1;
 
-
-					strcpy(params.previous_task,
+					strcpy(params->previous_task,
 							"notebook_editFilesPage2_task");
-					strcpy(params.current_task, "keyboard_to_edit");
-
+					strcpy(params->current_task, "keyboard_to_edit");
 
 					paragraph_number = 2;
 
 					xTaskCreate(keyboard_task, "keyboard_task_to_edit", 2048,
-							(void*) &params, 5, &other_task_handel);
+							(void*) params, 5, &other_task_handel);
+
+					free(filename);
+
+					free(original_ptr);  // Free the memory properly
 
 					vTaskDelete(NULL);
 
@@ -311,12 +316,19 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 
 					gpio_set_level(SS_display, 1);
 
+					char *filename_copy = strdup(filenames[file_count - i]);
+
+					for (uint8_t i = 0; i <= file_count; i++) {
+						free(filenames[i]);
+					}
+
 					xTaskCreate(notebook_editFilesPage2_task,
 							"notebook_editFilesPage2_task", 2048,
-							(void*) filenames[file_count - i], // <- pass it here
+							(void*) filename_copy, // <- pass it here
 							5, &main_menu_Handle);
 
 					x_level = 1;
+
 					vTaskDelete(NULL);
 
 				} else if (x_level == 0) {
@@ -333,9 +345,12 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 
 					free(content);  // Don't forget to free the memory!
 
+					for (uint8_t i = 0; i <= file_count; i++) {
+						free(filenames[i]);
+					}
+
 					xTaskCreate(note_book_app_page1, "note_book_app_page1",
-							2048,
-							NULL, 5, &other_task_handel);
+							2048, NULL, 5, &other_task_handel);
 
 					vTaskDelete(NULL);
 
@@ -517,6 +532,10 @@ void notebook_readfiles_task(void *pvParameters) {
 							2048,
 							NULL, 5, &other_task_handel);
 
+					for (uint8_t i = 0; i <= file_count; i++) {
+						free(filenames[i]);
+					}
+
 					vTaskDelete(NULL);
 
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
@@ -608,7 +627,7 @@ void main_menu_task(void *pvParameters) {
 				clean_screen();
 
 				xTaskCreate(note_book_app_page1, "note_book_app_page1", 2048,
-				NULL, 5, &other_task_handel);
+				NULL, 5, &main_menu_Handle);
 
 				gpio_set_level(SS_display, 1);
 
@@ -625,8 +644,6 @@ void note_book_app_page1(void *pvParameters) {
 	coord_index_char = 1;
 
 	bootApp_noteBook();
-
-// Adjust this for the desired speed of growth
 
 	while (1) {
 
@@ -667,16 +684,16 @@ void note_book_app_page1(void *pvParameters) {
 					background_color = "black";
 					print_ILI9488("New file name", 100, 5, 2);
 
-					TaskParams params; // static = stays in memory = no need to malloc
-					params.x = 0;
-					params.y = 35;
-					strcpy(params.previous_task, "note_book_app_page1");
-					strcpy(params.current_task, "keyboard_New_file");
+					TaskParams *params = malloc(sizeof(TaskParams));
+					params->x = 0;
+					params->y = 35;
+					strcpy(params->previous_task, "note_book_app_page1");
+					strcpy(params->current_task, "keyboard_New_file");
 
 					coord_index_char = 1;
 
 					xTaskCreate(keyboard_task, "keyboard_task", 2048,
-							(void*) &params, 5, &other_task_handel);
+							(void*) params, 5, &main_menu_Handle);
 
 					send_command(0x00);
 					gpio_set_level(SS_display, 1);
@@ -688,13 +705,8 @@ void note_book_app_page1(void *pvParameters) {
 
 					clean_screen();
 
-					TaskParams params; // static = stays in memory = no need to malloc
-					params.y = 35;
-					strcpy(params.previous_task, "note_book_app_page1");
-					strcpy(params.current_task, "Read_files");
-
 					xTaskCreate(notebook_readfiles_task,
-							"notebook_readfiles_task", 2048, (void*) &params, 5,
+							"notebook_readfiles_task", 2048, NULL, 5,
 							&other_task_handel);
 
 					send_command(0x00);
@@ -735,7 +747,6 @@ void write_textfile_task(void *pvParameters) {
 	char *current_task = data->current_task;
 
 	char case_type = 'l';
-// Adjust this for the desired speed of growth
 
 	coord_index_char = 1;
 
@@ -748,8 +759,8 @@ void write_textfile_task(void *pvParameters) {
 			continue;
 		}
 
-		check_key_press(x, y, &x1, &y1, &case_type, previous_task,
-				current_task);
+		check_key_press(x, y, &x1, &y1, &case_type, previous_task, current_task,
+				data);
 		send_command(0x00);
 		gpio_set_level(SS_display, 1);
 	}

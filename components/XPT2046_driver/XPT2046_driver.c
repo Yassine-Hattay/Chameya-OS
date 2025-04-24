@@ -32,19 +32,10 @@ uint16_t* recieve_touch_data(int r) {
 		received[i] = recive();  // Assume recive() is defined elsewhere
 	}
 
-	// Print received bytes in binary (optional)
-	for (int j = 0; j < r; j++) {
-		printf("received%d: ", j + 1);
-		for (int i = 7; i >= 0; i--) {
-			printf("%d", (received[j] >> i) & 1);
-		}
-		printf("\n");
-	}
 
 	// Calculate first 12 bits
 	if (r >= 2) {
 		first12 = ((uint16_t) received[0] << 4) | (received[1] >> 4);
-		printf("First 12 bits (hex): %03X\n", first12);
 	} else {
 		printf("Not enough data for 12 bits\n");
 		first12 = 0;
@@ -130,8 +121,9 @@ void init_XPT2046() {
 
 }
 
+
 void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
-		char *case_type, char *previous_task, char *current_task) {
+		char *case_type, char *previous_task, char *current_task ,TaskParams *data) {
 
 	for (int i = 0; i < 32; i++) { // Loop through all the keys (26 + 1 for DEL or space)
 		if ((x >= keyboard[i].x && x <= (keyboard[i].x + keyboard[i].width))
@@ -166,6 +158,8 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 				}
 
 				gpio_set_level(SS_display, 1);
+
+				free(data);
 
 				vTaskDelete(NULL);
 
@@ -230,13 +224,15 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 					background_color = "black";
 
-					TaskParams params; // static = stays in memory = no need to malloc
-					params.y = 35;
-					strcpy(params.previous_task, "keyboard_New_file");
-					strcpy(params.current_task, "write_textfile_task");
+					TaskParams *params = malloc(sizeof(TaskParams));
+					params->y = 35;
+					strcpy(params->previous_task, "keyboard_New_file");
+					strcpy(params->current_task, "write_textfile_task");
 
 					xTaskCreate(write_textfile_task, "write_textfile_task",
-							2048, (void*) &params, 5, &other_task_handel);
+							2048, (void*) params, 5, &other_task_handel);
+
+					free(data);
 
 					vTaskDelete(NULL);
 				}
@@ -290,6 +286,8 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 				}
 
 				gpio_set_level(SS_display, 1);
+
+				free(data);
 
 				vTaskDelete(NULL);
 
@@ -357,4 +355,3 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 		}
 	}
 }
-
