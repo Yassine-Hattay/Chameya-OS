@@ -84,11 +84,15 @@ void send_ILI9488_data(uint8_t data) {
 }
 
 void init_display() {
-	gpio_config_t io_conf = { .pin_bit_mask = (1ULL << DC_pin)
-			| (1ULL << SS_display) | (1ULL << RESET_pin), .mode =
+	gpio_config_t io_conf = { .pin_bit_mask =  (1ULL << SS_display) | (1ULL << RESET_pin), .mode =
 			GPIO_MODE_OUTPUT, .pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
 			GPIO_PULLDOWN_DISABLE, .intr_type = GPIO_INTR_DISABLE };
 	gpio_config(&io_conf);
+
+	gpio_config_t io_conf1 = { .pin_bit_mask = (1ULL << DC_pin), .mode =
+			GPIO_MODE_OUTPUT, .pull_up_en = GPIO_PULLUP_ENABLE, .pull_down_en =
+			GPIO_PULLDOWN_DISABLE, .intr_type = GPIO_INTR_DISABLE };
+	gpio_config(&io_conf1);
 
 	hardware_reset();
 

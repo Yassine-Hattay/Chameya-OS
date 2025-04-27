@@ -268,12 +268,14 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 			int filename_length = strlen(filenames[file_count]); // Length of the filename
 			width = 24 * filename_length + 24;  // Multiply the length by 24
 
-			make_button(line, width, height, x, y);
-
 			if (x + width > 420) {
 				y += height + 5;
 				x = 5;
-			} else {
+			}
+
+			make_button(line, width, height, x, y);
+
+			if (x + width <= 420) {
 				x += width + 5;
 			}
 
@@ -454,12 +456,14 @@ void notebook_readfiles_task(void *pvParameters) {
 			int filename_length = strlen(filenames[file_count]); // Length of the filename
 			width = 24 * filename_length + 24;  // Multiply the length by 24
 
-			make_button(line, width, height, x, y);
-
 			if (x + width > 420) {
 				y += height + 5;
 				x = 5;
-			} else {
+			}
+
+			make_button(line, width, height, x, y);
+
+			if (x + width <= 420) {
 				x += width + 5;
 			}
 
@@ -572,6 +576,11 @@ void notebook_readfiles_task(void *pvParameters) {
 
 						width = 24 * filename_length + 24; // Multiply the length by 24
 
+						if (x + width > 420) {
+							y += height + 5;
+							x = 5;
+						}
+
 						set_resolution_pos(x, y, width, height, 0);
 
 						send_command(0x2C);
@@ -584,10 +593,7 @@ void notebook_readfiles_task(void *pvParameters) {
 
 						print_ILI9488(filenames[j], x + 15, y + 15, 2);
 
-						if (x + width > 420) {
-							y += height + 5;
-							x = 5;
-						} else {
+						if (x + width <= 420) {
 							x += width + 5;
 						}
 

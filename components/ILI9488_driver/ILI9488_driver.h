@@ -10,7 +10,7 @@
 #define SS_display   15
 #define SS_touch   5
 #define DC_pin 4
-#define RESET_pin 2
+#define RESET_pin 10
 #define PIRQ_pin 3
 #define MAX_COORDS 254 // or whatever max size you need
 #define MAX_COORDS_CHAR 254 // or whatever max size you need
