@@ -12,9 +12,6 @@
 #include "../XPT2046_driver/XPT2046_driver.h"
 #include <math.h>
 
-
-
-
 extern TaskHandle_t main_menu_Handle;
 extern TaskHandle_t other_task_handel;
 extern char keyboard_buffer[];
@@ -26,5 +23,6 @@ void note_book_app_page1(void *pvParameters);
 void printCoordHistoryTable();
 void write_textfile_task(void *pvParameters);
 void notebook_editFilesPage1_task(void *pvParameters);
+void keyboard_task(void *pvParameters);
 
 #endif /* COMPONENTS_TASKS_TASKS_H_ */

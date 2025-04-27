@@ -32,7 +32,6 @@ uint16_t* recieve_touch_data(int r) {
 		received[i] = recive();  // Assume recive() is defined elsewhere
 	}
 
-
 	// Calculate first 12 bits
 	if (r >= 2) {
 		first12 = ((uint16_t) received[0] << 4) | (received[1] >> 4);
@@ -121,9 +120,9 @@ void init_XPT2046() {
 
 }
 
-
 void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
-		char *case_type, char *previous_task, char *current_task ,TaskParams *data) {
+		char *case_type, char *previous_task, char *current_task,
+		TaskParams *data) {
 
 	for (int i = 0; i < 32; i++) { // Loop through all the keys (26 + 1 for DEL or space)
 		if ((x >= keyboard[i].x && x <= (keyboard[i].x + keyboard[i].width))
@@ -142,6 +141,12 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 					clean_last_char();
 				}
 
+				coord_index_char = 1;
+
+				gpio_set_level(SS_display, 1);
+
+				free(data);
+
 				if (strcmp(previous_task, "main_menu_task") == 0) {
 
 					xTaskCreate(main_menu_task, "main_menu_task", 2048, NULL, 5,
@@ -153,13 +158,8 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 				} else {
 					xTaskCreate(note_book_app_page1, "note_book_app_page1",
-							2048, NULL, 5, &other_task_handel);
-
+							2048, NULL, 5, &main_menu_Handle);
 				}
-
-				gpio_set_level(SS_display, 1);
-
-				free(data);
 
 				vTaskDelete(NULL);
 
@@ -167,6 +167,36 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 			}
 
 			if (strcmp(keyboard[i].label, "OK") == 0) {
+
+				if (strcmp(current_task, "keyboard_to_edit") == 0) {
+
+					char temp[keyboard_buffer_i];
+					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
+					temp[keyboard_buffer_i] = '\0'; // Null-terminate the string
+
+					if (paragraph_number == 1) {
+						overwrite_file(full_path, temp);
+					} else {
+						append_to_file(full_path, temp);
+					}
+
+					while (coord_index_char > 1) {
+						clean_last_char();
+					}
+
+					coord_index_char = 1;
+
+					*x1 = 0;
+					*y1 = 35;
+
+					keyboard_buffer_i = 0;
+					paragraph_number++;
+					char text[14];
+					sprintf(text, "Paragraph %d", paragraph_number);
+					print_ILI9488(text, 20, 142, 2);
+
+					break;
+				}
 
 				if (strcmp(current_task, "keyboard_New_file") == 0) {
 
@@ -183,7 +213,7 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 						background_color = "red";
 						print_ILI9488("name longer than 10 !", 0, 144, 2);
-						background_color = "black";
+						background_color = "red";
 						break;
 					}
 
@@ -193,9 +223,11 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 						clean_last_char();
 					}
 
+					coord_index_char = 1;
+
 					paragraph_number = 1;
 
-					background_color = "black";
+					background_color = "red";
 
 					char temp[keyboard_buffer_i];
 					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
@@ -217,22 +249,25 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 					print_ILI9488(temp, 100, 5, 2);
 
-					background_color = "black";
+					background_color = "red";
 					char text[14];
 					sprintf(text, "Paragraph %d", paragraph_number);
-					print_ILI9488(text, 20, 143, 2);
+					print_ILI9488(text, 20, 142, 2);
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
 
-					background_color = "black";
+					background_color = "red";
 
 					TaskParams *params = malloc(sizeof(TaskParams));
+					params->x = 0;
 					params->y = 35;
 					strcpy(params->previous_task, "keyboard_New_file");
 					strcpy(params->current_task, "write_textfile_task");
 
-					xTaskCreate(write_textfile_task, "write_textfile_task",
-							2048, (void*) params, 5, &other_task_handel);
-
 					free(data);
+
+					xTaskCreate(keyboard_task, "write_textfile_task", 2048,
+							(void*) params, 5, &other_task_handel);
 
 					vTaskDelete(NULL);
 				}
@@ -244,43 +279,26 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 					append_to_file(full_path, temp);
 
-					while (coord_index_char > 0) {
+					while (coord_index_char > 1) {
 						clean_last_char();
+
 					}
+
+					coord_index_char = 1;
+
+					paragraph_number++;
+
+					background_color = "red";
+					char text[14];
+					sprintf(text, "Paragraph %d", paragraph_number);
+					print_ILI9488(text, 20, 142, 2);
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
 
 					*x1 = 0;
 					*y1 = 35;
 
 					keyboard_buffer_i = 0;
-					paragraph_number++;
-					char text[14];
-					sprintf(text, "Paragraph %d", paragraph_number);
-					print_ILI9488(text, 20, 144, 2);
-
-					break;
-				}
-
-				if (strcmp(current_task, "keyboard_to_edit") == 0) {
-
-					printf("editing lol \n");
-					char temp[keyboard_buffer_i];
-					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
-					temp[keyboard_buffer_i] = '\0'; // Null-terminate the string
-
-					overwrite_file(full_path, temp);
-
-					while (coord_index_char > 0) {
-						clean_last_char();
-					}
-
-					*x1 = 0;
-					*y1 = 35;
-
-					keyboard_buffer_i = 0;
-					paragraph_number++;
-					char text[14];
-					sprintf(text, "Paragraph %d", paragraph_number);
-					print_ILI9488(text, 20, 144, 2);
 
 					break;
 				}
@@ -345,11 +363,9 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 			}
 
 			char c = keyboard[i].label[0];
-			background_color = "black";
+			background_color = "red";
 			print_char_ILI9488(c, x1, y1, 2);
 			keyboard_buffer[keyboard_buffer_i++] = c;
-
-			send_command(0x00);
 
 			break;  // Exit loop after first key is found
 		}

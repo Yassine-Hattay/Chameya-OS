@@ -1499,7 +1499,7 @@ void draw_keyborad(char c) {
 
 	gpio_set_level(SS_display, 0);
 
-	background_color = "black";
+	background_color = "red";
 
 	char *qwerty_row1;
 	char *qwerty_row2;
@@ -1546,7 +1546,7 @@ void draw_keyborad(char c) {
 		send_command(0x2C);
 
 		for (uint64_t i = 0; i < 37 * 45 / 2; i++) {
-			send_ILI9488_data(0x00);
+			send_ILI9488_data(0x24);
 		}
 
 		print_ILI9488((char[] ) { qwerty_row1[j], '\0' }, x + 20, 180, 2);
@@ -1569,7 +1569,7 @@ void draw_keyborad(char c) {
 	send_command(0x2C);
 
 	for (uint64_t i = 0; i < 37 * 45 / 2; i++) {
-		send_ILI9488_data(0x00);
+		send_ILI9488_data(0x24);
 	}
 
 	print_ILI9488("?12", x + 8, 235, 1);
@@ -1595,7 +1595,7 @@ void draw_keyborad(char c) {
 		send_command(0x2C);
 
 		for (uint64_t i = 0; i < 37 * 45 / 2; i++) {
-			send_ILI9488_data(0x00);
+			send_ILI9488_data(0x24);
 		}
 
 		print_ILI9488((char[] ) { qwerty_row2[j], '\0' }, x + 60, 230, 2);
@@ -1619,7 +1619,7 @@ void draw_keyborad(char c) {
 	send_command(0x2C);
 
 	for (uint64_t i = 0; i < 37 * 45 / 2; i++) {
-		send_ILI9488_data(0x00);
+		send_ILI9488_data(0x24);
 	}
 	print_ILI9488(shift, x + 12, 279, 2);
 
@@ -1643,7 +1643,7 @@ void draw_keyborad(char c) {
 		send_command(0x2C);
 
 		for (uint64_t i = 0; i < 37 * 45 / 2; i++) {
-			send_ILI9488_data(0x00);
+			send_ILI9488_data(0x24);
 		}
 		print_ILI9488((char[] ) { qwerty_row3[j], '\0' }, x + 60, 279, 2);
 
@@ -1662,7 +1662,7 @@ void draw_keyborad(char c) {
 	send_command(0x2C);
 
 	for (uint64_t i = 0; i < 60 * 43 / 2; i++) {
-		send_ILI9488_data(0x00);
+		send_ILI9488_data(0x24);
 	}
 	j++;
 	x = x + 47;
@@ -1677,7 +1677,7 @@ void draw_keyborad(char c) {
 	send_command(0x2C);
 
 	for (uint64_t i = 0; i < 37 * 43 / 2; i++) {
-		send_ILI9488_data(0x00);
+		send_ILI9488_data(0x24);
 	}
 
 	print_ILI9488("DEL", x + 67, 285, 1);
@@ -1704,7 +1704,7 @@ void draw_keyborad(char c) {
 	background_color = "green";
 	print_ILI9488("O", 0, 0, 2);
 
-	background_color = "black";
+	background_color = "red";
 
 	gpio_set_level(SS_display, 1);
 
@@ -1746,7 +1746,7 @@ void make_X_button() {
 
 	background_color = "red";
 	print_ILI9488("X", 456, 0, 2);
-	background_color = "black";
+	background_color = "red";
 
 	send_command(0x00);
 	gpio_set_level(SS_display, 1);
@@ -1767,8 +1767,10 @@ void make_button(char *name, uint16_t width, uint16_t height, uint16_t x,
 	send_command(0x2C);
 
 	for (uint64_t i = 0; i < width * height / 2; i++) {
-		send_ILI9488_data(0x00);
+		send_ILI9488_data(0x24);
 	}
+
+	background_color= "red";
 
 	print_ILI9488(name, x + 15, y + 15, 2);
 
@@ -1804,7 +1806,7 @@ void bootApp_noteBook() {
 	background_color = "red";
 	print_ILI9488("X", 456, 0, 2);
 
-	background_color = "black";
+	background_color = "red";
 
 	width = 180;
 	height = 70;

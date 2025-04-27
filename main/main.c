@@ -20,7 +20,7 @@ void app_main() {
 
 	esp_set_cpu_freq(ESP_CPU_FREQ_160M);  // Set CPU speed to 160 MHz
 
-	// format_spiffs();
+	//format_spiffs();
 
 	init_display();
 

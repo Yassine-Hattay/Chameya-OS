@@ -86,6 +86,7 @@ void keyboard_task(void *pvParameters) {
 
 		check_key_press(x, y, &x1, &y1, &case_type, previous_task, current_task,
 				data);
+
 		send_command(0x00);
 		gpio_set_level(SS_display, 1);
 	}
@@ -194,7 +195,7 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 					while (*contents_local) {
 						char c = *contents_local;
 
-						background_color = "black";
+						background_color = "red";
 						print_char_ILI9488(c, &x1, &y1, 2);
 						keyboard_buffer[keyboard_buffer_i++] = c;
 
@@ -212,7 +213,7 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 							"notebook_editFilesPage2_task");
 					strcpy(params->current_task, "keyboard_to_edit");
 
-					paragraph_number = 2;
+					paragraph_number = 1;
 
 					xTaskCreate(keyboard_task, "keyboard_task_to_edit", 2048,
 							(void*) params, 5, &other_task_handel);
@@ -235,7 +236,7 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 
 	gpio_set_level(SS_display, 0);
 
-	background_color = "black";
+	background_color = "red";
 	print_ILI9488("files", 100, 5, 2);
 
 	gpio_set_level(SS_display, 1);
@@ -263,6 +264,9 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 
 			// Store a copy of the token
 			filenames[file_count] = strdup(line); // allocates and copies the string
+
+			int filename_length = strlen(filenames[file_count]); // Length of the filename
+			width = 24 * filename_length + 24;  // Multiply the length by 24
 
 			make_button(line, width, height, x, y);
 
@@ -367,21 +371,24 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 						clean_last_char();
 					}
 
-					background_color = "black";
+					background_color = "red";
 					print_ILI9488("files", 100, 5, 2);
 
 					x_level = 0;
 
 					coord_index_char = 1;
 
-					for (uint8_t j = 0; j < file_count + 1; j++) {
+					for (uint8_t j = 0; j < file_count - 1; j++) {
+
+						int filename_length = strlen(filenames[file_count]); // Length of the filename
+						width = 24 * filename_length + 24; // Multiply the length by 24
 
 						set_resolution_pos(x, y, width, height, 0);
 
 						send_command(0x2C);
 
 						for (uint64_t i = 0; i < width * height / 2; i++) {
-							send_ILI9488_data(0x00);
+							send_ILI9488_data(0x24);
 						}
 
 						print_ILI9488(filenames[j], x + 15, y + 15, 2);
@@ -396,8 +403,6 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 						coord_index_char++;
 
 					}
-
-					coord_index_char = coord_index_char - 2;
 
 					make_X_button();
 
@@ -416,7 +421,7 @@ void notebook_readfiles_task(void *pvParameters) {
 
 	gpio_set_level(SS_display, 0);
 
-	background_color = "black";
+	background_color = "red";
 	print_ILI9488("files", 100, 5, 2);
 
 	gpio_set_level(SS_display, 1);
@@ -445,6 +450,9 @@ void notebook_readfiles_task(void *pvParameters) {
 
 			// Store a copy of the token
 			filenames[file_count] = strdup(line); // allocates and copies the string
+
+			int filename_length = strlen(filenames[file_count]); // Length of the filename
+			width = 24 * filename_length + 24;  // Multiply the length by 24
 
 			make_button(line, width, height, x, y);
 
@@ -493,7 +501,7 @@ void notebook_readfiles_task(void *pvParameters) {
 
 					background_color = "red";
 					print_ILI9488("X", 456, 0, 2);
-					background_color = "black";
+					background_color = "red";
 
 					snprintf(full_path_l, sizeof(full_path_l),
 							"/spiffs/notebook/%s\n", filenames[file_count - i]);
@@ -551,22 +559,28 @@ void notebook_readfiles_task(void *pvParameters) {
 						clean_last_char();
 					}
 
-					background_color = "black";
+					background_color = "red";
 					print_ILI9488("files", 100, 5, 2);
 
 					x_level = 0;
 
 					coord_index_char = 1;
 
-					for (uint8_t j = 0; j < file_count + 1; j++) {
+					for (uint8_t j = 0; j < file_count - 1; j++) {
+
+						int filename_length = strlen(filenames[j]); // Length of the filename
+
+						width = 24 * filename_length + 24; // Multiply the length by 24
 
 						set_resolution_pos(x, y, width, height, 0);
 
 						send_command(0x2C);
 
 						for (uint64_t i = 0; i < width * height / 2; i++) {
-							send_ILI9488_data(0x00);
+							send_ILI9488_data(0x24);
 						}
+
+						send_command(0x00);
 
 						print_ILI9488(filenames[j], x + 15, y + 15, 2);
 
@@ -580,8 +594,6 @@ void notebook_readfiles_task(void *pvParameters) {
 						coord_index_char++;
 
 					}
-
-					coord_index_char = coord_index_char - 2;
 
 					make_X_button();
 
@@ -600,8 +612,6 @@ void notebook_readfiles_task(void *pvParameters) {
 void main_menu_task(void *pvParameters) {
 
 	draw_main_menu_icons();
-
-// Adjust this for the desired speed of growth
 
 	while (1) {
 
@@ -665,6 +675,7 @@ void note_book_app_page1(void *pvParameters) {
 
 				if (strcmp(history_char[coord_index_char - i].app_name, "close")
 						== 0) {
+					gpio_set_level(SS_display, 0);
 
 					clean_screen();
 
@@ -679,10 +690,15 @@ void note_book_app_page1(void *pvParameters) {
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
 						"New file") == 0) {
 
+					gpio_set_level(SS_display, 0);
+
 					clean_screen();
 
-					background_color = "black";
+					background_color = "red";
 					print_ILI9488("New file name", 100, 5, 2);
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
 
 					TaskParams *params = malloc(sizeof(TaskParams));
 					params->x = 0;
@@ -695,35 +711,36 @@ void note_book_app_page1(void *pvParameters) {
 					xTaskCreate(keyboard_task, "keyboard_task", 2048,
 							(void*) params, 5, &main_menu_Handle);
 
-					send_command(0x00);
-					gpio_set_level(SS_display, 1);
-
 					vTaskDelete(NULL);
 
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
 						"Read files") == 0) {
 
+					gpio_set_level(SS_display, 0);
+
 					clean_screen();
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
 
 					xTaskCreate(notebook_readfiles_task,
 							"notebook_readfiles_task", 2048, NULL, 5,
 							&other_task_handel);
 
-					send_command(0x00);
-					gpio_set_level(SS_display, 1);
-
 					vTaskDelete(NULL);
 
 				} else {
 
+					gpio_set_level(SS_display, 0);
+
 					clean_screen();
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
 
 					xTaskCreate(notebook_editFilesPage1_task,
 							"notebook_editFiles_task", 2048,
 							NULL, 5, &other_task_handel);
-
-					send_command(0x00);
-					gpio_set_level(SS_display, 1);
 
 					vTaskDelete(NULL);
 
@@ -733,36 +750,6 @@ void note_book_app_page1(void *pvParameters) {
 			send_command(0x00);
 			gpio_set_level(SS_display, 1);
 		}
-	}
-
-}
-
-void write_textfile_task(void *pvParameters) {
-
-	TaskParams *data = (TaskParams*) pvParameters;
-
-	uint16_t x1 = 0;
-	uint16_t y1 = data->y;
-	char *previous_task = data->previous_task;
-	char *current_task = data->current_task;
-
-	char case_type = 'l';
-
-	coord_index_char = 1;
-
-	draw_keyborad(case_type);
-
-	while (1) {
-
-		uint16_t x, y;
-		if (!calculate_x_y(&x, &y)) {
-			continue;
-		}
-
-		check_key_press(x, y, &x1, &y1, &case_type, previous_task, current_task,
-				data);
-		send_command(0x00);
-		gpio_set_level(SS_display, 1);
 	}
 
 }
