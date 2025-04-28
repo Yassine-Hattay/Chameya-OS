@@ -55,7 +55,7 @@ void my_print(const char *format, ...) {
 	vsnprintf(temp, sizeof(temp), format, args);
 	va_end(args);
 
-	printf("%s", temp);    // Normal UART output
-	log_to_buffer(temp);   // Store in RAM for web server
+	printf("%s", temp);
+	log_to_buffer(temp);
 }
 

@@ -24,5 +24,6 @@ void printCoordHistoryTable();
 void write_textfile_task(void *pvParameters);
 void notebook_editFilesPage1_task(void *pvParameters);
 void keyboard_task(void *pvParameters);
+void pong_game_task(void *pvParameters);  // remove
 
 #endif /* COMPONENTS_TASKS_TASKS_H_ */

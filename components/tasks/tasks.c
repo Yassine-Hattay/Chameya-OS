@@ -20,6 +20,35 @@ TaskHandle_t other_task_handel = NULL;
 char keyboard_buffer[MAX_COORDS_CHAR];
 uint8_t keyboard_buffer_i = 0;
 
+// Touch regions for UP and DOWN
+#define BUTTON_UP_X_START 0
+#define BUTTON_UP_X_END 240
+#define BUTTON_UP_Y_START 0
+#define BUTTON_UP_Y_END 100
+
+#define BUTTON_DOWN_X_START 0
+#define BUTTON_DOWN_X_END 240
+#define BUTTON_DOWN_Y_START 220
+#define BUTTON_DOWN_Y_END 320
+
+// Positions and sizes
+int paddle_width = 10;
+int paddle_height = 50;
+
+int left_paddle_x = 10;
+int left_paddle_y = 120;
+
+int right_paddle_x = 460;  // 480 - paddle_width - some margin
+int right_paddle_y = 120;
+
+int ball_x = 240;
+int ball_y = 160;
+int ball_size = 20;
+int ball_speed_x = 5;   // Ball speed horizontally
+int ball_speed_y = 3;   // Ball speed vertically
+
+int score = 0;
+
 void IRAM_ATTR PIRQ_isr_handler(void *arg) {
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	// Check if the task handle is valid before notifying
@@ -62,6 +91,134 @@ bool calculate_x_y(uint16_t *x, uint16_t *y) { // Wait indefinitely for ISR to n
 	*y = (uint16_t) roundf(y_float);
 
 	return 1;
+}
+
+// --- PONG TASK ---
+
+// Helper: Fill rectangle with black or white
+void fill_rect(int x, int y, int width, int height, uint8_t color_byte) {
+
+	set_resolution_pos(x, y, width, height, 0);
+
+	send_command(0x2C);
+	int total_pixels = width * height;
+	for (int i = 0; i < total_pixels / 2; i++) {
+		send_ILI9488_data(color_byte);
+	}
+}
+
+void draw_paddle(int x, int y) {
+	fill_rect(x, y, paddle_width, paddle_height, 0xFF);  // White paddle
+}
+
+void draw_ball(int x, int y) {
+	fill_rect(x, y, ball_size, ball_size, 0xFF);  // White ball
+}
+void pong_game_task(void *pvParameters) {
+	printf("task started\n");
+
+	int last_ball_x = ball_x;
+	int last_ball_y = ball_y;
+	int last_left_paddle_y = left_paddle_y;
+	int last_right_paddle_y = right_paddle_y;
+
+	while (1) {
+		uint16_t x_touch, y_touch;
+
+		// Save old paddle position BEFORE updating it
+		last_left_paddle_y = left_paddle_y;
+		last_right_paddle_y = right_paddle_y;
+		last_ball_x = ball_x;
+		last_ball_y = ball_y;
+
+		if (calculate_x_y(&x_touch, &y_touch)) {
+			if (x_touch < 470) { // Only move paddle if touch is in the game area
+				if (y_touch < 160) {  // Move paddle up
+					left_paddle_y -= 10;
+				} else if (y_touch > 160) {  // Move paddle down
+					left_paddle_y += 10;
+				}
+			}
+		}
+
+		// Clamp paddle vertically
+		if (left_paddle_y < 0)
+			left_paddle_y = 0;
+		if (left_paddle_y > 320 - paddle_height)
+			left_paddle_y = 320 - paddle_height;
+
+		ball_x += ball_speed_x;
+		ball_y += ball_speed_y;
+
+		// Collisions with top/bottom
+		if (ball_y <= 0 || ball_y >= 320 - ball_size)
+			ball_speed_y = -ball_speed_y;
+
+		// Collisions with paddles
+		if (ball_x <= left_paddle_x + paddle_width
+				&& ball_y + ball_size >= left_paddle_y
+				&& ball_y <= left_paddle_y + paddle_height)
+			ball_speed_x = -ball_speed_x;
+
+		if (ball_x >= right_paddle_x - ball_size
+				&& ball_y + ball_size >= right_paddle_y
+				&& ball_y <= right_paddle_y + paddle_height)
+			ball_speed_x = -ball_speed_x;
+
+		// Scoring
+		if (ball_x >= 480) {
+			score++;
+			ball_x = 240;
+			ball_y = 160;
+			ball_speed_x = -5;
+			ball_speed_y = 3;
+		}
+		if (ball_x <= 0) {
+			score = 0;
+			ball_x = 240;
+			ball_y = 160;
+			ball_speed_x = 5;
+			ball_speed_y = 3;
+		}
+
+		// AI paddle movement (vertical)
+		if (right_paddle_y + paddle_height / 2 < ball_y)
+			right_paddle_y += 5;
+		else if (right_paddle_y + paddle_height / 2 > ball_y)
+			right_paddle_y -= 5;
+
+		// Clamp AI paddle
+		if (right_paddle_y < 0)
+			right_paddle_y = 0;
+		if (right_paddle_y > 320 - paddle_height)
+			right_paddle_y = 320 - paddle_height;
+
+		gpio_set_level(SS_display, 0);
+
+		// Erase old ball
+		fill_rect(last_ball_x, last_ball_y, ball_size + 5, ball_size + 5, 0x00);
+
+		// Erase old paddles
+		fill_rect(left_paddle_x, last_left_paddle_y, paddle_width,
+				paddle_height, 0x00);
+		fill_rect(right_paddle_x, last_right_paddle_y, paddle_width,
+				paddle_height, 0x00);
+
+		// Draw new paddles
+		fill_rect(left_paddle_x, left_paddle_y, paddle_width, paddle_height,
+				0xFF);
+		fill_rect(right_paddle_x, right_paddle_y, paddle_width, paddle_height,
+				0xFF);
+
+		// Draw new ball
+		fill_rect(ball_x, ball_y, ball_size, ball_size, 0xFF);
+
+		gpio_set_level(SS_display, 1);
+
+		printf("Score: %d\n", score);
+
+		esp_task_wdt_reset();
+	}
 }
 
 void keyboard_task(void *pvParameters) {
