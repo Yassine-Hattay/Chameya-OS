@@ -7,6 +7,7 @@ C:/msys32/home/hatta/esp/hello_world1/build/I2C/libI2C.a
  C:/msys32/home/hatta/esp/hello_world1/build/bootloader_support/libbootloader_support.a
  C:/msys32/home/hatta/esp/hello_world1/build/coap/libcoap.a
  C:/msys32/home/hatta/esp/hello_world1/build/console/libconsole.a
+ C:/msys32/home/hatta/esp/hello_world1/build/debugging/libdebugging.a
  C:/msys32/home/hatta/esp/hello_world1/build/esp-tls/libesp-tls.a
  C:/msys32/home/hatta/esp/hello_world1/build/esp-wolfssl/libesp-wolfssl.a
  C:/msys32/home/hatta/esp/hello_world1/build/esp8266/libesp8266.a
@@ -47,5 +48,6 @@ C:/msys32/home/hatta/esp/hello_world1/build/I2C/libI2C.a
  C:/msys32/home/hatta/esp/hello_world1/build/tcpip_adapter/libtcpip_adapter.a
  C:/msys32/home/hatta/esp/hello_world1/build/vfs/libvfs.a
  C:/msys32/home/hatta/esp/hello_world1/build/wear_levelling/libwear_levelling.a
+ C:/msys32/home/hatta/esp/hello_world1/build/web/libweb.a
  C:/msys32/home/hatta/esp/hello_world1/build/wifi_provisioning/libwifi_provisioning.a
  C:/msys32/home/hatta/esp/hello_world1/build/wpa_supplicant/libwpa_supplicant.a

@@ -43,18 +43,53 @@ main.o: C:/msys32/home/hatta/esp/hello_world1/main/main.c \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h \
- c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h \
- c:\msys32\home\hatta\esp\hello_world1\components\spi\spi.h \
- c:\msys32\home\hatta\esp\hello_world1\components\my_config\my_config.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h \
- c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h \
- c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h \
- c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h \
- c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h \
- c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h \
- c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h \
- c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h \
- c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h
+ c:\msys32\home\hatta\esp\hello_world1\components\debugging\my_print.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/semphr.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_http_server/include/esp_http_server.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/http_parser/include/http_parser.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/nvs_flash/include/nvs_flash.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/nvs_flash/include/nvs.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/spi_flash/include/esp_partition.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/spi_flash/include/esp_spi_flash.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/spi_flash/include/spi_flash.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\web\web.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/tcpip_adapter/include/esp_netif.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi_types.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_interface.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event_base.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/tcpip_adapter/include/tcpip_adapter.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/ip_addr.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/opt.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/lwipopts.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/newlib/platform_include/time.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/newlib/platform_include/sys/time.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/vfs/include/sys/ioctl.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_common/include/esp_task.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_libc.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/include/apps/sntp/sntp.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/netif/dhcp_state.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/debug.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/arch.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/arch/cc.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/arch/sys_arch.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/arch/vfs_lwip.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/def.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/ip4_addr.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/ip6_addr.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/def.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/include/apps/dhcpserver/dhcpserver.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event_base.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event_legacy.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/tcpip_adapter/include/tcpip_adapter.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi_types.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/event_groups.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/timers.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/task.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\debugging\my_print.h
 
 c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h:
 
@@ -144,27 +179,97 @@ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/q
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_task_wdt.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h:
+c:\msys32\home\hatta\esp\hello_world1\components\debugging\my_print.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\spi\spi.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/semphr.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\my_config\my_config.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
 
-C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_timer.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_http_server/include/esp_http_server.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/http_parser/include/http_parser.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/nvs_flash/include/nvs_flash.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/nvs_flash/include/nvs.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/spi_flash/include/esp_partition.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/spi_flash/include/esp_spi_flash.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/spi_flash/include/spi_flash.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\xpt2046_driver\xpt2046_driver.h:
+c:\msys32\home\hatta\esp\hello_world1\components\web\web.h:
 
-c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h:
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/tcpip_adapter/include/esp_netif.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi_types.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_interface.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event_base.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/tcpip_adapter/include/tcpip_adapter.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/ip_addr.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/opt.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/lwipopts.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/newlib/platform_include/time.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/newlib/platform_include/sys/time.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/vfs/include/sys/ioctl.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_common/include/esp_task.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_libc.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/rom/ets_sys.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/include/apps/sntp/sntp.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/netif/dhcp_state.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/debug.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/arch.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/arch/cc.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/arch/sys_arch.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/port/esp8266/include/arch/vfs_lwip.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/def.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/ip4_addr.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/ip6_addr.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/lwip/src/include/lwip/def.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/lwip/include/apps/dhcpserver/dhcpserver.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event_base.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp_event/include/esp_event_legacy.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/tcpip_adapter/include/tcpip_adapter.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_wifi_types.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/event_groups.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/timers.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/task.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\debugging\my_print.h:
 /home/hatta/esp/hello_world1/main/./main.c:

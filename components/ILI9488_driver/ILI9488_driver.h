@@ -11,7 +11,7 @@
 #define SS_touch   5
 #define DC_pin 4
 #define RESET_pin 10
-#define PIRQ_pin 3
+#define PIRQ_pin 0
 #define MAX_COORDS 254 // or whatever max size you need
 #define MAX_COORDS_CHAR 254 // or whatever max size you need
 #define APP_NAME_MAX_LEN 32  // Or whatever maximum length you expect
