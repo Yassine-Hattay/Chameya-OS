@@ -1071,7 +1071,7 @@ void keyboard_task(void *pvParameters) {
 
 	while (1) {
 
-		esp_task_wdt_reset();
+		vTaskDelay(100);
 
 		uint16_t x, y;
 		if (!calculate_x_y(&x, &y)) {
