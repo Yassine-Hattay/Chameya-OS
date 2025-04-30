@@ -118,11 +118,14 @@ extern const uint8_t button[] ICACHE_RODATA_ATTR;
 
 extern uint8_t chameya[] ICACHE_RODATA_ATTR;
 extern uint8_t notebook[] ICACHE_RODATA_ATTR;
+extern uint8_t pong_logo[] ICACHE_RODATA_ATTR;
+
 extern uint8_t coord_index_char;
 extern uint8_t coord_index;
 
 extern size_t size_var;
 extern size_t size_var1;
+extern size_t size_var2;
 
 extern const size_t letter_font_0_size;
 extern char *background_color;
@@ -167,12 +170,13 @@ void draw_keyborad(char c);
 void IRAM_ATTR PIRQ_isr_handler(void *arg);
 void draw_main_menu_icons();
 void draw_main_menu_icons();
-void make_button(char *name, uint16_t width, uint16_t height, uint16_t x,
+void make_button(char *name, uint16_t height, uint16_t x,
 		uint16_t y);
 void bootApp_noteBook();
 void make_X_button();
 void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
 		uint8_t font_size);
-
+void print_history_table();
+void print_history_char_table();
 
 #endif

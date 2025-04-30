@@ -7,7 +7,7 @@
 
 #include "ILI9488_driver.h"
 
-char *background_color;
+char *background_color = "black";
 
 uint8_t received[];
 
@@ -84,9 +84,10 @@ void send_ILI9488_data(uint8_t data) {
 }
 
 void init_display() {
-	gpio_config_t io_conf = { .pin_bit_mask =  (1ULL << SS_display) | (1ULL << RESET_pin), .mode =
-			GPIO_MODE_OUTPUT, .pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
-			GPIO_PULLDOWN_DISABLE, .intr_type = GPIO_INTR_DISABLE };
+	gpio_config_t io_conf = { .pin_bit_mask = (1ULL << SS_display)
+			| (1ULL << RESET_pin), .mode = GPIO_MODE_OUTPUT, .pull_up_en =
+			GPIO_PULLUP_DISABLE, .pull_down_en = GPIO_PULLDOWN_DISABLE,
+			.intr_type = GPIO_INTR_DISABLE };
 	gpio_config(&io_conf);
 
 	gpio_config_t io_conf1 = { .pin_bit_mask = (1ULL << DC_pin), .mode =
@@ -1718,6 +1719,9 @@ void draw_main_menu_icons() {
 
 	gpio_set_level(SS_display, 0);
 
+	strncpy(history[coord_index].app_name, "notebook",
+	APP_NAME_MAX_LEN);
+
 	set_resolution_pos(10, 10, 67, 76, 0);
 
 	send_command(0x3A); // interface pixel format
@@ -1727,6 +1731,22 @@ void draw_main_menu_icons() {
 
 	for (uint64_t i = 0; i < size_var1; i++) {
 		send_ILI9488_data(notebook[i]);
+	}
+
+	send_command(0x00);
+
+	strncpy(history[coord_index].app_name, "pong",
+	APP_NAME_MAX_LEN);
+
+	set_resolution_pos(97, 10, 67, 76, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_var2; i++) {
+		send_ILI9488_data(pong_logo[i]);
 	}
 
 	send_command(0x00);
@@ -1756,31 +1776,37 @@ void make_X_button() {
 	gpio_set_level(SS_display, 1);
 }
 
-void make_button(char *name, uint16_t width, uint16_t height, uint16_t x,
-		uint16_t y) {
+void make_button(char *name, uint16_t height, uint16_t x, uint16_t y) {
+	int len = strlen(name);
+
 	gpio_set_level(SS_display, 0);
 
 	strcpy(history_char[coord_index_char].app_name, name);
 	history_char[coord_index_char].x = x;
 	history_char[coord_index_char].y = y;
-	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].width = 24 + 24 * len - 1;
 	history_char[coord_index_char].height = height;
 
-	set_resolution_pos(x, y, width, height, 0);
+	set_resolution_pos(x, y, (24 + (24 * len - 1)), height, 0);
 
 	send_command(0x2C);
 
-	for (uint64_t i = 0; i < width * height / 2; i++) {
+	for (uint64_t i = 0; i < (24 + (24 * len - 1)) * height / 2; i++) {
 		send_ILI9488_data(0x24);
 	}
 
-	background_color= "red";
+	background_color = "red";
 
 	print_ILI9488(name, x + 15, y + 15, 2);
 
-	int len = strlen(name);
+	int space_count = 0;
 
-	coord_index = coord_index - len + 1;
+	for (int i = 0; i < len; i++) {
+		if (name[i] == ' ')
+			space_count++;
+	}
+
+	coord_index = coord_index - len + space_count;
 
 	coord_index_char++;
 
@@ -1812,17 +1838,15 @@ void bootApp_noteBook() {
 
 	background_color = "red";
 
-	width = 180;
 	height = 70;
 	x = 135;
 
-	make_button("New file", width, height, x, 30);
+	make_button("New file", height, x, 30);
 
-	width = 220;
 
-	make_button("Read files", width, height, x, 120);
+	make_button("Read files", height, x, 120);
 
-	make_button("Edit files", width, height, x, 210);
+	make_button("Edit files", height, x, 210);
 
 	send_command(0x00);
 
@@ -1830,3 +1854,44 @@ void bootApp_noteBook() {
 
 }
 
+void print_history_table() {
+	printf(
+			"----------------------------------------------------------------------------------------------------\n");
+	printf("| %-3s | %-5s | %-5s | %-6s | %-7s | %-10s | %-32s |\n", "ID", "X",
+			"Y", "Width", "Height", "Correction", "App Name");
+	printf(
+			"----------------------------------------------------------------------------------------------------\n");
+
+	for (int i = 0; i < 50; i++) {
+		if (history[i].app_name[0] != '\0') {
+			printf("| %-3d | %-5u | %-5u | %-6u | %-7u | %-10d | %-32s |\n", i,
+					history[i].x, history[i].y, history[i].width,
+					history[i].height, history[i].correction,
+					history[i].app_name);
+		}
+	}
+
+	printf(
+			"----------------------------------------------------------------------------------------------------\n");
+}
+
+void print_history_char_table() {
+	printf(
+			"----------------------------------------------------------------------------------------------------\n");
+	printf("| %-3s | %-5s | %-5s | %-6s | %-7s | %-10s | %-32s |\n", "ID", "X",
+			"Y", "Width", "Height", "Correction", "App Name");
+	printf(
+			"----------------------------------------------------------------------------------------------------\n");
+
+	for (int i = 0; i < 50; i++) {
+		if (history_char[i].app_name[0] != '\0') {
+			printf("| %-3d | %-5u | %-5u | %-6u | %-7u | %-10d | %-32s |\n", i,
+					history_char[i].x, history_char[i].y, history_char[i].width,
+					history_char[i].height, history_char[i].correction,
+					history_char[i].app_name);
+		}
+	}
+
+	printf(
+			"----------------------------------------------------------------------------------------------------\n");
+}

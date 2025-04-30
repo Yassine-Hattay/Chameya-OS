@@ -47,53 +47,6 @@ void send_control_byte(uint8_t parameters) {
 	send_data(parameters);
 }
 
-void draw_IRQ() {
-	while (1) {
-		if (PIRQ_bool == 1) {
-			PIRQ_bool = 0;
-			gpio_set_level(SS_touch, 0);
-			send_control_byte(0x98);
-			tick_spi();
-			uint8_t first8_msb = (uint8_t) (*recieve_touch_data(2) >> 4);
-			gpio_set_level(SS_touch, 1);
-			gpio_set_level(SS_touch, 0);
-			send_control_byte(0xD8);
-			tick_spi();
-			uint8_t first8_msb1 = (uint8_t) (*recieve_touch_data(2) >> 4);
-
-			gpio_set_level(SS_touch, 1);
-
-			if (first8_msb1 == 0 && first8_msb == 255) {
-				PIRQ_bool = 0;
-				continue;
-			}
-
-			float cell_size = 1.9;
-			float cell_size1 = 1.25;
-
-			float y_float = (255 - first8_msb1) * cell_size1;
-			float x_float = (255 - first8_msb) * cell_size;
-
-			uint16_t x = (uint16_t) roundf(x_float);
-			uint16_t y = (uint16_t) roundf(y_float);
-
-			if (y > 292) {
-				y = 292;
-			}
-
-			if (x > 456) {
-				x = 456;
-			}
-
-			printf("Mapped Coordinates: x = %u, y = %u\n", x, y);
-
-			gpio_set_level(SS_display, 0);
-			print_ILI9488("Z", x, y, 2);
-			gpio_set_level(SS_display, 1);
-
-		}
-	}
-}
 
 void init_XPT2046() {
 	gpio_config_t io_conf0 = { .pin_bit_mask = (1ULL << MISO_touch), .mode =

@@ -10,21 +10,16 @@ void app_main(void) {
 
 	my_uart_init(&uart0);
 
-	printf("main1");
-
 	esp_set_cpu_freq(ESP_CPU_FREQ_160M);  // Set CPU speed to 160 MHz
 
-	//format_spiffs();
+	format_spiffs();
 
 	init_display();
-	printf("main");
 
 	set_orientation(1);
-	printf("main");
 
 	//FillScreenBlue();
 	FillScreenblack();
-	printf("main");
 
 	//
 	//send_command(0x2C);
@@ -34,20 +29,17 @@ void app_main(void) {
 	//}
 
 	gpio_set_level(SS_display, 1);
-	printf("main");
 
 	init_XPT2046();
-	printf("main");
 
 	gpio_install_isr_service(0);
-	printf("main");
 
 	gpio_isr_handler_add(PIRQ_pin, PIRQ_isr_handler, NULL);
 
-	printf("main9 \n");
+	xTaskCreate(main_menu_task, "main_menu_task", 2048,
+	 NULL, 5, &main_menu_Handle);
 
-	xTaskCreate(pong_game_task, "pong_game_task", 2048,
-	NULL, 5, &main_menu_Handle);
+	xTaskCreate(memory_monitor_task, "mem_monitor", 2048, NULL, 5, NULL);
 
 }
 
