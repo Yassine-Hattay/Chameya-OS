@@ -11,6 +11,7 @@
 #include "../ILI9488_driver/ILI9488_driver.h"
 #include "../my_spiffs/my_spiffs.h"
 #include "../tasks/tasks.h"
+#include "../I2C/I2C.h"
 
 typedef struct {
 	uint16_t x;
@@ -19,16 +20,17 @@ typedef struct {
 	char current_task[32];
 } TaskParams;
 
+extern uint8_t paragraph_number;
+extern char full_path[160];
+extern volatile bool PIRQ_bool;
 
 uint16_t* recieve_touch_data(int r);
 void init_XPT2046();
 void send_control_byte(uint8_t parameters);
 void draw_IRQ();
 void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
-		char *case_type, char *previous_task, char *current_task,TaskParams *data);
-
-extern uint8_t paragraph_number;
-extern char full_path[160];
-extern volatile bool PIRQ_bool;
+		char *case_type, char *previous_task, char *current_task,
+		TaskParams *data);
+bool calculate_x_y(uint16_t *x, uint16_t *y) ;
 
 #endif

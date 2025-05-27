@@ -5,28 +5,17 @@
 #include "I2C.h"
 #include "esp_task_wdt.h"
 
-#define I2C_SDA 4  // GPIO for SDA
-#define I2C_SCL 5  // GPIO for SCL
-#define I2C_SLAVE_ADDR 0x42  // ESP32 Slave Address
 #define I2C_MY_ADR 0x42
 #define I2C_DELAY_US 10  // Delay in microseconds
-uint8_t buffer[BUFFER_SIZE];
+uint8_t buffer[6];
 
 volatile bool SDA_falling = 0;
 volatile bool SCL_rising = 0;
 volatile bool SDA_rising = 0;
 
-gpio_config_t io_conf_SDA_input = { .pin_bit_mask = (1ULL << I2C_SDA),
-		.mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
-		.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en = GPIO_PULLDOWN_ENABLE,
-		.intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
-		};
-
-gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL << I2C_SDA),
-		.mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
-		.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en = GPIO_PULLDOWN_ENABLE,
-		.intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
-		};
+uint8_t I2C_SDA;
+uint8_t I2C_SCL;
+uint8_t I2C_SLAVE_ADDR;
 
 void i2c_start() {
 	gpio_set_level(I2C_SDA, 1);
@@ -65,6 +54,12 @@ void i2c_write_byte(uint8_t data) {
 
 	}
 
+	gpio_config_t io_conf_SDA_input = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
+
 	gpio_config(&io_conf_SDA_input);
 }
 
@@ -82,6 +77,12 @@ void recive_ACK_NACK() {
 	}
 	gpio_set_level(I2C_SCL, 0);
 	ets_delay_us(I2C_DELAY_US);
+
+	gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
 
 	gpio_config(&io_conf_SDA_output);
 }
@@ -107,12 +108,24 @@ uint8_t i2c_read_byte() {
 }
 
 void send_ACK_NACK(bool ACK) {
+
+	gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
+
 	gpio_config(&io_conf_SDA_output);
 	gpio_set_level(I2C_SDA, ACK);
 	one_tick();
 }
 
 uint8_t i2c_recive_byte() {
+	gpio_config_t io_conf_SDA_input = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
 	gpio_config(&io_conf_SDA_input);
 	return i2c_read_byte();
 }
@@ -162,9 +175,15 @@ void I2C_init_master() {
 	io_conf_SCL_output.pin_bit_mask = (1ULL << I2C_SCL); // Set both SDA and SCL
 	io_conf_SCL_output.pull_down_en = GPIO_PULLDOWN_DISABLE; // Disable pull-down
 	io_conf_SCL_output.pull_up_en = GPIO_PULLUP_DISABLE;  // Disable pull-up
-	gpio_config(&io_conf_SCL_output);                // Apply configurationé
+	gpio_config(&io_conf_SCL_output);
 
-	gpio_config(&io_conf_SDA_output);                 // Apply configuration
+	gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
+
+	gpio_config(&io_conf_SDA_output);
 
 	xTaskCreate(i2c_task_master, "i2c_task_master", 2048, NULL, 5, NULL);
 }
@@ -176,7 +195,6 @@ static IRAM_ATTR void SCL_rising_isr_handler(void *arg) {
 static IRAM_ATTR void SDA_falling_isr_handler(void *arg) {
 	SDA_falling = 1;
 }
-
 
 bool start_condition_detected() {
 	while (gpio_get_level(I2C_SCL)) {
@@ -201,6 +219,13 @@ uint8_t i2c_recive_byte_slave() {
 		byte |= (gpio_get_level(I2C_SDA) << i);
 		SCL_rising = 0;
 	}
+
+	gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
+
 	gpio_config(&io_conf_SDA_output);
 	gpio_set_level(I2C_SDA, 0);
 	SCL_rising = 0;
@@ -208,6 +233,17 @@ uint8_t i2c_recive_byte_slave() {
 }
 
 void i2c_send_byte_slave(uint8_t byte) {
+	gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
+	gpio_config_t io_conf_SDA_input = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
+
 	gpio_config(&io_conf_SDA_output);
 	int i;
 	for (i = 7; i >= 0; i--) {
@@ -223,7 +259,11 @@ void i2c_send_byte_slave(uint8_t byte) {
 bool stop_condition_detected() {
 	while (gpio_get_level(I2C_SCL)) {
 		if (SDA_rising) {
-			io_conf_SDA_input.intr_type = GPIO_INTR_NEGEDGE;
+			gpio_config_t io_conf_SDA_input = { .pin_bit_mask =
+					(1ULL << I2C_SDA), .mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
+					.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+							GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+					};
 			gpio_config(&io_conf_SDA_input);
 			gpio_isr_handler_add(I2C_SDA, SDA_falling_isr_handler, NULL);
 			gpio_isr_handler_remove(I2C_SCL);
@@ -238,7 +278,11 @@ void send_ACK_NACK_slave() {
 	while (!SCL_rising)
 		;
 	SCL_rising = 0;
-
+	gpio_config_t io_conf_SDA_input = { .pin_bit_mask = (1ULL << I2C_SDA),
+			.mode = GPIO_MODE_INPUT, // MOSI, SCK, and SS as input
+			.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+					GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+			};
 	gpio_config(&io_conf_SDA_input);
 }
 
@@ -263,39 +307,38 @@ void i2c_task_slave(void *pvParameters) {
 
 					// handle salve sending after you buy a logic analyser or an oscilloscope
 
-					}
-				} else {
-					// handle salve receiving after you buy a logic analyser or an oscilloscope
 				}
+			} else {
+				// handle salve receiving after you buy a logic analyser or an oscilloscope
 			}
 		}
-		esp_task_wdt_reset();
 	}
-
+	esp_task_wdt_reset();
+}
 
 void I2C_init_salve() {
 
-	gpio_config_t io_conf_SCL_input;
-	io_conf_SCL_input.mode = GPIO_MODE_INPUT;          // Set as output mode
-	io_conf_SCL_input.pin_bit_mask = (1ULL << I2C_SCL); // Set both SDA and SCL
-	io_conf_SCL_input.pull_down_en = GPIO_PULLDOWN_DISABLE; // Disable pull-down
-	io_conf_SCL_input.pull_up_en = GPIO_PULLUP_DISABLE;
-	io_conf_SCL_input.intr_type = GPIO_INTR_POSEDGE;
-
-	gpio_config(&io_conf_SCL_input);
-
-	io_conf_SDA_input.intr_type = GPIO_INTR_NEGEDGE;
-	io_conf_SDA_input.pull_down_en = GPIO_PULLDOWN_ENABLE;
-
-	gpio_config(&io_conf_SDA_input);
-
-	gpio_install_isr_service(0);
-
-	gpio_isr_handler_add(I2C_SDA, SDA_falling_isr_handler, NULL);
-
-	gpio_set_level(I2C_SCL, 1);
-	gpio_set_level(I2C_SDA, 1);
-
-	xTaskCreate(i2c_task_slave, "i2c_task_slave", 6048, NULL,
-	configMAX_PRIORITIES - 1, NULL);
+	//gpio_config_t io_conf_SCL_input;
+	//io_conf_SCL_input.mode = GPIO_MODE_INPUT;          // Set as output mode
+	//io_conf_SCL_input.pin_bit_mask = (1ULL << I2C_SCL); // Set both SDA and SCL
+	//io_conf_SCL_input.pull_down_en = GPIO_PULLDOWN_DISABLE; // Disable pull-down
+	//io_conf_SCL_input.pull_up_en = GPIO_PULLUP_DISABLE;
+	//io_conf_SCL_input.intr_type = GPIO_INTR_POSEDGE;
+	//
+	//gpio_config(&io_conf_SCL_input);
+	//
+	//io_conf_SDA_input.intr_type = GPIO_INTR_NEGEDGE;
+	//io_conf_SDA_input.pull_down_en = GPIO_PULLDOWN_ENABLE;
+	//
+	//gpio_config(&io_conf_SDA_input);
+	//
+	//gpio_install_isr_service(0);
+	//
+	//gpio_isr_handler_add(I2C_SDA, SDA_falling_isr_handler, NULL);
+	//
+	//gpio_set_level(I2C_SCL, 1);
+	//gpio_set_level(I2C_SDA, 1);
+	//
+	//xTaskCreate(i2c_task_slave, "i2c_task_slave", 6048, NULL,
+	//configMAX_PRIORITIES - 1, NULL);
 }

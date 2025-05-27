@@ -15,11 +15,25 @@ Key keyboard[32];
 
 CoordHistory history[MAX_COORDS];
 
-uint8_t coord_index = 1;
+uint16_t coord_index = 1;
 
 CoordHistory history_char[MAX_COORDS_CHAR];
 
 uint8_t coord_index_char = 1;
+
+// Helper: Fill rectangle with black or white
+void fill_rect(int x, int y, int width, int height, uint8_t color_byte) {
+
+	set_resolution_pos(x, y, width, height, 0);
+
+	send_command(0x2C);
+	int total_pixels = width * height;
+	for (int i = 0; i < total_pixels / 2; i++) {
+		send_ILI9488_data(color_byte);
+	}
+	send_command(0x00);
+
+}
 
 uint8_t recive() {
 	uint8_t received = 0;
@@ -144,6 +158,8 @@ void set_resolution_pos(const uint16_t x, const uint16_t y, uint16_t width,
 		history[coord_index].height = height;
 		history[coord_index].correction = correction_value;
 		coord_index++;
+	} else if ((width != 480 && height != 320)) {
+		coord_index = 1;
 	}
 
 	send_command(0x3A); // interface pixel format
@@ -162,8 +178,6 @@ void set_resolution_pos(const uint16_t x, const uint16_t y, uint16_t width,
 	uint8_t y_start_low = y & 0xFF;
 	uint8_t y_end_high = (y_end >> 8) & 0xFF;
 	uint8_t y_end_low = y_end & 0xFF;
-
-	printf("Setting column and page address!\n");
 
 	send_command(0x2A); // Column Address Set
 	send_ILI9488_data(x_start_high);
@@ -211,8 +225,6 @@ void set_resolution_pos_char(const uint16_t x, const uint16_t y, uint16_t width,
 	uint8_t y_end_high = (y_end >> 8) & 0xFF;
 	uint8_t y_end_low = y_end & 0xFF;
 
-	printf("Setting column and page address!\n");
-
 	send_command(0x2A); // Column Address Set
 	send_ILI9488_data(x_start_high);
 	send_ILI9488_data(x_start_low);
@@ -232,7 +244,7 @@ void set_resolution_pos_char(const uint16_t x, const uint16_t y, uint16_t width,
 
 void set_orientation(uint8_t orientation) {
 
-	send_command(0x36); // Memory Access Control
+	send_command(0x36);
 
 	if (orientation == 0) {
 		send_ILI9488_data(0x08);
@@ -240,22 +252,18 @@ void set_orientation(uint8_t orientation) {
 		send_ILI9488_data(0x28);
 	} else if (orientation == 2) {
 		send_ILI9488_data(0x48);
-
 	} else if (orientation == 3) {
 		send_ILI9488_data(0x68);
-
 	} else if (orientation == 4) {
 		send_ILI9488_data(0x88);
 	} else if (orientation == 5) {
 		send_ILI9488_data(0xA8);
 	} else if (orientation == 6) {
 		send_ILI9488_data(0xC8);
-
 	} else if (orientation == 7) {
 		send_ILI9488_data(0xE8);
-
 	} else {
-		printf("Error : orientation must be between [0,3] ");
+		printf("Error : orientation must be between [0,7] ");
 	}
 
 }
@@ -371,7 +379,6 @@ void print_to_screen_char(const uint8_t a_font_0[], uint16_t width,
 	}
 
 	output_data = apply_font_size(a_font_0, &output_size, font_size);
-	printf("output_size: %d \n", output_size);
 
 	set_resolution_pos_char(*x, *y, width, height, correction_value);
 
@@ -436,7 +443,6 @@ void print_to_screen(const uint8_t a_font_0[], uint16_t width, uint16_t height,
 	}
 
 	output_data = apply_font_size(a_font_0, &output_size, font_size);
-	printf("output_size: %d \n", output_size);
 
 	set_resolution_pos(*x, *y, width, height, correction_value);
 
@@ -1418,8 +1424,6 @@ void clean_screen() {
 		uint8_t y_end_high = (y_end >> 8) & 0xFF;
 		uint8_t y_end_low = y_end & 0xFF;
 
-		printf("Setting column and page address!\n");
-
 		send_command(0x2A); // Column Address Set
 		send_ILI9488_data(x_start_high);
 		send_ILI9488_data(x_start_low);
@@ -1448,6 +1452,104 @@ void clean_screen() {
 
 }
 
+void clean_last_element_modified(uint8_t coord_index) {
+
+	if (coord_index > 0) {
+		send_command(0x3A); // interface pixel format
+		send_ILI9488_data(0x06);
+
+		uint16_t x_end = history[coord_index].x + history[coord_index].width
+				- 1; // Dereference x to get the current value and modify it
+		uint16_t y_end = history[coord_index].y + history[coord_index].height;
+
+		uint8_t x_start_high = (history[coord_index].x >> 8) & 0xFF;
+		uint8_t x_start_low = history[coord_index].x & 0xFF;
+		uint8_t x_end_high = (x_end >> 8) & 0xFF;
+		uint8_t x_end_low = x_end & 0xFF;
+
+		uint8_t y_start_high = (history[coord_index].y >> 8) & 0xFF;
+		uint8_t y_start_low = history[coord_index].y & 0xFF;
+		uint8_t y_end_high = (y_end >> 8) & 0xFF;
+		uint8_t y_end_low = y_end & 0xFF;
+
+		send_command(0x2A);
+		send_ILI9488_data(x_start_high);
+		send_ILI9488_data(x_start_low);
+		send_ILI9488_data(x_end_high);
+		send_ILI9488_data(x_end_low);
+
+		send_command(0x2B);
+		send_ILI9488_data(y_start_high);
+		send_ILI9488_data(y_start_low);
+		send_ILI9488_data(y_end_high);
+		send_ILI9488_data(y_end_low);
+
+		send_command(0x3A);
+		send_ILI9488_data(0x01);
+
+		send_command(0x2C);
+
+		for (uint64_t i = 0;
+				i < history[coord_index].width * history[coord_index].height;
+				i++) {
+			send_ILI9488_data(0x00);
+		}
+	}
+
+}
+
+void clean_last_element() {
+
+	if (coord_index > 0) {
+		coord_index--;
+		send_command(0x3A); // interface pixel format
+		send_ILI9488_data(0x06);
+
+		uint16_t x_end = history[coord_index].x + history[coord_index].width
+				- 1; // Dereference x to get the current value and modify it
+		uint16_t y_end = history[coord_index].y + history[coord_index].height; // Dereference y to get the current value and modify it
+
+		// Split into high and low bytes
+		uint8_t x_start_high = (history[coord_index].x >> 8) & 0xFF;
+		uint8_t x_start_low = history[coord_index].x & 0xFF;
+		uint8_t x_end_high = (x_end >> 8) & 0xFF;
+		uint8_t x_end_low = x_end & 0xFF;
+
+		uint8_t y_start_high = (history[coord_index].y >> 8) & 0xFF;
+		uint8_t y_start_low = history[coord_index].y & 0xFF;
+		uint8_t y_end_high = (y_end >> 8) & 0xFF;
+		uint8_t y_end_low = y_end & 0xFF;
+
+		send_command(0x2A); // Column Address Set
+		send_ILI9488_data(x_start_high);
+		send_ILI9488_data(x_start_low);
+		send_ILI9488_data(x_end_high);
+		send_ILI9488_data(x_end_low);
+
+		send_command(0x2B); // Page Address Set
+		send_ILI9488_data(y_start_high);
+		send_ILI9488_data(y_start_low);
+		send_ILI9488_data(y_end_high);
+		send_ILI9488_data(y_end_low);
+
+		send_command(0x3A); // interface pixel format
+		send_ILI9488_data(0x01);
+
+		send_command(0x2C);
+
+		for (uint64_t i = 0;
+				i < history[coord_index].width * history[coord_index].height;
+				i++) {
+			send_ILI9488_data(0x00);
+		}
+
+	} else {
+		coord_index = 1;
+
+	}
+
+}
+
 void clean_last_char() {
 
 	if (coord_index_char > 0) {
@@ -1471,8 +1573,6 @@ void clean_last_char() {
 		uint8_t y_start_low = history_char[coord_index_char].y & 0xFF;
 		uint8_t y_end_high = (y_end >> 8) & 0xFF;
 		uint8_t y_end_low = y_end & 0xFF;
-
-		printf("Setting column and page address!\n");
 
 		send_command(0x2A); // Column Address Set
 		send_ILI9488_data(x_start_high);
@@ -1708,7 +1808,7 @@ void draw_keyborad(char c) {
 
 	background_color = "green";
 	print_ILI9488("O", 0, 0, 2);
-
+	send_command(0x00);
 	background_color = "red";
 
 	gpio_set_level(SS_display, 1);
@@ -1751,6 +1851,38 @@ void draw_main_menu_icons() {
 
 	send_command(0x00);
 
+	strncpy(history[coord_index].app_name, "goblin_royale",
+	APP_NAME_MAX_LEN);
+
+	set_resolution_pos(184, 10, 67, 76, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_var2; i++) {
+		send_ILI9488_data(goblin_royale_logo[i]);
+	}
+
+	send_command(0x00);
+
+	strncpy(history[coord_index].app_name, "GPIO_C",
+	APP_NAME_MAX_LEN);
+
+	set_resolution_pos(271, 10, 67, 76, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_var2; i++) {
+		send_ILI9488_data(gpio_C_logo[i]);
+	}
+
+	send_command(0x00);
+
 	gpio_set_level(SS_display, 1);
 
 }
@@ -1776,8 +1908,17 @@ void make_X_button() {
 	gpio_set_level(SS_display, 1);
 }
 
-void make_button(char *name, uint16_t height, uint16_t x, uint16_t y) {
+void make_button(char *name, uint16_t height, uint16_t x, uint16_t y,
+		char *color) {
 	int len = strlen(name);
+	uint8_t color_hex;
+
+	if (strcmp(color, "red") == 0) {
+		color_hex = 0x24;
+
+	} else {
+		color_hex = 0x12;
+	}
 
 	gpio_set_level(SS_display, 0);
 
@@ -1792,10 +1933,10 @@ void make_button(char *name, uint16_t height, uint16_t x, uint16_t y) {
 	send_command(0x2C);
 
 	for (uint64_t i = 0; i < (24 + (24 * len - 1)) * height / 2; i++) {
-		send_ILI9488_data(0x24);
+		send_ILI9488_data(color_hex);
 	}
 
-	background_color = "red";
+	background_color = color;
 
 	print_ILI9488(name, x + 15, y + 15, 2);
 
@@ -1841,12 +1982,142 @@ void bootApp_noteBook() {
 	height = 70;
 	x = 135;
 
-	make_button("New file", height, x, 30);
+	make_button("New file", height, x, 30, "red");
+
+	make_button("Read files", height, x, 120, "red");
+
+	make_button("Edit files", height, x, 210, "red");
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
+
+void GPIO_C_boot() {
+
+	uint16_t width = 24;
+	uint16_t height = 29;
+	uint16_t x = 456;
+	uint16_t y = 0;
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+
+	height = 70;
+	x = 200;
+
+	make_button("SPI", height, x, 30, "red");
+
+	make_button("I2C", height, x, 120, "red");
+
+	make_button("UART", height, x, 210, "red");
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
+
+void GPIO_pins_boot() {
+
+	uint16_t width = 24;
+	uint16_t height = 29;
+	uint16_t x = 456;
+	uint16_t y = 0;
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+
+	height = 55;
+
+	make_button("GPIO 0", height, 50, 60, "red");
+
+	make_button("GPIO 2", height, 240, 60, "red");
+
+	make_button("GPIO 12", height, 120, 150, "red");
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
+
+void confirm_boot() {
+
+	uint16_t width = 24;
+	uint16_t height = 29;
+	uint16_t x = 456;
+	uint16_t y = 0;
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+
+	height = 55;
+
+	make_button("Transmit", height, 50, 110, "red");
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
 
 
-	make_button("Read files", height, x, 120);
+void confirm_boot_I2C() {
 
-	make_button("Edit files", height, x, 210);
+	uint16_t width = 24;
+	uint16_t height = 29;
+	uint16_t x = 456;
+	uint16_t y = 0;
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+
+	height = 55;
+
+	make_button("Write", height, 50, 110, "red");
+	make_button("Read", height, 240, 110, "red");
 
 	send_command(0x00);
 

@@ -5,6 +5,8 @@
 #include "driver/gpio.h"
 #include <string.h>
 
+
+
 #define MISO_touch 16
 #define SCK  14
 #define SS_display   15
@@ -12,9 +14,9 @@
 #define DC_pin 4
 #define RESET_pin 10
 #define PIRQ_pin 0
-#define MAX_COORDS 254 // or whatever max size you need
-#define MAX_COORDS_CHAR 254 // or whatever max size you need
-#define APP_NAME_MAX_LEN 32  // Or whatever maximum length you expect
+#define MAX_COORDS 1000 // or whatever max size you need
+#define MAX_COORDS_CHAR 100 // or whatever max size you need
+#define APP_NAME_MAX_LEN 16  // Or whatever maximum length you expect
 
 typedef struct {
 	uint16_t x;
@@ -116,16 +118,35 @@ extern const uint8_t shift_font_0[] ICACHE_RODATA_ATTR;
 
 extern const uint8_t button[] ICACHE_RODATA_ATTR;
 
-extern uint8_t chameya[] ICACHE_RODATA_ATTR;
-extern uint8_t notebook[] ICACHE_RODATA_ATTR;
-extern uint8_t pong_logo[] ICACHE_RODATA_ATTR;
+extern const uint8_t chameya[] ICACHE_RODATA_ATTR;
+extern const uint8_t notebook[] ICACHE_RODATA_ATTR;
+extern const uint8_t pong_logo[] ICACHE_RODATA_ATTR;
+extern const uint8_t goblin_royale_logo[] ICACHE_RODATA_ATTR;
+extern const uint8_t gpio_C_logo[] ICACHE_RODATA_ATTR;
+
+extern uint8_t goblin_torch_run0[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_run1[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_run2[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_run3[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_attack1[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_attack2[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_attack3[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_attack4[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_attack5[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_death1[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_death2[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_death3[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_death4[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_death5[] ICACHE_RODATA_ATTR;
+extern uint8_t goblin_torch_death6[] ICACHE_RODATA_ATTR;
 
 extern uint8_t coord_index_char;
-extern uint8_t coord_index;
+extern uint16_t coord_index;
 
 extern size_t size_var;
 extern size_t size_var1;
 extern size_t size_var2;
+extern size_t size_goblin_torch_run0;
 
 extern const size_t letter_font_0_size;
 extern char *background_color;
@@ -170,13 +191,20 @@ void draw_keyborad(char c);
 void IRAM_ATTR PIRQ_isr_handler(void *arg);
 void draw_main_menu_icons();
 void draw_main_menu_icons();
-void make_button(char *name, uint16_t height, uint16_t x,
-		uint16_t y);
+void make_button(char *name, uint16_t height, uint16_t x, uint16_t y,
+		char *color);
 void bootApp_noteBook();
+void GPIO_C_boot();
+void confirm_boot();
+void GPIO_pins_boot();
 void make_X_button();
 void apply_x_correction(char *message, uint16_t *x, uint16_t *y,
 		uint8_t font_size);
 void print_history_table();
 void print_history_char_table();
+void fill_rect(int x, int y, int width, int height, uint8_t color_byte);
+void clean_last_element();
+void clean_last_element_modified(uint8_t coord_index);
+void confirm_boot_I2C();
 
 #endif

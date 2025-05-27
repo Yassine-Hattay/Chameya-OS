@@ -45,8 +45,15 @@ tasks.o: C:/msys32/home/hatta/esp/hello_world1/components/tasks/tasks.c \
  c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h \
  c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h \
  c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h \
  C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_system.h \
- C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\my_config\my_config.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h \
+ C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h
 
 C:/msys32/home/hatta/esp/hello_world1/components/tasks/tasks.h:
 
@@ -140,7 +147,21 @@ c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h:
 
 c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h:
 
+c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h:
+
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_system.h:
 
 C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/esp_idf_version.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\my_config\my_config.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/esp8266/include/driver/uart.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/log/include/esp_log_internal.h:
+
+C:/msys32/home/hatta/esp/ESP8266_RTOS_SDK/components/freertos/include/freertos/queue.h:
 /home/hatta/esp/hello_world1/components/tasks/./tasks.c:

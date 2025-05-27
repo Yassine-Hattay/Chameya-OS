@@ -47,7 +47,6 @@ void send_control_byte(uint8_t parameters) {
 	send_data(parameters);
 }
 
-
 void init_XPT2046() {
 	gpio_config_t io_conf0 = { .pin_bit_mask = (1ULL << MISO_touch), .mode =
 			GPIO_MODE_INPUT, .pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
@@ -86,13 +85,11 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 			if (strcmp(keyboard[i].label, "close") == 0) {
 
-				clean_screen();
+				coord_index = 1;
 
 				keyboard_buffer_i = 0;
 
-				while (coord_index_char > 0) {
-					clean_last_char();
-				}
+				FillScreenblack();
 
 				coord_index_char = 1;
 
@@ -109,6 +106,14 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 							"notebook_editFilesPage1_task", 2048, NULL, 5,
 							&other_task_handel);
 
+				} else if ((strcmp(current_task, "GPIO_C_UART_Transmit") == 0)
+						|| (strcmp(current_task, "GPIO_C_I2C_Write") == 0)
+						|| (strcmp(current_task, "GPIO_C_I2C_Address") == 0)
+						|| (strcmp(current_task, "GPIO_C_SPI_Transmit") == 0)) {
+
+					xTaskCreate(GPIO_C_page_1, "GPIO_C_page_1", 2048, NULL, 5,
+							&other_task_handel);
+
 				} else {
 					xTaskCreate(note_book_app_page1, "note_book_app_page1",
 							2048, NULL, 5, &main_menu_Handle);
@@ -120,6 +125,114 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 			}
 
 			if (strcmp(keyboard[i].label, "OK") == 0) {
+
+				if (strcmp(current_task, "GPIO_C_I2C_Address") == 0) {
+
+					char *endptr;
+					unsigned long val = strtol(keyboard_buffer, &endptr, 0);
+					I2C_SLAVE_ADDR = (uint8_t) val;
+
+					TaskParams *params = malloc(sizeof(TaskParams));
+					params->x = 0;
+					params->y = 35;
+					strcpy(params->current_task, "GPIO_C_I2C_Write");
+					strcpy(current_task, "GPIO_C_I2C_Write");
+
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+
+					keyboard_buffer_i = 0;
+
+					while (coord_index_char > 0) {
+						clean_last_char();
+					}
+					coord_index_char = 1;
+
+					if (!Read_write_bit_i2c) {
+						print_ILI9488("Send data", 80, 0, 2);
+						send_command(0x00);
+						gpio_set_level(SS_display, 1);
+						xTaskCreate(keyboard_task, "GPIO_C_I2C_Write", 2048,
+								(void*) params, 5, &other_task_handel);
+						vTaskDelete(NULL);
+						break;
+					} else {
+						send_command(0x00);
+						gpio_set_level(SS_display, 1);
+					}
+				}
+
+				if (Read_write_bit_i2c) {
+
+					uint8_t byte;
+					uint8_t j = 0;
+
+					clean_screen();
+					uint8_t buffer[BUFFER_SIZE];
+
+					i2c_start();
+					i2c_write_byte((I2C_SLAVE_ADDR << 1) | 1);
+					one_tick();
+					while (j < BUFFER_SIZE - 1) {
+						byte = i2c_recive_byte();
+						buffer[j++] = byte;
+
+						// Send ACK if not end, NACK if done
+						send_ACK_NACK(byte == '\0');
+
+						if (byte == '\0') {
+							break;
+						}
+					}
+
+					buffer[j] = '\0'; // Safety null-terminate
+					i2c_stop();
+
+					printf("\n Received: %s\n", buffer);
+
+					gpio_set_level(SS_display, 0);
+
+					print_ILI9488((char*) buffer, 0, 50, 2);
+
+					background_color = "red";
+					print_ILI9488("X", 456, 0, 2);
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					*x1 = 500;
+					*y1 = 500;
+
+					keyboard_buffer_i = 0;
+
+					break;
+				}
+
+				if (strcmp(current_task, "GPIO_C_I2C_Write") == 0) {
+
+					i2c_start();
+					i2c_send_byte(I2C_SLAVE_ADDR << 1);
+					for (int i = 0; i < keyboard_buffer_i; i++) {
+						i2c_send_byte(keyboard_buffer[i]);
+					}
+					i2c_stop();
+
+					while (coord_index_char > 1) {
+						clean_last_char();
+					}
+
+					coord_index_char = 1;
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					*x1 = 0;
+					*y1 = 35;
+
+					keyboard_buffer_i = 0;
+
+					break;
+				}
 
 				if (strcmp(current_task, "keyboard_to_edit") == 0) {
 
@@ -223,6 +336,79 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 							(void*) params, 5, &other_task_handel);
 
 					vTaskDelete(NULL);
+				}
+
+				if (strcmp(previous_task, "keyboard_New_file") == 0) {
+					char temp[keyboard_buffer_i];
+					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
+					temp[keyboard_buffer_i] = '\0'; // Null-terminate the string
+
+					append_to_file(full_path, temp);
+
+					while (coord_index_char > 1) {
+						clean_last_char();
+
+					}
+
+					coord_index_char = 1;
+
+					paragraph_number++;
+
+					background_color = "red";
+					char text[14];
+					sprintf(text, "Paragraph %d", paragraph_number);
+					print_ILI9488(text, 20, 142, 2);
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					*x1 = 0;
+					*y1 = 35;
+
+					keyboard_buffer_i = 0;
+
+					break;
+				}
+
+				if (strcmp(current_task, "GPIO_C_UART_Transmit") == 0) {
+					uart_bitbang_send_string(keyboard_buffer,
+							keyboard_buffer_i);
+
+					while (coord_index_char > 1) {
+						clean_last_char();
+					}
+
+					coord_index_char = 1;
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					*x1 = 0;
+					*y1 = 35;
+
+					keyboard_buffer_i = 0;
+
+					break;
+				}
+
+				if (strcmp(current_task, "GPIO_C_SPI_Transmit") == 0) {
+
+					spi_master_bit_bang_mode_0(0xA2);
+
+					while (coord_index_char > 1) {
+						clean_last_char();
+					}
+
+					coord_index_char = 1;
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					*x1 = 0;
+					*y1 = 35;
+
+					keyboard_buffer_i = 0;
+
+					break;
 				}
 
 				if (strcmp(previous_task, "keyboard_New_file") == 0) {

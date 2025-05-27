@@ -4,6 +4,7 @@
 volatile bool start_bit_detected = 0; // Flag for interrupt
 // Define UART structure
 bool stop_bit = 0;
+uint8_t TX_PIN = 2;
 
 esp_err_t my_uart_init(uart_t *uart) {
     uart_config_t uart_config = {
@@ -31,7 +32,7 @@ esp_err_t my_uart_init(uart_t *uart) {
 
 
 // ISR to detect the start of the UART reception (start bit)
-static IRAM_ATTR void uart_rx_isr_handler(void *arg) {
+IRAM_ATTR void uart_rx_isr_handler(void *arg) {
 	start_bit_detected = 1;
 }
 
@@ -138,18 +139,18 @@ void uart_bitbang_send_byte(uint8_t byte) {
 }
 
 // Function to send a string
-void uart_bitbang_send_string(const char *str) {
-	while (*str) {
-		uart_bitbang_send_byte(*str++);
+void uart_bitbang_send_string(const char *str, size_t length) {
+	for (size_t i = 0; i < length; i++) {
+		uart_bitbang_send_byte(str[i]);
 	}
 }
 
 // Task to continuously send a message
 void uart_task(void *param) {
 	while (1) {
-		uart_bitbang_send_string(
-				"Hello from bit-banged UART1 on GPIO2 (D4)!\n");
-		vTaskDelay(pdMS_TO_TICKS(1000));  // Wait 1 second
+		//uart_bitbang_send_string(
+		//		"Hello from bit-banged UART1 on GPIO2 (D4)!\n");
+		//vTaskDelay(pdMS_TO_TICKS(1000));  // Wait 1 second
 	}
 }
 

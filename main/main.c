@@ -34,12 +34,7 @@ void app_main(void) {
 
 	gpio_install_isr_service(0);
 
-	gpio_isr_handler_add(PIRQ_pin, PIRQ_isr_handler, NULL);
-
-	xTaskCreate(main_menu_task, "main_menu_task", 2048,
+	xTaskCreate(main_menu_task, "main_menu_task", 1024,
 	 NULL, 5, &main_menu_Handle);
 
-	xTaskCreate(memory_monitor_task, "mem_monitor", 2048, NULL, 5, NULL);
-
 }
-

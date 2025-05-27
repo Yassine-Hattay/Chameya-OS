@@ -100,7 +100,9 @@ main.o: C:/msys32/home/hatta/esp/hello_world1/main/main.c \
  c:\msys32\home\hatta\esp\hello_world1\components\ili9488_driver\ili9488_driver.h \
  c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h \
  c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h \
- c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h
+ c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h \
+ c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h
 
 c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h:
 
@@ -305,4 +307,8 @@ c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\my_spiffs.h:
 c:\msys32\home\hatta\esp\hello_world1\components\my_spiffs\esp_spiffs.h:
 
 c:\msys32\home\hatta\esp\hello_world1\components\tasks\tasks.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\i2c\i2c.h:
+
+c:\msys32\home\hatta\esp\hello_world1\components\uart\uart.h:
 /home/hatta/esp/hello_world1/main/./main.c:

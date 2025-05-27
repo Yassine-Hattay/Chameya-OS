@@ -9,17 +9,6 @@
 
 #define MAX_FILES 100
 #define MAX_FILENAME_LEN 64
-
-float scaling_factor = 1.013; // Adjust this for the desired speed of growth
-float cell_size = 1.875;
-float cell_size1 = 1.25;
-
-TaskHandle_t main_menu_Handle = NULL;
-TaskHandle_t other_task_handel = NULL;
-
-char keyboard_buffer[MAX_COORDS_CHAR];
-uint8_t keyboard_buffer_i = 0;
-
 // Touch regions for UP and DOWN
 #define BUTTON_UP_X_START 0
 #define BUTTON_UP_X_END 240
@@ -30,6 +19,33 @@ uint8_t keyboard_buffer_i = 0;
 #define BUTTON_DOWN_X_END 240
 #define BUTTON_DOWN_Y_START 220
 #define BUTTON_DOWN_Y_END 320
+
+#define ATTACK_RANGE 20
+#define MAX_X 480  // Max screen width (example, adjust as needed)
+#define MAX_Y 320  // Max screen height (example, adjust as needed)
+#define MIN_X 0    // Min screen width
+#define MIN_Y 0
+
+bool Read_write_bit_i2c;
+
+typedef struct {
+	const char *protocol;
+	uint8_t val1;
+	uint8_t val2;
+	uint8_t val3;
+} Confirm_struct;
+
+goblin_group_t *global_group = NULL;
+
+float scaling_factor = 1.013; // Adjust this for the desired speed of growth
+float cell_size = 1.875;
+float cell_size1 = 1.25;
+
+TaskHandle_t main_menu_Handle = NULL;
+TaskHandle_t other_task_handel = NULL;
+
+char keyboard_buffer[MAX_COORDS_CHAR];
+uint8_t keyboard_buffer_i = 0;
 
 // Positions and sizes
 int paddle_width = 10;
@@ -45,20 +61,21 @@ int ball_x = 240;
 int ball_y = 160;
 int ball_size = 15;
 
-void IRAM_ATTR PIRQ_isr_handler(void *arg) {
-	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-	// Check if the task handle is valid before notifying
-	if (main_menu_Handle != NULL) {
-		vTaskNotifyGiveFromISR(main_menu_Handle, &xHigherPriorityTaskWoken);
-	}
-	// Check if the task handle is valid before notifying
-	if (other_task_handel != NULL) {
-		vTaskNotifyGiveFromISR(other_task_handel, &xHigherPriorityTaskWoken);
-	}
+static bool death_bool = true;
 
-	portYIELD_FROM_ISR();
+goblin_torch goblins[NUM_GOBLINS];
 
-}
+map myMap;
+
+TaskHandle_t goblinHandles[NUM_GOBLINS]; // Assume goblin1Handle to goblin6Handle assigned here
+
+static int current_goblin_index = 0;  // Global variable
+
+// goblin_torch goblins[NUM_GOBLINS];
+const char *goblinNames[NUM_GOBLINS] = { "G1", "G2", "G3", "G4", "G5", "G6",
+		"G7", "G8", "G9", "G10" };
+
+static int goblin_nb = 0;
 
 bool calculate_x_y(uint16_t *x, uint16_t *y) { // Wait indefinitely for ISR to notify us
 	gpio_set_level(SS_touch, 0);
@@ -86,20 +103,977 @@ bool calculate_x_y(uint16_t *x, uint16_t *y) { // Wait indefinitely for ISR to n
 	return 1;
 }
 
-// --- PONG TASK ---
-
-// Helper: Fill rectangle with black or white
-void fill_rect(int x, int y, int width, int height, uint8_t color_byte) {
-
-	set_resolution_pos(x, y, width, height, 0);
-
-	send_command(0x2C);
-	int total_pixels = width * height;
-	for (int i = 0; i < total_pixels / 2; i++) {
-		send_ILI9488_data(color_byte);
+void IRAM_ATTR PIRQ_isr_handler(void *arg) {
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	// Check if the task handle is valid before notifying
+	if (main_menu_Handle != NULL) {
+		vTaskNotifyGiveFromISR(main_menu_Handle, &xHigherPriorityTaskWoken);
 	}
-	send_command(0x00);
+	// Check if the task handle is valid before notifying
+	if (other_task_handel != NULL) {
+		vTaskNotifyGiveFromISR(other_task_handel, &xHigherPriorityTaskWoken);
+	}
 
+	portYIELD_FROM_ISR();
+
+}
+
+void confirm(void *pvParameters) {
+	Confirm_struct *data = (Confirm_struct*) pvParameters;
+
+	coord_index_char = 1;
+
+	background_color = "black";
+
+	char buffer[16];  // Safe for "TX:255" + '\0'
+	if (strcmp(data->protocol, "uart") == 0) {
+		gpio_set_level(SS_display, 0);
+
+		print_ILI9488("confirm ?", 100, 0, 2);
+		confirm_boot();
+		sprintf(buffer, "TX:%d", data->val1);
+		print_ILI9488(buffer, 10, 50, 2);
+		sprintf(buffer, "RX:%d", data->val2);
+		print_ILI9488(buffer, 200, 50, 2);
+		send_command(0x00);
+		gpio_set_level(SS_display, 1);
+	} else if (strcmp(data->protocol, "I2C") == 0) {
+
+		if (!data->val3) {
+
+			I2C_SDA = data->val1;
+			I2C_SCL = data->val2;
+			Read_write_bit_i2c = data->val3;
+
+			gpio_config_t io_conf_SCL_output;
+			io_conf_SCL_output.intr_type = GPIO_INTR_DISABLE; // Disable interrupt
+			io_conf_SCL_output.mode = GPIO_MODE_OUTPUT; // Set as output mode
+			io_conf_SCL_output.pin_bit_mask = (1ULL << I2C_SCL); // Set both SDA and SCL
+			io_conf_SCL_output.pull_down_en = GPIO_PULLDOWN_DISABLE; // Disable pull-down
+			io_conf_SCL_output.pull_up_en = GPIO_PULLUP_DISABLE; // Disable pull-up
+			gpio_config(&io_conf_SCL_output);
+
+			gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL
+					<< I2C_SDA), .mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+					.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+							GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+					};
+
+			gpio_config(&io_conf_SDA_output);
+
+			paragraph_number = 1;
+
+			gpio_set_level(SS_display, 0);
+			clean_screen();
+			print_ILI9488("Slave address", 80, 0, 2);
+			gpio_set_level(SS_display, 1);
+
+			TaskParams *params = malloc(sizeof(TaskParams));
+			strcpy(params->current_task, "GPIO_C_I2C_Address");
+			params->x = 0;
+			params->y = 35;
+			paragraph_number = 1;
+			coord_index_char = 1;
+
+			xTaskCreate(keyboard_task, "GPIO_C_I2C_Address", 2048,
+					(void*) params, 5, &other_task_handel);
+			vTaskDelete(NULL);
+		} else {
+
+			Read_write_bit_i2c = data->val3;
+			I2C_SDA = data->val1;
+			I2C_SCL = data->val2;
+
+			gpio_config_t io_conf_SCL_output;
+			io_conf_SCL_output.intr_type = GPIO_INTR_DISABLE; // Disable interrupt
+			io_conf_SCL_output.mode = GPIO_MODE_OUTPUT; // Set as output mode
+			io_conf_SCL_output.pin_bit_mask = (1ULL << I2C_SCL); // Set both SDA and SCL
+			io_conf_SCL_output.pull_down_en = GPIO_PULLDOWN_DISABLE; // Disable pull-down
+			io_conf_SCL_output.pull_up_en = GPIO_PULLUP_DISABLE; // Disable pull-up
+			gpio_config(&io_conf_SCL_output);
+
+			gpio_config_t io_conf_SDA_output = { .pin_bit_mask = (1ULL
+					<< I2C_SDA), .mode = GPIO_MODE_OUTPUT, // MOSI, SCK, and SS as input
+					.pull_up_en = GPIO_PULLUP_DISABLE, .pull_down_en =
+							GPIO_PULLDOWN_ENABLE, .intr_type = GPIO_INTR_DISABLE // Interrupt on falling edge
+					};
+
+			gpio_config(&io_conf_SDA_output);
+
+			paragraph_number = 1;
+
+			gpio_set_level(SS_display, 0);
+			clean_screen();
+			print_ILI9488("Slave address", 80, 0, 2);
+			gpio_set_level(SS_display, 1);
+
+			TaskParams *params = malloc(sizeof(TaskParams));
+			strcpy(params->current_task, "GPIO_C_I2C_Address");
+			params->x = 0;
+			params->y = 35;
+			paragraph_number = 1;
+			coord_index_char = 1;
+
+			xTaskCreate(keyboard_task, "GPIO_C_I2C_Address", 2048,
+					(void*) params, 5, &other_task_handel);
+			vTaskDelete(NULL);
+
+		}
+	} else {
+		gpio_set_level(SS_display, 0);
+
+		print_ILI9488("confirm ?", 100, 0, 2);
+		confirm_boot();
+
+		sprintf(buffer, "CS:%d", data->val1);
+		printf("CS: %d\n", data->val1);
+
+		print_ILI9488(buffer, 10, 50, 2);
+		sprintf(buffer, "CLK:%d", data->val2);
+
+		print_ILI9488(buffer, 160, 50, 2);
+		printf("CLK: %d\n", data->val2);
+
+		sprintf(buffer, "MOSI:%d", data->val3);
+		printf("MOSI: %d\n", data->val3);
+		print_ILI9488(buffer, 340, 50, 2);
+		send_command(0x00);
+		gpio_set_level(SS_display, 1);
+	}
+
+	uint8_t num_buttons = 2;
+
+	while (1) {
+
+		esp_task_wdt_reset();
+
+		uint16_t x, y;
+		if (!calculate_x_y(&x, &y)) {
+			continue;
+		}
+
+		for (uint8_t i = 1; i <= num_buttons; i++) {
+
+			if ((x >= history_char[coord_index_char - i].x
+					&& x
+							<= (history_char[coord_index_char - i].x
+									+ history_char[coord_index_char - i].width))
+					&& (y >= history_char[coord_index_char - i].y
+							&& y
+									<= (history_char[coord_index_char - i].y
+											+ history_char[coord_index_char - i].height))) {
+
+				if (strcmp(history_char[coord_index_char - i].app_name,
+						"Transmit") == 0) {
+					if (strcmp(data->protocol, "uart") == 0) {
+
+						gpio_set_level(SS_display, 0);
+						clean_screen();
+						print_ILI9488("baud rate : 9600", 80, 0, 2);
+						gpio_set_level(SS_display, 1);
+
+						gpio_set_direction(data->val1, GPIO_MODE_OUTPUT);
+						gpio_set_level(data->val1, 1);  // Idle state is high
+						TX_PIN = data->val1;
+
+						TaskParams *params = malloc(sizeof(TaskParams));
+						strcpy(params->current_task, "GPIO_C_UART_Transmit");
+						params->x = 0;
+						params->y = 35;
+						paragraph_number = 1;
+						coord_index_char = 1;
+
+						xTaskCreate(keyboard_task, "GPIO_C_UART_Transmit", 2048,
+								(void*) params, 5, &other_task_handel);
+						vTaskDelete(NULL);
+
+					} else {
+
+						gpio_set_level(SS_display, 0);
+						clean_screen();
+						print_ILI9488("send data", 80, 0, 2);
+						gpio_set_level(SS_display, 1);
+
+						BSS = data->val1;
+						BSCK = data->val2;
+						BMOSI = data->val3;
+
+						TaskParams *params = malloc(sizeof(TaskParams));
+						strcpy(params->current_task, "GPIO_C_SPI_Transmit");
+						params->x = 0;
+						params->y = 35;
+						paragraph_number = 1;
+						coord_index_char = 1;
+
+						gpio_config_t io_conf = { .pin_bit_mask = (1ULL << BMOSI)
+								| (1ULL << BSCK) | (1ULL << BSS), .mode =
+								GPIO_MODE_OUTPUT, .pull_up_en =
+								GPIO_PULLUP_DISABLE, .pull_down_en =
+								GPIO_PULLDOWN_DISABLE, .intr_type =
+								GPIO_INTR_DISABLE };
+						gpio_config(&io_conf);
+
+
+						gpio_set_level(BMOSI, 0);
+						gpio_set_level(BSS, 1);
+
+						xTaskCreate(keyboard_task, "GPIO_C_SPI_Transmit", 2048,
+								(void*) params, 5, &other_task_handel);
+						vTaskDelete(NULL);
+
+					}
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"close") == 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					gpio_set_level(SS_display, 1);
+
+					if (strcmp(data->protocol, "uart") == 0) {
+						xTaskCreate(GPIO_C_UART_page_0, "GPIO_C_UART_page_0",
+								2048,
+								NULL, 5, &main_menu_Handle);
+
+						vTaskDelete(NULL);
+
+					}
+				}
+			}
+		}
+	}
+}
+
+void GPIO_C_I2C_page_0(void *pvParameters) {
+	char buffer[16];
+
+	bool pressed = false;
+
+	coord_index_char = 1;
+
+	Confirm_struct *params = (Confirm_struct*) malloc(sizeof(TaskParams));
+
+	GPIO_pins_boot();
+
+	gpio_set_level(SS_display, 0);
+	print_ILI9488("Select SDA pin", 100, 0, 2);
+	send_command(0x00);
+	gpio_set_level(SS_display, 1);
+
+	uint8_t num_buttons = 4;
+
+	uint8_t SDA_pin = 0;
+
+	while (1) {
+
+		esp_task_wdt_reset();
+
+		uint16_t x, y;
+		if (!calculate_x_y(&x, &y)) {
+			continue;
+		}
+
+		for (uint8_t i = 1; i <= num_buttons; i++) {
+
+			if ((x >= history_char[coord_index_char - i].x
+					&& x
+							<= (history_char[coord_index_char - i].x
+									+ history_char[coord_index_char - i].width))
+					&& (y >= history_char[coord_index_char - i].y
+							&& y
+									<= (history_char[coord_index_char - i].y
+											+ history_char[coord_index_char - i].height))) {
+
+				if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 0") == 0) {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					if (pressed) {
+
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("Write", height, 50, 100, "red");
+
+						make_button("Read", height, 240, 100, "green");
+
+						gpio_set_level(SS_display, 0);
+
+						params->protocol = "I2C";
+						params->val1 = SDA_pin;
+						params->val2 = 0;
+
+						sprintf(buffer, "SDA:%d", params->val1);
+						print_ILI9488(buffer, 10, 50, 2);
+						sprintf(buffer, "SCL:%d", params->val2);
+						print_ILI9488(buffer, 200, 50, 2);
+
+						send_command(0x00);
+
+						num_buttons = 3;
+
+					} else {
+
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select SCL pin", 100, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("GPIO 2", height, 240, 60, "red");
+
+						make_button("GPIO 12", height, 120, 150, "red");
+
+						send_command(0x00);
+
+						pressed = true;
+						SDA_pin = 0;
+						num_buttons--;
+					}
+					gpio_set_level(SS_display, 1);
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 2") == 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					if (pressed) {
+
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("Write", height, 50, 100, "red");
+
+						make_button("Read", height, 240, 100, "green");
+						gpio_set_level(SS_display, 0);
+
+						params->protocol = "I2C";
+						params->val1 = SDA_pin;
+						params->val2 = 2;
+
+						sprintf(buffer, "SDA:%d", params->val1);
+						print_ILI9488(buffer, 10, 50, 2);
+						sprintf(buffer, "SCL:%d", params->val2);
+						print_ILI9488(buffer, 200, 50, 2);
+
+						send_command(0x00);
+
+						num_buttons = 3;
+
+					} else {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select SCL pin", 100, 0, 2);
+
+						int height = 55;
+						make_button("GPIO 0", height, 50, 60, "red");
+
+						make_button("GPIO 12", height, 120, 150, "red");
+
+						send_command(0x00);
+
+						num_buttons--;
+						pressed = true;
+						SDA_pin = 2;
+					}
+					gpio_set_level(SS_display, 1);
+
+				}
+
+				else if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 12") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+
+					if (pressed) {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("Write", height, 50, 100, "red");
+
+						make_button("Read", height, 240, 100, "green");
+						gpio_set_level(SS_display, 0);
+
+						params->protocol = "I2C";
+						params->val1 = SDA_pin;
+						params->val2 = 12;
+
+						sprintf(buffer, "SDA:%d", params->val1);
+						print_ILI9488(buffer, 10, 50, 2);
+						sprintf(buffer, "SCL:%d", params->val2);
+						print_ILI9488(buffer, 200, 50, 2);
+
+						send_command(0x00);
+
+						num_buttons = 3;
+
+					} else {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select SCL pin", 100, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("GPIO 0", height, 50, 60, "red");
+
+						make_button("GPIO 2", height, 240, 60, "red");
+
+						send_command(0x00);
+
+						num_buttons--;
+						pressed = true;
+						SDA_pin = 12;
+					}
+
+					gpio_set_level(SS_display, 1);
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"close") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_page_1, "GPIO_C_page_1", 2048,
+					NULL, 5, &main_menu_Handle);
+					vTaskDelete(NULL);
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"Write") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					params->val3 = 0;
+
+					xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+							&main_menu_Handle);
+					vTaskDelete(NULL);
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"Read") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					params->val3 = 1;
+
+					xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+							&main_menu_Handle);
+					vTaskDelete(NULL);
+				}
+			}
+		}
+	}
+}
+
+void GPIO_C_SPI_page_0(void *pvParameters) {
+	bool pressed = false;
+
+	coord_index_char = 1;
+
+	GPIO_pins_boot();
+
+	gpio_set_level(SS_display, 0);
+	print_ILI9488("Select CS pin", 100, 0, 2);
+	send_command(0x00);
+	gpio_set_level(SS_display, 1);
+
+	uint8_t num_buttons = 4;
+
+	uint8_t CS_pin = 0;
+
+	while (1) {
+
+		esp_task_wdt_reset();
+
+		uint16_t x, y;
+		if (!calculate_x_y(&x, &y)) {
+			continue;
+		}
+
+		for (uint8_t i = 1; i <= num_buttons; i++) {
+
+			if ((x >= history_char[coord_index_char - i].x
+					&& x
+							<= (history_char[coord_index_char - i].x
+									+ history_char[coord_index_char - i].width))
+					&& (y >= history_char[coord_index_char - i].y
+							&& y
+									<= (history_char[coord_index_char - i].y
+											+ history_char[coord_index_char - i].height))) {
+
+				if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 0") == 0) {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					if (pressed) {
+
+						Confirm_struct *params = (Confirm_struct*) malloc(
+								sizeof(TaskParams));
+						params->protocol = "SPI";
+						params->val1 = CS_pin;
+						params->val2 = 0;
+						if (CS_pin == 2)
+							params->val3 = 12;
+						else
+							params->val3 = 2;
+
+						xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+								&main_menu_Handle);
+
+						vTaskDelete(NULL);
+
+					} else {
+
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select RX pin", 100, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("GPIO 2", height, 240, 60, "red");
+
+						make_button("GPIO 12", height, 120, 150, "red");
+
+						send_command(0x00);
+
+						pressed = true;
+						CS_pin = 0;
+						num_buttons--;
+					}
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 2") == 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					if (pressed) {
+
+						Confirm_struct *params = (Confirm_struct*) malloc(
+								sizeof(TaskParams));
+						params->protocol = "SPI";
+						params->val1 = CS_pin;
+						params->val2 = 2;
+
+						if (CS_pin == 12)
+							params->val3 = 0;
+						else
+							params->val3 = 12;
+
+						xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+								&main_menu_Handle);
+
+						vTaskDelete(NULL);
+					} else {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select RX pin", 100, 0, 2);
+
+						int height = 55;
+
+						make_button("GPIO 0", height, 50, 60, "red");
+
+						make_button("GPIO 12", height, 120, 150, "red");
+
+						send_command(0x00);
+
+						num_buttons--;
+						pressed = true;
+						CS_pin = 2;
+						gpio_set_level(SS_display, 1);
+					}
+
+				}
+
+				else if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 12") == 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+					if (pressed) {
+						Confirm_struct *params = (Confirm_struct*) malloc(
+								sizeof(TaskParams));
+						params->protocol = "SPI";
+						params->val1 = CS_pin;
+						params->val2 = 12;
+
+						if (CS_pin == 0)
+							params->val3 = 2;
+						else
+							params->val3 = 0;
+
+						xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+								&main_menu_Handle);
+
+						vTaskDelete(NULL);
+
+					} else {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select RX pin", 100, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("GPIO 0", height, 50, 60, "red");
+
+						make_button("GPIO 2", height, 240, 60, "red");
+
+						send_command(0x00);
+
+						num_buttons--;
+						pressed = true;
+						CS_pin = 12;
+						gpio_set_level(SS_display, 1);
+					}
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"close") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_page_1, "GPIO_C_page_1", 2048,
+					NULL, 5, &main_menu_Handle);
+					vTaskDelete(NULL);
+				}
+			}
+		}
+	}
+}
+
+void GPIO_C_UART_page_0(void *pvParameters) {
+
+	bool pressed = false;
+
+	coord_index_char = 1;
+
+	GPIO_pins_boot();
+
+	gpio_set_level(SS_display, 0);
+	print_ILI9488("Select TX pin", 100, 0, 2);
+	send_command(0x00);
+	gpio_set_level(SS_display, 1);
+
+	uint8_t num_buttons = 4;
+
+	uint8_t TX_pin = 0;
+
+	while (1) {
+
+		esp_task_wdt_reset();
+
+		uint16_t x, y;
+		if (!calculate_x_y(&x, &y)) {
+			continue;
+		}
+
+		for (uint8_t i = 1; i <= num_buttons; i++) {
+
+			if ((x >= history_char[coord_index_char - i].x
+					&& x
+							<= (history_char[coord_index_char - i].x
+									+ history_char[coord_index_char - i].width))
+					&& (y >= history_char[coord_index_char - i].y
+							&& y
+									<= (history_char[coord_index_char - i].y
+											+ history_char[coord_index_char - i].height))) {
+
+				if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 0") == 0) {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					if (pressed) {
+
+						Confirm_struct *params = (Confirm_struct*) malloc(
+								sizeof(TaskParams));
+						params->protocol = "uart";
+						params->val1 = TX_pin;
+						params->val2 = 0;
+
+						xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+								&main_menu_Handle);
+
+						vTaskDelete(NULL);
+
+					} else {
+
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select RX pin", 100, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("GPIO 2", height, 240, 60, "red");
+
+						make_button("GPIO 12", height, 120, 150, "red");
+
+						send_command(0x00);
+
+						pressed = true;
+						TX_pin = 0;
+						num_buttons--;
+					}
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 2") == 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					if (pressed) {
+
+						Confirm_struct *params = (Confirm_struct*) malloc(
+								sizeof(TaskParams));
+						params->protocol = "uart";
+						params->val1 = TX_pin;
+						params->val2 = 2;
+
+						xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+								&main_menu_Handle);
+
+						vTaskDelete(NULL);
+					} else {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select RX pin", 100, 0, 2);
+
+						int height = 55;
+
+						make_button("GPIO 0", height, 50, 60, "red");
+
+						make_button("GPIO 12", height, 120, 150, "red");
+
+						send_command(0x00);
+
+						num_buttons--;
+						pressed = true;
+						TX_pin = 2;
+						gpio_set_level(SS_display, 1);
+					}
+
+				}
+
+				else if (strcmp(history_char[coord_index_char - i].app_name,
+						"GPIO 12") == 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+					if (pressed) {
+						Confirm_struct *params = (Confirm_struct*) malloc(
+								sizeof(TaskParams));
+						params->protocol = "uart";
+						params->val1 = TX_pin;
+						params->val2 = 12;
+
+						xTaskCreate(confirm, "confirm", 2048, (void*) params, 5,
+								&main_menu_Handle);
+
+						vTaskDelete(NULL);
+
+					} else {
+						coord_index_char = 1;
+
+						strcpy(history_char[coord_index_char].app_name,
+								"close");
+						history_char[coord_index_char].x = 456;
+						history_char[coord_index_char].y = 0;
+						history_char[coord_index_char].width = 24;
+						history_char[coord_index_char].height = 29;
+
+						coord_index_char++;
+
+						background_color = "red";
+						print_ILI9488("X", 456, 0, 2);
+
+						print_ILI9488("Select RX pin", 100, 0, 2);
+
+						background_color = "red";
+
+						int height = 55;
+
+						make_button("GPIO 0", height, 50, 60, "red");
+
+						make_button("GPIO 2", height, 240, 60, "red");
+
+						send_command(0x00);
+
+						num_buttons--;
+						pressed = true;
+						TX_pin = 12;
+						gpio_set_level(SS_display, 1);
+					}
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"close") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_page_1, "GPIO_C_page_1", 2048,
+					NULL, 5, &main_menu_Handle);
+					vTaskDelete(NULL);
+				}
+			}
+		}
+	}
 }
 
 void draw_paddle(int x, int y) {
@@ -121,6 +1095,7 @@ float clampf(float val, float min, float max) {
 void memory_monitor_task(void *pvParameters) {
 	while (1) {
 		printf("Current free heap: %u bytes\n", esp_get_free_heap_size());
+		fflush(stdout);  // Ensure it's flushed
 		vTaskDelay(500);  // Every 5 seconds
 	}
 }
@@ -150,11 +1125,11 @@ void bootApp_pong_B() {
 	height = 70;
 	x = 70;
 
-	make_button("Easy", height, x, 30);
+	make_button("Easy", height, x, 30, "red");
 
-	make_button("Medium", height, x, 120);
+	make_button("Medium", height, x, 120, "red");
 
-	make_button("Chameya Mabloula!", height, x, 210);
+	make_button("Chameya Mabloula!", height, x, 210, "red");
 
 	send_command(0x00);
 
@@ -187,11 +1162,11 @@ void bootApp_pong() {
 	height = 70;
 	x = 70;
 
-	make_button("PvP", height, x, 30);
+	make_button("PvP", height, x, 30, "red");
 
-	make_button("AI vs AI", height, x, 120);
+	make_button("AI vs AI", height, x, 120, "red");
 
-	make_button("Player vs AI", height, x, 210);
+	make_button("Player vs AI", height, x, 210, "red");
 
 	send_command(0x00);
 
@@ -203,7 +1178,7 @@ void pong_gamePvP_task(void *pvParameters) {
 
 	int default_ball_speed_x = 10;   // Ball speed horizontally
 	int default_ball_speed_y = 6;
-	int paddle_speed = 4;           // Default paddle speed (will be updated)
+	int paddle_speed = 4;          // Default paddle speed (will be updated)
 
 	coord_index_char = 1;
 	bootApp_pong_B();
@@ -240,7 +1215,8 @@ void pong_gamePvP_task(void *pvParameters) {
 					gpio_set_level(SS_display, 1);
 
 					xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task",
-							2048, NULL, 5, &main_menu_Handle);
+							2048,
+							NULL, 5, &main_menu_Handle);
 					vTaskDelete(NULL);
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
 						"Easy") == 0) {
@@ -334,8 +1310,8 @@ void pong_gamePvP_task(void *pvParameters) {
 			send_command(0x00);
 			gpio_set_level(SS_display, 1);
 
-			xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task", 2048, NULL,
-					5, &main_menu_Handle);
+			xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task", 2048,
+			NULL, 5, &main_menu_Handle);
 
 			vTaskDelete(NULL);
 		}
@@ -454,8 +1430,8 @@ void pong_gamePvP_task(void *pvParameters) {
 void pong_gamePvA_task(void *pvParameters) {
 	int default_ball_speed_x = 10;   // Ball speed horizontally
 	int default_ball_speed_y = 6;
-	int paddle_speed = 4;           // Default paddle speed (will be updated)
-	int ai_paddle_speed = 4;           // Default paddle speed (will be updated)
+	int paddle_speed = 4;          // Default paddle speed (will be updated)
+	int ai_paddle_speed = 4;       // Default paddle speed (will be updated)
 
 	coord_index_char = 1;
 	bootApp_pong_B();
@@ -495,7 +1471,8 @@ void pong_gamePvA_task(void *pvParameters) {
 					gpio_set_level(SS_display, 1);
 
 					xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task",
-							2048, NULL, 5, &main_menu_Handle);
+							2048,
+							NULL, 5, &main_menu_Handle);
 					vTaskDelete(NULL);
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
 						"Easy") == 0) {
@@ -586,8 +1563,8 @@ void pong_gamePvA_task(void *pvParameters) {
 			send_command(0x00);
 			gpio_set_level(SS_display, 1);
 
-			xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task", 2048, NULL,
-					5, &main_menu_Handle);
+			xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task", 2048,
+			NULL, 5, &main_menu_Handle);
 
 			vTaskDelete(NULL);
 		}
@@ -712,7 +1689,7 @@ void pong_gamePvA_task(void *pvParameters) {
 void pong_gameAvA_task(void *pvParameters) {
 	int default_ball_speed_x = 10;   // Ball speed horizontally
 	int default_ball_speed_y = 6;
-	int paddle_speed = 4;           // Default paddle speed (will be updated)
+	int paddle_speed = 4;          // Default paddle speed (will be updated)
 
 	coord_index_char = 1;
 
@@ -747,7 +1724,8 @@ void pong_gameAvA_task(void *pvParameters) {
 				if (strcmp(history_char[coord_index_char - i].app_name, "close")
 						== 0) {
 					xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task",
-							2048, NULL, 5, &main_menu_Handle);
+							2048,
+							NULL, 5, &main_menu_Handle);
 					vTaskDelete(NULL);
 
 				} else if (strcmp(history_char[coord_index_char - i].app_name,
@@ -836,8 +1814,8 @@ void pong_gameAvA_task(void *pvParameters) {
 			send_command(0x00);
 			gpio_set_level(SS_display, 1);
 
-			xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task", 2048, NULL,
-					5, &main_menu_Handle);
+			xTaskCreate(pong_gamePage1_task, "pong_gamePage1_task", 2048,
+			NULL, 5, &main_menu_Handle);
 
 			vTaskDelete(NULL);
 		}
@@ -1056,6 +2034,163 @@ void pong_gamePage1_task(void *pvParameters) {
 	}
 }
 
+static void bootGoblin_slayer() {
+
+	uint16_t width = 24;
+	uint16_t height = 29;
+	uint16_t x = 456;
+	uint16_t y = 0;
+
+	gpio_set_level(SS_display, 0);
+
+	strcpy(history_char[coord_index_char].app_name, "close");
+	history_char[coord_index_char].x = x;
+	history_char[coord_index_char].y = y;
+	history_char[coord_index_char].width = width;
+	history_char[coord_index_char].height = height;
+
+	coord_index_char++;
+
+	background_color = "red";
+	print_ILI9488("X", 456, 0, 2);
+
+	background_color = "red";
+
+	height = 50;
+	x = 200;
+
+	make_button("Start", height, x, 270, "red");
+
+	send_command(0x00);
+
+	gpio_set_level(SS_display, 1);
+
+}
+
+static void start_goblin_royale() {
+
+	myMap.orientation = 'r';
+
+	global_group = malloc(sizeof(goblin_group_t));
+
+	for (int i = 0; i < goblin_nb; i++) {
+		global_group->goblins[i] = &goblins[i];
+	}
+
+	for (int i = 0; i < goblin_nb; i++) {
+		char taskName[16];
+		snprintf(taskName, sizeof(taskName), "Goblin%dTask", i + 1);
+		xTaskCreate(goblin_task, taskName, 1000, &goblins[i], 5,
+				&goblinHandles[i]);
+		vTaskSuspend(goblinHandles[i]);
+	}
+
+	vTaskResume(goblinHandles[0]); // Resume first goblin only
+}
+
+static void goblin_task_start(void *pvParameters) {
+	coord_index_char = 1;
+	bootGoblin_slayer();
+	gpio_set_level(SS_display, 0);
+	print_ILI9488("Touch the screen to place goblins (max is 10)", 0, 240, 1);
+	send_command(0x00);
+	gpio_set_level(SS_display, 1);
+
+	while (1) {
+
+		vTaskDelay(100);
+
+		uint16_t x, y;
+		if (!calculate_x_y(&x, &y)) {
+			continue;
+		}
+
+		for (uint8_t i = 1; i <= 3; i++) {
+			if ((x >= history_char[coord_index_char - i].x
+					&& x
+							<= (history_char[coord_index_char - i].x
+									+ history_char[coord_index_char - i].width))
+					&& (y >= history_char[coord_index_char - i].y
+							&& y
+									<= (history_char[coord_index_char - i].y
+											+ history_char[coord_index_char - i].height))) {
+				gpio_set_level(SS_display, 0);
+
+				if (strcmp(history_char[coord_index_char - i].app_name, "close")
+						== 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+					send_command(0x00);
+
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(main_menu_task, "main_menu_task", 2048,
+					NULL, 5, &main_menu_Handle);
+					goblin_nb = 0;
+					vTaskDelete(NULL);
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"Start") == 0) {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+					send_command(0x00);
+
+					coord_index_char = 1;
+
+					start_goblin_royale();
+
+					vTaskDelete(NULL);
+
+				}
+			}
+			send_command(0x00);
+			gpio_set_level(SS_display, 1);
+
+		}
+		if (goblin_nb < NUM_GOBLINS) {
+			// Adjust coordinates to be multiples of 12 and 8
+			x = x - (x % 12); // Snap to nearest lower multiple of 12
+			y = y - (y % 8);  // Snap to nearest lower multiple of 8
+
+			// Fill goblin data
+			goblins[goblin_nb].xp = x;
+			goblins[goblin_nb].yp = y;
+			goblins[goblin_nb].real_xp = x;
+			goblins[goblin_nb].real_yp = y;
+			goblins[goblin_nb].orientation = 'r'; // Default orientation: right
+			goblins[goblin_nb].health = 100;
+			goblins[goblin_nb].last_draw_coord_index = 0;
+
+			// Copy name safely
+			strncpy(goblins[goblin_nb].name, goblinNames[goblin_nb],
+					sizeof(goblins[goblin_nb].name) - 1);
+			goblins[goblin_nb].name[sizeof(goblins[goblin_nb].name) - 1] = '\0';
+
+			// Now render the goblin
+			gpio_set_level(SS_display, 0);
+
+			set_resolution_pos(x, y, 20, 20, 0);
+
+			send_command(0x3A); // Interface pixel format
+			send_ILI9488_data(0x06);
+
+			send_command(0x2C);
+
+			for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+				send_ILI9488_data(goblin_torch_run0[i]);
+			}
+
+			gpio_set_level(SS_display, 1);
+
+			// Increment after everything
+			goblin_nb++;
+		}
+	}
+}
+
 void keyboard_task(void *pvParameters) {
 
 	TaskParams *data = (TaskParams*) pvParameters;
@@ -1091,8 +2226,8 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 
 	char *filename = (char*) pvParameters;
 
-	make_button("Edit", 100, 40, 100);
-	make_button("Delete file", 100, 200, 100);
+	make_button("Edit", 100, 40, 100, "red");
+	make_button("Delete file", 100, 200, 100, "red");
 
 	make_X_button();
 
@@ -1270,7 +2405,7 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 				x = 5;
 			}
 
-			make_button(line, height, x, y);
+			make_button(line, height, x, y, "red");
 
 			if (x + width <= 420) {
 				x += width + 5;
@@ -1461,7 +2596,7 @@ void notebook_readfiles_task(void *pvParameters) {
 				x = 5;
 			}
 
-			make_button(line, height, x, y);
+			make_button(line, height, x, y, "red");
 
 			if (x + width <= 420) {
 				x += width + 5;
@@ -1518,7 +2653,7 @@ void notebook_readfiles_task(void *pvParameters) {
 
 					print_ILI9488(contents_local, 0, 35, 2);
 
-					free(contents_local);  // Don't forget to free the memory!
+					free(contents_local); // Don't forget to free the memory!
 
 					x_level = 1;
 
@@ -1617,6 +2752,101 @@ void notebook_readfiles_task(void *pvParameters) {
 	}
 }
 
+void GPIO_C_page_1(void *pvParameters) {
+
+	coord_index_char = 1;
+
+	GPIO_C_boot();
+
+	while (1) {
+
+		esp_task_wdt_reset();
+
+		uint16_t x, y;
+		if (!calculate_x_y(&x, &y)) {
+			continue;
+		}
+
+		for (uint8_t i = 1; i <= 4; i++) {
+			if ((x >= history_char[coord_index_char - i].x
+					&& x
+							<= (history_char[coord_index_char - i].x
+									+ history_char[coord_index_char - i].width))
+					&& (y >= history_char[coord_index_char - i].y
+							&& y
+									<= (history_char[coord_index_char - i].y
+											+ history_char[coord_index_char - i].height))) {
+				gpio_set_level(SS_display, 0);
+
+				if (strcmp(history_char[coord_index_char - i].app_name, "close")
+						== 0) {
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					xTaskCreate(main_menu_task, "main_menu_task", 2048,
+					NULL, 5, &main_menu_Handle);
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					vTaskDelete(NULL);
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"UART") == 0) {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_UART_page_0, "GPIO_C_UART_page_0", 2048,
+					NULL, 5, &other_task_handel);
+
+					vTaskDelete(NULL);
+
+				} else if (strcmp(history_char[coord_index_char - i].app_name,
+						"SPI") == 0) {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_SPI_page_0, "GPIO_C_SPI_page_0", 2048,
+					NULL, 5, &other_task_handel);
+
+					vTaskDelete(NULL);
+
+				} else {
+
+					gpio_set_level(SS_display, 0);
+
+					clean_screen();
+
+					send_command(0x00);
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_I2C_page_0, "GPIO_C_I2C_page_0", 2048,
+					NULL, 5, &other_task_handel);
+
+					vTaskDelete(NULL);
+
+				}
+
+			}
+			send_command(0x00);
+			gpio_set_level(SS_display, 1);
+
+		}
+	}
+
+}
+
 void main_menu_task(void *pvParameters) {
 
 	draw_main_menu_icons();
@@ -1630,8 +2860,7 @@ void main_menu_task(void *pvParameters) {
 			continue;
 		}
 
-		for (uint8_t i = 0; i <= 2; i++) {
-
+		for (uint8_t i = 0; i <= 4; i++) {
 			if ((x >= history[coord_index - i].x
 					&& x
 							<= (history[coord_index - i].x
@@ -1666,7 +2895,32 @@ void main_menu_task(void *pvParameters) {
 
 					vTaskDelete(NULL);
 
+				} else if (strcmp(history[coord_index - i].app_name,
+						"goblin_royale") == 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(goblin_task_start, "goblin_task_start", 2048,
+					NULL, 5, &main_menu_Handle);
+
+					vTaskDelete(NULL);
+
 				}
+
+				else if (strcmp(history[coord_index - i].app_name, "GPIO_C")
+						== 0) {
+					gpio_set_level(SS_display, 0);
+					clean_screen();
+					gpio_set_level(SS_display, 1);
+
+					xTaskCreate(GPIO_C_page_1, "GPIO_C_page_1", 2048,
+					NULL, 5, &main_menu_Handle);
+
+					vTaskDelete(NULL);
+
+				}
+
 			}
 
 		}
@@ -1777,6 +3031,920 @@ void note_book_app_page1(void *pvParameters) {
 			gpio_set_level(SS_display, 1);
 
 		}
+	}
+
+}
+
+static void step_func_settings_check(char direction, goblin_torch *goblin) {
+
+	if ((direction == 'd') || (direction == 'e') || (direction == 'c')) {
+		if (goblin->orientation == 'l') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'r';
+		}
+		myMap.orientation = 'r';
+		set_orientation(1);
+
+	} else if ((direction == 'q') || (direction == 'a') || (direction == 'w')) {
+
+		if (goblin->orientation == 'r') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'l';
+		}
+		myMap.orientation = 'l';
+		set_orientation(5);
+
+	} else {
+
+		if (myMap.orientation == 'r') {
+			if (goblin->orientation == 'l') {
+				myMap.orientation = 'l';
+				set_orientation(5);
+			}
+		} else if (myMap.orientation == 'l') {
+			if (goblin->orientation == 'r') {
+				myMap.orientation = 'r';
+				set_orientation(1);
+			}
+		}
+
+	}
+
+}
+
+void step_func_handle_tasks() {
+
+	esp_task_wdt_reset();
+
+	for (int i = 0; i < goblin_nb; i++) {
+
+		current_goblin_index = (current_goblin_index + 1) % goblin_nb;
+
+		if (goblinHandles[current_goblin_index] != NULL) {
+			vTaskResume(goblinHandles[current_goblin_index]);
+			break;
+		}
+	}
+
+	if (death_bool)
+		vTaskSuspend(NULL);
+
+}
+
+static void goblin_torch_step(char direction, goblin_torch *goblin,
+		char enemy_id) {
+
+	int x1 = 0;
+	int y1 = 0;
+	int delay = 1;
+	if (direction == 'd') {
+		x1 = 3;
+		y1 = 0;
+
+		goblin->real_xp += (x1 * 4);
+
+		if (goblin->orientation == 'l') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'r';
+		}
+		myMap.orientation = 'r';
+		set_orientation(1);
+
+	} else if (direction == 'q') {
+		x1 = 3;
+		y1 = 0;
+
+		goblin->real_xp -= (x1 * 4);
+
+		if (goblin->orientation == 'r') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'l';
+		}
+
+		myMap.orientation = 'l';
+		set_orientation(5);
+
+	} else if (direction == 's') {
+		x1 = 0;
+		y1 = 2;
+		goblin->real_yp += (y1 * 4);
+
+		if (myMap.orientation == 'r') {
+			if (goblin->orientation == 'l') {
+				myMap.orientation = 'l';
+				set_orientation(5);
+			}
+		} else if (myMap.orientation == 'l') {
+			if (goblin->orientation == 'r') {
+				myMap.orientation = 'r';
+				set_orientation(1);
+			}
+		}
+
+	} else if (direction == 'z') {
+		x1 = 0;
+		y1 = -2;
+		goblin->real_yp += (y1 * 4);
+
+		if (myMap.orientation == 'r') {
+			if (goblin->orientation == 'l') {
+				myMap.orientation = 'l';
+				set_orientation(5);
+			}
+		} else if (myMap.orientation == 'l') {
+			if (goblin->orientation == 'r') {
+				myMap.orientation = 'r';
+				set_orientation(1);
+			}
+		}
+
+	} else if (direction == 'e') {
+		x1 = 3;
+		y1 = -2;
+		goblin->real_xp += (x1 * 4);
+		goblin->real_yp += (y1 * 4);
+
+		if (goblin->orientation == 'l') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'r';
+		}
+		myMap.orientation = 'r';
+		set_orientation(1);
+	} else if (direction == 'a') {
+		x1 = 3;
+		y1 = -2;
+		goblin->real_xp -= (x1 * 4);
+		goblin->real_yp += (y1 * 4);
+
+		if (goblin->orientation == 'r') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'l';
+		}
+
+		myMap.orientation = 'l';
+		set_orientation(5);
+	} else if (direction == 'w') {
+		x1 = 3;
+		y1 = 2;
+		goblin->real_xp -= (x1 * 4);
+		goblin->real_yp += (y1 * 4);
+
+		if (goblin->orientation == 'r') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'l';
+		}
+
+		myMap.orientation = 'l';
+		set_orientation(5);
+
+	} else if (direction == 'c') {
+		x1 = 3;
+		y1 = 2;
+		goblin->real_xp += (x1 * 4);
+		goblin->real_yp += (y1 * 4);
+
+		if (goblin->orientation == 'l') {
+			goblin->xp = 480 - goblin->xp - 20;
+			goblin->orientation = 'r';
+		}
+		myMap.orientation = 'r';
+		set_orientation(1);
+	}
+
+	if ((goblin->xp + x1) > 480 || (goblin->xp + x1) < 0
+			|| (goblin->yp + y1) > 320 || (goblin->yp + y1) < 0) {
+		return;
+	}
+
+	goblin->xp += x1;
+	goblin->yp += y1;
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run0[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	if ((goblin->xp + x1) > 480 || (goblin->xp + x1) < 0
+			|| (goblin->yp + y1) > 320 || (goblin->yp + y1) < 0) {
+		return;
+	}
+
+	goblin->xp += x1;
+	goblin->yp += y1;
+
+	step_func_handle_tasks();
+
+	step_func_settings_check(direction, goblin);
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run1[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	if ((goblin->xp + x1) > 480 || (goblin->xp + x1) < 0
+			|| (goblin->yp + y1) > 320 || (goblin->yp + y1) < 0) {
+		return;
+	}
+
+	goblin->xp += x1;
+	goblin->yp += y1;
+
+	step_func_handle_tasks();
+
+	step_func_settings_check(direction, goblin);
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run1[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	if ((goblin->xp + x1) > 480 || (goblin->xp + x1) < 0
+			|| (goblin->yp + y1) > 320 || (goblin->yp + y1) < 0) {
+		return;
+	}
+
+	goblin->xp += x1;
+	goblin->yp += y1;
+
+	printf("Draw goblin_torch_run2 done ! \n");
+
+	step_func_handle_tasks();
+
+	step_func_settings_check(direction, goblin);
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run2[i]);
+	}
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	if ((goblin->xp + x1) > 480 || (goblin->xp + x1) < 0
+			|| (goblin->yp + y1) > 320 || (goblin->yp + y1) < 0) {
+		return;
+	}
+
+	goblin->xp += x1;
+	goblin->yp += y1;
+
+	step_func_handle_tasks();
+
+	step_func_settings_check(direction, goblin);
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run3[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	step_func_settings_check(direction, goblin);
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run0[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	goblin->xp -= x1;
+	goblin->yp -= y1;
+
+	step_func_handle_tasks();
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+}
+
+void goblin_torch_death(char direction, goblin_torch *goblin) {
+
+	uint64_t delay = 1;
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run0[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_death1[i]);
+	}
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_death2[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_death3[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_death4[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_death5[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_death6[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+}
+
+void goblin_torch_attack(char direction, goblin_torch *goblin, char enemy_id) {
+
+	uint64_t delay = 1;
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack1[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack2[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack3[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack4[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0); // remove
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack5[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack4[i]);
+	}
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack3[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack2[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_attack1[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	goblin->last_draw_coord_index = coord_index;
+
+	set_resolution_pos(goblin->xp, goblin->yp, 20, 20, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_goblin_torch_run0; i++) {
+		send_ILI9488_data(goblin_torch_run0[i]);
+	}
+
+	for (uint64_t i = 0; i < delay; i++) {
+		ets_delay_us(1);
+	}
+
+	step_func_handle_tasks();
+
+	if (direction == 'r') {
+		char direction = 'd';
+		step_func_settings_check(direction, goblin);
+	} else if (direction == 'l') {
+		char direction = 'q';
+		step_func_settings_check(direction, goblin);
+	}
+
+	clean_last_element_modified(goblin->last_draw_coord_index);
+
+}
+
+bool in_attack_range(goblin_torch *g1, goblin_torch *g2) {
+
+	int dx = abs(g1->real_xp - g2->real_xp);
+	int dy = abs(g1->real_yp - g2->real_yp);
+
+	return dx <= ATTACK_RANGE && dy <= ATTACK_RANGE;
+}
+
+char get_move_direction(int dx, int dy) {
+	if (dx > 0 && dy == 0)
+		return 'd';   // right
+	if (dx < 0 && dy == 0)
+		return 'q';   // left
+	if (dx == 0 && dy < 0)
+		return 'z';   // up
+	if (dx == 0 && dy > 0)
+		return 's';   // down
+	if (dx < 0 && dy < 0)
+		return 'a';    // up-left
+	if (dx > 0 && dy < 0)
+		return 'e';    // up-right
+	if (dx > 0 && dy > 0)
+		return 'c';    // down-right
+	if (dx < 0 && dy > 0)
+		return 'w';    // down-left
+	return 'n'; // default
+}
+
+void move_towards_enemy(goblin_torch *self, goblin_torch *enemy, char enemy_id) {
+	int dx = enemy->real_xp - self->real_xp;
+	int dy = enemy->real_yp - self->real_yp;
+
+	char dir = get_move_direction(dx, dy);
+
+	goblin_torch_step(dir, self, enemy_id);
+}
+
+goblin_torch* find_nearest_enemy(goblin_torch *self) {
+	goblin_torch *nearest = NULL;
+	int min_dist = INT_MAX;
+
+	for (int i = 0; i < goblin_nb; i++) {
+		goblin_torch *other = global_group->goblins[i];
+		if (other == self || other->health <= 0)
+			continue;
+
+		int dx = other->real_xp - self->real_xp;
+		int dy = other->real_yp - self->real_yp;
+		int dist = dx * dx + dy * dy; // squared distance
+
+		if (dist < min_dist) {
+			min_dist = dist;
+			nearest = other;
+		}
+	}
+
+	return nearest;
+}
+
+void clean_task(void *params) {
+	vTaskDelete(goblinHandles[current_goblin_index]);
+	goblinHandles[current_goblin_index] = NULL;
+	step_func_handle_tasks();
+	death_bool = true;
+	vTaskDelete(NULL);
+
+}
+
+void goblin_task(void *params) {
+	goblin_torch *goblin = (goblin_torch*) params;
+
+	while (1) {
+
+		printf("\n---------------------------------------- start \n");
+		printf("%s position -> x: %d, y: %d, health: %d\n", goblin->name,
+				goblin->real_xp, goblin->real_yp, goblin->health);
+
+		// Find the nearest enemy that's alive
+		goblin_torch *enemy = find_nearest_enemy(goblin);
+
+		if (!in_attack_range(goblin, enemy) && goblin->health > 0) {
+			printf("%s moving toward %s\n", goblin->name, enemy->name);
+			move_towards_enemy(goblin, enemy, enemy->name[1]);
+		} else if (goblin->health > 0) {
+
+			printf("%s attacking %s\n", goblin->name, enemy->name);
+			goblin_torch_attack(goblin->orientation, goblin, enemy->name[1]);
+
+			// Search for the goblin in the global group by name and reduce health by 10
+			for (int i = 0; i < goblin_nb; i++) {
+				if (strcmp(global_group->goblins[i]->name, enemy->name) == 0) {
+					global_group->goblins[i]->health -= 10;
+					if (global_group->goblins[i]->health < 0) {
+						global_group->goblins[i]->health = 0;
+					}
+					break;
+				}
+			}
+
+		} else {
+			goblin_torch_death(goblin->orientation, goblin);
+			death_bool = false;
+			xTaskCreate(clean_task, "clean_task", 512, NULL,
+			configMAX_PRIORITIES,
+			NULL);
+		}
+
+		printf("\n---------------------------------------- end \n");
+
+		esp_task_wdt_reset();
+
 	}
 
 }

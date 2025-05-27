@@ -1,7 +1,6 @@
 #ifndef RECIVE_UART_H
 #define RECIVE_UART_H
 
-
 #include "../my_config/my_config.h"
 
 #if TEST_ON_PC == 0
@@ -22,9 +21,8 @@
 #define BIT_TIME_US_RX (1000000 / BAUD_RATE_RX) // Time per bit in microseconds
 #define BUFFER_SIZE 128
 
-#define TX_PIN GPIO_NUM_2  // GPIO2 (D4) for UART1 TX
-#define BAUD_RATE_TX 115200
-#define BIT_TIME_US_TX (1000000 / BAUD_RATE_TX) // Time per bit in microseconds
+#define BAUD_RATE_TX 9600
+#define BIT_TIME_US_TX (1000000 / BAUD_RATE_TX) + 1// Time per bit in microseconds
 
 #define GPIO_INPUT 0
 #define GPIO_OUTPUT 1
@@ -42,13 +40,15 @@ esp_err_t my_uart_init(uart_t *uart);
 uint8_t uart_bitbang_receive_byte();
 void uart_bitbang_receive_task(void *param);
 esp_err_t start_reciving_task(void);
-
+void uart_bitbang_send_string(const char *str, size_t length);
+IRAM_ATTR void uart_rx_isr_handler(void *arg);
 extern volatile bool start_bit_detected;
 extern bool stop_bit;
 extern uint8_t received_data[BUFFER_SIZE];
+extern uint8_t TX_PIN;
+
 #else
 #include "UART_tests.h"
 #endif
-
 
 #endif  // RECIVE_UART_H

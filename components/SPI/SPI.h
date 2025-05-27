@@ -22,6 +22,9 @@
 #define SCK  14
 #define SS   15
 
+extern uint8_t BMOSI;
+extern uint8_t BSS;
+extern uint8_t BSCK;
 
 void spi_slave_init(void) ;
 void spi_master_init(void);
@@ -33,4 +36,3 @@ uint8_t spi_master_bit_bang_mode_0(uint8_t data_to_send);
 
 
 #endif /* COMPONENTS_SPI_SPI_H_ */
-
