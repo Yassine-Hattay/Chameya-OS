@@ -259,6 +259,8 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 					paragraph_number++;
 					char text[14];
 					sprintf(text, "Paragraph %d", paragraph_number);
+					background_color = "red";
+
 					print_ILI9488(text, 20, 142, 2);
 
 					break;
@@ -279,7 +281,7 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 						background_color = "red";
 						print_ILI9488("name longer than 10 !", 0, 144, 2);
-						background_color = "red";
+						background_color = "black";
 						break;
 					}
 
@@ -293,7 +295,7 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 
 					paragraph_number = 1;
 
-					background_color = "red";
+					background_color = "black";
 
 					char temp[keyboard_buffer_i];
 					strncpy(temp, keyboard_buffer, keyboard_buffer_i);
@@ -322,7 +324,7 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 					send_command(0x00);
 					gpio_set_level(SS_display, 1);
 
-					background_color = "red";
+					background_color = "black";
 
 					TaskParams *params = malloc(sizeof(TaskParams));
 					params->x = 0;
@@ -502,7 +504,7 @@ void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 			}
 
 			char c = keyboard[i].label[0];
-			background_color = "red";
+			background_color = "black";
 			print_char_ILI9488(c, x1, y1, 2);
 			keyboard_buffer[keyboard_buffer_i++] = c;
 

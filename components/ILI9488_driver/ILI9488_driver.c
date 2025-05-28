@@ -2085,7 +2085,7 @@ void confirm_boot() {
 
 	height = 55;
 
-	make_button("Transmit", height, 50, 110, "red");
+	make_button("Transmit", height, 120, 110, "red");
 
 	send_command(0x00);
 

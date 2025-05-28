@@ -37,4 +37,7 @@ void app_main(void) {
 	xTaskCreate(main_menu_task, "main_menu_task", 1024,
 	 NULL, 5, &main_menu_Handle);
 
+	xTaskCreate(memory_monitor_task, "memory_monitor_task", 1024,
+	 NULL, 5, &other_task_handel);
+
 }

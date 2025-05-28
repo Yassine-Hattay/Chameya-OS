@@ -60,6 +60,6 @@ void GPIO_C_page_1(void *pvParameters);
 void GPIO_C_UART(void *pvParameters);
 void GPIO_C_UART_Transmit(void *pvParameters);
 void GPIO_C_UART_page_0(void *pvParameters);
-void GPIO_C_page_1(void *pvParameters) ;
-
+void GPIO_C_page_1(void *pvParameters);
+void GPIO_C_SPI_page_0(void *pvParameters);
 #endif /* COMPONENTS_TASKS_TASKS_H_ */

@@ -126,16 +126,22 @@ void confirm(void *pvParameters) {
 	background_color = "black";
 
 	char buffer[16];  // Safe for "TX:255" + '\0'
+
 	if (strcmp(data->protocol, "uart") == 0) {
 		gpio_set_level(SS_display, 0);
 
-		print_ILI9488("confirm ?", 100, 0, 2);
-		confirm_boot();
+		background_color = "black";
+
 		sprintf(buffer, "TX:%d", data->val1);
 		print_ILI9488(buffer, 10, 50, 2);
 		sprintf(buffer, "RX:%d", data->val2);
 		print_ILI9488(buffer, 200, 50, 2);
+
+		print_ILI9488("confirm ?", 100, 0, 2);
+		confirm_boot();
+
 		send_command(0x00);
+
 		gpio_set_level(SS_display, 1);
 	} else if (strcmp(data->protocol, "I2C") == 0) {
 
@@ -222,21 +228,19 @@ void confirm(void *pvParameters) {
 	} else {
 		gpio_set_level(SS_display, 0);
 
+		sprintf(buffer, "CS:%d", data->val1);
+		background_color = "black";
+
+		print_ILI9488(buffer, 10, 50, 2);
+		sprintf(buffer, "SCK:%d", data->val2);
+		print_ILI9488(buffer, 160, 50, 2);
+
+		sprintf(buffer, "MOSI:%d", data->val3);
+		print_ILI9488(buffer, 305, 50, 2);
+
 		print_ILI9488("confirm ?", 100, 0, 2);
 		confirm_boot();
 
-		sprintf(buffer, "CS:%d", data->val1);
-		printf("CS: %d\n", data->val1);
-
-		print_ILI9488(buffer, 10, 50, 2);
-		sprintf(buffer, "CLK:%d", data->val2);
-
-		print_ILI9488(buffer, 160, 50, 2);
-		printf("CLK: %d\n", data->val2);
-
-		sprintf(buffer, "MOSI:%d", data->val3);
-		printf("MOSI: %d\n", data->val3);
-		print_ILI9488(buffer, 340, 50, 2);
 		send_command(0x00);
 		gpio_set_level(SS_display, 1);
 	}
@@ -269,6 +273,8 @@ void confirm(void *pvParameters) {
 
 						gpio_set_level(SS_display, 0);
 						clean_screen();
+						background_color = "black";
+
 						print_ILI9488("baud rate : 9600", 80, 0, 2);
 						gpio_set_level(SS_display, 1);
 
@@ -305,14 +311,14 @@ void confirm(void *pvParameters) {
 						paragraph_number = 1;
 						coord_index_char = 1;
 
-						gpio_config_t io_conf = { .pin_bit_mask = (1ULL << BMOSI)
-								| (1ULL << BSCK) | (1ULL << BSS), .mode =
+						gpio_config_t io_conf = { .pin_bit_mask =
+								(1ULL << BMOSI) | (1ULL << BSCK)
+										| (1ULL << BSS), .mode =
 								GPIO_MODE_OUTPUT, .pull_up_en =
 								GPIO_PULLUP_DISABLE, .pull_down_en =
 								GPIO_PULLDOWN_DISABLE, .intr_type =
 								GPIO_INTR_DISABLE };
 						gpio_config(&io_conf);
-
 
 						gpio_set_level(BMOSI, 0);
 						gpio_set_level(BSS, 1);
@@ -339,6 +345,15 @@ void confirm(void *pvParameters) {
 						vTaskDelete(NULL);
 
 					}
+
+					if (strcmp(data->protocol, "SPI") == 0) {
+						xTaskCreate(GPIO_C_SPI_page_0, "GPIO_C_UART_page_0",
+								2048,
+								NULL, 5, &main_menu_Handle);
+
+						vTaskDelete(NULL);
+
+					}
 				}
 			}
 		}
@@ -357,6 +372,8 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 	GPIO_pins_boot();
 
 	gpio_set_level(SS_display, 0);
+	background_color = "black";
+
 	print_ILI9488("Select SDA pin", 100, 0, 2);
 	send_command(0x00);
 	gpio_set_level(SS_display, 1);
@@ -422,6 +439,8 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 						params->val1 = SDA_pin;
 						params->val2 = 0;
 
+						background_color = "black";
+
 						sprintf(buffer, "SDA:%d", params->val1);
 						print_ILI9488(buffer, 10, 50, 2);
 						sprintf(buffer, "SCL:%d", params->val2);
@@ -446,6 +465,8 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 
 						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+
+						background_color = "black";
 
 						print_ILI9488("Select SCL pin", 100, 0, 2);
 
@@ -499,6 +520,7 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 						params->protocol = "I2C";
 						params->val1 = SDA_pin;
 						params->val2 = 2;
+						background_color = "black";
 
 						sprintf(buffer, "SDA:%d", params->val1);
 						print_ILI9488(buffer, 10, 50, 2);
@@ -520,8 +542,10 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 						history_char[coord_index_char].height = 29;
 
 						coord_index_char++;
+						background_color = "red";
 
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
 						print_ILI9488("Select SCL pin", 100, 0, 2);
 
@@ -573,6 +597,8 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 						params->val1 = SDA_pin;
 						params->val2 = 12;
 
+						background_color = "black";
+
 						sprintf(buffer, "SDA:%d", params->val1);
 						print_ILI9488(buffer, 10, 50, 2);
 						sprintf(buffer, "SCL:%d", params->val2);
@@ -596,6 +622,7 @@ void GPIO_C_I2C_page_0(void *pvParameters) {
 
 						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
 						print_ILI9488("Select SCL pin", 100, 0, 2);
 
@@ -661,6 +688,7 @@ void GPIO_C_SPI_page_0(void *pvParameters) {
 	GPIO_pins_boot();
 
 	gpio_set_level(SS_display, 0);
+	background_color = "black";
 	print_ILI9488("Select CS pin", 100, 0, 2);
 	send_command(0x00);
 	gpio_set_level(SS_display, 1);
@@ -728,8 +756,9 @@ void GPIO_C_SPI_page_0(void *pvParameters) {
 
 						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
-						print_ILI9488("Select RX pin", 100, 0, 2);
+						print_ILI9488("Select SCK pin", 100, 0, 2);
 
 						background_color = "red";
 
@@ -781,9 +810,11 @@ void GPIO_C_SPI_page_0(void *pvParameters) {
 
 						coord_index_char++;
 
+						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
-						print_ILI9488("Select RX pin", 100, 0, 2);
+						print_ILI9488("Select SCK pin", 100, 0, 2);
 
 						int height = 55;
 
@@ -837,8 +868,9 @@ void GPIO_C_SPI_page_0(void *pvParameters) {
 
 						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
-						print_ILI9488("Select RX pin", 100, 0, 2);
+						print_ILI9488("Select SCK pin", 100, 0, 2);
 
 						background_color = "red";
 
@@ -880,6 +912,8 @@ void GPIO_C_UART_page_0(void *pvParameters) {
 	GPIO_pins_boot();
 
 	gpio_set_level(SS_display, 0);
+	background_color = "black";
+
 	print_ILI9488("Select TX pin", 100, 0, 2);
 	send_command(0x00);
 	gpio_set_level(SS_display, 1);
@@ -943,6 +977,7 @@ void GPIO_C_UART_page_0(void *pvParameters) {
 
 						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
 						print_ILI9488("Select RX pin", 100, 0, 2);
 
@@ -992,6 +1027,7 @@ void GPIO_C_UART_page_0(void *pvParameters) {
 						coord_index_char++;
 
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
 						print_ILI9488("Select RX pin", 100, 0, 2);
 
@@ -1042,6 +1078,7 @@ void GPIO_C_UART_page_0(void *pvParameters) {
 
 						background_color = "red";
 						print_ILI9488("X", 456, 0, 2);
+						background_color = "black";
 
 						print_ILI9488("Select RX pin", 100, 0, 2);
 
@@ -1264,7 +1301,7 @@ void pong_gamePvP_task(void *pvParameters) {
 	history_char[coord_index_char].height = 29;
 	coord_index_char++;
 	background_color = "red";
-	print_ILI9488("X", 290, 0, 2);
+	print_ILI9488("X", 305, 0, 2);
 	gpio_set_level(SS_display, 1);
 
 	float last_ball_x = ball_x;
@@ -1437,8 +1474,6 @@ void pong_gamePvA_task(void *pvParameters) {
 	bootApp_pong_B();
 
 	bool break_v = 1;
-
-	printf("PvA \n");
 
 	while (break_v) {
 
@@ -2226,8 +2261,8 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 
 	char *filename = (char*) pvParameters;
 
-	make_button("Edit", 100, 40, 100, "red");
-	make_button("Delete file", 100, 200, 100, "red");
+	make_button("Edit", 80, 20, 100, "red");
+	make_button("Delete file", 80, 180, 100, "red");
 
 	make_X_button();
 
@@ -2313,6 +2348,7 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 
 					snprintf(full_path, sizeof(full_path),
 							"/spiffs/notebook/%s\n", filename);
+					background_color = "black";
 
 					print_ILI9488(filename, 100, 0, 2);
 
@@ -2327,7 +2363,7 @@ void notebook_editFilesPage2_task(void *pvParameters) {
 					while (*contents_local) {
 						char c = *contents_local;
 
-						background_color = "red";
+						background_color = "black";
 						print_char_ILI9488(c, &x1, &y1, 2);
 						keyboard_buffer[keyboard_buffer_i++] = c;
 
@@ -2368,7 +2404,7 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 
 	gpio_set_level(SS_display, 0);
 
-	background_color = "red";
+	background_color = "black";
 	print_ILI9488("files", 100, 5, 2);
 
 	gpio_set_level(SS_display, 1);
@@ -2387,12 +2423,10 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 	coord_index_char = 1;
 
 	if (content) {
-		printf("File content:\n");
 
 		char *line = strtok(content, "\n");
 
 		while (line != NULL && file_count < MAX_FILES) {
-			printf("File: %s\n", line);
 
 			// Store a copy of the token
 			filenames[file_count] = strdup(line); // allocates and copies the string
@@ -2404,6 +2438,7 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 				y += height + 5;
 				x = 5;
 			}
+			background_color = "red";
 
 			make_button(line, height, x, y, "red");
 
@@ -2451,6 +2486,7 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 					while (coord_index_char > 0) {
 						clean_last_char();
 					}
+					background_color = "black";
 
 					print_ILI9488(filenames[file_count - i], 100, 5, 2);
 
@@ -2508,7 +2544,7 @@ void notebook_editFilesPage1_task(void *pvParameters) {
 						clean_last_char();
 					}
 
-					background_color = "red";
+					background_color = "black";
 					print_ILI9488("files", 100, 5, 2);
 
 					x_level = 0;
@@ -2558,7 +2594,7 @@ void notebook_readfiles_task(void *pvParameters) {
 
 	gpio_set_level(SS_display, 0);
 
-	background_color = "red";
+	background_color = "black";
 	print_ILI9488("files", 100, 5, 2);
 
 	gpio_set_level(SS_display, 1);
@@ -2578,12 +2614,10 @@ void notebook_readfiles_task(void *pvParameters) {
 	coord_index_char = 1;
 
 	if (content) {
-		printf("File content:\n");
 
 		char *line = strtok(content, "\n");
 
 		while (line != NULL && file_count < MAX_FILES) {
-			printf("File: %s\n", line);
 
 			// Store a copy of the token
 			filenames[file_count] = strdup(line); // allocates and copies the string
@@ -2595,6 +2629,7 @@ void notebook_readfiles_task(void *pvParameters) {
 				y += height + 5;
 				x = 5;
 			}
+			background_color = "red";
 
 			make_button(line, height, x, y, "red");
 
@@ -2642,7 +2677,7 @@ void notebook_readfiles_task(void *pvParameters) {
 
 					background_color = "red";
 					print_ILI9488("X", 456, 0, 2);
-					background_color = "red";
+					background_color = "black";
 
 					snprintf(full_path_l, sizeof(full_path_l),
 							"/spiffs/notebook/%s\n", filenames[file_count - i]);
@@ -2700,7 +2735,7 @@ void notebook_readfiles_task(void *pvParameters) {
 						clean_last_char();
 					}
 
-					background_color = "red";
+					background_color = "black";
 					print_ILI9488("files", 100, 5, 2);
 
 					x_level = 0;
@@ -2727,6 +2762,7 @@ void notebook_readfiles_task(void *pvParameters) {
 						}
 
 						send_command(0x00);
+						background_color = "red";
 
 						print_ILI9488(filenames[j], x + 15, y + 15, 2);
 
@@ -2974,7 +3010,7 @@ void note_book_app_page1(void *pvParameters) {
 
 					clean_screen();
 
-					background_color = "red";
+					background_color = "black";
 					print_ILI9488("New file name", 100, 5, 2);
 
 					send_command(0x00);
@@ -3305,8 +3341,6 @@ static void goblin_torch_step(char direction, goblin_torch *goblin,
 
 	goblin->xp += x1;
 	goblin->yp += y1;
-
-	printf("Draw goblin_torch_run2 done ! \n");
 
 	step_func_handle_tasks();
 
@@ -3907,19 +3941,14 @@ void goblin_task(void *params) {
 
 	while (1) {
 
-		printf("\n---------------------------------------- start \n");
-		printf("%s position -> x: %d, y: %d, health: %d\n", goblin->name,
-				goblin->real_xp, goblin->real_yp, goblin->health);
-
 		// Find the nearest enemy that's alive
 		goblin_torch *enemy = find_nearest_enemy(goblin);
 
 		if (!in_attack_range(goblin, enemy) && goblin->health > 0) {
-			printf("%s moving toward %s\n", goblin->name, enemy->name);
+
 			move_towards_enemy(goblin, enemy, enemy->name[1]);
 		} else if (goblin->health > 0) {
 
-			printf("%s attacking %s\n", goblin->name, enemy->name);
 			goblin_torch_attack(goblin->orientation, goblin, enemy->name[1]);
 
 			// Search for the goblin in the global group by name and reduce health by 10
@@ -3940,8 +3969,6 @@ void goblin_task(void *params) {
 			configMAX_PRIORITIES,
 			NULL);
 		}
-
-		printf("\n---------------------------------------- end \n");
 
 		esp_task_wdt_reset();
 
