@@ -1,5 +1,5 @@
 # 1-Project description:
-i created Chameya OS an opreating system for the esp 8266 utilizing [ILI9488](https://www.hpinfotech.ro/ILI9488.pdf) and [XPT2046](https://datasheet4u.com/datasheet/XPTEK/XPT2046-746665) library implementation based on their respective data sheets , FreeRtos task mangment and bit-banging (software emulated) SPI ,  
+Chameya OS an opreating system for the esp 8266 utilizing my [ILI9488](https://www.hpinfotech.ro/ILI9488.pdf) and [XPT2046](https://datasheet4u.com/datasheet/XPTEK/XPT2046-746665) library implementation based on their respective data sheets , FreeRtos task mangment and bit-banging (software emulated) SPI .
 # 2-Development environment 
 I used the [esp 8266 freertos SDK](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/index.html) with eclipse IDE to develop this project .
 # 3-Hardware used
