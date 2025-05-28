@@ -21,12 +21,24 @@ void app_main(void) {
 	//FillScreenBlue();
 	FillScreenblack();
 
-	//
-	//send_command(0x2C);
-	//
-	//for (uint64_t i = 0; i < size_var; i++) {
-	//	send_ILI9488_data(chameya[i]);
-	//}
+	set_resolution_pos(150, 130, 73, 47, 0);
+
+	send_command(0x3A); // interface pixel format
+	send_ILI9488_data(0x06);
+
+	send_command(0x2C);
+
+	for (uint64_t i = 0; i < size_var; i++) {
+		send_ILI9488_data(chameya[i]);
+	}
+
+	background_color = "black";
+
+	print_ILI9488("-OS", 225, 135, 2);
+
+	vTaskDelay(3000);
+
+	clean_screen();
 
 	gpio_set_level(SS_display, 1);
 
@@ -35,9 +47,9 @@ void app_main(void) {
 	gpio_install_isr_service(0);
 
 	xTaskCreate(main_menu_task, "main_menu_task", 1024,
-	 NULL, 5, &main_menu_Handle);
+	NULL, 5, &main_menu_Handle);
 
 	xTaskCreate(memory_monitor_task, "memory_monitor_task", 1024,
-	 NULL, 5, &other_task_handel);
+	NULL, 5, &other_task_handel);
 
 }
