@@ -1,0 +1,9 @@
+<map id="spiffs_DIR" name="spiffs_DIR">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,133,89,160"/>
+<area shape="rect" id="Node000002" href="$structspiffs__t.html" title=" " alt="" coords="61,8,124,35"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,47,50,63,45,80,43,99,47,132,41,133,38,99,40,79,46,60,58,43"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="141,9,148,13,151,22,142,33,125,36,124,31,140,28,145,21,144,17,138,13"/>
+<area shape="rect" id="Node000003" href="$structspiffs__config.html" title=" " alt="" coords="129,133,224,160"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="86,50,82,80,84,94,90,108,107,124,130,135,128,139,104,129,86,111,79,96,77,80,80,49"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="176,118,173,90,162,63,145,46,123,35,126,30,148,42,167,60,178,88,181,117"/>
+</map>

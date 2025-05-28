@@ -1,8 +1,13 @@
-/*
- * XPT2046_driver.h
- *
- *  Created on: 11 Apr 2025
- *      Author: hatta
+/**
+ * @file XPT2046_driver.h
+ * @author your name (you@domain.com)
+ * @brief this file contains the header for the XPT2046 touch controller driver,
+ * which is used to interface with the ILI9488 display and handle touch input.
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #ifndef COMPONENTS_XPT2046_DRIVER_XPT2046_DRIVER_H_

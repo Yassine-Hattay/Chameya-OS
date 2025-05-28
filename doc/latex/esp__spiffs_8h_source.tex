@@ -1,0 +1,52 @@
+\doxysection{esp\+\_\+spiffs.\+h}
+\hypertarget{esp__spiffs_8h_source}{}\label{esp__spiffs_8h_source}\index{C:/msys32/home/hatta/esp/hello\_world1/components/my\_spiffs/esp\_spiffs.h@{C:/msys32/home/hatta/esp/hello\_world1/components/my\_spiffs/esp\_spiffs.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2015-\/2017\ Espressif\ Systems\ (Shanghai)\ PTE\ LTD}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ \_ESP\_SPIFFS\_H\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ \_ESP\_SPIFFS\_H\_}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}esp\_err.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_add2c60af836f5dc9526885adc3a3d1c8}{base\_path}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_ae228e117d84f2f03ffc947165f3ad10e}{partition\_label}};\ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_a8498ca07df2b1f8bf23578718fe58d43}{max\_files}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_af657485432b43e27cf4a983cba3fcccc}{format\_if\_mount\_failed}};\ \ \ \ }
+\DoxyCodeLine{00033\ \}\ \mbox{\hyperlink{structesp__vfs__spiffs__conf__t}{esp\_vfs\_spiffs\_conf\_t}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00047\ esp\_err\_t\ esp\_vfs\_spiffs\_register(\textcolor{keyword}{const}\ \mbox{\hyperlink{structesp__vfs__spiffs__conf__t}{esp\_vfs\_spiffs\_conf\_t}}\ *\ conf);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00059\ esp\_err\_t\ esp\_vfs\_spiffs\_unregister(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ partition\_label);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{bool}\ esp\_spiffs\_mounted(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ partition\_label);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00082\ esp\_err\_t\ esp\_spiffs\_format(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ partition\_label);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00096\ esp\_err\_t\ esp\_spiffs\_info(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ partition\_label,\ \textcolor{keywordtype}{size\_t}\ *total\_bytes,\ \textcolor{keywordtype}{size\_t}\ *used\_bytes);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00099\ \}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_ESP\_SPIFFS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,4 +1,23 @@
+/**
+ * @file my_spiffs.c
+ * @author your name (you@domain.com)
+ * @brief this is my implementation of the SPIFFS file system
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "my_spiffs.h"
+
+/**
+ * @brief Mounts the SPIFFS filesystem.
+ *
+ * Configures and registers the SPIFFS filesystem with a base path of "/spiffs".
+ * If mounting fails (e.g., due to an unformatted partition), it attempts to format
+ * the partition and then mount it. Prints status messages indicating success or failure.
+ */
 
 void mount_spiffs() {
 	esp_vfs_spiffs_conf_t conf = { .base_path = "/spiffs", .partition_label =
@@ -13,11 +32,29 @@ void mount_spiffs() {
 	}
 }
 
+/**
+ * @brief Unmounts the SPIFFS filesystem.
+ *
+ * This function unregisters and unmounts the SPIFFS filesystem identified
+ * by the label "spiffs". It prints a success message to the console
+ * after unmounting.
+ */
 void unmount_spiffs() {
 	esp_vfs_spiffs_unregister("spiffs");
 	printf("SPIFFS unmounted successfully\n");
 }
 
+/**
+ * @brief Appends data to a specified file on the SPIFFS filesystem.
+ *
+ * This function mounts the SPIFFS filesystem, opens the file at `full_path`
+ * in append mode, writes the provided `data` to it, and then closes
+ * the file. Finally, it unmounts the SPIFFS filesystem.
+ * If the file cannot be opened, an error message is printed.
+ *
+ * @param full_path The full path to the file on SPIFFS.
+ * @param data The null-terminated string data to append to the file.
+ */
 void append_to_file(const char *full_path, const char *data) {
 
 	mount_spiffs();
@@ -36,7 +73,18 @@ void append_to_file(const char *full_path, const char *data) {
 	unmount_spiffs();
 
 }
-
+/**
+ * @brief Overwrites a specified file on the SPIFFS filesystem with new data.
+ *
+ * This function mounts the SPIFFS filesystem, opens the file at `full_path`
+ * in write mode (which truncates the file if it exists, or creates it if it doesn't),
+ * writes the provided `data` to it, and then closes the file.
+ * Finally, it unmounts the SPIFFS filesystem. If the file cannot be opened,
+ * an error message is printed.
+ *
+ * @param full_path The full path to the file on SPIFFS.
+ * @param data The null-terminated string data to write to the file.
+ */
 void overwrite_file(const char *full_path, const char *data) {
     mount_spiffs();
 
@@ -54,7 +102,17 @@ void overwrite_file(const char *full_path, const char *data) {
     unmount_spiffs();
 }
 
-
+/**
+ * @brief Prints the entire contents of a specified file on the SPIFFS filesystem to the console.
+ *
+ * This function mounts the SPIFFS filesystem, opens the file at `full_path`
+ * in read mode, and then reads and prints its contents character by character
+ * to the standard output until the end of the file is reached.
+ * Finally, it closes the file and unmounts the SPIFFS filesystem.
+ * If the file cannot be opened, an error message is printed.
+ *
+ * @param full_path The full path to the file on SPIFFS.
+ */
 void print_file_contents(const char *full_path) {
 
 	mount_spiffs();
@@ -76,7 +134,18 @@ void print_file_contents(const char *full_path) {
 	unmount_spiffs();
 
 }
-
+/**
+ * @brief Reads the entire contents of a specified file on the SPIFFS filesystem into a dynamically allocated string.
+ *
+ * This function mounts the SPIFFS filesystem, opens the file at `full_path` in read mode,
+ * determines its size, allocates memory to hold its contents, reads the file into the buffer,
+ * and null-terminates the string. It then closes the file and unmounts the SPIFFS filesystem.
+ *
+ * @param full_path The full path to the file on SPIFFS.
+ * @return A pointer to a dynamically allocated string containing the file's contents,
+ * or `NULL` if the file cannot be opened or memory allocation fails.
+ * The caller is responsible for freeing the returned buffer.
+ */
 char* read_file_contents(const char *full_path) {
 	mount_spiffs();
 
@@ -109,8 +178,17 @@ char* read_file_contents(const char *full_path) {
 
 	return buffer;  // Caller is responsible for freeing the buffer
 }
-
-void clear_file_contents(const char *full_path) {
+/**
+ * @brief Clears the contents of a specified file on the SPIFFS filesystem.
+ *
+ * This function mounts the SPIFFS filesystem and opens the file at `full_path`
+ * in write mode. Opening a file in write mode (`"w"`) truncates its contents,
+ * effectively clearing the file. The function then closes the file and unmounts
+ * the SPIFFS filesystem. If the file cannot be opened, an error message is printed.
+ *
+ * @param full_path The full path to the file on SPIFFS to be cleared.
+ */
+static void clear_file_contents(const char *full_path) {
 	mount_spiffs();
 
 	// Open the file in write mode (truncates/clears the file)
@@ -126,7 +204,13 @@ void clear_file_contents(const char *full_path) {
 	printf("File '%s' cleared successfully.\n", full_path);
 	unmount_spiffs();
 }
-
+/**
+ * @brief Formats the SPIFFS filesystem.
+ *
+ * This function unmounts the SPIFFS filesystem and then proceeds to format it.
+ * It prints a success message if formatting is successful, or an error message
+ * detailing the cause of failure if it encounters an issue.
+ */
 void format_spiffs() {
 	// You must first unmount the filesystem before formatting
 	esp_vfs_spiffs_unregister("spiffs");
@@ -138,7 +222,20 @@ void format_spiffs() {
 		printf("Failed to format SPIFFS. Error: %s\n", esp_err_to_name(ret));
 	}
 }
-
+/**
+ * @brief Deletes a specified file from the SPIFFS filesystem and removes its entry from a filenames list.
+ *
+ * This function first mounts the SPIFFS filesystem. It attempts to delete the file
+ * at `full_path`. Afterward, it extracts the filename from the provided path,
+ * cleans it of any trailing newline/carriage return characters, and then
+ * updates a master list of filenames (located at "/spiffs/notebook/filenames.txt").
+ * It reads the original list, writes all entries except the deleted filename
+ * to a temporary file, and then replaces the original list with the temporary one.
+ * Error messages are printed for file operation failures or if the filename is not found in the list.
+ * Finally, it unmounts the SPIFFS filesystem.
+ *
+ * @param full_path The full path to the file to be deleted on SPIFFS.
+ */
 void delete_file(const char *full_path) {
 	mount_spiffs();
 

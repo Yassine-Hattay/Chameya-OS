@@ -1,0 +1,5 @@
+<map id="send_control_byte" name="send_control_byte">
+<area shape="rect" id="Node000001" title="Sends a control byte." alt="" coords="5,5,133,32"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="181,5,262,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,16,165,16,165,21,133,21"/>
+</map>

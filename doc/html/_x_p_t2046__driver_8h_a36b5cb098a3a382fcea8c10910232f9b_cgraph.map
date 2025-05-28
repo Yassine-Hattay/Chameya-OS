@@ -1,0 +1,5 @@
+<map id="recieve_touch_data" name="recieve_touch_data">
+<area shape="rect" id="Node000001" title="Receives a specified number of data points and extracts a 12&#45;bit value." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a7ec8272ac2813d90fe29973cc71baabb" title="Receives a byte over SPI using software bit&#45;banging." alt="" coords="188,5,244,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,16,172,16,172,21,140,21"/>
+</map>

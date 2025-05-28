@@ -1,15 +1,18 @@
-/*
- * my_spiffs.h
- *
- *  Created on: 17 Apr 2025
- *      Author: hatta
+/**
+ * @file my_spiffs.h
+ * @author your name (you@domain.com)
+ * @brief this is my implementation of the SPIFFS file system
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #ifndef COMPONENTS_MY_SPIFFS_MY_SPIFFS_H_
 #define COMPONENTS_MY_SPIFFS_MY_SPIFFS_H_
 
 #include "esp_spiffs.h"
-
 
 #include <math.h>
 #include <stdint.h>

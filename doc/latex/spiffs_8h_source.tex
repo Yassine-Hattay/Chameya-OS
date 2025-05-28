@@ -1,0 +1,455 @@
+\doxysection{spiffs.\+h}
+\hypertarget{spiffs_8h_source}{}\label{spiffs_8h_source}\index{C:/msys32/home/hatta/esp/hello\_world1/components/my\_spiffs/spiffs.h@{C:/msys32/home/hatta/esp/hello\_world1/components/my\_spiffs/spiffs.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ spiffs.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ May\ 26,\ 2013}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ petera}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SPIFFS\_H\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}spiffs\_config.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ SPIFFS\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_MOUNTED\ \ \ \ \ \ \ \ \ \ -\/10000}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_FULL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/10001}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_FOUND\ \ \ \ \ \ \ \ \ \ \ \ -\/10002}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_END\_OF\_OBJECT\ \ \ \ \ \ \ \ -\/10003}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_DELETED\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/10004}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_FINALIZED\ \ \ \ \ \ \ \ -\/10005}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_INDEX\ \ \ \ \ \ \ \ \ \ \ \ -\/10006}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_OUT\_OF\_FILE\_DESCS\ \ \ \ -\/10007}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_FILE\_CLOSED\ \ \ \ \ \ \ \ \ \ -\/10008}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_FILE\_DELETED\ \ \ \ \ \ \ \ \ -\/10009}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_BAD\_DESCRIPTOR\ \ \ \ \ \ \ -\/10010}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_IS\_INDEX\ \ \ \ \ \ \ \ \ \ \ \ \ -\/10011}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_IS\_FREE\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/10012}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_SPAN\_MISMATCH\ \ -\/10013}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_DATA\_SPAN\_MISMATCH\ \ \ -\/10014}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_REF\_FREE\ \ \ \ \ \ \ -\/10015}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_REF\_LU\ \ \ \ \ \ \ \ \ -\/10016}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_REF\_INVALID\ \ \ \ -\/10017}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_FREE\ \ \ \ \ \ \ \ \ \ \ -\/10018}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_LU\ \ \ \ \ \ \ \ \ \ \ \ \ -\/10019}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INDEX\_INVALID\ \ \ \ \ \ \ \ -\/10020}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_WRITABLE\ \ \ \ \ \ \ \ \ -\/10021}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_READABLE\ \ \ \ \ \ \ \ \ -\/10022}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_CONFLICTING\_NAME\ \ \ \ \ -\/10023}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_CONFIGURED\ \ \ \ \ \ \ -\/10024}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_A\_FS\ \ \ \ \ \ \ \ \ \ \ \ \ -\/10025}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_MOUNTED\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/10026}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_ERASE\_FAIL\ \ \ \ \ \ \ \ \ \ \ -\/10027}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_MAGIC\_NOT\_POSSIBLE\ \ \ -\/10028}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NO\_DELETED\_BLOCKS\ \ \ \ -\/10029}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_FILE\_EXISTS\ \ \ \ \ \ \ \ \ \ -\/10030}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NOT\_A\_FILE\ \ \ \ \ \ \ \ \ \ \ -\/10031}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_RO\_NOT\_IMPL\ \ \ \ \ \ \ \ \ \ -\/10032}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_RO\_ABORTED\_OPERATION\ -\/10033}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_PROBE\_TOO\_FEW\_BLOCKS\ -\/10034}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_PROBE\_NOT\_A\_FS\ \ \ \ \ \ \ -\/10035}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_NAME\_TOO\_LONG\ \ \ \ \ \ \ \ -\/10036}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_IX\_MAP\_UNMAPPED\ \ \ \ \ \ -\/10037}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_IX\_MAP\_MAPPED\ \ \ \ \ \ \ \ -\/10038}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_IX\_MAP\_BAD\_RANGE\ \ \ \ \ -\/10039}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_SEEK\_BOUNDS\ \ \ \ \ \ \ \ \ \ -\/10040}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_INTERNAL\ \ \ \ \ \ \ \ \ \ \ \ \ -\/10050}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ SPIFFS\_ERR\_TEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/10100}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ spiffs\ file\ descriptor\ index\ type.\ must\ be\ signed}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{typedef}\ s16\_t\ spiffs\_file;}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ spiffs\ file\ descriptor\ flags}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{typedef}\ u16\_t\ spiffs\_flags;}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ spiffs\ file\ mode}}
+\DoxyCodeLine{00076\ \textcolor{keyword}{typedef}\ u16\_t\ spiffs\_mode;}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ object\ type}}
+\DoxyCodeLine{00078\ \textcolor{keyword}{typedef}\ u8\_t\ spiffs\_obj\_type;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#if\ SPIFFS\_HAL\_CALLBACK\_EXTRA}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{/*\ spi\ read\ call\ function\ type\ */}}
+\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ s32\_t\ (*spiffs\_read)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}}\ *fs,\ u32\_t\ addr,\ u32\_t\ size,\ u8\_t\ *dst);}
+\DoxyCodeLine{00086\ \textcolor{comment}{/*\ spi\ write\ call\ function\ type\ */}}
+\DoxyCodeLine{00087\ \textcolor{keyword}{typedef}\ s32\_t\ (*spiffs\_write)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}}\ *fs,\ u32\_t\ addr,\ u32\_t\ size,\ u8\_t\ *src);}
+\DoxyCodeLine{00088\ \textcolor{comment}{/*\ spi\ erase\ call\ function\ type\ */}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ s32\_t\ (*spiffs\_erase)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}}\ *fs,\ u32\_t\ addr,\ u32\_t\ size);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ SPIFFS\_HAL\_CALLBACK\_EXTRA}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{/*\ spi\ read\ call\ function\ type\ */}}
+\DoxyCodeLine{00094\ \textcolor{keyword}{typedef}\ s32\_t\ (*spiffs\_read)(u32\_t\ addr,\ u32\_t\ size,\ u8\_t\ *dst);}
+\DoxyCodeLine{00095\ \textcolor{comment}{/*\ spi\ write\ call\ function\ type\ */}}
+\DoxyCodeLine{00096\ \textcolor{keyword}{typedef}\ s32\_t\ (*spiffs\_write)(u32\_t\ addr,\ u32\_t\ size,\ u8\_t\ *src);}
+\DoxyCodeLine{00097\ \textcolor{comment}{/*\ spi\ erase\ call\ function\ type\ */}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{typedef}\ s32\_t\ (*spiffs\_erase)(u32\_t\ addr,\ u32\_t\ size);}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SPIFFS\_HAL\_CALLBACK\_EXTRA}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{comment}{/*\ file\ system\ check\ callback\ report\ operation\ */}}
+\DoxyCodeLine{00102\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00103\ \ \ SPIFFS\_CHECK\_LOOKUP\ =\ 0,}
+\DoxyCodeLine{00104\ \ \ SPIFFS\_CHECK\_INDEX,}
+\DoxyCodeLine{00105\ \ \ SPIFFS\_CHECK\_PAGE}
+\DoxyCodeLine{00106\ \}\ spiffs\_check\_type;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{comment}{/*\ file\ system\ check\ callback\ report\ type\ */}}
+\DoxyCodeLine{00109\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00110\ \ \ SPIFFS\_CHECK\_PROGRESS\ =\ 0,}
+\DoxyCodeLine{00111\ \ \ SPIFFS\_CHECK\_ERROR,}
+\DoxyCodeLine{00112\ \ \ SPIFFS\_CHECK\_FIX\_INDEX,}
+\DoxyCodeLine{00113\ \ \ SPIFFS\_CHECK\_FIX\_LOOKUP,}
+\DoxyCodeLine{00114\ \ \ SPIFFS\_CHECK\_DELETE\_ORPHANED\_INDEX,}
+\DoxyCodeLine{00115\ \ \ SPIFFS\_CHECK\_DELETE\_PAGE,}
+\DoxyCodeLine{00116\ \ \ SPIFFS\_CHECK\_DELETE\_BAD\_FILE}
+\DoxyCodeLine{00117\ \}\ spiffs\_check\_report;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{comment}{/*\ file\ system\ check\ callback\ function\ */}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#if\ SPIFFS\_HAL\_CALLBACK\_EXTRA}}
+\DoxyCodeLine{00121\ \textcolor{keyword}{typedef}\ void\ (*spiffs\_check\_callback)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}}\ *fs,\ spiffs\_check\_type\ type,\ spiffs\_check\_report\ report,}
+\DoxyCodeLine{00122\ \ \ \ \ u32\_t\ arg1,\ u32\_t\ arg2);}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ SPIFFS\_HAL\_CALLBACK\_EXTRA}}
+\DoxyCodeLine{00124\ \textcolor{keyword}{typedef}\ void\ (*spiffs\_check\_callback)(spiffs\_check\_type\ type,\ spiffs\_check\_report\ report,}
+\DoxyCodeLine{00125\ \ \ \ \ u32\_t\ arg1,\ u32\_t\ arg2);}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SPIFFS\_HAL\_CALLBACK\_EXTRA}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{comment}{/*\ file\ system\ listener\ callback\ operation\ */}}
+\DoxyCodeLine{00129\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00130\ \ \ \textcolor{comment}{/*\ the\ file\ has\ been\ created\ */}}
+\DoxyCodeLine{00131\ \ \ SPIFFS\_CB\_CREATED\ =\ 0,}
+\DoxyCodeLine{00132\ \ \ \textcolor{comment}{/*\ the\ file\ has\ been\ updated\ or\ moved\ to\ another\ page\ */}}
+\DoxyCodeLine{00133\ \ \ SPIFFS\_CB\_UPDATED,}
+\DoxyCodeLine{00134\ \ \ \textcolor{comment}{/*\ the\ file\ has\ been\ deleted\ */}}
+\DoxyCodeLine{00135\ \ \ SPIFFS\_CB\_DELETED}
+\DoxyCodeLine{00136\ \}\ spiffs\_fileop\_type;}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{comment}{/*\ file\ system\ listener\ callback\ function\ */}}
+\DoxyCodeLine{00139\ \textcolor{keyword}{typedef}\ void\ (*spiffs\_file\_callback)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}}\ *fs,\ spiffs\_fileop\_type\ op,\ spiffs\_obj\_id\ obj\_id,\ spiffs\_page\_ix\ pix);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_DBG}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ SPIFFS\_DBG(...)\ \(\backslash\)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ printf(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_GC\_DBG}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ SPIFFS\_GC\_DBG(...)\ printf(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_CACHE\_DBG}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ SPIFFS\_CACHE\_DBG(...)\ printf(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_CHECK\_DBG}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ SPIFFS\_CHECK\_DBG(...)\ printf(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{comment}{/*\ Any\ write\ to\ the\ filehandle\ is\ appended\ to\ end\ of\ the\ file\ */}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ SPIFFS\_APPEND\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<0)}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_APPEND\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_APPEND}}
+\DoxyCodeLine{00158\ \textcolor{comment}{/*\ If\ the\ opened\ file\ exists,\ it\ will\ be\ truncated\ to\ zero\ length\ before\ opened\ */}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ SPIFFS\_TRUNC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<1)}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_TRUNC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_TRUNC}}
+\DoxyCodeLine{00161\ \textcolor{comment}{/*\ If\ the\ opened\ file\ does\ not\ exist,\ it\ will\ be\ created\ before\ opened\ */}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ SPIFFS\_CREAT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<2)}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_CREAT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_CREAT}}
+\DoxyCodeLine{00164\ \textcolor{comment}{/*\ The\ opened\ file\ may\ only\ be\ read\ */}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ SPIFFS\_RDONLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<3)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_RDONLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_RDONLY}}
+\DoxyCodeLine{00167\ \textcolor{comment}{/*\ The\ opened\ file\ may\ only\ be\ written\ */}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ SPIFFS\_WRONLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<4)}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_WRONLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_WRONLY}}
+\DoxyCodeLine{00170\ \textcolor{comment}{/*\ The\ opened\ file\ may\ be\ both\ read\ and\ written\ */}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ SPIFFS\_RDWR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (SPIFFS\_RDONLY\ |\ SPIFFS\_WRONLY)}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_RDWR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_RDWR}}
+\DoxyCodeLine{00173\ \textcolor{comment}{/*\ Any\ writes\ to\ the\ filehandle\ will\ never\ be\ cached\ but\ flushed\ directly\ */}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ SPIFFS\_DIRECT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<5)}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_DIRECT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_DIRECT}}
+\DoxyCodeLine{00176\ \textcolor{comment}{/*\ If\ SPIFFS\_O\_CREAT\ and\ SPIFFS\_O\_EXCL\ are\ set,\ SPIFFS\_open()\ shall\ fail\ if\ the\ file\ exists\ */}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ SPIFFS\_EXCL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1<<6)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ SPIFFS\_O\_EXCL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SPIFFS\_EXCL}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ SPIFFS\_SEEK\_SET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ SPIFFS\_SEEK\_CUR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ SPIFFS\_SEEK\_END\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (2)}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ SPIFFS\_TYPE\_FILE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (1)}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ SPIFFS\_TYPE\_DIR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (2)}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ SPIFFS\_TYPE\_HARD\_LINK\ \ \ \ \ \ \ \ \ \ \ (3)}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ SPIFFS\_TYPE\_SOFT\_LINK\ \ \ \ \ \ \ \ \ \ \ (4)}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_LOCK}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ SPIFFS\_LOCK(fs)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#ifndef\ SPIFFS\_UNLOCK}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ SPIFFS\_UNLOCK(fs)}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{comment}{//\ phys\ structs}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ spiffs\ spi\ configuration\ struct}}
+\DoxyCodeLine{00200\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00201\ \ \ \textcolor{comment}{//\ physical\ read\ function}}
+\DoxyCodeLine{00202\ \ \ spiffs\_read\ hal\_read\_f;}
+\DoxyCodeLine{00203\ \ \ \textcolor{comment}{//\ physical\ write\ function}}
+\DoxyCodeLine{00204\ \ \ spiffs\_write\ hal\_write\_f;}
+\DoxyCodeLine{00205\ \ \ \textcolor{comment}{//\ physical\ erase\ function}}
+\DoxyCodeLine{00206\ \ \ spiffs\_erase\ hal\_erase\_f;}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#if\ SPIFFS\_SINGLETON\ ==\ 0}}
+\DoxyCodeLine{00208\ \ \ \textcolor{comment}{//\ physical\ size\ of\ the\ spi\ flash}}
+\DoxyCodeLine{00209\ \ \ u32\_t\ phys\_size;}
+\DoxyCodeLine{00210\ \ \ \textcolor{comment}{//\ physical\ offset\ in\ spi\ flash\ used\ for\ spiffs,}}
+\DoxyCodeLine{00211\ \ \ \textcolor{comment}{//\ must\ be\ on\ block\ boundary}}
+\DoxyCodeLine{00212\ \ \ u32\_t\ phys\_addr;}
+\DoxyCodeLine{00213\ \ \ \textcolor{comment}{//\ physical\ size\ when\ erasing\ a\ block}}
+\DoxyCodeLine{00214\ \ \ u32\_t\ phys\_erase\_block;}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \textcolor{comment}{//\ logical\ size\ of\ a\ block,\ must\ be\ on\ physical}}
+\DoxyCodeLine{00217\ \ \ \textcolor{comment}{//\ block\ size\ boundary\ and\ must\ never\ be\ less\ than}}
+\DoxyCodeLine{00218\ \ \ \textcolor{comment}{//\ a\ physical\ block}}
+\DoxyCodeLine{00219\ \ \ u32\_t\ log\_block\_size;}
+\DoxyCodeLine{00220\ \ \ \textcolor{comment}{//\ logical\ size\ of\ a\ page,\ must\ be\ at\ least}}
+\DoxyCodeLine{00221\ \ \ \textcolor{comment}{//\ log\_block\_size\ /\ 8}}
+\DoxyCodeLine{00222\ \ \ u32\_t\ log\_page\_size;}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#if\ SPIFFS\_FILEHDL\_OFFSET}}
+\DoxyCodeLine{00226\ \ \ \textcolor{comment}{//\ an\ integer\ offset\ added\ to\ each\ file\ handle}}
+\DoxyCodeLine{00227\ \ \ u16\_t\ fh\_ix\_offset;}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00229\ \}\ \mbox{\hyperlink{structspiffs__config}{spiffs\_config}};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__t}{spiffs\_t}}\ \{}
+\DoxyCodeLine{00232\ \ \ \textcolor{comment}{//\ file\ system\ configuration}}
+\DoxyCodeLine{00233\ \ \ \mbox{\hyperlink{structspiffs__config}{spiffs\_config}}\ cfg;}
+\DoxyCodeLine{00234\ \ \ \textcolor{comment}{//\ number\ of\ logical\ blocks}}
+\DoxyCodeLine{00235\ \ \ u32\_t\ block\_count;}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \textcolor{comment}{//\ cursor\ for\ free\ blocks,\ block\ index}}
+\DoxyCodeLine{00238\ \ \ spiffs\_block\_ix\ free\_cursor\_block\_ix;}
+\DoxyCodeLine{00239\ \ \ \textcolor{comment}{//\ cursor\ for\ free\ blocks,\ entry\ index}}
+\DoxyCodeLine{00240\ \ \ \textcolor{keywordtype}{int}\ free\_cursor\_obj\_lu\_entry;}
+\DoxyCodeLine{00241\ \ \ \textcolor{comment}{//\ cursor\ when\ searching,\ block\ index}}
+\DoxyCodeLine{00242\ \ \ spiffs\_block\_ix\ cursor\_block\_ix;}
+\DoxyCodeLine{00243\ \ \ \textcolor{comment}{//\ cursor\ when\ searching,\ entry\ index}}
+\DoxyCodeLine{00244\ \ \ \textcolor{keywordtype}{int}\ cursor\_obj\_lu\_entry;}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \textcolor{comment}{//\ primary\ work\ buffer,\ size\ of\ a\ logical\ page}}
+\DoxyCodeLine{00247\ \ \ u8\_t\ *lu\_work;}
+\DoxyCodeLine{00248\ \ \ \textcolor{comment}{//\ secondary\ work\ buffer,\ size\ of\ a\ logical\ page}}
+\DoxyCodeLine{00249\ \ \ u8\_t\ *work;}
+\DoxyCodeLine{00250\ \ \ \textcolor{comment}{//\ file\ descriptor\ memory\ area}}
+\DoxyCodeLine{00251\ \ \ u8\_t\ *fd\_space;}
+\DoxyCodeLine{00252\ \ \ \textcolor{comment}{//\ available\ file\ descriptors}}
+\DoxyCodeLine{00253\ \ \ u32\_t\ fd\_count;}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \textcolor{comment}{//\ last\ error}}
+\DoxyCodeLine{00256\ \ \ s32\_t\ err\_code;}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \textcolor{comment}{//\ current\ number\ of\ free\ blocks}}
+\DoxyCodeLine{00259\ \ \ u32\_t\ free\_blocks;}
+\DoxyCodeLine{00260\ \ \ \textcolor{comment}{//\ current\ number\ of\ busy\ pages}}
+\DoxyCodeLine{00261\ \ \ u32\_t\ stats\_p\_allocated;}
+\DoxyCodeLine{00262\ \ \ \textcolor{comment}{//\ current\ number\ of\ deleted\ pages}}
+\DoxyCodeLine{00263\ \ \ u32\_t\ stats\_p\_deleted;}
+\DoxyCodeLine{00264\ \ \ \textcolor{comment}{//\ flag\ indicating\ that\ garbage\ collector\ is\ cleaning}}
+\DoxyCodeLine{00265\ \ \ u8\_t\ cleaning;}
+\DoxyCodeLine{00266\ \ \ \textcolor{comment}{//\ max\ erase\ count\ amongst\ all\ blocks}}
+\DoxyCodeLine{00267\ \ \ spiffs\_obj\_id\ max\_erase\_count;}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#if\ SPIFFS\_GC\_STATS}}
+\DoxyCodeLine{00270\ \ \ u32\_t\ stats\_gc\_runs;}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#if\ SPIFFS\_CACHE}}
+\DoxyCodeLine{00274\ \ \ \textcolor{comment}{//\ cache\ memory}}
+\DoxyCodeLine{00275\ \ \ \textcolor{keywordtype}{void}\ *cache;}
+\DoxyCodeLine{00276\ \ \ \textcolor{comment}{//\ cache\ size}}
+\DoxyCodeLine{00277\ \ \ u32\_t\ cache\_size;}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#if\ SPIFFS\_CACHE\_STATS}}
+\DoxyCodeLine{00279\ \ \ u32\_t\ cache\_hits;}
+\DoxyCodeLine{00280\ \ \ u32\_t\ cache\_misses;}
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00282\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \textcolor{comment}{//\ check\ callback\ function}}
+\DoxyCodeLine{00285\ \ \ spiffs\_check\_callback\ check\_cb\_f;}
+\DoxyCodeLine{00286\ \ \ \textcolor{comment}{//\ file\ callback\ function}}
+\DoxyCodeLine{00287\ \ \ spiffs\_file\_callback\ file\_cb\_f;}
+\DoxyCodeLine{00288\ \ \ \textcolor{comment}{//\ mounted\ flag}}
+\DoxyCodeLine{00289\ \ \ u8\_t\ mounted;}
+\DoxyCodeLine{00290\ \ \ \textcolor{comment}{//\ user\ data}}
+\DoxyCodeLine{00291\ \ \ \textcolor{keywordtype}{void}\ *user\_data;}
+\DoxyCodeLine{00292\ \ \ \textcolor{comment}{//\ config\ magic}}
+\DoxyCodeLine{00293\ \ \ u32\_t\ config\_magic;}
+\DoxyCodeLine{00294\ \}\ spiffs;}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \textcolor{comment}{/*\ spiffs\ file\ status\ struct\ */}}
+\DoxyCodeLine{00297\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00298\ \ \ spiffs\_obj\_id\ obj\_id;}
+\DoxyCodeLine{00299\ \ \ u32\_t\ size;}
+\DoxyCodeLine{00300\ \ \ spiffs\_obj\_type\ type;}
+\DoxyCodeLine{00301\ \ \ spiffs\_page\_ix\ pix;}
+\DoxyCodeLine{00302\ \ \ u8\_t\ name[SPIFFS\_OBJ\_NAME\_LEN];}
+\DoxyCodeLine{00303\ \textcolor{preprocessor}{\#if\ SPIFFS\_OBJ\_META\_LEN}}
+\DoxyCodeLine{00304\ \ \ u8\_t\ meta[SPIFFS\_OBJ\_META\_LEN];}
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00306\ \}\ \mbox{\hyperlink{structspiffs__stat}{spiffs\_stat}};}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__dirent}{spiffs\_dirent}}\ \{}
+\DoxyCodeLine{00309\ \ \ spiffs\_obj\_id\ obj\_id;}
+\DoxyCodeLine{00310\ \ \ u8\_t\ name[SPIFFS\_OBJ\_NAME\_LEN];}
+\DoxyCodeLine{00311\ \ \ spiffs\_obj\_type\ type;}
+\DoxyCodeLine{00312\ \ \ u32\_t\ size;}
+\DoxyCodeLine{00313\ \ \ spiffs\_page\_ix\ pix;}
+\DoxyCodeLine{00314\ \textcolor{preprocessor}{\#if\ SPIFFS\_OBJ\_META\_LEN}}
+\DoxyCodeLine{00315\ \ \ u8\_t\ meta[SPIFFS\_OBJ\_META\_LEN];}
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00317\ \};}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00320\ \ \ spiffs\ *fs;}
+\DoxyCodeLine{00321\ \ \ spiffs\_block\_ix\ block;}
+\DoxyCodeLine{00322\ \ \ \textcolor{keywordtype}{int}\ entry;}
+\DoxyCodeLine{00323\ \}\ \mbox{\hyperlink{structspiffs___d_i_r}{spiffs\_DIR}};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \textcolor{preprocessor}{\#if\ SPIFFS\_IX\_MAP}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00328\ \ \ \textcolor{comment}{//\ buffer\ with\ looked\ up\ data\ pixes}}
+\DoxyCodeLine{00329\ \ \ spiffs\_page\_ix\ *map\_buf;}
+\DoxyCodeLine{00330\ \ \ \textcolor{comment}{//\ precise\ file\ byte\ offset}}
+\DoxyCodeLine{00331\ \ \ u32\_t\ offset;}
+\DoxyCodeLine{00332\ \ \ \textcolor{comment}{//\ start\ data\ span\ index\ of\ lookup\ buffer}}
+\DoxyCodeLine{00333\ \ \ spiffs\_span\_ix\ start\_spix;}
+\DoxyCodeLine{00334\ \ \ \textcolor{comment}{//\ end\ data\ span\ index\ of\ lookup\ buffer}}
+\DoxyCodeLine{00335\ \ \ spiffs\_span\_ix\ end\_spix;}
+\DoxyCodeLine{00336\ \}\ \mbox{\hyperlink{structspiffs__ix__map}{spiffs\_ix\_map}};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \textcolor{comment}{//\ functions}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \textcolor{preprocessor}{\#if\ SPIFFS\_USE\_MAGIC\ \&\&\ SPIFFS\_USE\_MAGIC\_LENGTH\ \&\&\ SPIFFS\_SINGLETON==0}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00373\ s32\_t\ SPIFFS\_probe\_fs(\mbox{\hyperlink{structspiffs__config}{spiffs\_config}}\ *config);}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SPIFFS\_USE\_MAGIC\ \&\&\ SPIFFS\_USE\_MAGIC\_LENGTH\ \&\&\ SPIFFS\_SINGLETON==0}}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00391\ s32\_t\ SPIFFS\_mount(spiffs\ *fs,\ \mbox{\hyperlink{structspiffs__config}{spiffs\_config}}\ *config,\ u8\_t\ *work,}
+\DoxyCodeLine{00392\ \ \ \ \ u8\_t\ *fd\_space,\ u32\_t\ fd\_space\_size,}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordtype}{void}\ *cache,\ u32\_t\ cache\_size,}
+\DoxyCodeLine{00394\ \ \ \ \ spiffs\_check\_callback\ check\_cb\_f);}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00401\ \textcolor{keywordtype}{void}\ SPIFFS\_unmount(spiffs\ *fs);}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00409\ s32\_t\ SPIFFS\_creat(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ spiffs\_mode\ mode);}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00420\ spiffs\_file\ SPIFFS\_open(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ spiffs\_flags\ flags,\ spiffs\_mode\ mode);}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00435\ spiffs\_file\ SPIFFS\_open\_by\_dirent(spiffs\ *fs,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structspiffs__dirent}{spiffs\_dirent}}\ *e,\ spiffs\_flags\ flags,\ spiffs\_mode\ mode);}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00451\ spiffs\_file\ SPIFFS\_open\_by\_page(spiffs\ *fs,\ spiffs\_page\_ix\ page\_ix,\ spiffs\_flags\ flags,\ spiffs\_mode\ mode);}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00461\ s32\_t\ SPIFFS\_read(spiffs\ *fs,\ spiffs\_file\ fh,\ \textcolor{keywordtype}{void}\ *buf,\ s32\_t\ len);}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00471\ s32\_t\ SPIFFS\_write(spiffs\ *fs,\ spiffs\_file\ fh,\ \textcolor{keywordtype}{void}\ *buf,\ s32\_t\ len);}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00483\ s32\_t\ SPIFFS\_lseek(spiffs\ *fs,\ spiffs\_file\ fh,\ s32\_t\ offs,\ \textcolor{keywordtype}{int}\ whence);}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00490\ s32\_t\ SPIFFS\_remove(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00497\ s32\_t\ SPIFFS\_fremove(spiffs\ *fs,\ spiffs\_file\ fh);}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00505\ s32\_t\ SPIFFS\_stat(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ \mbox{\hyperlink{structspiffs__stat}{spiffs\_stat}}\ *s);}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00513\ s32\_t\ SPIFFS\_fstat(spiffs\ *fs,\ spiffs\_file\ fh,\ \mbox{\hyperlink{structspiffs__stat}{spiffs\_stat}}\ *s);}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00520\ s32\_t\ SPIFFS\_fflush(spiffs\ *fs,\ spiffs\_file\ fh);}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00527\ s32\_t\ SPIFFS\_close(spiffs\ *fs,\ spiffs\_file\ fh);}
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00535\ s32\_t\ SPIFFS\_rename(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *old,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *newPath);}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \textcolor{preprocessor}{\#if\ SPIFFS\_OBJ\_META\_LEN}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00544\ s32\_t\ SPIFFS\_update\_meta(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *meta);}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00552\ s32\_t\ SPIFFS\_fupdate\_meta(spiffs\ *fs,\ spiffs\_file\ fh,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *meta);}
+\DoxyCodeLine{00553\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00559\ s32\_t\ SPIFFS\_errno(spiffs\ *fs);}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00565\ \textcolor{keywordtype}{void}\ SPIFFS\_clearerr(spiffs\ *fs);}
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00576\ \mbox{\hyperlink{structspiffs___d_i_r}{spiffs\_DIR}}\ *SPIFFS\_opendir(spiffs\ *fs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \mbox{\hyperlink{structspiffs___d_i_r}{spiffs\_DIR}}\ *d);}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00582\ s32\_t\ SPIFFS\_closedir(\mbox{\hyperlink{structspiffs___d_i_r}{spiffs\_DIR}}\ *d);}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00590\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structspiffs__dirent}{spiffs\_dirent}}\ *SPIFFS\_readdir(\mbox{\hyperlink{structspiffs___d_i_r}{spiffs\_DIR}}\ *d,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structspiffs__dirent}{spiffs\_dirent}}\ *e);}
+\DoxyCodeLine{00591\ }
+\DoxyCodeLine{00596\ s32\_t\ SPIFFS\_check(spiffs\ *fs);}
+\DoxyCodeLine{00597\ }
+\DoxyCodeLine{00610\ s32\_t\ SPIFFS\_info(spiffs\ *fs,\ u32\_t\ *total,\ u32\_t\ *used);}
+\DoxyCodeLine{00611\ }
+\DoxyCodeLine{00625\ s32\_t\ SPIFFS\_format(spiffs\ *fs);}
+\DoxyCodeLine{00626\ }
+\DoxyCodeLine{00631\ u8\_t\ SPIFFS\_mounted(spiffs\ *fs);}
+\DoxyCodeLine{00632\ }
+\DoxyCodeLine{00656\ s32\_t\ SPIFFS\_gc\_quick(spiffs\ *fs,\ u16\_t\ max\_free\_pages);}
+\DoxyCodeLine{00657\ }
+\DoxyCodeLine{00675\ s32\_t\ SPIFFS\_gc(spiffs\ *fs,\ u32\_t\ size);}
+\DoxyCodeLine{00676\ }
+\DoxyCodeLine{00682\ s32\_t\ SPIFFS\_eof(spiffs\ *fs,\ spiffs\_file\ fh);}
+\DoxyCodeLine{00683\ }
+\DoxyCodeLine{00689\ s32\_t\ SPIFFS\_tell(spiffs\ *fs,\ spiffs\_file\ fh);}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00705\ s32\_t\ SPIFFS\_set\_file\_callback\_func(spiffs\ *fs,\ spiffs\_file\_callback\ cb\_func);}
+\DoxyCodeLine{00706\ }
+\DoxyCodeLine{00707\ \textcolor{preprocessor}{\#if\ SPIFFS\_IX\_MAP}}
+\DoxyCodeLine{00708\ }
+\DoxyCodeLine{00736\ s32\_t\ SPIFFS\_ix\_map(spiffs\ *fs,\ spiffs\_file\ fh,\ \mbox{\hyperlink{structspiffs__ix__map}{spiffs\_ix\_map}}\ *\mbox{\hyperlink{structmap}{map}},}
+\DoxyCodeLine{00737\ \ \ \ \ u32\_t\ offset,\ u32\_t\ len,\ spiffs\_page\_ix\ *map\_buf);}
+\DoxyCodeLine{00738\ }
+\DoxyCodeLine{00750\ s32\_t\ SPIFFS\_ix\_unmap(spiffs\ *fs,\ spiffs\_file\ fh);}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00759\ s32\_t\ SPIFFS\_ix\_remap(spiffs\ *fs,\ spiffs\_file\ fh,\ u32\_t\ offs);}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00770\ s32\_t\ SPIFFS\_bytes\_to\_ix\_map\_entries(spiffs\ *fs,\ u32\_t\ bytes);}
+\DoxyCodeLine{00771\ }
+\DoxyCodeLine{00781\ s32\_t\ SPIFFS\_ix\_map\_entries\_to\_bytes(spiffs\ *fs,\ u32\_t\ map\_page\_ix\_entries);}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00783\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SPIFFS\_IX\_MAP}}
+\DoxyCodeLine{00784\ }
+\DoxyCodeLine{00785\ }
+\DoxyCodeLine{00786\ \textcolor{preprocessor}{\#if\ SPIFFS\_TEST\_VISUALISATION}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00791\ s32\_t\ SPIFFS\_vis(spiffs\ *fs);}
+\DoxyCodeLine{00792\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00794\ \textcolor{preprocessor}{\#if\ SPIFFS\_BUFFER\_HELP}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00799\ u32\_t\ SPIFFS\_buffer\_bytes\_for\_filedescs(spiffs\ *fs,\ u32\_t\ num\_descs);}
+\DoxyCodeLine{00800\ }
+\DoxyCodeLine{00801\ \textcolor{preprocessor}{\#if\ SPIFFS\_CACHE}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00806\ u32\_t\ SPIFFS\_buffer\_bytes\_for\_cache(spiffs\ *fs,\ u32\_t\ num\_pages);}
+\DoxyCodeLine{00807\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00808\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00809\ }
+\DoxyCodeLine{00810\ \textcolor{preprocessor}{\#if\ SPIFFS\_CACHE}}
+\DoxyCodeLine{00811\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00812\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00813\ \}}
+\DoxyCodeLine{00814\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00815\ }
+\DoxyCodeLine{00816\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SPIFFS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,10 @@
+<map id="esp_spiffs_t" name="esp_spiffs_t">
+<area shape="rect" id="Node000001" title="SPIFFS definition structure." alt="" coords="5,224,97,251"/>
+<area shape="rect" id="Node000002" href="$structspiffs__t.html" title=" " alt="" coords="42,8,105,35"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,50,60,62,47,110,45,160,52,223,47,224,40,160,42,110,55,61,60,48"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="122,9,129,13,132,22,124,33,106,36,105,31,121,28,127,21,125,17,119,13"/>
+<area shape="rect" id="Node000003" href="$structspiffs__config.html" title=" " alt="" coords="69,133,164,160"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="68,50,65,79,72,108,81,121,93,131,90,135,77,124,67,110,60,79,63,49"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="100,174,62,225,58,222,96,171"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="137,120,143,108,150,84,149,74,143,63,126,45,104,34,107,29,130,41,148,60,154,73,155,85,148,110,142,122"/>
+</map>

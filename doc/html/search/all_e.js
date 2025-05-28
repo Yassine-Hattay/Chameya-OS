@@ -1,0 +1,13 @@
+var searchData=
+[
+  ['partition_0',['partition',['../structesp__spiffs__t.html#a19d0a3eda9242de99e4a0ec1a3877ed4',1,'esp_spiffs_t']]],
+  ['partition_5flabel_1',['partition_label',['../structesp__vfs__spiffs__conf__t.html#ae228e117d84f2f03ffc947165f3ad10e',1,'esp_vfs_spiffs_conf_t']]],
+  ['pirq_5fisr_5fhandler_2',['PIRQ_isr_handler',['../_i_l_i9488__driver_8h.html#afdd7e4c5f95855c9f364d31c754886e9',1,'PIRQ_isr_handler(void *arg):&#160;tasks.c'],['../tasks_8c.html#afdd7e4c5f95855c9f364d31c754886e9',1,'PIRQ_isr_handler(void *arg):&#160;tasks.c']]],
+  ['pirq_5fpin_3',['PIRQ_pin',['../_i_l_i9488__driver_8h.html#ab1e55eca7c10be5859d78fabe907d89b',1,'ILI9488_driver.h']]],
+  ['pong_5fgamepage1_5ftask_4',['pong_gamePage1_task',['../tasks_8c.html#abdaddad7708204d6fe1232d6d1137056',1,'pong_gamePage1_task(void *pvParameters):&#160;tasks.c'],['../tasks_8h.html#abdaddad7708204d6fe1232d6d1137056',1,'pong_gamePage1_task(void *pvParameters):&#160;tasks.c']]],
+  ['print_5fchar_5fili9488_5',['print_char_ILI9488',['../_i_l_i9488__driver_8c.html#a33c08349b17a070928586bf762a2df3d',1,'print_char_ILI9488(char c, uint16_t *x, uint16_t *y, uint8_t font_size):&#160;ILI9488_driver.c'],['../_i_l_i9488__driver_8h.html#a33c08349b17a070928586bf762a2df3d',1,'print_char_ILI9488(char c, uint16_t *x, uint16_t *y, uint8_t font_size):&#160;ILI9488_driver.c']]],
+  ['print_5ffile_5fcontents_6',['print_file_contents',['../my__spiffs_8c.html#ae894e1e4634dbf62c103ddc4f6200e31',1,'print_file_contents(const char *full_path):&#160;my_spiffs.c'],['../my__spiffs_8h.html#ae51d895bb8c6e14ffed6c39616b11e83',1,'print_file_contents(const char *filepath):&#160;my_spiffs.c']]],
+  ['print_5fhistory_5fchar_5ftable_7',['print_history_char_table',['../_i_l_i9488__driver_8c.html#ab2d362e4fcbf93c1b3eaa52f3bb58823',1,'print_history_char_table():&#160;ILI9488_driver.c'],['../_i_l_i9488__driver_8h.html#ab2d362e4fcbf93c1b3eaa52f3bb58823',1,'print_history_char_table():&#160;ILI9488_driver.c']]],
+  ['print_5fhistory_5ftable_8',['print_history_table',['../_i_l_i9488__driver_8c.html#a04e1d61319f832ef9a6f09df05e9628b',1,'print_history_table():&#160;ILI9488_driver.c'],['../_i_l_i9488__driver_8h.html#a04e1d61319f832ef9a6f09df05e9628b',1,'print_history_table():&#160;ILI9488_driver.c']]],
+  ['print_5fili9488_9',['print_ILI9488',['../_i_l_i9488__driver_8c.html#aa900c251cfe95c8ac94bb9faa66d4a89',1,'print_ILI9488(char *message, uint16_t x, uint16_t y, uint8_t font_size):&#160;ILI9488_driver.c'],['../_i_l_i9488__driver_8h.html#aa900c251cfe95c8ac94bb9faa66d4a89',1,'print_ILI9488(char *message, uint16_t x, uint16_t y, uint8_t font_size):&#160;ILI9488_driver.c']]]
+];

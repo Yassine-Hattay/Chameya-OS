@@ -1,0 +1,39 @@
+\doxysection{SPI.\+h}
+\hypertarget{_s_p_i_8h_source}{}\label{_s_p_i_8h_source}\index{C:/msys32/home/hatta/esp/hello\_world1/components/SPI/SPI.h@{C:/msys32/home/hatta/esp/hello\_world1/components/SPI/SPI.h}}
+\mbox{\hyperlink{_s_p_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ COMPONENTS\_SPI\_SPI\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ COMPONENTS\_SPI\_SPI\_H\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../my\_config/my\_config.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#if\ TEST\_ON\_PC\ ==\ 0}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}freertos/FreeRTOS.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}freertos/task.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}driver/gpio.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}esp\_timer.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}esp\_task\_wdt.h"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MOSI\ 13}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ MISO\ 12}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ SCK\ \ 14}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ SS\ \ \ 15}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ uint8\_t\ BMOSI;}
+\DoxyCodeLine{00030\ \textcolor{keyword}{extern}\ uint8\_t\ BSS;}
+\DoxyCodeLine{00031\ \textcolor{keyword}{extern}\ uint8\_t\ BSCK;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s_p_i_8h_ad3aa2d4dd64b37ab9b80e53414e00e2d}{spi\_slave\_init}}(\textcolor{keywordtype}{void})\ ;}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_s_p_i_8h_adb06da658fbe5c8d89c6eed8b9fed0de}{spi\_master\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ uint8\_t\ \mbox{\hyperlink{_s_p_i_8h_a8b9f73c4629ff330995e169cc189d076}{spi\_master\_bit\_bang\_mode\_0}}(uint8\_t\ data\_to\_send);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}SPI\_test.h"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ COMPONENTS\_SPI\_SPI\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,5 @@
+<map id="spi_master_init" name="spi_master_init">
+<area shape="rect" id="Node000001" title="Initializes the GPIO pins for SPI master bit&#45;bang communication." alt="" coords="140,5,249,32"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#ac079cd712ceeaf40cc0733b0f3a5d860" title="Initializes the display hardware and prepares it for operation." alt="" coords="5,5,92,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,21,92,21,92,16,124,16"/>
+</map>

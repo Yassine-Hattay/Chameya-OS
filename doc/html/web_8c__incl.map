@@ -1,0 +1,38 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/web/web.c" name="C:/msys32/home/hatta/esp/hello_world1/components/web/web.c">
+<area shape="rect" id="Node000001" title="this file contains the implementation of the web server for displaying logs from the ESP8266." alt="" coords="411,5,608,64"/>
+<area shape="rect" id="Node000002" href="$web_8h.html" title="this file contains the header for web server functionality" alt="" coords="481,112,538,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="512,64,512,96,507,96,507,64"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,187,91,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="481,133,325,154,106,189,105,184,324,149,480,128"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="115,187,208,213"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="481,135,223,189,222,183,480,130"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="232,187,312,213"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="481,138,328,185,326,179,480,133"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="337,187,447,213"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="490,141,427,181,424,176,488,137"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="291,261,416,288"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="507,140,489,176,461,215,431,239,399,257,397,252,428,234,457,211,485,173,502,138"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="440,261,528,288"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="512,139,510,173,505,214,496,247,491,246,500,213,505,173,507,139"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="552,261,616,288"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="518,138,573,246,568,249,513,140"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="640,261,701,288"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="525,137,648,249,644,253,521,141"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1261,261,1339,288"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="538,129,823,177,1247,258,1246,263,822,182,538,134"/>
+<area shape="rect" id="Node000012" href="$my__print_8h.html" title=" " alt="" coords="679,187,836,213"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="539,132,700,179,699,184,537,137"/>
+<area shape="poly" id="edge15_Node000012_Node000007" title=" " alt="" coords="687,217,431,262,430,257,686,211"/>
+<area shape="poly" id="edge16_Node000012_Node000008" title=" " alt="" coords="710,216,544,260,543,255,709,211"/>
+<area shape="poly" id="edge19_Node000012_Node000009" title=" " alt="" coords="728,216,629,257,627,252,726,211"/>
+<area shape="poly" id="edge18_Node000012_Node000010" title=" " alt="" coords="744,216,699,253,695,249,741,212"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="837,206,1020,225,1247,258,1246,264,1019,231,836,211"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="817,261,959,288"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="781,212,853,251,850,256,779,216"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="984,261,1107,288"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="808,211,981,254,979,260,807,216"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1131,261,1237,288"/>
+<area shape="poly" id="edge14_Node000012_Node000015" title=" " alt="" coords="836,211,1117,258,1116,264,836,217"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="724,261,793,288"/>
+<area shape="poly" id="edge20_Node000012_Node000016" title=" " alt="" coords="760,214,761,246,755,246,755,214"/>
+</map>

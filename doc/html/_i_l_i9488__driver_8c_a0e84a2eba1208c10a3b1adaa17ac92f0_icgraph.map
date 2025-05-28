@@ -1,0 +1,94 @@
+<map id="send_ILI9488_data" name="send_ILI9488_data">
+<area shape="rect" id="Node000001" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="1610,772,1741,798"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a6158828e1fc7c96cd2c571e2ebc0be39" title="Erases the last drawn character on the display by clearing its area to black." alt="" coords="1244,620,1356,646"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1645,764,1606,735,1561,709,1508,687,1454,669,1356,646,1357,640,1455,664,1510,682,1563,704,1609,731,1648,760"/>
+<area shape="rect" id="Node000011" href="$tasks_8c.html#a18d3c4c46ad6ccd39a77b5f28d28f0f2" title="FreeRTOS task for displaying and managing existing notebook files." alt="" coords="422,569,621,596"/>
+<area shape="poly" id="edge56_Node000001_Node000011" title=" " alt="" coords="1625,807,1563,826,1468,852,1393,868,1316,873,1219,864,1058,841,934,816,875,799,814,776,668,706,627,680,589,650,534,598,538,594,592,646,630,676,671,701,816,771,877,794,935,811,1059,836,1220,858,1316,867,1392,863,1467,847,1561,821,1623,802"/>
+<area shape="rect" id="Node000012" href="$_i_l_i9488__driver_8c.html#a1620e839d9e8f446bcb2d40175a33412" title="Clears the screen area of the last drawn element stored in history by filling it with black." alt="" coords="1429,974,1562,1001"/>
+<area shape="poly" id="edge23_Node000001_Node000012" title=" " alt="" coords="1664,814,1625,884,1597,923,1564,958,1535,976,1532,972,1560,954,1593,919,1621,881,1660,811"/>
+<area shape="rect" id="Node000013" href="$_i_l_i9488__driver_8c.html#a283526828a2372acde045761b03d2df8" title="Clears the screen area corresponding to a specific history element by filling it with black." alt="" coords="1429,1025,1562,1068"/>
+<area shape="poly" id="edge24_Node000001_Node000013" title=" " alt="" coords="1669,814,1655,857,1633,910,1603,965,1564,1015,1549,1027,1546,1023,1560,1011,1599,962,1629,907,1650,855,1664,812"/>
+<area shape="rect" id="Node000014" href="$_i_l_i9488__driver_8c.html#a0d199b5702695c4d7b78ef83759c32d5" title="Clears previously drawn screen regions stored in history by filling them with black." alt="" coords="1251,214,1349,241"/>
+<area shape="poly" id="edge25_Node000001_Node000014" title=" " alt="" coords="1664,758,1625,650,1595,583,1560,519,1496,431,1425,351,1361,286,1315,243,1319,239,1365,282,1429,347,1500,428,1564,516,1600,581,1630,648,1669,756"/>
+<area shape="rect" id="Node000015" href="$_i_l_i9488__driver_8c.html#a3c0aa307ff11329686e3e9303383e4ae" title="Draws a virtual keyboard on the display with keys depending on mode (lowercase, uppercase,..." alt="" coords="1245,569,1355,596"/>
+<area shape="poly" id="edge34_Node000001_Node000015" title=" " alt="" coords="1654,761,1614,713,1589,689,1561,667,1509,640,1454,619,1354,594,1356,589,1456,614,1511,635,1563,663,1592,684,1618,709,1658,757"/>
+<area shape="rect" id="Node000016" href="$_i_l_i9488__driver_8c.html#a8ddd64b1724dcf0122a0f15616324afb" title="Draws main menu icons on the display and updates the current history entry&#39;s app name accordingly." alt="" coords="1219,468,1381,494"/>
+<area shape="poly" id="edge37_Node000001_Node000016" title=" " alt="" coords="1664,757,1651,716,1629,666,1599,615,1560,571,1519,542,1472,521,1425,505,1380,494,1382,489,1427,500,1474,516,1521,538,1564,567,1604,612,1634,664,1656,714,1669,756"/>
+<area shape="rect" id="Node000017" href="$_i_l_i9488__driver_8c.html#a69b3a7746418cda25549d28c2036282a" title="Fill a rectangle area on the display with a specified color." alt="" coords="1268,772,1332,798"/>
+<area shape="poly" id="edge39_Node000001_Node000017" title=" " alt="" coords="1594,788,1332,788,1332,782,1594,782"/>
+<area shape="rect" id="Node000018" href="$_i_l_i9488__driver_8c.html#a6d9b8b255bd4b548faf0f6b8389ac933" title="Fills the entire ILI9488 screen with black color." alt="" coords="1245,518,1355,545"/>
+<area shape="poly" id="edge40_Node000001_Node000018" title=" " alt="" coords="1660,759,1622,689,1594,652,1560,621,1510,590,1456,567,1402,552,1355,542,1356,537,1404,547,1458,562,1513,585,1564,616,1598,649,1626,687,1665,756"/>
+<area shape="rect" id="Node000019" href="$_i_l_i9488__driver_8c.html#a7385a8a4fb06cbe28f82a58c7f995872" title="Fills the entire ILI9488 screen with blue color." alt="" coords="1247,822,1353,849"/>
+<area shape="poly" id="edge42_Node000001_Node000019" title=" " alt="" coords="1595,799,1353,831,1353,826,1594,793"/>
+<area shape="rect" id="Node000020" href="$_i_l_i9488__driver_8c.html#a3e2bc52f43727dad6a7f57ec6442dd4e" title="Draws a colored rectangular button with a given label and updates its metadata in history_char." alt="" coords="1062,949,1158,976"/>
+<area shape="poly" id="edge43_Node000001_Node000020" title=" " alt="" coords="1660,813,1621,863,1594,887,1563,907,1511,930,1455,947,1398,959,1342,966,1239,971,1158,969,1158,964,1239,966,1342,961,1398,953,1454,942,1509,925,1561,903,1590,883,1617,859,1656,810"/>
+<area shape="rect" id="Node000026" href="$_i_l_i9488__driver_8c.html#a98b7024180c631fd59e5f1bdb72e2fdc" title="Sets the display orientation by configuring the ILI9488 MADCTL register." alt="" coords="1442,1092,1548,1118"/>
+<area shape="poly" id="edge57_Node000001_Node000026" title=" " alt="" coords="1674,814,1664,870,1644,941,1612,1016,1590,1050,1564,1082,1547,1094,1544,1089,1560,1078,1586,1047,1607,1013,1639,939,1659,869,1669,813"/>
+<area shape="rect" id="Node000027" href="$_i_l_i9488__driver_8c.html#a7503b0dca9eb5aa68a88d6c894e444b1" title="Sets the display area for subsequent pixel data and records coordinates." alt="" coords="1430,718,1560,745"/>
+<area shape="poly" id="edge58_Node000001_Node000027" title=" " alt="" coords="1613,769,1543,748,1544,743,1614,764"/>
+<area shape="rect" id="Node000003" href="$_x_p_t2046__driver_8c.html#a487cc9f5d8af9f77e6683ccbb5d45d85" title="Checks for key presses on a virtual keyboard and handles corresponding actions." alt="" coords="1048,518,1171,545"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1232,616,1218,610,1166,579,1126,548,1129,543,1169,574,1221,605,1234,611"/>
+<area shape="poly" id="edge22_Node000002_Node000011" title=" " alt="" coords="1228,632,868,610,621,593,622,587,869,605,1228,627"/>
+<area shape="rect" id="Node000004" href="$tasks_8c.html#a4290fee8165b79f0c89b38bdd3279057" title="FreeRTOS task for handling a virtual keyboard display and input." alt="" coords="881,569,988,596"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1070,554,989,578,987,573,1068,548"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="974,561,1047,538,1048,544,975,566"/>
+<area shape="rect" id="Node000005" href="$tasks_8c.html#adcbe116080c9695613e2baf119e5b3b6" title="FreeRTOS task for the main page of the Notebook application." alt="" coords="669,468,821,494"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="893,564,770,497,773,492,896,559"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="836,489,1000,510,1048,518,1047,523,1000,516,835,494"/>
+<area shape="rect" id="Node000006" href="$tasks_8c.html#ae6307f8fd2d5e8b9ef75ab078a1e7966" title="FreeRTOS task for the main menu of the embedded system." alt="" coords="462,442,582,469"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="653,482,576,472,577,467,654,477"/>
+<area shape="poly" id="edge19_Node000005_Node000011" title=" " alt="" coords="719,505,670,528,575,571,572,566,668,523,717,500"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="598,448,681,445,783,448,893,459,1001,483,1044,498,1083,516,1080,520,1042,503,999,488,892,465,783,454,681,451,598,453"/>
+<area shape="poly" id="edge16_Node000006_Node000005" title=" " alt="" coords="598,453,691,464,690,470,597,458"/>
+<area shape="rect" id="Node000007" href="$tasks_8c.html#a4296e8d90b1f056889c056788cf62d65" title="FreeRTOS task for the main menu of the GPIO Control (GPIO_C) app." alt="" coords="235,772,356,798"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="504,483,465,523,424,571,387,627,354,684,308,772,303,770,349,682,382,624,420,568,461,519,500,479"/>
+<area shape="rect" id="Node000010" href="$tasks_8c.html#abdaddad7708204d6fe1232d6d1137056" title="FreeRTOS task for the first page of the Pong game, handling game mode selection." alt="" coords="217,442,374,469"/>
+<area shape="poly" id="edge17_Node000006_Node000010" title=" " alt="" coords="446,467,374,467,374,462,446,462"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="371,794,499,806,578,808,662,804,749,794,837,776,921,747,999,707,1020,690,1039,670,1070,624,1090,579,1102,545,1107,546,1095,581,1074,627,1043,673,1024,694,1001,711,923,752,838,781,750,800,663,810,578,813,499,811,371,800"/>
+<area shape="poly" id="edge15_Node000007_Node000006" title=" " alt="" coords="303,757,349,659,382,600,420,544,456,501,492,468,496,472,460,505,424,547,387,603,354,662,308,759"/>
+<area shape="rect" id="Node000008" href="$tasks_8c.html#a7e13dbf041a37a08024e1ef82aaa49ec" title="FreeRTOS task for configuring SPI communication parameters." alt="" coords="12,822,162,849"/>
+<area shape="poly" id="edge11_Node000007_Node000008" title=" " alt="" coords="250,806,163,829,162,824,249,801"/>
+<area shape="rect" id="Node000009" href="$tasks_8c.html#a63ff2ed865baaa534c13b2bb60ca5294" title="FreeRTOS task for configuring UART communication parameters." alt="" coords="5,772,169,798"/>
+<area shape="poly" id="edge13_Node000007_Node000009" title=" " alt="" coords="219,796,169,797,169,791,219,791"/>
+<area shape="poly" id="edge12_Node000008_Node000007" title=" " alt="" coords="132,815,234,789,235,794,133,820"/>
+<area shape="poly" id="edge14_Node000009_Node000007" title=" " alt="" coords="184,773,235,774,234,780,184,779"/>
+<area shape="poly" id="edge18_Node000010_Node000006" title=" " alt="" coords="390,444,461,445,461,450,390,450"/>
+<area shape="poly" id="edge20_Node000011_Node000003" title=" " alt="" coords="636,570,1047,534,1048,540,637,575"/>
+<area shape="poly" id="edge21_Node000011_Node000005" title=" " alt="" coords="549,558,668,499,682,493,684,497,670,504,551,563"/>
+<area shape="poly" id="edge26_Node000014_Node000003" title=" " alt="" coords="1284,256,1122,519,1117,516,1280,253"/>
+<area shape="poly" id="edge31_Node000014_Node000005" title=" " alt="" coords="1263,252,1173,300,952,399,783,470,781,465,950,395,1170,295,1260,247"/>
+<area shape="poly" id="edge30_Node000014_Node000006" title=" " alt="" coords="1235,227,1160,225,1067,229,967,240,869,262,818,280,768,303,673,355,595,406,542,444,539,440,592,401,670,350,765,298,816,276,868,257,967,235,1067,224,1160,220,1235,221"/>
+<area shape="poly" id="edge27_Node000014_Node000007" title=" " alt="" coords="1235,216,1098,192,1017,183,936,180,744,180,689,185,639,201,592,226,550,259,511,298,476,343,445,391,417,441,370,544,337,641,314,720,302,772,297,771,309,719,331,639,365,543,412,439,440,388,472,340,507,295,546,255,589,222,637,196,688,180,744,174,936,174,1017,178,1099,187,1236,211"/>
+<area shape="poly" id="edge28_Node000014_Node000008" title=" " alt="" coords="1274,205,1228,165,1200,144,1170,127,1108,101,1057,86,1004,80,936,78,520,78,484,80,451,86,422,94,397,106,354,139,320,182,292,234,268,294,219,431,205,488,202,539,207,586,214,631,219,675,217,719,202,764,171,812,157,824,153,820,167,809,197,762,211,718,214,675,209,632,202,587,197,539,200,487,214,430,263,292,287,231,315,179,350,135,394,102,420,89,450,80,483,75,520,73,936,73,1004,74,1058,81,1110,96,1173,123,1203,140,1232,161,1277,201"/>
+<area shape="poly" id="edge29_Node000014_Node000009" title=" " alt="" coords="1284,202,1267,168,1242,128,1209,90,1170,59,1138,43,1110,32,1059,24,936,28,520,28,472,25,429,20,355,9,321,9,288,16,254,31,219,59,199,82,182,114,153,200,131,305,115,419,97,636,91,772,86,771,91,636,110,418,126,304,148,198,177,112,195,79,215,55,251,27,286,11,320,4,355,4,430,14,473,20,520,22,936,22,1059,18,1112,27,1140,38,1173,55,1213,86,1246,125,1271,165,1289,199"/>
+<area shape="poly" id="edge33_Node000014_Node000010" title=" " alt="" coords="1265,208,1221,183,1170,161,1106,142,1055,133,1003,129,936,129,744,129,649,122,572,113,537,113,502,120,464,135,424,161,391,191,364,228,343,268,327,310,308,388,300,443,295,442,303,387,322,309,338,266,360,225,387,188,420,156,462,130,500,115,536,108,572,108,649,117,744,124,936,124,1003,124,1056,127,1108,137,1172,156,1223,178,1267,203"/>
+<area shape="poly" id="edge32_Node000014_Node000011" title=" " alt="" coords="1236,244,1125,273,981,318,823,380,745,417,671,458,630,486,593,517,538,570,534,567,589,513,627,482,668,454,742,412,821,375,979,313,1124,268,1235,239"/>
+<area shape="poly" id="edge35_Node000015_Node000003" title=" " alt="" coords="1232,567,1162,548,1163,543,1233,562"/>
+<area shape="poly" id="edge36_Node000015_Node000004" title=" " alt="" coords="1229,585,988,585,988,580,1229,580"/>
+<area shape="poly" id="edge38_Node000016_Node000006" title=" " alt="" coords="1206,467,1098,452,964,438,817,430,670,434,583,446,582,441,669,429,817,425,964,432,1098,446,1207,462"/>
+<area shape="poly" id="edge41_Node000018_Node000003" title=" " alt="" coords="1230,534,1172,534,1172,529,1230,529"/>
+<area shape="poly" id="edge50_Node000020_Node000008" title=" " alt="" coords="1105,992,1093,1032,1072,1081,1042,1129,1023,1150,1002,1167,968,1187,937,1198,908,1203,880,1204,820,1198,746,1193,520,1193,426,1187,388,1179,354,1166,321,1149,288,1127,215,1066,189,1040,167,1011,130,949,105,892,90,851,95,849,110,890,135,946,171,1008,193,1036,218,1062,291,1122,324,1144,356,1161,390,1173,427,1182,520,1188,746,1188,821,1193,880,1199,908,1198,936,1193,966,1182,998,1163,1020,1146,1038,1125,1067,1078,1087,1031,1100,990"/>
+<area shape="poly" id="edge51_Node000020_Node000009" title=" " alt="" coords="1046,972,909,984,746,990,520,990,461,985,413,972,374,951,338,926,266,868,222,839,168,813,136,802,138,796,170,808,224,835,269,864,341,922,376,947,415,967,462,980,520,985,746,985,908,979,1046,967"/>
+<area shape="poly" id="edge55_Node000020_Node000011" title=" " alt="" coords="1046,947,999,934,925,921,829,906,735,886,697,873,668,857,636,827,608,793,585,755,565,717,538,647,524,597,529,596,543,645,570,715,589,753,612,789,639,823,671,852,699,868,737,881,830,901,926,916,1001,929,1047,942"/>
+<area shape="rect" id="Node000021" href="$_i_l_i9488__driver_8c.html#a0c75b78a55e6dc2cbf1f48da7a6f6792" title="Initializes the notebook app interface by drawing a close button and three action buttons." alt="" coords="869,670,1000,697"/>
+<area shape="poly" id="edge44_Node000020_Node000021" title=" " alt="" coords="1089,937,942,699,947,696,1094,934"/>
+<area shape="rect" id="Node000022" href="$_i_l_i9488__driver_8c.html#a6cb954f0820495ce493085ff20c15114" title="Displays a confirmation screen with a close button and transmit button." alt="" coords="886,1126,982,1153"/>
+<area shape="poly" id="edge46_Node000020_Node000022" title=" " alt="" coords="1096,991,1057,1049,1031,1081,1002,1110,972,1128,969,1124,998,1106,1027,1078,1053,1046,1091,988"/>
+<area shape="rect" id="Node000023" href="$_i_l_i9488__driver_8c.html#aec2a759c7d655495c379a45297306bfa" title="Initializes I2C confirmation screen with close, write and read buttons." alt="" coords="872,1025,996,1052"/>
+<area shape="poly" id="edge47_Node000020_Node000023" title=" " alt="" coords="1064,985,968,1027,966,1022,1062,980"/>
+<area shape="rect" id="Node000024" href="$_i_l_i9488__driver_8c.html#a222ffe290a038061adf26017447250f4" title="Initializes the GPIO_C app interface by drawing a close button and three communication protocol butto..." alt="" coords="693,924,797,950"/>
+<area shape="poly" id="edge48_Node000020_Node000024" title=" " alt="" coords="1046,961,797,943,797,938,1046,955"/>
+<area shape="rect" id="Node000025" href="$_i_l_i9488__driver_8c.html#af2b30591eedd573176afb57b8009acb1" title="Initializes and displays GPIO control buttons and a close button." alt="" coords="237,1025,354,1052"/>
+<area shape="poly" id="edge52_Node000020_Node000025" title=" " alt="" coords="1092,990,1054,1032,1029,1051,1001,1066,910,1094,816,1108,721,1112,627,1107,540,1097,461,1083,342,1055,343,1050,462,1078,541,1092,628,1102,721,1106,815,1103,909,1088,999,1061,1026,1047,1050,1028,1088,987"/>
+<area shape="poly" id="edge45_Node000021_Node000005" title=" " alt="" coords="908,661,757,496,761,493,912,657"/>
+<area shape="poly" id="edge49_Node000024_Node000007" title=" " alt="" coords="688,921,336,801,338,796,689,916"/>
+<area shape="poly" id="edge53_Node000025_Node000008" title=" " alt="" coords="234,1020,215,1009,173,969,138,924,93,851,98,848,142,921,177,965,218,1004,237,1016"/>
+<area shape="poly" id="edge54_Node000025_Node000009" title=" " alt="" coords="227,1019,215,1008,198,982,191,957,191,907,193,883,191,860,184,836,167,812,152,801,155,797,171,809,188,834,196,859,198,883,196,908,196,956,203,980,219,1005,230,1015"/>
+<area shape="poly" id="edge65_Node000027_Node000011" title=" " alt="" coords="1415,726,1381,724,1303,721,1236,722,1123,729,1011,730,945,724,868,712,775,688,685,657,550,599,552,594,687,652,776,683,869,706,946,719,1011,724,1123,723,1236,717,1303,716,1381,718,1415,721"/>
+<area shape="poly" id="edge59_Node000027_Node000015" title=" " alt="" coords="1475,707,1434,658,1408,632,1379,610,1354,598,1356,593,1382,606,1412,628,1438,654,1479,704"/>
+<area shape="poly" id="edge60_Node000027_Node000016" title=" " alt="" coords="1485,704,1472,661,1450,608,1420,554,1401,530,1379,509,1361,497,1364,493,1382,504,1405,526,1424,551,1455,606,1477,659,1490,702"/>
+<area shape="poly" id="edge61_Node000027_Node000017" title=" " alt="" coords="1430,752,1333,779,1331,774,1429,747"/>
+<area shape="poly" id="edge62_Node000027_Node000018" title=" " alt="" coords="1481,705,1465,672,1443,632,1414,593,1379,559,1354,546,1357,541,1382,555,1418,589,1447,629,1470,669,1486,703"/>
+<area shape="poly" id="edge63_Node000027_Node000019" title=" " alt="" coords="1467,757,1428,786,1382,813,1354,824,1352,819,1379,808,1425,781,1464,753"/>
+<area shape="poly" id="edge64_Node000027_Node000020" title=" " alt="" coords="1415,724,1368,723,1317,727,1267,740,1221,762,1197,782,1177,805,1146,859,1127,911,1116,949,1111,948,1121,909,1141,856,1173,802,1193,778,1218,758,1265,735,1316,722,1367,717,1415,718"/>
+</map>

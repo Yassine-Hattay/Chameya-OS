@@ -1,0 +1,10 @@
+<map id="set_orientation" name="set_orientation">
+<area shape="rect" id="Node000001" title="Sets the display orientation by configuring the ILI9488 MADCTL register." alt="" coords="5,31,112,57"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a7b70829006de2728b835658a97be5167" title="Sends a command byte to the device by setting the DC pin low before transmission." alt="" coords="169,5,282,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,33,153,27,154,32,113,39"/>
+<area shape="rect" id="Node000004" href="$_i_l_i9488__driver_8c.html#a0e84a2eba1208c10a3b1adaa17ac92f0" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="160,56,291,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="113,49,145,54,144,60,112,55"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="339,31,420,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="283,25,324,32,323,37,282,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="291,56,323,51,324,56,292,61"/>
+</map>

@@ -1,0 +1,78 @@
+\doxysection{C\+:/msys32/home/hatta/esp/hello\+\_\+world1/components/debugging/my\+\_\+print.c File Reference}
+\hypertarget{my__print_8c}{}\label{my__print_8c}\index{C:/msys32/home/hatta/esp/hello\_world1/components/debugging/my\_print.c@{C:/msys32/home/hatta/esp/hello\_world1/components/debugging/my\_print.c}}
+
+
+Contains an implemntation of printf that writes to the serial monitor and to a web page through wifi .  
+
+
+{\ttfamily \#include "{}my\+\_\+print.\+h"{}}\newline
+Include dependency graph for my\+\_\+print.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{my__print_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{my__print_8c_a67993f7efdbabaa245a54fc014c3d8ff}{my\+\_\+print\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the custom print system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{my__print_8c_ad20495423a6dd966708b2fc8fffef3f0}{my\+\_\+print}} (const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Custom print function that outputs formatted text and logs it to a buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{my__print_8c_aff0164ed22e5064274040c2f0f112774}\label{my__print_8c_aff0164ed22e5064274040c2f0f112774} 
+char {\bfseries log\+\_\+buffer} \mbox{[}\mbox{\hyperlink{my__print_8h_a381c342b2b34df0b1a5b39c0d94da4e1}{LOG\+\_\+\+BUFFER\+\_\+\+SIZE}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains an implemntation of printf that writes to the serial monitor and to a web page through wifi . 
+
+\begin{DoxyAuthor}{Author}
+your name (\href{mailto:you@domain.com}{\texttt{ you@domain.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/05-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{my__print_8c_ad20495423a6dd966708b2fc8fffef3f0}\index{my\_print.c@{my\_print.c}!my\_print@{my\_print}}
+\index{my\_print@{my\_print}!my\_print.c@{my\_print.c}}
+\doxysubsubsection{\texorpdfstring{my\_print()}{my\_print()}}
+{\footnotesize\ttfamily \label{my__print_8c_ad20495423a6dd966708b2fc8fffef3f0} 
+void my\+\_\+print (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Custom print function that outputs formatted text and logs it to a buffer. 
+
+Formats the input string and arguments like printf, prints the result to the console, and appends it to a global log buffer for later inspection or debugging.
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & The format string (as in printf). \\
+\hline
+{\em ...} & Additional arguments to format. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{my__print_8c_a67993f7efdbabaa245a54fc014c3d8ff}\index{my\_print.c@{my\_print.c}!my\_print\_init@{my\_print\_init}}
+\index{my\_print\_init@{my\_print\_init}!my\_print.c@{my\_print.c}}
+\doxysubsubsection{\texorpdfstring{my\_print\_init()}{my\_print\_init()}}
+{\footnotesize\ttfamily \label{my__print_8c_a67993f7efdbabaa245a54fc014c3d8ff} 
+void my\+\_\+print\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the custom print system. 
+
+Sets up NVS flash, registers a custom putchar function for ESP logging, and creates a mutex to ensure thread-\/safe logging. This function must be called before using my\+\_\+print in a multi-\/threaded environment. 

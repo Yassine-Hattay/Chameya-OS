@@ -1,0 +1,5 @@
+<map id="recieve_data" name="recieve_data">
+<area shape="rect" id="Node000001" title="Receives a sequence of bytes from the SPI interface." alt="" coords="5,5,101,32"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a7ec8272ac2813d90fe29973cc71baabb" title="Receives a byte over SPI using software bit&#45;banging." alt="" coords="149,5,205,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,16,133,16,133,21,101,21"/>
+</map>

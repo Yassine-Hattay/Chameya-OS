@@ -1,0 +1,230 @@
+\doxysection{ILI9488\+\_\+driver.\+h}
+\hypertarget{_i_l_i9488__driver_8h_source}{}\label{_i_l_i9488__driver_8h_source}\index{C:/msys32/home/hatta/esp/hello\_world1/components/ILI9488\_driver/ILI9488\_driver.h@{C:/msys32/home/hatta/esp/hello\_world1/components/ILI9488\_driver/ILI9488\_driver.h}}
+\mbox{\hyperlink{_i_l_i9488__driver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ COMPONENTS\_ILI9488\_DRIVER\_ILI9488\_DRIVER\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ COMPONENTS\_ILI9488\_DRIVER\_ILI9488\_DRIVER\_H\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_s_p_i_8h}{../SPI/SPI.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}driver/gpio.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ MISO\_touch\ 16}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SCK\ 14}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ SS\_display\ 15}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SS\_touch\ 5}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ DC\_pin\ 4}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ RESET\_pin\ 10}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ PIRQ\_pin\ 0}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ MAX\_COORDS\ 1000}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ MAX\_COORDS\_CHAR\ 100}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ APP\_NAME\_MAX\_LEN\ 16}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_coord_history_a67f5ce1da6f8495450d195c303c32138}{x}};}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_coord_history_ab0b9cf1787bd30eacb4409a808bfb57d}{y}};}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_coord_history_a277fdd52ee95f5ab94bee990bba38320}{width}};}
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_coord_history_a9d5948c044fb39fb9719711abe45ffa3}{height}};}
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_coord_history_a2678746afdb2cdbfa2df9810030934dc}{correction}};}
+\DoxyCodeLine{00071\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_coord_history_a08c3a5885091c7bf8fa5f0a080411143}{app\_name}}[\mbox{\hyperlink{_i_l_i9488__driver_8h_ae255f74dab81cff20ee8d79a68ae3291}{APP\_NAME\_MAX\_LEN}}];}
+\DoxyCodeLine{00074\ \}\ \mbox{\hyperlink{struct_coord_history}{CoordHistory}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00080\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_key_ab1b3d5d62a259bc5105dd59f6ba1678e}{x}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_key_a2d1b29b99272a9e363fe5a054d230aec}{y}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_key_a83373a2d9b472ec0d6a42dff71a92a5a}{width}};\ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_key_a248205eb7f2d94978dd6a64907a75311}{height}};\ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_key_a29d7154b23811a920c3facc00bf93f0d}{label}};\ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \}\ \mbox{\hyperlink{struct_key}{Key}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ A\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ B\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00089\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ C\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00090\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ D\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ E\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ F\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00093\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ G\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00094\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ H\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ I\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ J\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00097\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ K\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ L\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00099\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ M\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00100\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00101\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ O\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00102\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ P\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00103\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ Q\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00104\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ R\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00105\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ S\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00106\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ T\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00107\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ U\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00108\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ V\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00109\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ W\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00110\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ X\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00111\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ Y\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00112\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ Z\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ a\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00115\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ b\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00116\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ c\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00117\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ d\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00118\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ e\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00119\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ f\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00120\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ g\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00121\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ h\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ i\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00123\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ j\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00124\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ k\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00125\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ l\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00126\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ m\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00127\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ n\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00128\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ o\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00129\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ p\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00130\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ q\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ r\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ s\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ t\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00134\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ u\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00135\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ v\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ w\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00137\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ x\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00138\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ y\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00139\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ z\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N1\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00142\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N2\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00143\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N3\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00144\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N4\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00145\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N5\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00146\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N6\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00147\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N7\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00148\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N8\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00149\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N9\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00150\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ N0\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ \_\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00153\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ \$\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ percent\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00155\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ comma\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00156\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ point\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00157\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ two\_points\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ exclamation\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ question\_mark\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00160\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ open\_braket\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ close\_braket\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00162\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ minus\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00163\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ plus\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ times\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ devide\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00166\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ shift\_font\_0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ button[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ chameya[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00171\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ notebook[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00172\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ pong\_logo[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00173\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ goblin\_royale\_logo[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00174\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ gpio\_C\_logo[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_run0[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_run1[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00178\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_run2[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00179\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_run3[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00180\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_attack1[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00181\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_attack2[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_attack3[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00183\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_attack4[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00184\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_attack5[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00185\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_death1[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00186\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_death2[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00187\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_death3[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00188\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_death4[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_death5[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00190\ \textcolor{keyword}{extern}\ uint8\_t\ goblin\_torch\_death6[]\ ICACHE\_RODATA\_ATTR;}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{_i_l_i9488__driver_8c_a89ec65fb54b46a852be4078ab8dd022b}{coord\_index\_char}};}
+\DoxyCodeLine{00193\ \textcolor{keyword}{extern}\ uint16\_t\ \mbox{\hyperlink{_i_l_i9488__driver_8c_a29d7534902f6ebb6c2db6be485269ccd}{coord\_index}};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{size\_t}\ size\_var;}
+\DoxyCodeLine{00196\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{size\_t}\ size\_var1;}
+\DoxyCodeLine{00197\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{size\_t}\ size\_var2;}
+\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{size\_t}\ size\_goblin\_torch\_run0;}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ letter\_font\_0\_size;}
+\DoxyCodeLine{00201\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{_i_l_i9488__driver_8c_a55a97d8c8643c0f9c2238920e38bbb6e}{background\_color}};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_coord_history}{CoordHistory}}\ \mbox{\hyperlink{_i_l_i9488__driver_8c_a14dbf5eb3a49bcca27d3d68544072bc6}{history\_char}}[];}
+\DoxyCodeLine{00204\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_coord_history}{CoordHistory}}\ \mbox{\hyperlink{_i_l_i9488__driver_8c_a96db3b09937c77cb00b62a157845edad}{history}}[];}
+\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_key}{Key}}\ \mbox{\hyperlink{_i_l_i9488__driver_8c_a161575bec648833afaac0765ee9fc1e1}{keyboard}}[];}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_ac079cd712ceeaf40cc0733b0f3a5d860}{init\_display}}();}
+\DoxyCodeLine{00208\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a0e84a2eba1208c10a3b1adaa17ac92f0}{send\_ILI9488\_data}}(uint8\_t\ data);}
+\DoxyCodeLine{00209\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a7b70829006de2728b835658a97be5167}{send\_command}}(uint8\_t\ command);}
+\DoxyCodeLine{00210\ uint8\_t*\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a25aa28afc72acb64b4e0f08019c66d97}{recieve\_data}}(\textcolor{keywordtype}{int}\ r);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_aac631c2abee2459f1d6a8a7a31734382}{tick\_spi}}();}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a7503b0dca9eb5aa68a88d6c894e444b1}{set\_resolution\_pos}}(\textcolor{keyword}{const}\ uint16\_t\ x,\ \textcolor{keyword}{const}\ uint16\_t\ y,\ uint16\_t\ width,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ uint16\_t\ height,\ int16\_t\ correction\_value);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a98b7024180c631fd59e5f1bdb72e2fdc}{set\_orientation}}(uint8\_t\ orientation);}
+\DoxyCodeLine{00218\ \textcolor{keywordtype}{void}\ draw\_char(\textcolor{keywordtype}{char}\ character);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a1ff70c94b7bf537d87832f56fac84081}{transform\_array}}(\textcolor{keyword}{const}\ uint8\_t\ *input,\ uint8\_t\ *output,\ \textcolor{keywordtype}{int}\ input\_size,}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ font\_size);}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ uint8\_t*\ \mbox{\hyperlink{_i_l_i9488__driver_8h_af31659243108226910ff014a64034ad0}{apply\_font\_size}}(\textcolor{keyword}{const}\ uint8\_t\ *font\_data,}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ *max\_output\_size\_final,\ uint8\_t\ font\_size);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_aa900c251cfe95c8ac94bb9faa66d4a89}{print\_ILI9488}}(\textcolor{keywordtype}{char}\ *message,\ uint16\_t\ x,\ uint16\_t\ y,\ uint8\_t\ font\_size);}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a7385a8a4fb06cbe28f82a58c7f995872}{FillScreenBlue}}();}
+\DoxyCodeLine{00229\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a6d9b8b255bd4b548faf0f6b8389ac933}{FillScreenblack}}();}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ uint8\_t\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a7ec8272ac2813d90fe29973cc71baabb}{recive}}();}
+\DoxyCodeLine{00232\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_af75f0c295259a026924231d6244e6d14}{hardware\_reset}}();}
+\DoxyCodeLine{00233\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_af315cda757ac399f69496ff47962e7f8}{send\_data}}(uint8\_t\ data\_to\_send);}
+\DoxyCodeLine{00234\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a0d199b5702695c4d7b78ef83759c32d5}{clean\_screen}}();}
+\DoxyCodeLine{00235\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a33c08349b17a070928586bf762a2df3d}{print\_char\_ILI9488}}(\textcolor{keywordtype}{char}\ c,\ uint16\_t\ *x,\ uint16\_t\ *y,\ uint8\_t\ font\_size);}
+\DoxyCodeLine{00236\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a6158828e1fc7c96cd2c571e2ebc0be39}{clean\_last\_char}}();}
+\DoxyCodeLine{00237\ \textcolor{keywordtype}{void}\ print\_history(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00238\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_ae6307f8fd2d5e8b9ef75ab078a1e7966}{main\_menu\_task}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00239\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a3c0aa307ff11329686e3e9303383e4ae}{draw\_keyborad}}(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00240\ \textcolor{keywordtype}{void}\ IRAM\_ATTR\ \mbox{\hyperlink{_i_l_i9488__driver_8h_afdd7e4c5f95855c9f364d31c754886e9}{PIRQ\_isr\_handler}}(\textcolor{keywordtype}{void}\ *arg);}
+\DoxyCodeLine{00241\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a8ddd64b1724dcf0122a0f15616324afb}{draw\_main\_menu\_icons}}();}
+\DoxyCodeLine{00242\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a3e2bc52f43727dad6a7f57ec6442dd4e}{make\_button}}(\textcolor{keywordtype}{char}\ *name,\ uint16\_t\ height,\ uint16\_t\ x,\ uint16\_t\ y,}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *color);}
+\DoxyCodeLine{00244\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a0c75b78a55e6dc2cbf1f48da7a6f6792}{bootApp\_noteBook}}();}
+\DoxyCodeLine{00245\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a222ffe290a038061adf26017447250f4}{GPIO\_C\_boot}}();}
+\DoxyCodeLine{00246\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a6cb954f0820495ce493085ff20c15114}{confirm\_boot}}();}
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_af2b30591eedd573176afb57b8009acb1}{GPIO\_pins\_boot}}();}
+\DoxyCodeLine{00248\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a632a0e96e7a6b4dbbcbee78b3e598ed9}{make\_X\_button}}();}
+\DoxyCodeLine{00249\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_aca22e63e9a4e759b0876544288ad4672}{apply\_x\_correction}}(\textcolor{keywordtype}{char}\ *message,\ uint16\_t\ *x,\ uint16\_t\ *y,}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ uint8\_t\ font\_size);}
+\DoxyCodeLine{00251\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a04e1d61319f832ef9a6f09df05e9628b}{print\_history\_table}}();}
+\DoxyCodeLine{00252\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_ab2d362e4fcbf93c1b3eaa52f3bb58823}{print\_history\_char\_table}}();}
+\DoxyCodeLine{00253\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a69b3a7746418cda25549d28c2036282a}{fill\_rect}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ uint8\_t\ color\_byte);}
+\DoxyCodeLine{00254\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a1620e839d9e8f446bcb2d40175a33412}{clean\_last\_element}}();}
+\DoxyCodeLine{00255\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_a283526828a2372acde045761b03d2df8}{clean\_last\_element\_modified}}(uint8\_t\ \mbox{\hyperlink{_i_l_i9488__driver_8c_a29d7534902f6ebb6c2db6be485269ccd}{coord\_index}});}
+\DoxyCodeLine{00256\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_l_i9488__driver_8h_aec2a759c7d655495c379a45297306bfa}{confirm\_boot\_I2C}}();}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

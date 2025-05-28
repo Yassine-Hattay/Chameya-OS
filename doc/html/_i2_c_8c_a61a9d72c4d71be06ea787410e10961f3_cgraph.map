@@ -1,0 +1,5 @@
+<map id="send_ACK_NACK" name="send_ACK_NACK">
+<area shape="rect" id="Node000001" title="Sends an ACK or NACK bit on the I2C bus." alt="" coords="5,5,135,32"/>
+<area shape="rect" id="Node000002" href="$_i2_c_8c.html#a8d8039b9072a389e615fb87eeed16d9e" title="Generates a single I2C clock pulse on the SCL line." alt="" coords="183,5,253,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,16,167,16,167,21,135,21"/>
+</map>

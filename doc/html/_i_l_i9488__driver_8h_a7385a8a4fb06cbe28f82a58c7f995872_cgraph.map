@@ -1,0 +1,14 @@
+<map id="FillScreenBlue" name="FillScreenBlue">
+<area shape="rect" id="Node000001" title="Fills the entire ILI9488 screen with blue color." alt="" coords="5,31,111,57"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a7b70829006de2728b835658a97be5167" title="Sends a command byte to the device by setting the DC pin low before transmission." alt="" coords="346,5,459,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,28,158,16,248,10,331,11,331,17,248,16,159,21,104,33"/>
+<area shape="rect" id="Node000004" href="$_i_l_i9488__driver_8c.html#a0e84a2eba1208c10a3b1adaa17ac92f0" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="337,56,468,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,55,159,67,243,72,322,72,322,77,243,78,158,72,103,60"/>
+<area shape="rect" id="Node000005" href="$_i_l_i9488__driver_8c.html#a7503b0dca9eb5aa68a88d6c894e444b1" title="Sets the display area for subsequent pixel data and records coordinates." alt="" coords="159,31,289,57"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="111,41,143,41,143,47,111,47"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="516,31,598,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="460,25,501,32,500,37,459,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="468,56,500,51,501,56,469,61"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="289,32,330,26,331,31,290,37"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="290,51,322,55,321,60,289,56"/>
+</map>

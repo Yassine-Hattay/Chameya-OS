@@ -1,0 +1,42 @@
+\doxysection{uart\+\_\+t Struct Reference}
+\hypertarget{structuart__t}{}\label{structuart__t}\index{uart\_t@{uart\_t}}
+
+
+Represents a UART (Universal Asynchronous Receiver-\/\+Transmitter) configuration.  
+
+
+
+
+{\ttfamily \#include $<$UART.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structuart__t_a03fdab9642e47d9bb6cbdf1c0cb9dcdd}\label{structuart__t_a03fdab9642e47d9bb6cbdf1c0cb9dcdd} 
+int {\bfseries uart\+\_\+nr}
+\begin{DoxyCompactList}\small\item\em The UART port number (e.\+g., 0 for UART0, 1 for UART1). \end{DoxyCompactList}\item 
+\Hypertarget{structuart__t_a40578ddc33f0d37d3065146292892bcd}\label{structuart__t_a40578ddc33f0d37d3065146292892bcd} 
+int {\bfseries rx\+\_\+pin}
+\begin{DoxyCompactList}\small\item\em The GPIO pin number used for receiving data (RX). Note\+: may be ignored or fixed for certain hardware UARTs (like UART1 on some ESP32s). \end{DoxyCompactList}\item 
+\Hypertarget{structuart__t_a9973bf4fffe5ad59b3bd90066ac98c95}\label{structuart__t_a9973bf4fffe5ad59b3bd90066ac98c95} 
+int {\bfseries tx\+\_\+pin}
+\begin{DoxyCompactList}\small\item\em The GPIO pin number used for transmitting data (TX). \end{DoxyCompactList}\item 
+\Hypertarget{structuart__t_a7817a1c761fe244e2b85e2936e064dd6}\label{structuart__t_a7817a1c761fe244e2b85e2936e064dd6} 
+int {\bfseries tx\+\_\+enabled}
+\begin{DoxyCompactList}\small\item\em A flag (boolean) indicating whether transmission (TX) is enabled for this UART. \end{DoxyCompactList}\item 
+\Hypertarget{structuart__t_aec9fdc68fa5b9cf463b60dc59822c962}\label{structuart__t_aec9fdc68fa5b9cf463b60dc59822c962} 
+int {\bfseries rx\+\_\+enabled}
+\begin{DoxyCompactList}\small\item\em A flag (boolean) indicating whether reception (RX) is enabled for this UART. \end{DoxyCompactList}\item 
+\Hypertarget{structuart__t_ade75c6d08663419f2d51c2995d40fe0f}\label{structuart__t_ade75c6d08663419f2d51c2995d40fe0f} 
+int {\bfseries baud\+\_\+rate}
+\begin{DoxyCompactList}\small\item\em The communication speed in bits per second (baud). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a UART (Universal Asynchronous Receiver-\/\+Transmitter) configuration. 
+
+This structure holds all the necessary parameters to configure and manage a UART peripheral, whether it\textquotesingle{}s a hardware UART or a bit-\/banged software implementation. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/msys32/home/hatta/esp/hello\+\_\+world1/components/\+UART/\mbox{\hyperlink{_u_a_r_t_8h}{UART.\+h}}\end{DoxyCompactItemize}

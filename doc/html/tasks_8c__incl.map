@@ -1,0 +1,68 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/tasks/tasks.c" name="C:/msys32/home/hatta/esp/hello_world1/components/tasks/tasks.c">
+<area shape="rect" id="Node000001" title="this file implements the main tasks for the OS ." alt="" coords="1265,5,1462,64"/>
+<area shape="rect" id="Node000002" href="$tasks_8h.html" title=" " alt="" coords="1331,112,1396,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1366,64,1366,96,1361,96,1361,64"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8h.html" title=" " alt="" coords="1033,277,1195,320"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1341,141,1261,189,1153,269,1149,265,1258,184,1338,137"/>
+<area shape="rect" id="Node000012" href="$_x_p_t2046__driver_8h.html" title="this file contains the header for the XPT2046 touch controller driver, which is used to interface wit..." alt="" coords="1271,187,1456,229"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="1359,139,1357,172,1352,171,1354,139"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1511,368,1573,395"/>
+<area shape="poly" id="edge25_Node000002_Node000017" title=" " alt="" coords="1396,137,1433,157,1469,185,1499,225,1520,271,1534,316,1541,353,1536,354,1529,317,1515,273,1495,228,1465,189,1430,161,1393,142"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1558,443,1662,469"/>
+<area shape="poly" id="edge26_Node000002_Node000022" title=" " alt="" coords="1397,131,1450,150,1479,165,1504,185,1528,213,1549,244,1580,311,1599,376,1609,427,1604,428,1594,377,1575,313,1544,247,1524,216,1500,189,1476,170,1448,155,1395,136"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="1648,195,1711,221"/>
+<area shape="poly" id="edge27_Node000002_Node000023" title=" " alt="" coords="1397,130,1501,151,1629,184,1636,186,1634,191,1628,189,1500,156,1395,135"/>
+<area shape="rect" id="Node000024" href="$_u_a_r_t_8h.html" title="this file contains the header for UART communication using" alt="" coords="861,368,980,395"/>
+<area shape="poly" id="edge28_Node000002_Node000024" title=" " alt="" coords="1331,138,1270,158,1191,188,1104,229,1022,279,978,319,942,357,938,354,974,315,1019,275,1102,224,1189,183,1269,153,1330,133"/>
+<area shape="rect" id="Node000004" href="$_s_p_i_8h.html" title="this file implements SPI communication in bit&#45;bang mode for ESP8266." alt="" coords="485,368,578,395"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1033,314,593,374,593,369,1032,309"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="608,443,700,469"/>
+<area shape="poly" id="edge10_Node000003_Node000008" title=" " alt="" coords="1033,320,944,342,850,371,765,404,693,438,691,433,763,399,848,365,943,337,1032,315"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="1082,368,1146,395"/>
+<area shape="poly" id="edge11_Node000003_Node000011" title=" " alt="" coords="1117,321,1117,352,1111,352,1111,321"/>
+<area shape="rect" id="Node000005" href="$my__config_8h_source.html" title=" " alt="" coords="119,443,288,469"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="485,396,276,441,275,436,484,390"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="312,443,454,469"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="507,398,424,438,422,433,504,393"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="479,443,584,469"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="534,395,534,427,529,427,529,395"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="554,393,621,432,618,437,551,398"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,443,95,469"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="485,391,324,412,110,445,109,440,323,407,484,386"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="724,443,837,469"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="576,393,723,435,722,440,574,398"/>
+<area shape="poly" id="edge23_Node000012_Node000002" title=" " alt="" coords="1369,186,1369,154,1375,154,1374,187"/>
+<area shape="poly" id="edge13_Node000012_Node000003" title=" " alt="" coords="1306,232,1187,274,1186,269,1304,227"/>
+<area shape="rect" id="Node000013" href="$my__spiffs_8h.html" title="this is my implementation of the SPIFFS file system" alt="" coords="1232,285,1393,312"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="1354,231,1330,273,1325,270,1349,228"/>
+<area shape="rect" id="Node000021" href="$_i2_c_8h_source.html" title=" " alt="" coords="1417,285,1507,312"/>
+<area shape="poly" id="edge24_Node000012_Node000021" title=" " alt="" coords="1388,228,1438,273,1435,277,1384,232"/>
+<area shape="poly" id="edge21_Node000013_Node000011" title=" " alt="" coords="1283,315,1160,364,1158,359,1281,310"/>
+<area shape="rect" id="Node000014" href="$esp__spiffs_8h_source.html" title=" " alt="" coords="1170,368,1261,395"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="1299,315,1243,361,1240,356,1296,310"/>
+<area shape="poly" id="edge18_Node000013_Node000017" title=" " alt="" coords="1349,310,1497,362,1496,367,1348,315"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="1284,368,1349,395"/>
+<area shape="poly" id="edge19_Node000013_Node000018" title=" " alt="" coords="1316,312,1318,353,1313,353,1311,313"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1474,443,1535,469"/>
+<area shape="poly" id="edge20_Node000013_Node000019" title=" " alt="" coords="1326,311,1363,349,1413,393,1471,432,1468,437,1410,397,1360,353,1322,314"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="1424,368,1487,395"/>
+<area shape="poly" id="edge22_Node000013_Node000020" title=" " alt="" coords="1336,310,1421,358,1419,362,1334,315"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="1277,443,1351,469"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="1234,393,1286,431,1283,436,1231,397"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="1375,443,1450,469"/>
+<area shape="poly" id="edge17_Node000014_Node000016" title=" " alt="" coords="1251,393,1365,434,1363,439,1249,398"/>
+<area shape="poly" id="edge29_Node000024_Node000005" title=" " alt="" coords="861,391,303,445,302,440,861,385"/>
+<area shape="poly" id="edge33_Node000024_Node000006" title=" " alt="" coords="861,393,470,445,469,440,860,388"/>
+<area shape="poly" id="edge34_Node000024_Node000007" title=" " alt="" coords="861,396,599,445,599,439,860,391"/>
+<area shape="poly" id="edge36_Node000024_Node000008" title=" " alt="" coords="875,398,716,441,715,436,874,393"/>
+<area shape="poly" id="edge39_Node000024_Node000010" title=" " alt="" coords="898,398,820,437,818,433,895,393"/>
+<area shape="poly" id="edge31_Node000024_Node000015" title=" " alt="" coords="981,389,1106,410,1262,440,1261,445,1105,415,980,395"/>
+<area shape="poly" id="edge30_Node000024_Node000019" title=" " alt="" coords="981,385,1222,409,1354,425,1460,440,1459,445,1353,430,1221,415,981,391"/>
+<area shape="poly" id="edge35_Node000024_Node000022" title=" " alt="" coords="981,385,1262,410,1543,440,1543,445,1262,415,981,390"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="861,443,930,469"/>
+<area shape="poly" id="edge32_Node000024_Node000025" title=" " alt="" coords="919,396,907,429,902,427,914,394"/>
+<area shape="rect" id="Node000026" title=" " alt="" coords="954,443,1044,469"/>
+<area shape="poly" id="edge37_Node000024_Node000026" title=" " alt="" coords="936,393,976,430,973,434,933,397"/>
+<area shape="rect" id="Node000027" title=" " alt="" coords="1068,443,1253,469"/>
+<area shape="poly" id="edge38_Node000024_Node000027" title=" " alt="" coords="963,393,1105,435,1103,440,962,398"/>
+</map>

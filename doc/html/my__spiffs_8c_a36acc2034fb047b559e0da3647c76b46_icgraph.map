@@ -1,0 +1,44 @@
+<map id="unmount_spiffs" name="unmount_spiffs">
+<area shape="rect" id="Node000001" title="Unmounts the SPIFFS filesystem." alt="" coords="1374,107,1483,133"/>
+<area shape="rect" id="Node000002" href="$my__spiffs_8c.html#ad7b0de17f81944212f5bc68823424f27" title="Appends data to a specified file on the SPIFFS filesystem." alt="" coords="1209,107,1315,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1358,123,1315,123,1315,117,1358,117"/>
+<area shape="rect" id="Node000012" href="$my__spiffs_8c.html#aca55fdfb98f749b1b50afe65dbae6f69" title="Deletes a specified file from the SPIFFS filesystem and removes its entry from a filenames list." alt="" coords="1222,56,1302,83"/>
+<area shape="poly" id="edge22_Node000001_Node000012" title=" " alt="" coords="1367,104,1302,84,1304,79,1368,99"/>
+<area shape="rect" id="Node000013" href="$my__spiffs_8c.html#a2bb7551991a5cfa47f4ff1061e3d38ed" title="Overwrites a specified file on the SPIFFS filesystem with new data." alt="" coords="1213,208,1311,235"/>
+<area shape="poly" id="edge23_Node000001_Node000013" title=" " alt="" coords="1401,146,1367,172,1327,198,1303,210,1300,205,1324,194,1364,168,1398,141"/>
+<area shape="rect" id="Node000014" href="$my__spiffs_8c.html#ae894e1e4634dbf62c103ddc4f6200e31" title="Prints the entire contents of a specified file on the SPIFFS filesystem to the console." alt="" coords="1198,157,1326,184"/>
+<area shape="poly" id="edge25_Node000001_Node000014" title=" " alt="" coords="1368,141,1309,159,1308,154,1367,136"/>
+<area shape="rect" id="Node000015" href="$my__spiffs_8c.html#a61655017c7f7ebf66d5e89987ff48dbd" title="Reads the entire contents of a specified file on the SPIFFS filesystem into a dynamically allocated s..." alt="" coords="1023,5,1150,32"/>
+<area shape="poly" id="edge26_Node000001_Node000015" title=" " alt="" coords="1402,98,1367,70,1325,46,1281,33,1235,25,1151,19,1151,14,1236,19,1282,28,1327,42,1370,66,1405,94"/>
+<area shape="rect" id="Node000003" href="$_x_p_t2046__driver_8c.html#a487cc9f5d8af9f77e6683ccbb5d45d85" title="Checks for key presses on a virtual keyboard and handles corresponding actions." alt="" coords="1025,157,1148,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1199,141,1136,159,1135,154,1198,136"/>
+<area shape="rect" id="Node000004" href="$tasks_8c.html#a4290fee8165b79f0c89b38bdd3279057" title="FreeRTOS task for handling a virtual keyboard display and input." alt="" coords="869,157,975,184"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1009,182,975,182,975,176,1009,177"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="990,159,1024,159,1024,165,990,164"/>
+<area shape="rect" id="Node000005" href="$tasks_8c.html#adcbe116080c9695613e2baf119e5b3b6" title="FreeRTOS task for the main page of the Notebook application." alt="" coords="669,132,821,159"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="853,164,821,159,821,154,854,158"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="836,138,905,138,975,143,1036,154,1035,159,975,148,904,143,836,143"/>
+<area shape="rect" id="Node000006" href="$tasks_8c.html#ae6307f8fd2d5e8b9ef75ab078a1e7966" title="FreeRTOS task for the main menu of the embedded system." alt="" coords="462,183,582,209"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="698,166,583,193,582,188,696,161"/>
+<area shape="rect" id="Node000011" href="$tasks_8c.html#a18d3c4c46ad6ccd39a77b5f28d28f0f2" title="FreeRTOS task for displaying and managing existing notebook files." alt="" coords="422,107,621,133"/>
+<area shape="poly" id="edge19_Node000005_Node000011" title=" " alt="" coords="653,147,576,137,577,131,654,141"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="597,198,770,203,873,201,975,193,1035,182,1036,187,975,199,873,206,770,209,597,204"/>
+<area shape="poly" id="edge16_Node000006_Node000005" title=" " alt="" coords="569,175,668,151,670,157,570,180"/>
+<area shape="rect" id="Node000007" href="$tasks_8c.html#a4296e8d90b1f056889c056788cf62d65" title="FreeRTOS task for the main menu of the GPIO Control (GPIO_C) app." alt="" coords="235,233,356,260"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="474,217,357,244,356,239,472,212"/>
+<area shape="rect" id="Node000010" href="$tasks_8c.html#abdaddad7708204d6fe1232d6d1137056" title="FreeRTOS task for the first page of the Pong game, handling game mode selection." alt="" coords="217,183,374,209"/>
+<area shape="poly" id="edge17_Node000006_Node000010" title=" " alt="" coords="446,207,374,207,374,202,446,202"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="371,247,488,248,639,244,807,231,892,221,974,207,1015,196,1052,182,1054,187,1017,201,976,212,892,226,807,237,639,249,488,253,371,252"/>
+<area shape="poly" id="edge15_Node000007_Node000006" title=" " alt="" coords="343,226,460,199,462,204,345,231"/>
+<area shape="rect" id="Node000008" href="$tasks_8c.html#a7e13dbf041a37a08024e1ef82aaa49ec" title="FreeRTOS task for configuring SPI communication parameters." alt="" coords="12,208,162,235"/>
+<area shape="poly" id="edge11_Node000007_Node000008" title=" " alt="" coords="219,249,138,238,138,233,220,244"/>
+<area shape="rect" id="Node000009" href="$tasks_8c.html#a63ff2ed865baaa534c13b2bb60ca5294" title="FreeRTOS task for configuring UART communication parameters." alt="" coords="5,259,169,285"/>
+<area shape="poly" id="edge13_Node000007_Node000009" title=" " alt="" coords="230,266,169,274,169,268,229,260"/>
+<area shape="poly" id="edge12_Node000008_Node000007" title=" " alt="" coords="177,221,245,230,244,235,177,226"/>
+<area shape="poly" id="edge14_Node000009_Node000007" title=" " alt="" coords="153,253,234,243,235,248,153,258"/>
+<area shape="poly" id="edge18_Node000010_Node000006" title=" " alt="" coords="390,184,461,185,461,191,390,190"/>
+<area shape="poly" id="edge20_Node000011_Node000003" title=" " alt="" coords="637,106,713,102,798,102,888,108,976,121,1022,136,1061,154,1059,159,1020,141,974,127,887,113,798,107,713,107,637,111"/>
+<area shape="poly" id="edge21_Node000011_Node000005" title=" " alt="" coords="637,121,691,129,690,134,636,127"/>
+<area shape="poly" id="edge24_Node000013_Node000003" title=" " alt="" coords="1198,206,1135,187,1136,182,1199,200"/>
+<area shape="poly" id="edge27_Node000015_Node000011" title=" " alt="" coords="1008,33,851,57,670,89,581,109,580,103,669,84,850,52,1007,27"/>
+</map>

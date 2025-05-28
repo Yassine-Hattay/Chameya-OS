@@ -1,3 +1,14 @@
+/**
+ * @file ILI9488_driver.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef COMPONENTS_ILI9488_DRIVER_ILI9488_DRIVER_H_
 #define COMPONENTS_ILI9488_DRIVER_ILI9488_DRIVER_H_
 
@@ -5,34 +16,72 @@
 #include "driver/gpio.h"
 #include <string.h>
 
-
-
+/** @brief GPIO pin for MISO (Master In Slave Out) of touch controller */
 #define MISO_touch 16
-#define SCK  14
-#define SS_display   15
-#define SS_touch   5
+
+/** @brief GPIO pin for SCK (Serial Clock) */
+#define SCK 14
+
+/** @brief GPIO pin for display Slave Select */
+#define SS_display 15
+
+/** @brief GPIO pin for touch controller Slave Select */
+#define SS_touch 5
+
+/** @brief GPIO pin for Display Data/Command control */
 #define DC_pin 4
+
+/** @brief GPIO pin for display reset control */
 #define RESET_pin 10
+
+/** @brief GPIO pin for touch controller interrupt */
 #define PIRQ_pin 0
-#define MAX_COORDS 1000 // or whatever max size you need
-#define MAX_COORDS_CHAR 100 // or whatever max size you need
-#define APP_NAME_MAX_LEN 16  // Or whatever maximum length you expect
+
+/** @brief Maximum number of coordinate points to store */
+#define MAX_COORDS 1000
+
+/** @brief Maximum number of character-based coordinates to store */
+#define MAX_COORDS_CHAR 100
+
+/** @brief Maximum length for application name strings */
+#define APP_NAME_MAX_LEN 16
+
+/**
+ * @brief Structure for storing goblin drawing coordinates and attributes.
+ * 
+ * Tracks position, dimensions, and correction values for rendered goblins,
+ * along with the associated application name.
+ */
 
 typedef struct {
-	uint16_t x;
-	uint16_t y;
-	uint16_t width;
-	uint16_t height;
-	int16_t correction;
-	char app_name[APP_NAME_MAX_LEN];  // Fixed-size string
+    /** @brief X-coordinate position of the goblin */
+    uint16_t x;
+    
+    /** @brief Y-coordinate position of the goblin */
+    uint16_t y;
+    
+    /** @brief Width of the goblin drawing */
+    uint16_t width;
+    
+    /** @brief Height of the goblin drawing */
+    uint16_t height;
+    
+    /** @brief Position correction offset for the goblin */
+    int16_t correction;
+    
+    /** @brief Name of the application that created the goblin */
+    char app_name[APP_NAME_MAX_LEN];
 } CoordHistory;
 
+/**
+ * @brief Structure representing a graphical keyboard key
+ */
 typedef struct {
-	uint16_t x;       // X position
-	uint16_t y;       // Y position
-	uint16_t width;   // Width of the key
-	uint16_t height;  // Height of the key
-	char *label;      // Character(s) for the key (could be a string)
+    uint16_t x;       ///< Horizontal position of the key (pixels)
+    uint16_t y;       ///< Vertical position of the key (pixels)
+    uint16_t width;   ///< Width of the key (pixels)
+    uint16_t height;  ///< Height of the key (pixels)
+    char *label;      ///< Text label displayed on the key (null-terminated)
 } Key;
 
 extern const uint8_t A_font_0[] ICACHE_RODATA_ATTR;
@@ -189,7 +238,6 @@ void print_history(void);
 void main_menu_task(void *pvParameters);
 void draw_keyborad(char c);
 void IRAM_ATTR PIRQ_isr_handler(void *arg);
-void draw_main_menu_icons();
 void draw_main_menu_icons();
 void make_button(char *name, uint16_t height, uint16_t x, uint16_t y,
 		char *color);

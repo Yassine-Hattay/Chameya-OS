@@ -1,3 +1,14 @@
+/**
+ * @file my_print.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef COMPONENTS_DEBUGGING_MY_PRINT_H_
 #define COMPONENTS_DEBUGGING_MY_PRINT_H_
 
@@ -12,6 +23,9 @@
 #include <string.h>
 #include <stdarg.h>
 
+/** 
+ * @brief  Size of the RAM log buffer .
+ */
 #define LOG_BUFFER_SIZE 4096  // Size of the RAM log buffer
 
 void my_print_init(void);

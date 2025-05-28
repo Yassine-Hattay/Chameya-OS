@@ -1,0 +1,57 @@
+\doxysection{esp\+\_\+vfs\+\_\+spiffs\+\_\+conf\+\_\+t Struct Reference}
+\hypertarget{structesp__vfs__spiffs__conf__t}{}\label{structesp__vfs__spiffs__conf__t}\index{esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}}
+
+
+Configuration structure for esp\+\_\+vfs\+\_\+spiffs\+\_\+register.  
+
+
+
+
+{\ttfamily \#include $<$esp\+\_\+spiffs.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_add2c60af836f5dc9526885adc3a3d1c8}{base\+\_\+path}}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_ae228e117d84f2f03ffc947165f3ad10e}{partition\+\_\+label}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_a8498ca07df2b1f8bf23578718fe58d43}{max\+\_\+files}}
+\item 
+bool \mbox{\hyperlink{structesp__vfs__spiffs__conf__t_af657485432b43e27cf4a983cba3fcccc}{format\+\_\+if\+\_\+mount\+\_\+failed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration structure for esp\+\_\+vfs\+\_\+spiffs\+\_\+register. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structesp__vfs__spiffs__conf__t_add2c60af836f5dc9526885adc3a3d1c8}\index{esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}!base\_path@{base\_path}}
+\index{base\_path@{base\_path}!esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}}
+\doxysubsubsection{\texorpdfstring{base\_path}{base\_path}}
+{\footnotesize\ttfamily \label{structesp__vfs__spiffs__conf__t_add2c60af836f5dc9526885adc3a3d1c8} 
+const char\texorpdfstring{$\ast$}{*} esp\+\_\+vfs\+\_\+spiffs\+\_\+conf\+\_\+t\+::base\+\_\+path}
+
+File path prefix associated with the filesystem. \Hypertarget{structesp__vfs__spiffs__conf__t_af657485432b43e27cf4a983cba3fcccc}\index{esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}!format\_if\_mount\_failed@{format\_if\_mount\_failed}}
+\index{format\_if\_mount\_failed@{format\_if\_mount\_failed}!esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}}
+\doxysubsubsection{\texorpdfstring{format\_if\_mount\_failed}{format\_if\_mount\_failed}}
+{\footnotesize\ttfamily \label{structesp__vfs__spiffs__conf__t_af657485432b43e27cf4a983cba3fcccc} 
+bool esp\+\_\+vfs\+\_\+spiffs\+\_\+conf\+\_\+t\+::format\+\_\+if\+\_\+mount\+\_\+failed}
+
+If true, it will format the file system if it fails to mount. \Hypertarget{structesp__vfs__spiffs__conf__t_a8498ca07df2b1f8bf23578718fe58d43}\index{esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}!max\_files@{max\_files}}
+\index{max\_files@{max\_files}!esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}}
+\doxysubsubsection{\texorpdfstring{max\_files}{max\_files}}
+{\footnotesize\ttfamily \label{structesp__vfs__spiffs__conf__t_a8498ca07df2b1f8bf23578718fe58d43} 
+size\+\_\+t esp\+\_\+vfs\+\_\+spiffs\+\_\+conf\+\_\+t\+::max\+\_\+files}
+
+Maximum files that could be open at the same time. \Hypertarget{structesp__vfs__spiffs__conf__t_ae228e117d84f2f03ffc947165f3ad10e}\index{esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}!partition\_label@{partition\_label}}
+\index{partition\_label@{partition\_label}!esp\_vfs\_spiffs\_conf\_t@{esp\_vfs\_spiffs\_conf\_t}}
+\doxysubsubsection{\texorpdfstring{partition\_label}{partition\_label}}
+{\footnotesize\ttfamily \label{structesp__vfs__spiffs__conf__t_ae228e117d84f2f03ffc947165f3ad10e} 
+const char\texorpdfstring{$\ast$}{*} esp\+\_\+vfs\+\_\+spiffs\+\_\+conf\+\_\+t\+::partition\+\_\+label}
+
+Optional, label of SPIFFS partition to use. If set to NULL, first partition with subtype=spiffs will be used. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/msys32/home/hatta/esp/hello\+\_\+world1/components/my\+\_\+spiffs/esp\+\_\+spiffs.\+h\end{DoxyCompactItemize}

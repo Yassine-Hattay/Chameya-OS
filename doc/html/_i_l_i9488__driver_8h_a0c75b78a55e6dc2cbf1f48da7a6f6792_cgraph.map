@@ -1,0 +1,20 @@
+<map id="bootApp_noteBook" name="bootApp_noteBook">
+<area shape="rect" id="Node000001" title="Initializes the notebook app interface by drawing a close button and three action buttons." alt="" coords="5,81,137,108"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a3e2bc52f43727dad6a7f57ec6442dd4e" title="Draws a colored rectangular button with a given label and updates its metadata in history_char." alt="" coords="185,81,281,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,92,169,92,169,97,137,97"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html#aa900c251cfe95c8ac94bb9faa66d4a89" title="Prints a given string message on the ILI9488 display at specified coordinates and font size." alt="" coords="346,5,442,32"/>
+<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="131,78,330,31,331,36,132,83"/>
+<area shape="rect" id="Node000004" href="$_i_l_i9488__driver_8c.html#a7b70829006de2728b835658a97be5167" title="Sends a command byte to the device by setting the DC pin low before transmission." alt="" coords="516,157,630,184"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="107,106,206,141,267,158,329,171,366,174,394,174,459,171,500,170,501,175,459,176,394,179,365,180,329,176,266,163,204,146,105,111"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="262,78,349,37,351,41,264,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="256,106,290,126,330,143,373,154,418,161,501,168,500,173,417,166,372,159,328,148,287,131,253,111"/>
+<area shape="rect" id="Node000006" href="$_i_l_i9488__driver_8c.html#a0e84a2eba1208c10a3b1adaa17ac92f0" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="507,107,639,133"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="281,89,365,87,460,92,507,100,506,105,459,97,364,92,281,94"/>
+<area shape="rect" id="Node000007" href="$_i_l_i9488__driver_8c.html#a7503b0dca9eb5aa68a88d6c894e444b1" title="Sets the display area for subsequent pixel data and records coordinates." alt="" coords="329,107,459,133"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="282,100,314,105,313,110,281,105"/>
+<area shape="rect" id="Node000005" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="687,132,768,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="630,159,670,152,671,157,630,164"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="640,128,671,133,670,139,639,133"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="445,131,510,150,508,155,443,137"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="460,117,492,117,492,123,460,123"/>
+</map>

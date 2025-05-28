@@ -1,0 +1,7 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/web/web.h" name="C:/msys32/home/hatta/esp/hello_world1/components/web/web.h">
+<area shape="rect" id="Node000001" title="this file contains the header for web server functionality" alt="" coords="105,5,303,64"/>
+<area shape="rect" id="Node000002" href="$web_8c.html" title="this file contains the implementation of the web server for displaying logs from the ESP8266." alt="" coords="5,112,203,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,77,133,113,129,110,164,73"/>
+<area shape="rect" id="Node000003" href="$main_8c.html" title=" " alt="" coords="227,112,381,171"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,73,279,110,275,113,240,77"/>
+</map>

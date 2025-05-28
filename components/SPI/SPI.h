@@ -1,8 +1,12 @@
-/*
- * spi.h
- *
- *  Created on: 24 Mar 2025
- *      Author: hatta
+/**
+ * @file SPI.h
+ * @author your name (you@domain.com)
+ * @brief this file implements SPI communication in bit-bang mode for ESP8266.
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #ifndef COMPONENTS_SPI_SPI_H_

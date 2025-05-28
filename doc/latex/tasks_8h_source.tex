@@ -1,0 +1,81 @@
+\doxysection{tasks.\+h}
+\hypertarget{tasks_8h_source}{}\label{tasks_8h_source}\index{C:/msys32/home/hatta/esp/hello\_world1/components/tasks/tasks.h@{C:/msys32/home/hatta/esp/hello\_world1/components/tasks/tasks.h}}
+\mbox{\hyperlink{tasks_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ COMPONENTS\_TASKS\_TASKS\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ COMPONENTS\_TASKS\_TASKS\_H\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_l_i9488__driver_8h}{../ILI9488\_driver/ILI9488\_driver.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_p_t2046__driver_8h}{../XPT2046\_driver/XPT2046\_driver.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}esp\_system.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}limits.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_u_a_r_t_8h}{../UART/UART.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ NUM\_GOBLINS\ 10}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ ATTACK\_RANGE\ 20}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ MAX\_FILES\ 100}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ -\/-\/-\/-\/\ Goblin\ struct\ -\/-\/-\/-\/}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ xp;\ \textcolor{comment}{//\ x-\/position}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ yp;\ \textcolor{comment}{//\ y-\/position}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ real\_xp;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ real\_yp;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{char}\ orientation;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ health;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{char}\ name[8];}
+\DoxyCodeLine{00052\ \ \ \ \ uint8\_t\ last\_draw\_coord\_index;}
+\DoxyCodeLine{00053\ \}\ \mbox{\hyperlink{structgoblin__torch}{goblin\_torch}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{structgoblin__torch}{goblin\_torch}}\ *goblins[\mbox{\hyperlink{tasks_8h_ac6fd5122f561799cd846b4b2895d175b}{NUM\_GOBLINS}}];}
+\DoxyCodeLine{00057\ \}\ \mbox{\hyperlink{structgoblin__group__t}{goblin\_group\_t}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{char}\ orientation;}
+\DoxyCodeLine{00067\ \}\ \mbox{\hyperlink{structmap}{map}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{extern}\ TaskHandle\_t\ main\_menu\_Handle;}
+\DoxyCodeLine{00070\ \textcolor{keyword}{extern}\ TaskHandle\_t\ other\_task\_handel;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{tasks_8c_a72c67c7fe89bce65cce4f18bc1ba5022}{keyboard\_buffer}}[];}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{tasks_8c_a32ac1875466d72cd6abc9fa54a6ec207}{keyboard\_buffer\_i}};}
+\DoxyCodeLine{00083\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structmap}{map}}\ myMap;\ \textcolor{comment}{//\ remove}}
+\DoxyCodeLine{00084\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structgoblin__group__t}{goblin\_group\_t}}\ *global\_group;\ \textcolor{comment}{//remove}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{tasks_8c_a56018b5c6293bc75085e158a5797bf98}{Read\_write\_bit\_i2c}};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ note\_book\_task(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_adcbe116080c9695613e2baf119e5b3b6}{note\_book\_app\_page1}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ printCoordHistoryTable();}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ write\_textfile\_task(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_a18d3c4c46ad6ccd39a77b5f28d28f0f2}{notebook\_editFilesPage1\_task}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_a4290fee8165b79f0c89b38bdd3279057}{keyboard\_task}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ pong\_game\_task(\textcolor{keywordtype}{void}\ *pvParameters);\ \ \textcolor{comment}{//\ remove}}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_aea553e6f856b7a8d0fbd5e5f33ad8679}{memory\_monitor\_task}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_abdaddad7708204d6fe1232d6d1137056}{pong\_gamePage1\_task}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_ad09bb79ba1aadc90ab12daf6d13660e1}{goblin\_task}}(\textcolor{keywordtype}{void}\ *params);\ \textcolor{comment}{//\ remove}}
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_a4296e8d90b1f056889c056788cf62d65}{GPIO\_C\_page\_1}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ GPIO\_C\_UART(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ GPIO\_C\_UART\_Transmit(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_a63ff2ed865baaa534c13b2bb60ca5294}{GPIO\_C\_UART\_page\_0}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tasks_8h_a7e13dbf041a37a08024e1ef82aaa49ec}{GPIO\_C\_SPI\_page\_0}}(\textcolor{keywordtype}{void}\ *pvParameters);}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ COMPONENTS\_TASKS\_TASKS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,3 +1,15 @@
+
+/**
+ * @file main.c
+ * @author Hattay yassine (hattayyassine519@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "../components/UART/uart.h"
 #include "../components/debugging/my_print.h"
 #include "../components/web/web.h"

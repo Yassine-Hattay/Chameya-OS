@@ -1,0 +1,924 @@
+\doxysection{C\+:/msys32/home/hatta/esp/hello\+\_\+world1/components/\+ILI9488\+\_\+driver/\+ILI9488\+\_\+driver.c File Reference}
+\hypertarget{_i_l_i9488__driver_8c}{}\label{_i_l_i9488__driver_8c}\index{C:/msys32/home/hatta/esp/hello\_world1/components/ILI9488\_driver/ILI9488\_driver.c@{C:/msys32/home/hatta/esp/hello\_world1/components/ILI9488\_driver/ILI9488\_driver.c}}
+
+
+this is my implementation of the ILI9488 driver  
+
+
+{\ttfamily \#include "{}ILI9488\+\_\+driver.\+h"{}}\newline
+Include dependency graph for ILI9488\+\_\+driver.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a69b3a7746418cda25549d28c2036282a}{fill\+\_\+rect}} (int x, int y, int width, int height, uint8\+\_\+t color\+\_\+byte)
+\begin{DoxyCompactList}\small\item\em Fill a rectangle area on the display with a specified color. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_i_l_i9488__driver_8c_a7ec8272ac2813d90fe29973cc71baabb}{recive}} ()
+\begin{DoxyCompactList}\small\item\em Receives a byte over SPI using software bit-\/banging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_af315cda757ac399f69496ff47962e7f8}{send\+\_\+data}} (uint8\+\_\+t data\+\_\+to\+\_\+send)
+\begin{DoxyCompactList}\small\item\em Sends a byte over SPI using software bit-\/banging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_aac631c2abee2459f1d6a8a7a31734382}{tick\+\_\+spi}} ()
+\begin{DoxyCompactList}\small\item\em Generates a single SPI clock pulse by toggling the SCK line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_af75f0c295259a026924231d6244e6d14}{hardware\+\_\+reset}} ()
+\begin{DoxyCompactList}\small\item\em Performs a hardware reset sequence on the display using the RESET pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a7b70829006de2728b835658a97be5167}{send\+\_\+command}} (uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Sends a command byte to the device by setting the DC pin low before transmission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a0e84a2eba1208c10a3b1adaa17ac92f0}{send\+\_\+\+ILI9488\+\_\+data}} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Sends a data byte to the ILI9488 display by setting the DC pin high before transmission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_ac079cd712ceeaf40cc0733b0f3a5d860}{init\+\_\+display}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the display hardware and prepares it for operation. \end{DoxyCompactList}\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_i_l_i9488__driver_8c_a25aa28afc72acb64b4e0f08019c66d97}{recieve\+\_\+data}} (int r)
+\begin{DoxyCompactList}\small\item\em Receives a sequence of bytes from the SPI interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a7503b0dca9eb5aa68a88d6c894e444b1}{set\+\_\+resolution\+\_\+pos}} (const uint16\+\_\+t x, const uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, int16\+\_\+t correction\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sets the display area for subsequent pixel data and records coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a98b7024180c631fd59e5f1bdb72e2fdc}{set\+\_\+orientation}} (uint8\+\_\+t orientation)
+\begin{DoxyCompactList}\small\item\em Sets the display orientation by configuring the ILI9488 MADCTL register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a1ff70c94b7bf537d87832f56fac84081}{transform\+\_\+array}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}input, uint8\+\_\+t \texorpdfstring{$\ast$}{*}output, int input\+\_\+size, int font\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Transforms an input byte array into an output array with specific byte mappings and duplication. \end{DoxyCompactList}\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_i_l_i9488__driver_8c_af31659243108226910ff014a64034ad0}{apply\+\_\+font\+\_\+size}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}font\+\_\+data, size\+\_\+t \texorpdfstring{$\ast$}{*}max\+\_\+output\+\_\+size\+\_\+final, uint8\+\_\+t font\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies scaling transformations to font data according to the specified font size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_aca22e63e9a4e759b0876544288ad4672}{apply\+\_\+x\+\_\+correction}} (char \texorpdfstring{$\ast$}{*}message, uint16\+\_\+t \texorpdfstring{$\ast$}{*}x, uint16\+\_\+t \texorpdfstring{$\ast$}{*}y, uint8\+\_\+t font\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Applies horizontal spacing corrections to each character in a message string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_aa900c251cfe95c8ac94bb9faa66d4a89}{print\+\_\+\+ILI9488}} (char \texorpdfstring{$\ast$}{*}message, uint16\+\_\+t x, uint16\+\_\+t y, uint8\+\_\+t font\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Prints a given string message on the ILI9488 display at specified coordinates and font size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a33c08349b17a070928586bf762a2df3d}{print\+\_\+char\+\_\+\+ILI9488}} (char c, uint16\+\_\+t \texorpdfstring{$\ast$}{*}x, uint16\+\_\+t \texorpdfstring{$\ast$}{*}y, uint8\+\_\+t font\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Prints a single character on the ILI9488 display, handling positioning and font size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a7385a8a4fb06cbe28f82a58c7f995872}{Fill\+Screen\+Blue}} ()
+\begin{DoxyCompactList}\small\item\em Fills the entire ILI9488 screen with blue color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a6d9b8b255bd4b548faf0f6b8389ac933}{Fill\+Screenblack}} ()
+\begin{DoxyCompactList}\small\item\em Fills the entire ILI9488 screen with black color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a0d199b5702695c4d7b78ef83759c32d5}{clean\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Clears previously drawn screen regions stored in history by filling them with black. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a283526828a2372acde045761b03d2df8}{clean\+\_\+last\+\_\+element\+\_\+modified}} (uint8\+\_\+t \mbox{\hyperlink{_i_l_i9488__driver_8c_a29d7534902f6ebb6c2db6be485269ccd}{coord\+\_\+index}})
+\begin{DoxyCompactList}\small\item\em Clears the screen area corresponding to a specific history element by filling it with black. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a1620e839d9e8f446bcb2d40175a33412}{clean\+\_\+last\+\_\+element}} ()
+\begin{DoxyCompactList}\small\item\em Clears the screen area of the last drawn element stored in history by filling it with black. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a6158828e1fc7c96cd2c571e2ebc0be39}{clean\+\_\+last\+\_\+char}} ()
+\begin{DoxyCompactList}\small\item\em Erases the last drawn character on the display by clearing its area to black. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a3c0aa307ff11329686e3e9303383e4ae}{draw\+\_\+keyborad}} (char c)
+\begin{DoxyCompactList}\small\item\em Draws a virtual keyboard on the display with keys depending on mode (lowercase, uppercase, symbols). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a8ddd64b1724dcf0122a0f15616324afb}{draw\+\_\+main\+\_\+menu\+\_\+icons}} ()
+\begin{DoxyCompactList}\small\item\em Draws main menu icons on the display and updates the current history entry\textquotesingle{}s app name accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a632a0e96e7a6b4dbbcbee78b3e598ed9}{make\+\_\+\+X\+\_\+button}} ()
+\begin{DoxyCompactList}\small\item\em Draws a red "{}\+X"{} button on the display and records its position and size in history\+\_\+char. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a3e2bc52f43727dad6a7f57ec6442dd4e}{make\+\_\+button}} (char \texorpdfstring{$\ast$}{*}name, uint16\+\_\+t height, uint16\+\_\+t x, uint16\+\_\+t y, char \texorpdfstring{$\ast$}{*}color)
+\begin{DoxyCompactList}\small\item\em Draws a colored rectangular button with a given label and updates its metadata in history\+\_\+char. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a0c75b78a55e6dc2cbf1f48da7a6f6792}{boot\+App\+\_\+note\+Book}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the notebook app interface by drawing a close button and three action buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a222ffe290a038061adf26017447250f4}{GPIO\+\_\+\+C\+\_\+boot}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the GPIO\+\_\+C app interface by drawing a close button and three communication protocol buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_af2b30591eedd573176afb57b8009acb1}{GPIO\+\_\+pins\+\_\+boot}} ()
+\begin{DoxyCompactList}\small\item\em Initializes and displays GPIO control buttons and a close button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a6cb954f0820495ce493085ff20c15114}{confirm\+\_\+boot}} ()
+\begin{DoxyCompactList}\small\item\em Displays a confirmation screen with a close button and transmit button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_aec2a759c7d655495c379a45297306bfa}{confirm\+\_\+boot\+\_\+\+I2C}} ()
+\begin{DoxyCompactList}\small\item\em Initializes I2C confirmation screen with close, write and read buttons. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_a04e1d61319f832ef9a6f09df05e9628b}{print\+\_\+history\+\_\+table}} ()
+\begin{DoxyCompactList}\small\item\em Prints a formatted table of history records. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_l_i9488__driver_8c_ab2d362e4fcbf93c1b3eaa52f3bb58823}{print\+\_\+history\+\_\+char\+\_\+table}} ()
+\begin{DoxyCompactList}\small\item\em Prints a formatted table of character history records. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_i_l_i9488__driver_8c_a55a97d8c8643c0f9c2238920e38bbb6e}\label{_i_l_i9488__driver_8c_a55a97d8c8643c0f9c2238920e38bbb6e} 
+char \texorpdfstring{$\ast$}{*} {\bfseries background\+\_\+color} = "{}black"{}
+\begin{DoxyCompactList}\small\item\em This changes the background color of text possible values (black , blue , green , red) \end{DoxyCompactList}\item 
+\Hypertarget{_i_l_i9488__driver_8c_a27dfc90cfb8d016b59d18bf39995301c}\label{_i_l_i9488__driver_8c_a27dfc90cfb8d016b59d18bf39995301c} 
+uint8\+\_\+t {\bfseries received} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{_i_l_i9488__driver_8c_a161575bec648833afaac0765ee9fc1e1}\label{_i_l_i9488__driver_8c_a161575bec648833afaac0765ee9fc1e1} 
+\mbox{\hyperlink{struct_key}{Key}} {\bfseries keyboard} \mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em This contatins the current keyborad keys. \end{DoxyCompactList}\item 
+\Hypertarget{_i_l_i9488__driver_8c_a96db3b09937c77cb00b62a157845edad}\label{_i_l_i9488__driver_8c_a96db3b09937c77cb00b62a157845edad} 
+\mbox{\hyperlink{struct_coord_history}{Coord\+History}} {\bfseries history} \mbox{[}\mbox{\hyperlink{_i_l_i9488__driver_8h_a92730a51ceab57ced90f57368adca14d}{MAX\+\_\+\+COORDS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em This is used to store \doxylink{struct_coord_history}{Coord\+History} of what is being drawn on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{_i_l_i9488__driver_8c_a29d7534902f6ebb6c2db6be485269ccd}\label{_i_l_i9488__driver_8c_a29d7534902f6ebb6c2db6be485269ccd} 
+uint16\+\_\+t {\bfseries coord\+\_\+index} = 1
+\begin{DoxyCompactList}\small\item\em The index of the last thing that was drawn on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{_i_l_i9488__driver_8c_a14dbf5eb3a49bcca27d3d68544072bc6}\label{_i_l_i9488__driver_8c_a14dbf5eb3a49bcca27d3d68544072bc6} 
+\mbox{\hyperlink{struct_coord_history}{Coord\+History}} {\bfseries history\+\_\+char} \mbox{[}\mbox{\hyperlink{_i_l_i9488__driver_8h_a463361d1d1646dba501d320eaab68d75}{MAX\+\_\+\+COORDS\+\_\+\+CHAR}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em This is used to store \doxylink{struct_coord_history}{Coord\+History} of the chars that are drawn on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{_i_l_i9488__driver_8c_a89ec65fb54b46a852be4078ab8dd022b}\label{_i_l_i9488__driver_8c_a89ec65fb54b46a852be4078ab8dd022b} 
+uint8\+\_\+t {\bfseries coord\+\_\+index\+\_\+char} = 1
+\begin{DoxyCompactList}\small\item\em The index of the last char that was drawn on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this is my implementation of the ILI9488 driver 
+
+\begin{DoxyAuthor}{Author}
+your name (\href{mailto:you@domain.com}{\texttt{ you@domain.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/05-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_i_l_i9488__driver_8c_af31659243108226910ff014a64034ad0}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!apply\_font\_size@{apply\_font\_size}}
+\index{apply\_font\_size@{apply\_font\_size}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{apply\_font\_size()}{apply\_font\_size()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_af31659243108226910ff014a64034ad0} 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} apply\+\_\+font\+\_\+size (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{font\+\_\+data}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{max\+\_\+output\+\_\+size\+\_\+final}{, }\item[{uint8\+\_\+t}]{font\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Applies scaling transformations to font data according to the specified font size. 
+
+Allocates and returns a new buffer containing the scaled font data. Handles font sizes from 1 to 5 with recursive transformations. Returns NULL if memory allocation fails or font size is invalid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em font\+\_\+data} & Pointer to the original font data array. \\
+\hline
+{\em max\+\_\+output\+\_\+size\+\_\+final} & Pointer to a size\+\_\+t variable to receive the output buffer size. \\
+\hline
+{\em font\+\_\+size} & Desired scaling factor (1 to 5). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly allocated scaled font data buffer; must be freed by the caller. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{_i_l_i9488__driver_8c_af31659243108226910ff014a64034ad0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_aca22e63e9a4e759b0876544288ad4672}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!apply\_x\_correction@{apply\_x\_correction}}
+\index{apply\_x\_correction@{apply\_x\_correction}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{apply\_x\_correction()}{apply\_x\_correction()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_aca22e63e9a4e759b0876544288ad4672} 
+void apply\+\_\+x\+\_\+correction (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{uint8\+\_\+t}]{font\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Applies horizontal spacing corrections to each character in a message string. 
+
+Iterates through the input message, adjusting the X and Y drawing coordinates based on the font size and specific character spacing corrections. Handles spaces by advancing the X position by the character width, and calls an internal function with character-\/specific font data and correction factors for all other supported characters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Pointer to the null-\/terminated string to process. \\
+\hline
+{\em x} & Pointer to the current X coordinate; updated as characters are processed. \\
+\hline
+{\em y} & Pointer to the current Y coordinate; may be updated by the internal correction function. \\
+\hline
+{\em font\+\_\+size} & Integer representing the font size (0 to 5) which determines character dimensions. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_i_l_i9488__driver_8c_a0c75b78a55e6dc2cbf1f48da7a6f6792}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!bootApp\_noteBook@{bootApp\_noteBook}}
+\index{bootApp\_noteBook@{bootApp\_noteBook}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{bootApp\_noteBook()}{bootApp\_noteBook()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a0c75b78a55e6dc2cbf1f48da7a6f6792} 
+void boot\+App\+\_\+note\+Book (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the notebook app interface by drawing a close button and three action buttons. 
+
+Sets up the "{}\+X"{} close button metadata and draws it, then creates "{}\+New file"{}, "{}\+Read files"{}, and "{}\+Edit files"{} buttons at specified positions with red backgrounds, managing display chip select and command signals accordingly. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a0c75b78a55e6dc2cbf1f48da7a6f6792_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a0c75b78a55e6dc2cbf1f48da7a6f6792_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a6158828e1fc7c96cd2c571e2ebc0be39}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!clean\_last\_char@{clean\_last\_char}}
+\index{clean\_last\_char@{clean\_last\_char}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{clean\_last\_char()}{clean\_last\_char()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a6158828e1fc7c96cd2c571e2ebc0be39} 
+void clean\+\_\+last\+\_\+char (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Erases the last drawn character on the display by clearing its area to black. 
+
+Decrements the global coord\+\_\+index\+\_\+char, sets the drawing region based on the updated history\+\_\+char entry, and fills that region with black pixels to remove the last character. Does nothing if coord\+\_\+index\+\_\+char is already 0 or less. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a6158828e1fc7c96cd2c571e2ebc0be39_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a6158828e1fc7c96cd2c571e2ebc0be39_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a1620e839d9e8f446bcb2d40175a33412}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!clean\_last\_element@{clean\_last\_element}}
+\index{clean\_last\_element@{clean\_last\_element}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{clean\_last\_element()}{clean\_last\_element()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a1620e839d9e8f446bcb2d40175a33412} 
+void clean\+\_\+last\+\_\+element (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears the screen area of the last drawn element stored in history by filling it with black. 
+
+Decrements the global coord\+\_\+index, sets the drawing region based on the updated history entry, and fills that region with black pixels to erase the last element from the display. If coord\+\_\+index is already 0 or less, it resets coord\+\_\+index to 1. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a1620e839d9e8f446bcb2d40175a33412_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a283526828a2372acde045761b03d2df8}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!clean\_last\_element\_modified@{clean\_last\_element\_modified}}
+\index{clean\_last\_element\_modified@{clean\_last\_element\_modified}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{clean\_last\_element\_modified()}{clean\_last\_element\_modified()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a283526828a2372acde045761b03d2df8} 
+void clean\+\_\+last\+\_\+element\+\_\+modified (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{coord\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Clears the screen area corresponding to a specific history element by filling it with black. 
+
+Sets the drawing region based on the coordinates and dimensions stored in the given history index, then fills that region with black pixels to erase the content.
+
+
+\begin{DoxyParams}{Parameters}
+{\em coord\+\_\+index} & Index of the history element to clear; must be greater than 0. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a283526828a2372acde045761b03d2df8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a0d199b5702695c4d7b78ef83759c32d5}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!clean\_screen@{clean\_screen}}
+\index{clean\_screen@{clean\_screen}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{clean\_screen()}{clean\_screen()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a0d199b5702695c4d7b78ef83759c32d5} 
+void clean\+\_\+screen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clears previously drawn screen regions stored in history by filling them with black. 
+
+Iterates backward through stored coordinates, sets the drawing area for each, and overwrites the pixels with black color to effectively erase the content. Resets the coordinate index after clearing. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a0d199b5702695c4d7b78ef83759c32d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a0d199b5702695c4d7b78ef83759c32d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a6cb954f0820495ce493085ff20c15114}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!confirm\_boot@{confirm\_boot}}
+\index{confirm\_boot@{confirm\_boot}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{confirm\_boot()}{confirm\_boot()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a6cb954f0820495ce493085ff20c15114} 
+void confirm\+\_\+boot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Displays a confirmation screen with a close button and transmit button. 
+
+\begin{DoxyNote}{Note}
+Manages display synchronization (SS\+\_\+display) and global UI state. 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a6cb954f0820495ce493085ff20c15114_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_aec2a759c7d655495c379a45297306bfa}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!confirm\_boot\_I2C@{confirm\_boot\_I2C}}
+\index{confirm\_boot\_I2C@{confirm\_boot\_I2C}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{confirm\_boot\_I2C()}{confirm\_boot\_I2C()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_aec2a759c7d655495c379a45297306bfa} 
+void confirm\+\_\+boot\+\_\+\+I2C (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes I2C confirmation screen with close, write and read buttons. 
+
+\begin{DoxyNote}{Note}
+Controls display hardware (SS\+\_\+display) and updates UI state globals. 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_aec2a759c7d655495c379a45297306bfa_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a3c0aa307ff11329686e3e9303383e4ae}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!draw\_keyborad@{draw\_keyborad}}
+\index{draw\_keyborad@{draw\_keyborad}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{draw\_keyborad()}{draw\_keyborad()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a3c0aa307ff11329686e3e9303383e4ae} 
+void draw\+\_\+keyborad (\begin{DoxyParamCaption}\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Draws a virtual keyboard on the display with keys depending on mode (lowercase, uppercase, symbols). 
+
+Initializes key positions, sizes, and labels for three rows plus special keys, clears their display areas, and renders the key labels. Also sets up special keys like Shift, Delete, OK, and Close. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a3c0aa307ff11329686e3e9303383e4ae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a3c0aa307ff11329686e3e9303383e4ae_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a8ddd64b1724dcf0122a0f15616324afb}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!draw\_main\_menu\_icons@{draw\_main\_menu\_icons}}
+\index{draw\_main\_menu\_icons@{draw\_main\_menu\_icons}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{draw\_main\_menu\_icons()}{draw\_main\_menu\_icons()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a8ddd64b1724dcf0122a0f15616324afb} 
+void draw\+\_\+main\+\_\+menu\+\_\+icons (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws main menu icons on the display and updates the current history entry\textquotesingle{}s app name accordingly. 
+
+For each app icon (notebook, pong, goblin\+\_\+royale, GPIO\+\_\+C), sets drawing area, pixel format, sends the icon pixel data to the display, and stores the app name in the history at coord\+\_\+index. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a8ddd64b1724dcf0122a0f15616324afb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a8ddd64b1724dcf0122a0f15616324afb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a69b3a7746418cda25549d28c2036282a}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!fill\_rect@{fill\_rect}}
+\index{fill\_rect@{fill\_rect}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{fill\_rect()}{fill\_rect()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a69b3a7746418cda25549d28c2036282a} 
+void fill\+\_\+rect (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{uint8\+\_\+t}]{color\+\_\+byte}{}\end{DoxyParamCaption})}
+
+
+
+Fill a rectangle area on the display with a specified color. 
+
+Sets the drawing region and sends color data to fill the rectangle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Top-\/left X coordinate of the rectangle. \\
+\hline
+{\em y} & Top-\/left Y coordinate of the rectangle. \\
+\hline
+{\em width} & Width of the rectangle. \\
+\hline
+{\em height} & Height of the rectangle. \\
+\hline
+{\em color\+\_\+byte} & Color value to fill the rectangle with. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a69b3a7746418cda25549d28c2036282a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a6d9b8b255bd4b548faf0f6b8389ac933}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!FillScreenblack@{FillScreenblack}}
+\index{FillScreenblack@{FillScreenblack}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{FillScreenblack()}{FillScreenblack()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a6d9b8b255bd4b548faf0f6b8389ac933} 
+void Fill\+Screenblack (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Fills the entire ILI9488 screen with black color. 
+
+Sets the drawing region to full screen resolution and configures the pixel format. Sends the color data to fill each pixel with black. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a6d9b8b255bd4b548faf0f6b8389ac933_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a6d9b8b255bd4b548faf0f6b8389ac933_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a7385a8a4fb06cbe28f82a58c7f995872}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!FillScreenBlue@{FillScreenBlue}}
+\index{FillScreenBlue@{FillScreenBlue}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{FillScreenBlue()}{FillScreenBlue()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a7385a8a4fb06cbe28f82a58c7f995872} 
+void Fill\+Screen\+Blue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Fills the entire ILI9488 screen with blue color. 
+
+Sets the drawing region to full screen resolution and configures the pixel format. Sends the color data to fill each pixel with blue. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a7385a8a4fb06cbe28f82a58c7f995872_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a222ffe290a038061adf26017447250f4}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!GPIO\_C\_boot@{GPIO\_C\_boot}}
+\index{GPIO\_C\_boot@{GPIO\_C\_boot}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_C\_boot()}{GPIO\_C\_boot()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a222ffe290a038061adf26017447250f4} 
+void GPIO\+\_\+\+C\+\_\+boot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the GPIO\+\_\+C app interface by drawing a close button and three communication protocol buttons. 
+
+Sets the metadata and draws the "{}\+X"{} close button, then creates "{}\+SPI"{}, "{}\+I2\+C"{}, and "{}\+UART"{} buttons with red backgrounds at specified coordinates, controlling the display chip select and command signals accordingly. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a222ffe290a038061adf26017447250f4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a222ffe290a038061adf26017447250f4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_af2b30591eedd573176afb57b8009acb1}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!GPIO\_pins\_boot@{GPIO\_pins\_boot}}
+\index{GPIO\_pins\_boot@{GPIO\_pins\_boot}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{GPIO\_pins\_boot()}{GPIO\_pins\_boot()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_af2b30591eedd573176afb57b8009acb1} 
+void GPIO\+\_\+pins\+\_\+boot (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes and displays GPIO control buttons and a close button. 
+
+\begin{DoxyNote}{Note}
+Uses global display state (history\+\_\+char, coord\+\_\+index\+\_\+char, background\+\_\+color). 
+\end{DoxyNote}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_af2b30591eedd573176afb57b8009acb1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_af2b30591eedd573176afb57b8009acb1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_af75f0c295259a026924231d6244e6d14}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!hardware\_reset@{hardware\_reset}}
+\index{hardware\_reset@{hardware\_reset}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{hardware\_reset()}{hardware\_reset()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_af75f0c295259a026924231d6244e6d14} 
+void hardware\+\_\+reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Performs a hardware reset sequence on the display using the RESET pin. 
+
+This function toggles the RESET pin\+: sets it high, waits 15 ticks, sets it low, waits another 15 ticks, and then sets it high again, effectively resetting the connected hardware. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{_i_l_i9488__driver_8c_af75f0c295259a026924231d6244e6d14_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_ac079cd712ceeaf40cc0733b0f3a5d860}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!init\_display@{init\_display}}
+\index{init\_display@{init\_display}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{init\_display()}{init\_display()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_ac079cd712ceeaf40cc0733b0f3a5d860} 
+void init\+\_\+display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the display hardware and prepares it for operation. 
+
+Configures GPIO pins for the display\textquotesingle{}s SS, RESET, and DC lines as outputs, performs a hardware reset, initializes SPI communication, and sends the necessary commands to wake the display from sleep mode and enable normal display. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_ac079cd712ceeaf40cc0733b0f3a5d860_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a3e2bc52f43727dad6a7f57ec6442dd4e}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!make\_button@{make\_button}}
+\index{make\_button@{make\_button}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{make\_button()}{make\_button()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a3e2bc52f43727dad6a7f57ec6442dd4e} 
+void make\+\_\+button (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{uint16\+\_\+t}]{height}{, }\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Draws a colored rectangular button with a given label and updates its metadata in history\+\_\+char. 
+
+Determines color code from the color string, sets the drawing area based on button size, fills the area with the color, prints the button text, adjusts coord\+\_\+index based on spaces in the label, and manages display chip select signals during the process. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a3e2bc52f43727dad6a7f57ec6442dd4e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a3e2bc52f43727dad6a7f57ec6442dd4e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a632a0e96e7a6b4dbbcbee78b3e598ed9}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!make\_X\_button@{make\_X\_button}}
+\index{make\_X\_button@{make\_X\_button}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{make\_X\_button()}{make\_X\_button()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a632a0e96e7a6b4dbbcbee78b3e598ed9} 
+void make\+\_\+\+X\+\_\+button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws a red "{}\+X"{} button on the display and records its position and size in history\+\_\+char. 
+
+Sets the background color, updates history\+\_\+char with the button\textquotesingle{}s metadata, prints the "{}\+X"{}, and manages the display chip select during drawing. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a632a0e96e7a6b4dbbcbee78b3e598ed9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a632a0e96e7a6b4dbbcbee78b3e598ed9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a33c08349b17a070928586bf762a2df3d}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!print\_char\_ILI9488@{print\_char\_ILI9488}}
+\index{print\_char\_ILI9488@{print\_char\_ILI9488}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{print\_char\_ILI9488()}{print\_char\_ILI9488()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a33c08349b17a070928586bf762a2df3d} 
+void print\+\_\+char\+\_\+\+ILI9488 (\begin{DoxyParamCaption}\item[{char}]{c}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{uint8\+\_\+t}]{font\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Prints a single character on the ILI9488 display, handling positioning and font size. 
+
+This function determines the character\textquotesingle{}s pixel width and height based on the selected font size, manages line wrapping for spaces, and renders the appropriate bitmap for the given character.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The character to print. \\
+\hline
+{\em x} & Pointer to the current x-\/coordinate; updated after printing. \\
+\hline
+{\em y} & Pointer to the current y-\/coordinate; updated if line wrapping occurs. \\
+\hline
+{\em font\+\_\+size} & Font size index (0 to 5) determining character dimensions. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a33c08349b17a070928586bf762a2df3d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_ab2d362e4fcbf93c1b3eaa52f3bb58823}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!print\_history\_char\_table@{print\_history\_char\_table}}
+\index{print\_history\_char\_table@{print\_history\_char\_table}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{print\_history\_char\_table()}{print\_history\_char\_table()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_ab2d362e4fcbf93c1b3eaa52f3bb58823} 
+void print\+\_\+history\+\_\+char\+\_\+table (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints a formatted table of character history records. 
+
+Displays all non-\/empty history\+\_\+char entries in a table format with columns\+: ID, X, Y, Width, Height, Correction, and App Name. \Hypertarget{_i_l_i9488__driver_8c_a04e1d61319f832ef9a6f09df05e9628b}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!print\_history\_table@{print\_history\_table}}
+\index{print\_history\_table@{print\_history\_table}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{print\_history\_table()}{print\_history\_table()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a04e1d61319f832ef9a6f09df05e9628b} 
+void print\+\_\+history\+\_\+table (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints a formatted table of history records. 
+
+Displays all non-\/empty history entries in a table format with columns\+: ID, X, Y, Width, Height, Correction, and App Name. \Hypertarget{_i_l_i9488__driver_8c_aa900c251cfe95c8ac94bb9faa66d4a89}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!print\_ILI9488@{print\_ILI9488}}
+\index{print\_ILI9488@{print\_ILI9488}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{print\_ILI9488()}{print\_ILI9488()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_aa900c251cfe95c8ac94bb9faa66d4a89} 
+void print\+\_\+\+ILI9488 (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint8\+\_\+t}]{font\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Prints a given string message on the ILI9488 display at specified coordinates and font size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Pointer to the null-\/terminated string to be printed. \\
+\hline
+{\em x} & The starting x-\/coordinate (horizontal position) on the display. \\
+\hline
+{\em y} & The starting y-\/coordinate (vertical position) on the display. \\
+\hline
+{\em font\+\_\+size} & Font size index (0 to 5) determining the character dimensions. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_aa900c251cfe95c8ac94bb9faa66d4a89_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a25aa28afc72acb64b4e0f08019c66d97}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!recieve\_data@{recieve\_data}}
+\index{recieve\_data@{recieve\_data}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{recieve\_data()}{recieve\_data()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a25aa28afc72acb64b4e0f08019c66d97} 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} recieve\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{r}{}\end{DoxyParamCaption})}
+
+
+
+Receives a sequence of bytes from the SPI interface. 
+
+Reads \textquotesingle{}r\textquotesingle{} bytes by calling the {\ttfamily \doxylink{_i_l_i9488__driver_8c_a7ec8272ac2813d90fe29973cc71baabb}{recive()}} function repeatedly, stores them in a global buffer {\ttfamily received}, and prints each byte in binary format. Ensures the DC pin is set high before receiving data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Number of bytes to receive; must be greater than zero. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the buffer containing the received bytes, or NULL if invalid \textquotesingle{}r\textquotesingle{}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{_i_l_i9488__driver_8c_a25aa28afc72acb64b4e0f08019c66d97_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a7ec8272ac2813d90fe29973cc71baabb}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!recive@{recive}}
+\index{recive@{recive}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{recive()}{recive()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a7ec8272ac2813d90fe29973cc71baabb} 
+uint8\+\_\+t recive (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Receives a byte over SPI using software bit-\/banging. 
+
+This function manually toggles the clock line (SCK) to read 8 bits serially from the MISO\+\_\+touch line, assembling them into a single byte. It sets the clock low before starting, then for each bit\+: raises the clock, reads the bit, then lowers the clock.
+
+\begin{DoxyReturn}{Returns}
+The 8-\/bit data byte received from the slave device. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a7ec8272ac2813d90fe29973cc71baabb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a7b70829006de2728b835658a97be5167}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!send\_command@{send\_command}}
+\index{send\_command@{send\_command}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{send\_command()}{send\_command()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a7b70829006de2728b835658a97be5167} 
+void send\+\_\+command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Sends a command byte to the device by setting the DC pin low before transmission. 
+
+If the DC (Data/\+Command) pin is currently high (data mode), it is set low (command mode) to indicate that the following byte is a command, then the command byte is sent. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{_i_l_i9488__driver_8c_a7b70829006de2728b835658a97be5167_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a7b70829006de2728b835658a97be5167_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_af315cda757ac399f69496ff47962e7f8}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!send\_data@{send\_data}}
+\index{send\_data@{send\_data}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{send\_data()}{send\_data()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_af315cda757ac399f69496ff47962e7f8} 
+void send\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data\+\_\+to\+\_\+send}{}\end{DoxyParamCaption})}
+
+
+
+Sends a byte over SPI using software bit-\/banging. 
+
+This function manually toggles the clock line (SCK) to transmit 8 bits serially through the MOSI line. It sets the clock low before starting, then for each bit\+: sets MOSI to the bit value, raises the clock, then lowers it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+\_\+to\+\_\+send} & The 8-\/bit data byte to send to the slave device. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_af315cda757ac399f69496ff47962e7f8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a0e84a2eba1208c10a3b1adaa17ac92f0}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!send\_ILI9488\_data@{send\_ILI9488\_data}}
+\index{send\_ILI9488\_data@{send\_ILI9488\_data}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{send\_ILI9488\_data()}{send\_ILI9488\_data()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a0e84a2eba1208c10a3b1adaa17ac92f0} 
+void send\+\_\+\+ILI9488\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Sends a data byte to the ILI9488 display by setting the DC pin high before transmission. 
+
+If the DC (Data/\+Command) pin is currently low (command mode), it is set high (data mode) to indicate that the following byte is display data, then the data byte is sent. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{_i_l_i9488__driver_8c_a0e84a2eba1208c10a3b1adaa17ac92f0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a0e84a2eba1208c10a3b1adaa17ac92f0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a98b7024180c631fd59e5f1bdb72e2fdc}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!set\_orientation@{set\_orientation}}
+\index{set\_orientation@{set\_orientation}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{set\_orientation()}{set\_orientation()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a98b7024180c631fd59e5f1bdb72e2fdc} 
+void set\+\_\+orientation (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{orientation}{}\end{DoxyParamCaption})}
+
+
+
+Sets the display orientation by configuring the ILI9488 MADCTL register. 
+
+Sends the command to modify the Memory Access Control register (0x36) of the ILI9488 display controller. Depending on the orientation parameter (0-\/7), it sets the corresponding data byte to rotate or mirror the display output. If the provided orientation is outside the valid range \mbox{[}0-\/7\mbox{]}, an error message is printed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em orientation} & Orientation index (0 to 7) selecting the display rotation/mirroring. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a98b7024180c631fd59e5f1bdb72e2fdc_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a7503b0dca9eb5aa68a88d6c894e444b1}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!set\_resolution\_pos@{set\_resolution\_pos}}
+\index{set\_resolution\_pos@{set\_resolution\_pos}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{set\_resolution\_pos()}{set\_resolution\_pos()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a7503b0dca9eb5aa68a88d6c894e444b1} 
+void set\+\_\+resolution\+\_\+pos (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t}]{x}{, }\item[{const uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{width}{, }\item[{uint16\+\_\+t}]{height}{, }\item[{int16\+\_\+t}]{correction\+\_\+value}{}\end{DoxyParamCaption})}
+
+
+
+Sets the display area for subsequent pixel data and records coordinates. 
+
+Configures the display\textquotesingle{}s active window by specifying the top-\/left corner (x, y) and the width and height of the rectangular area to update. Saves these parameters with an optional correction value in a history buffer if within limits. Sends the necessary commands to set the column and page address ranges on the ILI9488 display controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Top-\/left X coordinate of the area. \\
+\hline
+{\em y} & Top-\/left Y coordinate of the area. \\
+\hline
+{\em width} & Width of the area in pixels. \\
+\hline
+{\em height} & Height of the area in pixels. \\
+\hline
+{\em correction\+\_\+value} & Optional correction value related to coordinate history. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a7503b0dca9eb5aa68a88d6c894e444b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_a7503b0dca9eb5aa68a88d6c894e444b1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_aac631c2abee2459f1d6a8a7a31734382}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!tick\_spi@{tick\_spi}}
+\index{tick\_spi@{tick\_spi}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{tick\_spi()}{tick\_spi()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_aac631c2abee2459f1d6a8a7a31734382} 
+void tick\+\_\+spi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Generates a single SPI clock pulse by toggling the SCK line. 
+
+This function sets the clock line (SCK) low then immediately high, creating one full rising edge used to synchronize SPI data transfer. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_i_l_i9488__driver_8c_aac631c2abee2459f1d6a8a7a31734382_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_i_l_i9488__driver_8c_a1ff70c94b7bf537d87832f56fac84081}\index{ILI9488\_driver.c@{ILI9488\_driver.c}!transform\_array@{transform\_array}}
+\index{transform\_array@{transform\_array}!ILI9488\_driver.c@{ILI9488\_driver.c}}
+\doxysubsubsection{\texorpdfstring{transform\_array()}{transform\_array()}}
+{\footnotesize\ttfamily \label{_i_l_i9488__driver_8c_a1ff70c94b7bf537d87832f56fac84081} 
+void transform\+\_\+array (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{input}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output}{, }\item[{int}]{input\+\_\+size}{, }\item[{int}]{font\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Transforms an input byte array into an output array with specific byte mappings and duplication. 
+
+For each byte in the input array, maps it to two bytes in the output according to predefined rules\+:
+\begin{DoxyItemize}
+\item 0x00 maps to 0x00, 0x00
+\item 0x\+FF maps to 0x\+FF, 0x\+FF
+\item 0x\+F8 maps to 0x\+FF, 0x00
+\item 0x07 maps to 0x00, 0x\+FF
+\end{DoxyItemize}
+
+After processing every (3 \texorpdfstring{$\ast$}{*} font\+\_\+size) bytes from the input, duplicates the last (3 \texorpdfstring{$\ast$}{*} 2 \texorpdfstring{$\ast$}{*} font\+\_\+size) bytes in the output immediately following them, extending the output size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Pointer to the input byte array. \\
+\hline
+{\em output} & Pointer to the output byte array (must have sufficient space). \\
+\hline
+{\em input\+\_\+size} & Number of bytes in the input array. \\
+\hline
+{\em font\+\_\+size} & Parameter influencing chunk size and duplication length. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{_i_l_i9488__driver_8c_a1ff70c94b7bf537d87832f56fac84081_icgraph}
+\end{center}
+\end{figure}

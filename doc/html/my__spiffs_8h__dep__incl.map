@@ -1,0 +1,16 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/my_spiffs/my_spiffs.h" name="C:/msys32/home/hatta/esp/hello_world1/components/my_spiffs/my_spiffs.h">
+<area shape="rect" id="Node000001" title="this is my implementation of the SPIFFS file system" alt="" coords="373,5,570,64"/>
+<area shape="rect" id="Node000002" href="$_x_p_t2046__driver_8h.html" title="this file contains the header for the XPT2046 touch controller driver, which is used to interface wit..." alt="" coords="241,112,468,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="430,76,388,114,385,110,427,72"/>
+<area shape="rect" id="Node000007" href="$my__spiffs_8c.html" title="this is my implementation of the SPIFFS file system" alt="" coords="492,112,689,171"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="517,72,560,110,556,114,514,76"/>
+<area shape="rect" id="Node000003" href="$_x_p_t2046__driver_8c.html" title="this is the implementation of the XPT2046 touch controller driver" alt="" coords="5,219,232,277"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="277,180,184,221,182,216,275,175"/>
+<area shape="rect" id="Node000004" href="$tasks_8h.html" title=" " alt="" coords="256,219,453,277"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="348,186,349,218,344,218,343,186"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="361,203,360,171,365,171,366,203"/>
+<area shape="rect" id="Node000005" href="$tasks_8c.html" title="this file implements the main tasks for the OS ." alt="" coords="156,325,353,384"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="319,290,284,327,280,323,315,287"/>
+<area shape="rect" id="Node000006" href="$main_8c.html" title=" " alt="" coords="377,325,532,384"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="394,287,429,323,425,327,390,290"/>
+</map>

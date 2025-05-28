@@ -1,0 +1,9 @@
+<map id="make_X_button" name="make_X_button">
+<area shape="rect" id="Node000001" title="Draws a red &quot;X&quot; button on the display and records its position and size in history_char." alt="" coords="5,31,118,57"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#aa900c251cfe95c8ac94bb9faa66d4a89" title="Prints a given string message on the ILI9488 display at specified coordinates and font size." alt="" coords="174,5,270,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,33,159,26,159,31,119,38"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html#a7b70829006de2728b835658a97be5167" title="Sends a command byte to the device by setting the DC pin low before transmission." alt="" coords="166,56,279,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,50,151,55,150,61,118,55"/>
+<area shape="rect" id="Node000004" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="327,56,408,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="280,67,311,67,311,72,280,72"/>
+</map>

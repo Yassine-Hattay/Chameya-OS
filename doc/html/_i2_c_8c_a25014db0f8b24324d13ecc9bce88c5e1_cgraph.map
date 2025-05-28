@@ -1,0 +1,5 @@
+<map id="i2c_send_byte" name="i2c_send_byte">
+<area shape="rect" id="Node000001" title="Sends a byte over I2C and reads the acknowledgment bit." alt="" coords="5,5,111,32"/>
+<area shape="rect" id="Node000002" href="$_i2_c_8c.html#aa26af8fe7e54b7522f60611bbd713134" title="Sends a byte over the I2C bus, MSB first." alt="" coords="159,5,264,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,16,143,16,143,21,111,21"/>
+</map>

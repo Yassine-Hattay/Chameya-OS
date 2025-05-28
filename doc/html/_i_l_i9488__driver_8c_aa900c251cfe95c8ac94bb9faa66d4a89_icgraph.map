@@ -1,0 +1,67 @@
+<map id="print_ILI9488" name="print_ILI9488">
+<area shape="rect" id="Node000001" title="Prints a given string message on the ILI9488 display at specified coordinates and font size." alt="" coords="1347,296,1443,323"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a0c75b78a55e6dc2cbf1f48da7a6f6792" title="Initializes the notebook app interface by drawing a close button and three action buttons." alt="" coords="1023,195,1154,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1367,288,1335,263,1298,242,1262,230,1225,222,1154,213,1155,207,1226,216,1263,225,1300,238,1338,259,1370,284"/>
+<area shape="rect" id="Node000003" href="$tasks_8c.html#adcbe116080c9695613e2baf119e5b3b6" title="FreeRTOS task for the main page of the Notebook application." alt="" coords="824,245,975,272"/>
+<area shape="poly" id="edge46_Node000001_Node000003" title=" " alt="" coords="1374,285,1341,246,1320,227,1297,212,1260,195,1229,189,1154,185,1088,177,1059,178,1024,185,993,197,963,214,918,247,915,243,960,209,990,193,1022,180,1059,173,1088,172,1155,180,1230,184,1262,190,1300,207,1324,223,1345,242,1378,281"/>
+<area shape="rect" id="Node000004" href="$_x_p_t2046__driver_8c.html#a487cc9f5d8af9f77e6683ccbb5d45d85" title="Checks for key presses on a virtual keyboard and handles corresponding actions." alt="" coords="180,220,303,247"/>
+<area shape="poly" id="edge22_Node000001_Node000004" title=" " alt="" coords="1386,282,1375,241,1357,191,1332,140,1297,95,1248,52,1204,25,1155,12,1090,8,675,8,585,13,516,29,451,60,372,106,335,134,302,166,255,221,251,218,298,162,332,130,370,102,448,55,514,24,584,8,675,3,1090,3,1155,7,1206,20,1252,48,1301,92,1336,137,1362,189,1380,239,1391,280"/>
+<area shape="rect" id="Node000008" href="$tasks_8c.html#a7e13dbf041a37a08024e1ef82aaa49ec" title="FreeRTOS task for configuring SPI communication parameters." alt="" coords="167,448,316,475"/>
+<area shape="poly" id="edge30_Node000001_Node000008" title=" " alt="" coords="1389,338,1358,421,1333,467,1301,510,1267,543,1236,563,1201,578,1155,591,1120,597,1078,600,976,597,858,584,731,566,484,519,300,478,301,473,485,514,732,560,859,579,977,591,1078,594,1119,592,1154,585,1199,573,1233,559,1263,538,1297,506,1328,465,1353,418,1384,337"/>
+<area shape="rect" id="Node000009" href="$tasks_8c.html#a63ff2ed865baaa534c13b2bb60ca5294" title="FreeRTOS task for configuring UART communication parameters." alt="" coords="160,499,323,525"/>
+<area shape="poly" id="edge31_Node000001_Node000009" title=" " alt="" coords="1394,338,1385,429,1367,549,1354,609,1339,663,1322,707,1301,736,1275,757,1251,769,1228,775,1204,777,1152,772,1090,768,675,768,586,774,515,782,481,781,447,775,410,762,370,740,341,717,317,690,280,629,256,569,243,526,248,525,261,568,285,626,321,687,345,713,372,735,412,757,448,770,482,776,515,776,586,769,675,763,1090,763,1153,767,1204,771,1227,770,1249,764,1272,752,1297,733,1317,704,1334,661,1349,607,1362,548,1379,428,1389,338"/>
+<area shape="rect" id="Node000011" href="$tasks_8c.html#a18d3c4c46ad6ccd39a77b5f28d28f0f2" title="FreeRTOS task for displaying and managing existing notebook files." alt="" coords="576,93,776,120"/>
+<area shape="poly" id="edge47_Node000001_Node000011" title=" " alt="" coords="1383,282,1371,249,1353,211,1328,173,1297,141,1264,117,1228,98,1191,83,1152,72,1071,58,989,55,910,60,837,70,724,95,723,90,837,65,910,55,989,50,1071,53,1153,67,1193,78,1231,94,1267,113,1300,137,1332,170,1357,208,1376,247,1388,280"/>
+<area shape="rect" id="Node000012" href="$_i_l_i9488__driver_8c.html#a6cb954f0820495ce493085ff20c15114" title="Displays a confirmation screen with a close button and transmit button." alt="" coords="1040,296,1137,323"/>
+<area shape="poly" id="edge23_Node000001_Node000012" title=" " alt="" coords="1331,312,1137,312,1137,307,1331,307"/>
+<area shape="rect" id="Node000013" href="$_i_l_i9488__driver_8c.html#aec2a759c7d655495c379a45297306bfa" title="Initializes I2C confirmation screen with close, write and read buttons." alt="" coords="1026,347,1151,373"/>
+<area shape="poly" id="edge24_Node000001_Node000013" title=" " alt="" coords="1332,322,1152,352,1151,347,1331,317"/>
+<area shape="rect" id="Node000014" href="$_i_l_i9488__driver_8c.html#a3c0aa307ff11329686e3e9303383e4ae" title="Draws a virtual keyboard on the display with keys depending on mode (lowercase, uppercase,..." alt="" coords="395,347,504,373"/>
+<area shape="poly" id="edge25_Node000001_Node000014" title=" " alt="" coords="1331,298,1298,293,1227,288,1154,287,1089,285,1023,287,876,300,730,318,505,353,504,348,730,313,875,295,1023,281,1089,279,1154,281,1227,282,1299,288,1332,293"/>
+<area shape="rect" id="Node000015" href="$_i_l_i9488__driver_8c.html#a222ffe290a038061adf26017447250f4" title="Initializes the GPIO_C app interface by drawing a close button and three communication protocol butto..." alt="" coords="1037,549,1140,576"/>
+<area shape="poly" id="edge28_Node000001_Node000015" title=" " alt="" coords="1380,338,1346,387,1301,438,1256,475,1207,506,1123,551,1120,546,1204,502,1252,470,1297,434,1342,383,1375,335"/>
+<area shape="rect" id="Node000016" href="$_i_l_i9488__driver_8c.html#af2b30591eedd573176afb57b8009acb1" title="Initializes and displays GPIO control buttons and a close button." alt="" coords="841,701,958,728"/>
+<area shape="poly" id="edge32_Node000001_Node000016" title=" " alt="" coords="1393,339,1382,420,1364,524,1337,622,1320,660,1300,685,1261,711,1217,729,1171,740,1124,745,1033,743,957,731,958,726,1033,738,1124,740,1170,735,1216,724,1259,706,1297,681,1315,657,1332,620,1359,523,1377,419,1388,338"/>
+<area shape="rect" id="Node000017" href="$_i_l_i9488__driver_8c.html#a3e2bc52f43727dad6a7f57ec6442dd4e" title="Draws a colored rectangular button with a given label and updates its metadata in history_char." alt="" coords="1202,397,1299,424"/>
+<area shape="poly" id="edge35_Node000001_Node000017" title=" " alt="" coords="1364,334,1300,381,1274,399,1271,395,1297,376,1361,330"/>
+<area shape="rect" id="Node000018" href="$_i_l_i9488__driver_8c.html#a632a0e96e7a6b4dbbcbee78b3e598ed9" title="Draws a red &quot;X&quot; button on the display and records its position and size in history_char." alt="" coords="843,93,956,120"/>
+<area shape="poly" id="edge44_Node000001_Node000018" title=" " alt="" coords="1379,283,1347,230,1324,203,1297,181,1255,158,1210,141,1164,128,1117,118,1029,109,956,107,956,101,1029,103,1118,113,1165,123,1212,136,1258,154,1300,176,1328,199,1351,227,1384,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1022,229,953,247,951,242,1021,223"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="823,244,775,236,662,220,574,210,485,208,371,215,303,224,303,219,371,209,485,203,574,205,663,214,776,231,824,239"/>
+<area shape="rect" id="Node000006" href="$tasks_8c.html#ae6307f8fd2d5e8b9ef75ab078a1e7966" title="FreeRTOS task for the main menu of the embedded system." alt="" coords="616,245,736,272"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="808,270,737,269,737,264,808,265"/>
+<area shape="poly" id="edge19_Node000003_Node000011" title=" " alt="" coords="818,235,804,212,797,191,790,171,774,153,741,134,707,123,709,118,743,129,777,149,794,169,802,189,809,210,823,233"/>
+<area shape="rect" id="Node000005" href="$tasks_8c.html#a4290fee8165b79f0c89b38bdd3279057" title="FreeRTOS task for handling a virtual keyboard display and input." alt="" coords="5,259,112,285"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="194,254,113,272,112,266,193,249"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="127,276,249,285,410,292,592,292,775,281,843,270,843,275,776,287,592,298,410,297,249,290,127,281"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="106,251,178,235,180,240,107,257"/>
+<area shape="poly" id="edge16_Node000006_Node000003" title=" " alt="" coords="751,247,823,247,823,253,751,253"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="600,246,528,236,409,231,304,233,303,228,409,226,529,231,601,241"/>
+<area shape="rect" id="Node000007" href="$tasks_8c.html#a4296e8d90b1f056889c056788cf62d65" title="FreeRTOS task for the main menu of the GPIO Control (GPIO_C) app." alt="" coords="390,397,510,424"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="660,286,606,343,569,374,530,400,511,408,509,403,527,395,566,369,602,339,656,283"/>
+<area shape="rect" id="Node000010" href="$tasks_8c.html#abdaddad7708204d6fe1232d6d1137056" title="FreeRTOS task for the first page of the Pong game, handling game mode selection." alt="" coords="371,245,528,272"/>
+<area shape="poly" id="edge17_Node000006_Node000010" title=" " alt="" coords="601,270,529,270,529,265,601,265"/>
+<area shape="poly" id="edge10_Node000007_Node000004" title=" " alt="" coords="378,393,369,388,329,354,294,315,249,249,253,246,298,312,333,350,373,383,381,388"/>
+<area shape="poly" id="edge15_Node000007_Node000006" title=" " alt="" coords="484,389,527,371,564,347,599,319,653,271,656,275,602,323,567,351,530,376,486,394"/>
+<area shape="poly" id="edge11_Node000007_Node000008" title=" " alt="" coords="405,432,317,454,316,449,403,427"/>
+<area shape="poly" id="edge13_Node000007_Node000009" title=" " alt="" coords="429,436,382,469,325,501,322,496,380,465,426,432"/>
+<area shape="poly" id="edge12_Node000008_Node000007" title=" " alt="" coords="286,440,388,414,390,420,288,445"/>
+<area shape="poly" id="edge14_Node000009_Node000007" title=" " alt="" coords="274,490,322,472,370,447,413,422,415,427,373,452,324,477,276,495"/>
+<area shape="poly" id="edge18_Node000010_Node000006" title=" " alt="" coords="544,247,615,248,615,253,544,252"/>
+<area shape="poly" id="edge21_Node000011_Node000003" title=" " alt="" coords="781,129,796,152,803,173,810,193,825,213,852,230,880,242,878,247,850,235,822,217,806,196,798,175,791,154,776,132"/>
+<area shape="poly" id="edge20_Node000011_Node000004" title=" " alt="" coords="561,107,467,116,418,126,372,141,337,158,306,180,258,221,254,217,302,176,335,154,370,136,417,121,466,111,560,102"/>
+<area shape="poly" id="edge26_Node000014_Node000004" title=" " alt="" coords="412,341,264,249,266,245,415,336"/>
+<area shape="poly" id="edge27_Node000014_Node000005" title=" " alt="" coords="379,363,274,355,216,345,159,331,114,311,78,288,80,284,117,306,161,325,217,340,275,349,380,357"/>
+<area shape="poly" id="edge29_Node000015_Node000007" title=" " alt="" coords="1021,550,509,427,510,422,1022,544"/>
+<area shape="poly" id="edge33_Node000016_Node000008" title=" " alt="" coords="825,715,710,708,575,694,510,684,452,670,403,654,369,634,354,617,346,598,343,561,341,524,335,506,321,489,305,477,308,473,325,485,339,504,346,523,348,561,351,597,358,614,373,630,406,649,453,665,511,678,576,689,710,703,826,710"/>
+<area shape="poly" id="edge34_Node000016_Node000009" title=" " alt="" coords="826,731,730,742,613,744,550,739,488,728,427,710,370,685,346,669,324,650,288,605,262,561,246,527,251,525,266,558,292,602,328,646,349,665,372,680,429,705,489,723,551,733,613,738,730,737,825,726"/>
+<area shape="poly" id="edge36_Node000017_Node000002" title=" " alt="" coords="1228,386,1152,286,1100,224,1104,220,1156,282,1232,383"/>
+<area shape="poly" id="edge40_Node000017_Node000008" title=" " alt="" coords="1188,428,1056,452,979,460,901,464,675,464,316,464,316,459,675,459,901,459,978,455,1055,446,1187,423"/>
+<area shape="poly" id="edge41_Node000017_Node000009" title=" " alt="" coords="1214,434,1155,461,1086,486,1031,502,974,512,901,515,675,515,323,515,323,509,675,509,901,509,973,506,1029,497,1084,481,1153,456,1212,429"/>
+<area shape="poly" id="edge43_Node000017_Node000011" title=" " alt="" coords="1187,423,1147,425,1103,421,1060,410,1021,387,1005,369,997,351,994,312,992,273,986,254,973,235,950,213,924,193,867,161,808,139,754,123,755,118,810,134,869,157,927,189,953,209,977,232,991,252,998,272,999,312,1002,349,1009,367,1025,383,1062,405,1104,416,1147,420,1187,418"/>
+<area shape="poly" id="edge37_Node000017_Node000012" title=" " alt="" coords="1222,389,1190,362,1153,337,1130,326,1132,321,1156,332,1193,358,1225,384"/>
+<area shape="poly" id="edge38_Node000017_Node000013" title=" " alt="" coords="1190,395,1133,376,1135,371,1192,390"/>
+<area shape="poly" id="edge39_Node000017_Node000015" title=" " alt="" coords="1235,439,1202,485,1156,533,1126,551,1124,546,1153,529,1198,482,1231,436"/>
+<area shape="poly" id="edge42_Node000017_Node000016" title=" " alt="" coords="1243,440,1211,513,1187,553,1156,590,1106,630,1051,662,996,686,949,703,947,698,994,681,1048,657,1103,625,1152,586,1182,550,1207,510,1238,438"/>
+<area shape="poly" id="edge45_Node000018_Node000011" title=" " alt="" coords="828,109,776,109,776,104,828,104"/>
+</map>

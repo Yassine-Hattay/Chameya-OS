@@ -1,8 +1,12 @@
-/*
- * web.h
- *
- *  Created on: 28 Apr 2025
- *      Author: hatta
+/**
+ * @file web.h
+ * @author your name (you@domain.com)
+ * @brief this file contains the header for web server functionality
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #ifndef COMPONENTS_WEB_WEB_H_

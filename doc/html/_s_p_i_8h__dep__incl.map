@@ -1,0 +1,24 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.h" name="C:/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.h">
+<area shape="rect" id="Node000001" title="this file implements SPI communication in bit&#45;bang mode for ESP8266." alt="" coords="596,5,793,64"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8h.html" title=" " alt="" coords="480,112,684,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="654,77,615,114,611,110,651,73"/>
+<area shape="rect" id="Node000010" href="$_s_p_i_8c.html" title="this file implements SPI communication in bit&#45;bang mode for ESP8266." alt="" coords="709,112,906,171"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="738,72,778,110,775,114,734,76"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html" title="this is my implementation of the ILI9488 driver" alt="" coords="5,219,210,277"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="465,169,223,221,211,224,209,219,222,216,464,164"/>
+<area shape="rect" id="Node000004" href="$letters__pictures_8c.html" title="this file contains the font and picture data for the ILI9488 driver ." alt="" coords="234,219,445,277"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="503,180,407,221,405,216,501,175"/>
+<area shape="rect" id="Node000005" href="$_x_p_t2046__driver_8h.html" title="this file contains the header for the XPT2046 touch controller driver, which is used to interface wit..." alt="" coords="469,219,695,277"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="585,186,585,218,580,218,580,186"/>
+<area shape="rect" id="Node000007" href="$tasks_8h.html" title=" " alt="" coords="517,325,714,384"/>
+<area shape="poly" id="edge10_Node000002_Node000007" title=" " alt="" coords="671,177,693,195,710,217,717,233,719,248,710,278,691,305,667,327,664,323,687,302,705,276,714,247,712,235,705,220,689,199,667,181"/>
+<area shape="rect" id="Node000009" href="$main_8c.html" title=" " alt="" coords="706,432,861,491"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="683,176,710,194,732,217,749,243,762,271,779,330,786,386,787,431,782,432,781,387,773,331,757,273,744,245,728,220,706,198,680,181"/>
+<area shape="rect" id="Node000006" href="$_x_p_t2046__driver_8c.html" title="this is the implementation of the XPT2046 touch controller driver" alt="" coords="266,325,493,384"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="515,287,436,327,434,322,512,282"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="590,291,601,324,596,326,585,293"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="608,311,597,279,602,277,613,310"/>
+<area shape="rect" id="Node000008" href="$tasks_8c.html" title="this file implements the main tasks for the OS ." alt="" coords="485,432,682,491"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="605,400,595,432,590,431,600,398"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="675,390,739,429,736,434,673,395"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="goblin_group_t" name="goblin_group_t">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,96,111,123"/>
+<area shape="rect" id="Node000002" href="$structgoblin__torch.html" title="Represents a goblin character in the game." alt="" coords="12,5,104,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,48,61,95,55,95,55,48"/>
+</map>

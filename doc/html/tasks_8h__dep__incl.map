@@ -1,0 +1,12 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/tasks/tasks.h" name="C:/msys32/home/hatta/esp/hello_world1/components/tasks/tasks.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="137,5,334,64"/>
+<area shape="rect" id="Node000002" href="$_x_p_t2046__driver_8h.html" title="this file contains the header for the XPT2046 touch controller driver, which is used to interface wit..." alt="" coords="5,112,232,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,76,144,114,141,110,182,72"/>
+<area shape="rect" id="Node000004" href="$tasks_8c.html" title="this file implements the main tasks for the OS ." alt="" coords="256,112,453,171"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="281,72,324,110,320,114,278,76"/>
+<area shape="rect" id="Node000005" href="$main_8c.html" title=" " alt="" coords="477,112,632,171"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="339,67,478,112,476,117,337,72"/>
+<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="168,100,210,62,214,66,172,104"/>
+<area shape="rect" id="Node000003" href="$_x_p_t2046__driver_8c.html" title="this is the implementation of the XPT2046 touch controller driver" alt="" coords="5,219,232,277"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,186,121,218,116,218,116,186"/>
+</map>

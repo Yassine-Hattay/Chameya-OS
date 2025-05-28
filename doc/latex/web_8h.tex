@@ -1,0 +1,84 @@
+\doxysection{C\+:/msys32/home/hatta/esp/hello\+\_\+world1/components/web/web.h File Reference}
+\hypertarget{web_8h}{}\label{web_8h}\index{C:/msys32/home/hatta/esp/hello\_world1/components/web/web.h@{C:/msys32/home/hatta/esp/hello\_world1/components/web/web.h}}
+
+
+this file contains the header for web server functionality  
+
+
+{\ttfamily \#include "{}esp\+\_\+netif.\+h"{}}\newline
+{\ttfamily \#include "{}esp\+\_\+event.\+h"{}}\newline
+{\ttfamily \#include "{}esp\+\_\+wifi.\+h"{}}\newline
+{\ttfamily \#include "{}event\+\_\+groups.\+h"{}}\newline
+{\ttfamily \#include "{}esp\+\_\+http\+\_\+server.\+h"{}}\newline
+{\ttfamily \#include "{}nvs\+\_\+flash.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}esp\+\_\+log.\+h"{}}\newline
+{\ttfamily \#include "{}../debugging/my\+\_\+print.\+h"{}}\newline
+Include dependency graph for web.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{web_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{web_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{web_8h_a4fb60228f865afd7f59ecff4a658a9a6}\label{web_8h_a4fb60228f865afd7f59ecff4a658a9a6} 
+\#define {\bfseries EXAMPLE\+\_\+\+ESP\+\_\+\+WIFI\+\_\+\+SSID}~"{}Orange-\/066C"{}
+\item 
+\Hypertarget{web_8h_ad6d09dc1b370b2971ca6849a248c0a2d}\label{web_8h_ad6d09dc1b370b2971ca6849a248c0a2d} 
+\#define {\bfseries EXAMPLE\+\_\+\+ESP\+\_\+\+WIFI\+\_\+\+PASS}~"{}GMA6\+ABLMG87"{}
+\item 
+\Hypertarget{web_8h_ad552e7688532cbbecd3967538ced06ac}\label{web_8h_ad552e7688532cbbecd3967538ced06ac} 
+\#define {\bfseries WIFI\+\_\+\+CONNECTED\+\_\+\+BIT}~BIT0
+\item 
+\Hypertarget{web_8h_a7d013b55e50dfbda0904f5f933b63ec4}\label{web_8h_a7d013b55e50dfbda0904f5f933b63ec4} 
+\#define {\bfseries WIFI\+\_\+\+FAIL\+\_\+\+BIT}~BIT1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{web_8h_a720913f2342db3713ec3948cdfc16855}{wifi\+\_\+init\+\_\+sta}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the ESP32 as a Wi-\/\+Fi station and connects to an access point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this file contains the header for web server functionality 
+
+\begin{DoxyAuthor}{Author}
+your name (\href{mailto:you@domain.com}{\texttt{ you@domain.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/05-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{web_8h_a720913f2342db3713ec3948cdfc16855}\index{web.h@{web.h}!wifi\_init\_sta@{wifi\_init\_sta}}
+\index{wifi\_init\_sta@{wifi\_init\_sta}!web.h@{web.h}}
+\doxysubsubsection{\texorpdfstring{wifi\_init\_sta()}{wifi\_init\_sta()}}
+{\footnotesize\ttfamily \label{web_8h_a720913f2342db3713ec3948cdfc16855} 
+void wifi\+\_\+init\+\_\+sta (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the ESP32 as a Wi-\/\+Fi station and connects to an access point. 
+
+This function sets up the Wi-\/\+Fi in station mode, registers event handlers for connection management, attempts to connect to a specified Wi-\/\+Fi network, and waits for the connection outcome. It logs success or failure and then unregisters the event handlers. 

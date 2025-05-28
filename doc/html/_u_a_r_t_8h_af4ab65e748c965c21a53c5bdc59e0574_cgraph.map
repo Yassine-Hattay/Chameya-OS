@@ -1,0 +1,5 @@
+<map id="start_reciving_task" name="start_reciving_task">
+<area shape="rect" id="Node000001" title="Initializes GPIO for UART reception and creates the bit&#45;banging receive task." alt="" coords="5,5,137,32"/>
+<area shape="rect" id="Node000002" href="$_u_a_r_t_8c.html#a6d360fe4e2b94d0080cd8ec55ae21150" title="FreeRTOS task for bit&#45;banging UART receive." alt="" coords="185,5,358,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,16,169,16,169,21,137,21"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="clean_screen" name="clean_screen">
+<area shape="rect" id="Node000001" title="Clears previously drawn screen regions stored in history by filling them with black." alt="" coords="5,31,104,57"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a7b70829006de2728b835658a97be5167" title="Sends a command byte to the device by setting the DC pin low before transmission." alt="" coords="161,5,274,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,34,145,27,146,32,105,39"/>
+<area shape="rect" id="Node000004" href="$_i_l_i9488__driver_8c.html#a0e84a2eba1208c10a3b1adaa17ac92f0" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="152,56,283,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,49,137,54,136,59,104,54"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="331,31,412,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,25,316,32,315,37,274,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="283,56,315,51,316,56,284,61"/>
+</map>

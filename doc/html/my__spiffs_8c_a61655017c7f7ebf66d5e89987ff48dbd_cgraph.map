@@ -1,0 +1,7 @@
+<map id="read_file_contents" name="read_file_contents">
+<area shape="rect" id="Node000001" title="Reads the entire contents of a specified file on the SPIFFS filesystem into a dynamically allocated s..." alt="" coords="5,31,133,57"/>
+<area shape="rect" id="Node000002" href="$my__spiffs_8c.html#ac60a4ea264e20f7efa5d0153f51bc9ed" title="Mounts the SPIFFS filesystem." alt="" coords="188,5,283,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,32,172,26,173,31,134,37"/>
+<area shape="rect" id="Node000003" href="$my__spiffs_8c.html#a36acc2034fb047b559e0da3647c76b46" title="Unmounts the SPIFFS filesystem." alt="" coords="181,56,290,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,51,166,56,165,61,133,56"/>
+</map>

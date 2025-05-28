@@ -1,0 +1,7 @@
+<map id="delete_file" name="delete_file">
+<area shape="rect" id="Node000001" title="Deletes a specified file from the SPIFFS filesystem and removes its entry from a filenames list." alt="" coords="5,31,86,57"/>
+<area shape="rect" id="Node000002" href="$my__spiffs_8c.html#ac60a4ea264e20f7efa5d0153f51bc9ed" title="Mounts the SPIFFS filesystem." alt="" coords="141,5,236,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,34,125,27,126,32,87,39"/>
+<area shape="rect" id="Node000003" href="$my__spiffs_8c.html#a36acc2034fb047b559e0da3647c76b46" title="Unmounts the SPIFFS filesystem." alt="" coords="134,56,243,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="87,49,119,54,118,60,86,54"/>
+</map>

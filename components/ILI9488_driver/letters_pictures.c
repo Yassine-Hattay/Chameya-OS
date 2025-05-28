@@ -1,8 +1,12 @@
-/*
- * letters_pictures.c
- *
- *  Created on: 7 Apr 2025
- *      Author: hatta
+/**
+ * @file letters_pictures.c
+ * @author your name (you@domain.com)
+ * @brief this file contains the font and picture data for the ILI9488 driver .
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #include "ILI9488_driver.h"

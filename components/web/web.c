@@ -1,3 +1,15 @@
+/**
+ * @file web.c
+ * @author your name (you@domain.com)
+ * @brief this file contains the implementation of the web server for
+ * displaying logs from the ESP8266.
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "web.h"
 
 extern void get_logs(char *out_buffer, size_t max_len);
@@ -7,6 +19,20 @@ static EventGroupHandle_t s_wifi_event_group;
 
 static const char *TAG = "wifi station";
 static int s_retry_num = 0;
+
+/**
+ * @brief Event handler for Wi-Fi and IP events.
+ *
+ * This function acts as a central handler for various Wi-Fi and IP-related events
+ * from the ESP-IDF event loop. It manages Wi-Fi connection attempts, retries,
+ * and signals connection status using an FreeRTOS event group.
+ * Upon successfully obtaining an IP address, it also initiates a web server.
+ *
+ * @param arg Arguments passed to the handler (unused in this context).
+ * @param event_base The base of the event (e.g., `WIFI_EVENT`, `IP_EVENT`).
+ * @param event_id The ID of the specific event (e.g., `WIFI_EVENT_STA_START`, `IP_EVENT_STA_GOT_IP`).
+ * @param event_data Pointer to the event-specific data.
+ */
 
 static void event_handler(void *arg, esp_event_base_t event_base,
 		int32_t event_id, void *event_data) {
@@ -32,6 +58,16 @@ static void event_handler(void *arg, esp_event_base_t event_base,
 		start_webserver();
 	}
 }
+
+/**
+ * @brief Initializes the ESP32 as a Wi-Fi station and connects to an access point.
+ *
+ * This function sets up the Wi-Fi in station mode, registers event handlers for
+ * connection management, attempts to connect to a specified Wi-Fi network,
+ * and waits for the connection outcome. It logs success or failure and then
+ * unregisters the event handlers.
+ */
+
 void wifi_init_sta(void) {
 	s_wifi_event_group = xEventGroupCreate();
 
@@ -84,8 +120,19 @@ void wifi_init_sta(void) {
 	vEventGroupDelete(s_wifi_event_group);
 }
 
-// HTTP GET handler
-esp_err_t debug_get_handler(httpd_req_t *req) {
+/**
+ * @brief HTTP GET handler for serving debug logs.
+ *
+ * This function handles incoming HTTP GET requests for a debug endpoint.
+ * It dynamically allocates a buffer, populates it with system logs obtained
+ * from `get_logs()`, sets the response content type to plain text, sends
+ * the logs as the HTTP response, and then frees the allocated memory.
+ *
+ * @param req Pointer to the HTTP request structure.
+ * @return `ESP_OK` if the request is handled successfully, `ESP_FAIL` otherwise.
+ */
+
+static esp_err_t debug_get_handler(httpd_req_t *req) {
 	char *response = malloc(4096);
 	if (!response) {
 		httpd_resp_send_500(req);
@@ -101,7 +148,17 @@ esp_err_t debug_get_handler(httpd_req_t *req) {
 	free(response);
 	return ESP_OK;
 }
-
+/**
+ * @brief HTTP GET handler for serving a dynamic HTML log page.
+ *
+ * This function processes HTTP GET requests to display system logs in a web browser.
+ * It constructs a complete HTML page that includes embedded CSS for styling and
+ * JavaScript for auto-reloading and scrolling to the bottom of the logs.
+ * The current logs are retrieved from `log_buffer` and embedded directly into the HTML.
+ *
+ * @param req Pointer to the HTTP request structure.
+ * @return `ESP_OK` if the HTML page is successfully sent.
+ */
 static esp_err_t log_page_get_handler(httpd_req_t *req) {
 	// Build the response HTML with current logs
 	char html_response[2048];
@@ -149,6 +206,15 @@ static esp_err_t log_page_get_handler(httpd_req_t *req) {
 	httpd_resp_send(req, html_response, strlen(html_response));
 	return ESP_OK;
 }
+
+/**
+ * @brief Starts an HTTP web server and registers a handler for the "/logs" URI.
+ *
+ * This function initializes and starts an embedded HTTP server on the ESP32.
+ * It configures the server with default settings and then registers a specific
+ * URI handler (`log_page_get_handler`) to serve a dynamic log page when
+ * clients access the "/logs" endpoint.
+ */
 
 void start_webserver(void) {
 	httpd_handle_t server = NULL;

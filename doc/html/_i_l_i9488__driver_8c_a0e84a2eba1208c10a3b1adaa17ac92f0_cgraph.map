@@ -1,0 +1,5 @@
+<map id="send_ILI9488_data" name="send_ILI9488_data">
+<area shape="rect" id="Node000001" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="5,5,137,32"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="185,5,266,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,16,169,16,169,21,137,21"/>
+</map>

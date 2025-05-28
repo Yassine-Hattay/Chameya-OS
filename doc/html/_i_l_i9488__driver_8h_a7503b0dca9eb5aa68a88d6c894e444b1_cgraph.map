@@ -1,0 +1,10 @@
+<map id="set_resolution_pos" name="set_resolution_pos">
+<area shape="rect" id="Node000001" title="Sets the display area for subsequent pixel data and records coordinates." alt="" coords="5,31,136,57"/>
+<area shape="rect" id="Node000002" href="$_i_l_i9488__driver_8c.html#a7b70829006de2728b835658a97be5167" title="Sends a command byte to the device by setting the DC pin low before transmission." alt="" coords="193,5,306,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,32,177,26,178,31,136,37"/>
+<area shape="rect" id="Node000004" href="$_i_l_i9488__driver_8c.html#a0e84a2eba1208c10a3b1adaa17ac92f0" title="Sends a data byte to the ILI9488 display by setting the DC pin high before transmission." alt="" coords="184,56,315,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,51,168,55,168,60,136,56"/>
+<area shape="rect" id="Node000003" href="$_i_l_i9488__driver_8c.html#af315cda757ac399f69496ff47962e7f8" title="Sends a byte over SPI using software bit&#45;banging." alt="" coords="363,31,444,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,25,348,32,347,37,306,31"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="315,56,347,51,348,56,316,61"/>
+</map>

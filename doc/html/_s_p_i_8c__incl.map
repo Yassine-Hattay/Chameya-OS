@@ -1,0 +1,17 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c" name="C:/msys32/home/hatta/esp/hello_world1/components/SPI/SPI.c">
+<area shape="rect" id="Node000001" title="this file implements SPI communication in bit&#45;bang mode for ESP8266." alt="" coords="380,5,578,64"/>
+<area shape="rect" id="Node000002" href="$_s_p_i_8h.html" title="this file implements SPI communication in bit&#45;bang mode for ESP8266." alt="" coords="452,112,506,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="482,64,482,96,476,96,476,64"/>
+<area shape="rect" id="Node000003" href="$my__config_8h_source.html" title=" " alt="" coords="5,187,174,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="452,134,173,186,172,181,451,129"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="198,187,341,213"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="452,139,321,184,320,179,450,134"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="365,187,470,213"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="470,141,440,177,436,173,466,137"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="494,187,586,213"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="492,137,522,173,518,177,487,141"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="610,187,700,213"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="507,135,611,178,609,183,505,140"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="724,187,837,213"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="507,131,713,180,712,185,506,136"/>
+</map>

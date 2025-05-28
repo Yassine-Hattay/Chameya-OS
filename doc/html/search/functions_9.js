@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['main_5fmenu_5ftask_0',['main_menu_task',['../_i_l_i9488__driver_8h.html#ae6307f8fd2d5e8b9ef75ab078a1e7966',1,'main_menu_task(void *pvParameters):&#160;tasks.c'],['../tasks_8c.html#ae6307f8fd2d5e8b9ef75ab078a1e7966',1,'main_menu_task(void *pvParameters):&#160;tasks.c']]],
+  ['make_5fbutton_1',['make_button',['../_i_l_i9488__driver_8c.html#a3e2bc52f43727dad6a7f57ec6442dd4e',1,'make_button(char *name, uint16_t height, uint16_t x, uint16_t y, char *color):&#160;ILI9488_driver.c'],['../_i_l_i9488__driver_8h.html#a3e2bc52f43727dad6a7f57ec6442dd4e',1,'make_button(char *name, uint16_t height, uint16_t x, uint16_t y, char *color):&#160;ILI9488_driver.c']]],
+  ['make_5fx_5fbutton_2',['make_X_button',['../_i_l_i9488__driver_8c.html#a632a0e96e7a6b4dbbcbee78b3e598ed9',1,'make_X_button():&#160;ILI9488_driver.c'],['../_i_l_i9488__driver_8h.html#a632a0e96e7a6b4dbbcbee78b3e598ed9',1,'make_X_button():&#160;ILI9488_driver.c']]],
+  ['memory_5fmonitor_5ftask_3',['memory_monitor_task',['../tasks_8c.html#aea553e6f856b7a8d0fbd5e5f33ad8679',1,'memory_monitor_task(void *pvParameters):&#160;tasks.c'],['../tasks_8h.html#aea553e6f856b7a8d0fbd5e5f33ad8679',1,'memory_monitor_task(void *pvParameters):&#160;tasks.c']]],
+  ['mount_5fspiffs_4',['mount_spiffs',['../my__spiffs_8c.html#ac60a4ea264e20f7efa5d0153f51bc9ed',1,'mount_spiffs():&#160;my_spiffs.c'],['../my__spiffs_8h.html#ac60a4ea264e20f7efa5d0153f51bc9ed',1,'mount_spiffs():&#160;my_spiffs.c']]],
+  ['my_5fprint_5',['my_print',['../my__print_8c.html#ad20495423a6dd966708b2fc8fffef3f0',1,'my_print(const char *format,...):&#160;my_print.c'],['../my__print_8h.html#ad20495423a6dd966708b2fc8fffef3f0',1,'my_print(const char *format,...):&#160;my_print.c']]],
+  ['my_5fprint_5finit_6',['my_print_init',['../my__print_8c.html#a67993f7efdbabaa245a54fc014c3d8ff',1,'my_print_init(void):&#160;my_print.c'],['../my__print_8h.html#a67993f7efdbabaa245a54fc014c3d8ff',1,'my_print_init(void):&#160;my_print.c']]],
+  ['my_5fuart_5finit_7',['my_uart_init',['../_u_a_r_t_8c.html#a7f8cf56e097fa247abe78e9b01353a08',1,'my_uart_init(uart_t *uart):&#160;UART.c'],['../_u_a_r_t_8h.html#a7f8cf56e097fa247abe78e9b01353a08',1,'my_uart_init(uart_t *uart):&#160;UART.c']]]
+];

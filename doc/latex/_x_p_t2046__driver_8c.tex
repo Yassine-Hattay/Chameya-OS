@@ -1,0 +1,205 @@
+\doxysection{C\+:/msys32/home/hatta/esp/hello\+\_\+world1/components/\+XPT2046\+\_\+driver/\+XPT2046\+\_\+driver.c File Reference}
+\hypertarget{_x_p_t2046__driver_8c}{}\label{_x_p_t2046__driver_8c}\index{C:/msys32/home/hatta/esp/hello\_world1/components/XPT2046\_driver/XPT2046\_driver.c@{C:/msys32/home/hatta/esp/hello\_world1/components/XPT2046\_driver/XPT2046\_driver.c}}
+
+
+this is the implementation of the XPT2046 touch controller driver  
+
+
+{\ttfamily \#include "{}XPT2046\+\_\+driver.\+h"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for XPT2046\+\_\+driver.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_x_p_t2046__driver_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_x_p_t2046__driver_8c_a36b5cb098a3a382fcea8c10910232f9b}{recieve\+\_\+touch\+\_\+data}} (int r)
+\begin{DoxyCompactList}\small\item\em Receives a specified number of data points and extracts a 12-\/bit value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046__driver_8c_a0bcbae8a0ce60c3bcef37918e0a3a3b4}{send\+\_\+control\+\_\+byte}} (uint8\+\_\+t parameters)
+\begin{DoxyCompactList}\small\item\em Sends a control byte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046__driver_8c_ab100bb6da7f5a38fa56ffaa233f9f463}{init\+\_\+\+XPT2046}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the XPT2046 touch controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_x_p_t2046__driver_8c_a487cc9f5d8af9f77e6683ccbb5d45d85}{check\+\_\+key\+\_\+press}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t \texorpdfstring{$\ast$}{*}x1, uint16\+\_\+t \texorpdfstring{$\ast$}{*}y1, char \texorpdfstring{$\ast$}{*}case\+\_\+type, char \texorpdfstring{$\ast$}{*}previous\+\_\+task, char \texorpdfstring{$\ast$}{*}current\+\_\+task, \mbox{\hyperlink{struct_task_params}{Task\+Params}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Checks for key presses on a virtual keyboard and handles corresponding actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_x_p_t2046__driver_8c_ae80f45d891af63a42ea6300a60760c2e}\label{_x_p_t2046__driver_8c_ae80f45d891af63a42ea6300a60760c2e} 
+uint8\+\_\+t {\bfseries received} \mbox{[}10\mbox{]}
+\item 
+\Hypertarget{_x_p_t2046__driver_8c_a91240400d5514398f8ffc3731f8c585d}\label{_x_p_t2046__driver_8c_a91240400d5514398f8ffc3731f8c585d} 
+char {\bfseries full\+\_\+path} \mbox{[}160\mbox{]}
+\item 
+\Hypertarget{_x_p_t2046__driver_8c_a5efe1b474ad74f74398fbde657ff263e}\label{_x_p_t2046__driver_8c_a5efe1b474ad74f74398fbde657ff263e} 
+volatile bool {\bfseries PIRQ\+\_\+bool} = 0
+\item 
+\Hypertarget{_x_p_t2046__driver_8c_a132ba96da5ba28448b61e42c019312a9}\label{_x_p_t2046__driver_8c_a132ba96da5ba28448b61e42c019312a9} 
+bool {\bfseries pressed} = 0
+\item 
+\Hypertarget{_x_p_t2046__driver_8c_ae72684a311cbbd4c0331d7a8ea4f46a4}\label{_x_p_t2046__driver_8c_ae72684a311cbbd4c0331d7a8ea4f46a4} 
+uint8\+\_\+t {\bfseries paragraph\+\_\+number}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this is the implementation of the XPT2046 touch controller driver 
+
+\begin{DoxyAuthor}{Author}
+your name (\href{mailto:you@domain.com}{\texttt{ you@domain.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/05-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_x_p_t2046__driver_8c_a487cc9f5d8af9f77e6683ccbb5d45d85}\index{XPT2046\_driver.c@{XPT2046\_driver.c}!check\_key\_press@{check\_key\_press}}
+\index{check\_key\_press@{check\_key\_press}!XPT2046\_driver.c@{XPT2046\_driver.c}}
+\doxysubsubsection{\texorpdfstring{check\_key\_press()}{check\_key\_press()}}
+{\footnotesize\ttfamily \label{_x_p_t2046__driver_8c_a487cc9f5d8af9f77e6683ccbb5d45d85} 
+void check\+\_\+key\+\_\+press (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{x1}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{y1}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{case\+\_\+type}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{previous\+\_\+task}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{current\+\_\+task}{, }\item[{\mbox{\hyperlink{struct_task_params}{Task\+Params}} \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Checks for key presses on a virtual keyboard and handles corresponding actions. 
+
+This function processes touch coordinates to determine which keyboard key was pressed, then performs the appropriate action based on the key and current application context.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The X-\/coordinate of the touch input. \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The Y-\/coordinate of the touch input. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em x1} & Pointer to the current X position for text display. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em y1} & Pointer to the current Y position for text display. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em case\+\_\+type} & Pointer to the current keyboard case (upper/lower/symbol). \\
+\hline
+\mbox{\texttt{ in}}  & {\em previous\+\_\+task} & Name of the previous task/context. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em current\+\_\+task} & Name of the current task/context. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em data} & Pointer to task parameters structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Handles special keys (close, OK, DEL, case change), text input, and task switching. Manages various application contexts including file editing, GPIO operations, and navigation. 
+\end{DoxyNote}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_x_p_t2046__driver_8c_a487cc9f5d8af9f77e6683ccbb5d45d85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_x_p_t2046__driver_8c_a487cc9f5d8af9f77e6683ccbb5d45d85_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_x_p_t2046__driver_8c_ab100bb6da7f5a38fa56ffaa233f9f463}\index{XPT2046\_driver.c@{XPT2046\_driver.c}!init\_XPT2046@{init\_XPT2046}}
+\index{init\_XPT2046@{init\_XPT2046}!XPT2046\_driver.c@{XPT2046\_driver.c}}
+\doxysubsubsection{\texorpdfstring{init\_XPT2046()}{init\_XPT2046()}}
+{\footnotesize\ttfamily \label{_x_p_t2046__driver_8c_ab100bb6da7f5a38fa56ffaa233f9f463} 
+void init\+\_\+\+XPT2046 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the XPT2046 touch controller. 
+
+This function configures the necessary GPIO pins for communication with an XPT2046 touch controller and sends an initial control byte to prepare it for operation. It sets up the MISO and PIRQ pins as inputs, the SS pin as an output, and enables an interrupt on the PIRQ pin for touch detection. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_x_p_t2046__driver_8c_ab100bb6da7f5a38fa56ffaa233f9f463_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_x_p_t2046__driver_8c_a36b5cb098a3a382fcea8c10910232f9b}\index{XPT2046\_driver.c@{XPT2046\_driver.c}!recieve\_touch\_data@{recieve\_touch\_data}}
+\index{recieve\_touch\_data@{recieve\_touch\_data}!XPT2046\_driver.c@{XPT2046\_driver.c}}
+\doxysubsubsection{\texorpdfstring{recieve\_touch\_data()}{recieve\_touch\_data()}}
+{\footnotesize\ttfamily \label{_x_p_t2046__driver_8c_a36b5cb098a3a382fcea8c10910232f9b} 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} recieve\+\_\+touch\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{r}{}\end{DoxyParamCaption})}
+
+
+
+Receives a specified number of data points and extracts a 12-\/bit value. 
+
+This function reads \textquotesingle{}r\textquotesingle{} data points using an assumed {\ttfamily \doxylink{_i_l_i9488__driver_8c_a7ec8272ac2813d90fe29973cc71baabb}{recive()}} function, stores them in a {\ttfamily received} array, and then attempts to construct a 12-\/bit unsigned integer from the first two received bytes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The number of data points to receive. Must be a positive integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a static {\ttfamily uint16\+\_\+t} variable containing the extracted 12-\/bit value. Returns {\ttfamily NULL} if {\ttfamily r} is invalid, or {\ttfamily 0} if there\textquotesingle{}s not enough data to form a 12-\/bit value. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{_x_p_t2046__driver_8c_a36b5cb098a3a382fcea8c10910232f9b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_x_p_t2046__driver_8c_a36b5cb098a3a382fcea8c10910232f9b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_x_p_t2046__driver_8c_a0bcbae8a0ce60c3bcef37918e0a3a3b4}\index{XPT2046\_driver.c@{XPT2046\_driver.c}!send\_control\_byte@{send\_control\_byte}}
+\index{send\_control\_byte@{send\_control\_byte}!XPT2046\_driver.c@{XPT2046\_driver.c}}
+\doxysubsubsection{\texorpdfstring{send\_control\_byte()}{send\_control\_byte()}}
+{\footnotesize\ttfamily \label{_x_p_t2046__driver_8c_a0bcbae8a0ce60c3bcef37918e0a3a3b4} 
+void send\+\_\+control\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{parameters}{}\end{DoxyParamCaption})}
+
+
+
+Sends a control byte. 
+
+This function is a wrapper around {\ttfamily send\+\_\+data} that specifically sends a control byte.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameters} & The 8-\/bit control byte to be sent. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{_x_p_t2046__driver_8c_a0bcbae8a0ce60c3bcef37918e0a3a3b4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_x_p_t2046__driver_8c_a0bcbae8a0ce60c3bcef37918e0a3a3b4_icgraph}
+\end{center}
+\end{figure}

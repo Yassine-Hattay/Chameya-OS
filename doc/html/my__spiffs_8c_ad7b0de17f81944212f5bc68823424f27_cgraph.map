@@ -1,0 +1,7 @@
+<map id="append_to_file" name="append_to_file">
+<area shape="rect" id="Node000001" title="Appends data to a specified file on the SPIFFS filesystem." alt="" coords="5,31,111,57"/>
+<area shape="rect" id="Node000002" href="$my__spiffs_8c.html#ac60a4ea264e20f7efa5d0153f51bc9ed" title="Mounts the SPIFFS filesystem." alt="" coords="166,5,261,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,33,150,26,151,32,111,38"/>
+<area shape="rect" id="Node000003" href="$my__spiffs_8c.html#a36acc2034fb047b559e0da3647c76b46" title="Unmounts the SPIFFS filesystem." alt="" coords="159,56,268,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,50,144,55,143,61,111,55"/>
+</map>

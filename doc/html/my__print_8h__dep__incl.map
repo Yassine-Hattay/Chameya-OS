@@ -1,0 +1,12 @@
+<map id="C:/msys32/home/hatta/esp/hello_world1/components/debugging/my_print.h" name="C:/msys32/home/hatta/esp/hello_world1/components/debugging/my_print.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="227,5,424,64"/>
+<area shape="rect" id="Node000002" href="$my__print_8c.html" title="Contains an implemntation of printf that writes to the serial monitor and to a web page through wifi ..." alt="" coords="5,112,203,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,73,166,114,164,109,250,69"/>
+<area shape="rect" id="Node000003" href="$web_8h.html" title="this file contains the header for web server functionality" alt="" coords="227,112,424,171"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="328,80,328,112,323,112,323,80"/>
+<area shape="rect" id="Node000005" href="$main_8c.html" title=" " alt="" coords="384,219,538,277"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="399,71,420,89,438,111,451,137,459,166,465,218,459,218,454,167,446,139,434,113,416,93,395,75"/>
+<area shape="rect" id="Node000004" href="$web_8c.html" title="this file contains the implementation of the web server for displaying logs from the ESP8266." alt="" coords="163,219,360,277"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="302,185,281,220,277,217,298,183"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="376,178,426,216,423,220,373,182"/>
+</map>

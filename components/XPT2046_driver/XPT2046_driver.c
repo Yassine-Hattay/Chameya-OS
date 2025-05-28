@@ -1,8 +1,12 @@
-/*
- * XPT2046_driver.c
- *
- *  Created on: 11 Apr 2025
- *      Author: hatta
+/**
+ * @file XPT2046_driver.c
+ * @author your name (you@domain.com)
+ * @brief this is the implementation of the XPT2046 touch controller driver
+ * @version 0.1
+ * @date 2025-05-28
+ * 
+ * @copyright Copyright (c) 2025
+ * 
  */
 
 #include "XPT2046_driver.h"
@@ -10,15 +14,25 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define MAX_FILES 50
-#define MAX_STRING_LEN 50
-
 uint8_t received[10];  // Global or large enough buffer
 char full_path[160];  // Make sure this is large enough
 
 volatile bool PIRQ_bool = 0;
 bool pressed = 0;
 uint8_t paragraph_number;
+
+/**
+ * @brief Receives a specified number of data points and extracts a 12-bit value.
+ *
+ * This function reads 'r' data points using an assumed `recive()` function,
+ * stores them in a `received` array, and then attempts to construct a 12-bit
+ * unsigned integer from the first two received bytes.
+ *
+ * @param r The number of data points to receive. Must be a positive integer.
+ * @return A pointer to a static `uint16_t` variable containing the extracted
+ * 12-bit value. Returns `NULL` if `r` is invalid, or `0` if there's
+ * not enough data to form a 12-bit value.
+ */
 
 uint16_t* recieve_touch_data(int r) {
 	static uint16_t first12 = 0;  // Static to persist after function ends
@@ -42,10 +56,26 @@ uint16_t* recieve_touch_data(int r) {
 
 	return &first12;
 }
+/**
+ * @brief Sends a control byte.
+ *
+ * This function is a wrapper around `send_data` that specifically sends a control byte.
+ *
+ * @param parameters The 8-bit control byte to be sent.
+ */
 
 void send_control_byte(uint8_t parameters) {
 	send_data(parameters);
 }
+
+/**
+ * @brief Initializes the XPT2046 touch controller.
+ *
+ * This function configures the necessary GPIO pins for communication with an XPT2046
+ * touch controller and sends an initial control byte to prepare it for operation.
+ * It sets up the MISO and PIRQ pins as inputs, the SS pin as an output,
+ * and enables an interrupt on the PIRQ pin for touch detection.
+ */
 
 void init_XPT2046() {
 	gpio_config_t io_conf0 = { .pin_bit_mask = (1ULL << MISO_touch), .mode =
@@ -71,6 +101,25 @@ void init_XPT2046() {
 	gpio_set_level(SS_touch, 1);
 
 }
+
+/**
+ * @brief Checks for key presses on a virtual keyboard and handles corresponding actions.
+ * 
+ * This function processes touch coordinates to determine which keyboard key was pressed,
+ * then performs the appropriate action based on the key and current application context.
+ * 
+ * @param[in] x The X-coordinate of the touch input.
+ * @param[in] y The Y-coordinate of the touch input.
+ * @param[in,out] x1 Pointer to the current X position for text display.
+ * @param[in,out] y1 Pointer to the current Y position for text display.
+ * @param[in,out] case_type Pointer to the current keyboard case (upper/lower/symbol).
+ * @param[in] previous_task Name of the previous task/context.
+ * @param[in,out] current_task Name of the current task/context.
+ * @param[in,out] data Pointer to task parameters structure.
+ * 
+ * @note Handles special keys (close, OK, DEL, case change), text input, and task switching.
+ * Manages various application contexts including file editing, GPIO operations, and navigation.
+ */
 
 void check_key_press(uint16_t x, uint16_t y, uint16_t *x1, uint16_t *y1,
 		char *case_type, char *previous_task, char *current_task,
