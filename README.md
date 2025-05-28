@@ -6,6 +6,6 @@ I used the [esp 8266 freertos SDK](https://docs.espressif.com/projects/esp8266-r
 - Esp 8266 lolin v3 
 - Touch Screen (ILI9488 , XPT2046) (480 * 320)  
 # 4-Wiring 
-![Uploading Sans titre.png…]()
+![Sans titre](https://github.com/user-attachments/assets/f8ef7120-aea0-4c8d-8f13-3486b035ae43)
 
 
