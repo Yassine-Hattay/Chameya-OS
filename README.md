@@ -21,6 +21,7 @@ Generally in this OS every app page is it's own task that runs and self terminat
 https://github.com/user-attachments/assets/ae4bb940-3f1c-4833-97c0-8f78ce4296a6
 
 ## a - note book app :
+This app let's you use the esp's spiffs system for file management and creation , you can ceate new apps , view their content and modify or delete them .
 
 
 
