@@ -21,8 +21,16 @@ Generally in this OS every app page is it's own task that runs and self terminat
 https://github.com/user-attachments/assets/ae4bb940-3f1c-4833-97c0-8f78ce4296a6
 
 ## a - note book app :
-This app let's you use the esp's spiffs system for file management and creation , you can ceate new apps , view their content and modify or delete them .
+This app let's you use the esp's spiffs system for file management and creation , you can ceate new text files , view their content , modify or delete them .
+
+https://github.com/user-attachments/assets/edb71519-3710-4950-803d-82d5a1066354
 
 
+## b - pong :
+This is the classic pong retro game there are 3 modes (AI vs AI , player vs AI , player vs player ) with 3 difficulty options ( easy , medium , chameya mabloula ! ) .
+## c - Goblin Slayer game :
+This is my original little game where you place maximum of 10 goblins and they fight each other to the death , each goblin is a freertos task managed by the OS .
+## d - SPI , UART , I2C software emulated communication :
+This app let's you send data with software emulated (UART , SPI , I2C) to another device (this was only tested with an esp 32) .
 
 
