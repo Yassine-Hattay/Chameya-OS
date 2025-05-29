@@ -16,7 +16,11 @@ I used the [esp 8266 freertos SDK](https://docs.espressif.com/projects/esp8266-r
 # 5-code 
 [doxygen document](https://yassine-hattay.github.io/chameya_os/index.html)
 # 6- Apps
-## note book app :
+
+https://github.com/user-attachments/assets/cff29921-6f7b-4750-a5df-bb871a38187d
+
+
+## a - note book app :
 
 
 
