@@ -28,9 +28,21 @@ https://github.com/user-attachments/assets/edb71519-3710-4950-803d-82d5a1066354
 
 ## b - pong :
 This is the classic pong retro game there are 3 modes (AI vs AI , player vs AI , player vs player ) with 3 difficulty options ( easy , medium , chameya mabloula ! ) .
+
+https://github.com/user-attachments/assets/6a872e89-2a5a-4ca8-a53e-88e021967720
+
+
 ## c - Goblin Slayer game :
 This is my original little game where you place maximum of 10 goblins and they fight each other to the death , each goblin is a freertos task managed by the OS .
+
+https://github.com/user-attachments/assets/2bcdbda0-124b-4dc4-b862-25a1d56341e8
+
+
 ## d - SPI , UART , I2C software emulated communication :
 This app let's you send data with software emulated (UART , SPI , I2C) to another device (this was only tested with an esp 32) .
+
+
+https://github.com/user-attachments/assets/422d69cc-9549-490c-8bc3-89e7467a9d7d
+
 
 
