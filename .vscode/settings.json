@@ -1,9 +1,0 @@
-{
-    "cmake.sourceDirectory": "C:/msys32/home/hatta/esp/hello_world1/test",
-    "files.associations": {
-        "my_print.h": "c",
-        "uart.h": "c",
-        "ili9488_driver.h": "c",
-        "tasks.h": "c"
-    }
-}
