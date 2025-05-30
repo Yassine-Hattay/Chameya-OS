@@ -5,6 +5,7 @@
 
 # 1-Project description:
 Chameya OS is an opreating system for the esp 8266 , managed by freeRTOS the user can interact with the hardware with my api implementation of a TFT touch display that uses software emulated SPI protocol (bit-banged) . 
+
 the data sheet of the display's chip driver [ILI9488](https://www.hpinfotech.ro/ILI9488.pdf) and the touch controller [XPT2046](https://datasheet4u.com/datasheet/XPTEK/XPT2046-746665) .
 # 2-Development environment 
 I used the [esp 8266 freertos SDK](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/index.html) with eclipse IDE to develop this project .
