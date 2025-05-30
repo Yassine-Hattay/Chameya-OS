@@ -11,3 +11,4 @@ build/
 *=5.0
 cleanup.py
 docs/
+/build
