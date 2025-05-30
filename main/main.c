@@ -48,7 +48,7 @@ void app_main(void) {
 
 	print_ILI9488("-OS", 225, 135, 2);
 
-	vTaskDelay(3000);
+	vTaskDelay(10000);
 
 	clean_screen();
 
