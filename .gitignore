@@ -2,3 +2,11 @@
 .metadata/.plugins/org.eclipse.cdt.ui/uart.build.log
 *.log
 /.metadata
+build/
+*.vscode
+*.settings
+*.metadata
+*.cproject
+*.project
+*=5.0
+cleanup.py
