@@ -45,7 +45,7 @@ uint8_t BSCK;
 		gpio_set_level(BSCK, 1);
 		ets_delay_us(10);
 
-		//received |= (gpio_get_level(MISO) << i);
+		received |= (gpio_get_level(MISO) << i);
 		gpio_set_level(BSCK, 0);
 	}
 
@@ -66,7 +66,7 @@ uint8_t BSCK;
  * @return The 8-bit data received from the MISO line.
  */
 
- static uint8_t spi_master_bit_bang_mode_1(uint8_t data_to_send) {
+ uint8_t spi_master_bit_bang_mode_1(uint8_t data_to_send) {
 	uint8_t received = 0;
 	gpio_set_level(SCK, 0);
 	// Pull CS low to start communication
@@ -101,6 +101,7 @@ uint8_t BSCK;
  * @param data_to_send The 8-bit data to be sent over MOSI.
  * @return The 8-bit data received from the MISO line.
  */
+
 uint8_t spi_master_bit_bang_mode_2(uint8_t data_to_send) {
 	uint8_t received = 0;
 	gpio_set_level(SCK, 1);
@@ -136,7 +137,7 @@ uint8_t spi_master_bit_bang_mode_2(uint8_t data_to_send) {
  * @param data_to_send The 8-bit data to be sent over MOSI.
  * @return The 8-bit data received from the MISO line.
  */
-static uint8_t spi_master_bit_bang_mode_3(uint8_t data_to_send) {
+uint8_t spi_master_bit_bang_mode_3(uint8_t data_to_send) {
 	uint8_t received = 0;
 	gpio_set_level(SCK, 1);
 	// Pull CS low to start communication
@@ -296,7 +297,7 @@ static void spi_slave_bit_bang_mode_1(uint8_t response_data) {
  *
  * @param response_data The 8-bit data to be sent back to the master.
  */
-static void spi_slave_bit_bang_mode_0(uint8_t response_data) {
+void spi_slave_bit_bang_mode_0(uint8_t response_data) {
 	uint8_t received_data = 0;
 
 	if (!SS_level) {

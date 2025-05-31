@@ -13,8 +13,8 @@
 #include "my_print.h"
 
 char log_buffer[LOG_BUFFER_SIZE];
-static size_t log_index = 0;
-static SemaphoreHandle_t log_mutex = NULL;
+size_t log_index = 0;
+SemaphoreHandle_t log_mutex = NULL;
 
 /**
  * @brief Outputs a single character by forwarding it as a string to my_print.
@@ -23,7 +23,7 @@ static SemaphoreHandle_t log_mutex = NULL;
  * my_print, mimicking the behavior of putchar for custom output handling.
  */
 
-static int my_custom_putchar(int c) {
+int my_custom_putchar(int c) {
   // Create a string that contains the character
   char char_str[2] = {
       (char)c, '\0'}; // Create a string with one character and null-terminator
@@ -63,7 +63,7 @@ void my_print_init(void) {
  * @param msg The null-terminated message string to append.
  */
 
-static void log_to_buffer(const char *msg) {
+void log_to_buffer(const char *msg) {
   if (!log_mutex)
     return;
 
@@ -92,12 +92,11 @@ static void log_to_buffer(const char *msg) {
  * @param ...    Additional arguments to format.
  */
 
-
 void my_print(const char *format, ...) {
   char temp[256];
   va_list args;
 
-  va_start(args, format);
+  //memcpy(args, format);
   vsnprintf(temp, sizeof(temp), format, args);
   va_end(args);
 

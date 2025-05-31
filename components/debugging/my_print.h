@@ -12,6 +12,14 @@
 #ifndef COMPONENTS_DEBUGGING_MY_PRINT_H_
 #define COMPONENTS_DEBUGGING_MY_PRINT_H_
 
+#include "../my_config/my_config.h"
+
+void my_print(const char *format, ...);
+
+
+
+#if TEST_ON_PC == 0
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"
@@ -23,15 +31,19 @@
 #include <string.h>
 #include <stdarg.h>
 
+
 /** 
  * @brief  Size of the RAM log buffer .
  */
-#define LOG_BUFFER_SIZE 4096  // Size of the RAM log buffer
 
 void my_print_init(void);
 void start_webserver(void);
-void my_print(const char *format, ...);
-
 extern char log_buffer[];
+extern size_t log_index ;
+#define LOG_BUFFER_SIZE 4096 // Size of the RAM log buffer
+
+#else
+#include "my_print_test.h"
+#endif
 
 #endif /* COMPONENTS_DEBUGGING_MY_PRINT_H_ */

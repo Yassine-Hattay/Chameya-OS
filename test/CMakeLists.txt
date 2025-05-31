@@ -7,6 +7,8 @@ include_directories(
     "./SPI"  
     "../components/UART"
     "../components/SPI"
+    "./debugging"
+    "../components/debugging"
     "../../ESP8266_RTOS_SDK/components/esp_common/include"
 )
 
@@ -15,6 +17,8 @@ set(SOURCE_FILES
     "./main_test.c"
     "./SPI/SPI_test.c"  
     "../components/SPI/SPI.c"
+    "./debugging/my_print_test.c"  
+    "../components/debugging/my_print.c"
     "./unity.c" 
 )
 
