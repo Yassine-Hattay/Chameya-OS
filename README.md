@@ -15,7 +15,7 @@ I used the [esp 8266 freertos SDK](https://docs.espressif.com/projects/esp8266-r
 # 4-Wiring 
 ![Sans titre](https://github.com/user-attachments/assets/f8ef7120-aea0-4c8d-8f13-3486b035ae43)
 # 5-code 
-[doxygen document](https://yassine-hattay.github.io/chameya_os/index.html)
+[doxygen document](https://Yassine-Hattay.github.io/chameya_os/index.html)
 # 6- Apps
 Generally in this OS every app page is it's own task that runs and self terminates when the adquate input is provided , i made 4 apps with varying numbers of pages each .
 
