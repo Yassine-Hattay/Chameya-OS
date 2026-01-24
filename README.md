@@ -28,7 +28,7 @@ https://github.com/user-attachments/assets/edb71519-3710-4950-803d-82d5a1066354
 
 
 ## b - pong :
-This is the classic pong retro game there are 3 modes (AI vs AI , player vs AI , player vs player ) with 3 difficulty options ( easy , medium , chameya mabloula ! ) .
+This is the classic pong retro game there are 3 modes (AI vs AI , player vs AI , player vs player ) with 3 difficulty options ( easy , medium , hard ! ) .
 
 https://github.com/user-attachments/assets/6a872e89-2a5a-4ca8-a53e-88e021967720
 
